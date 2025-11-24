@@ -79,12 +79,6 @@ body {
   letter-spacing: 0.03em;
 }
 
-.section h3 {
-  margin: 28px 0 10px;
-  font-size: 1.06rem;
-  font-weight: 600;
-}
-
 .section p {
   margin: 0 0 18px;
   color: #333;
@@ -93,12 +87,12 @@ body {
   line-height: 1.78;
 }
 
-/* 最後のセクション（Humans and Intelligence）だけ余白を詰める */
+/* 最後のセクションだけ余白を詰める */
 .section:last-of-type {
   margin-bottom: 8px;
 }
 
-/* ===== Entropy Field（黒い同心円・線だけ） ===== */
+/* ===== Entropy Field ===== */
 
 .concept {
   text-align: center;
@@ -117,7 +111,6 @@ body {
   display: block;
 }
 
-/* 黒い同心円（線だけ） */
 .entropy-ring {
   fill: none;
   stroke: #111111;
@@ -125,7 +118,6 @@ body {
   opacity: 0.5;
 }
 
-/* ほんの少し“呼吸”するように半径を変化させる */
 .entropy-ring.outer {
   animation: radial-outer 9s ease-in-out infinite;
 }
@@ -138,25 +130,20 @@ body {
   animation: radial-inner 9s ease-in-out infinite;
 }
 
-/* 中心点（ごく小さな黒点） */
 .entropy-dot {
   fill: #111111;
   opacity: 0.85;
 }
 
-/* キャプション */
 .concept-caption {
   max-width: 480px;
   margin: 0 auto;
   font-size: 0.95rem;
   color: #555;
   line-height: 1.7;
-  white-space: normal;
-  overflow-wrap: break-word;
-  word-break: normal;
 }
 
-/* 半径がゆっくり変化するアニメーション */
+/* Radial animations */
 @keyframes radial-outer {
   0%   { r: 80; opacity: 0.50; }
   40%  { r: 70; opacity: 0.45; }
@@ -177,148 +164,93 @@ body {
   100% { r: 26; opacity: 0.45; }
 }
 
-/* Lead paragraph */
-.lead {
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: #444;
-  margin-bottom: 18px;
-  line-height: 1.75;
-}
+/* ===== Wave Divider ===== */
 
-/* ===== Wave Divider（Wave Dissipation系 黒線 5種類） ===== */
-
-/* 共通：ウインドウ幅いっぱいの波ボックス */
 .divider-wave {
   width: 100vw;
   height: 60px;
   margin: 40px 0 48px;
-  margin-left: calc(50% - 50vw); /* 中央レイアウトから外へ広げる */
+  margin-left: calc(50% - 50vw);
   position: relative;
   overflow: visible;
 }
 
-/* 共通：内部のSVG */
 .divider-wave svg {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-/* 共通：線のスタイル（黒・極細） */
 .divider-wave path {
   fill: none;
-  stroke: #111111;
+  stroke: #111;
   stroke-width: 1;
   opacity: 0.28;
 }
 
-/* Wave 1：控えめな減衰波 */
+/* Wave animations (省略せず維持) */
 .divider-wave--1 path {
   animation: wave-dissipation-1 7s ease-in-out infinite;
 }
 
 @keyframes wave-dissipation-1 {
-  0% {
-    d: path("M0 30 Q 125 6 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  40% {
-    d: path("M0 30 Q 125 20 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  70% {
-    d: path("M0 30 Q 125 26 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  100% {
-    d: path("M0 30 Q 125 6 250 30 T 500 30 T 750 30 T 1000 30");
-  }
+  0% { d: path("M0 30 Q 125 6 250 30 T 500 30 T 750 30 T 1000 30"); }
+  40% { d: path("M0 30 Q 125 20 250 30 T 500 30 T 750 30 T 1000 30"); }
+  70% { d: path("M0 30 Q 125 26 250 30 T 500 30 T 750 30 T 1000 30"); }
+  100% { d: path("M0 30 Q 125 6 250 30 T 500 30 T 750 30 T 1000 30"); }
 }
 
-/* Wave 2：振幅やや大きめ、周期長め */
+/* Wave 2 */
 .divider-wave--2 path {
   animation: wave-dissipation-2 9s ease-in-out infinite;
 }
 
 @keyframes wave-dissipation-2 {
-  0% {
-    d: path("M0 30 Q 125 2 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  30% {
-    d: path("M0 30 Q 125 24 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  60% {
-    d: path("M0 30 Q 125 32 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  100% {
-    d: path("M0 30 Q 125 2 250 30 T 500 30 T 750 30 T 1000 30");
-  }
+  0% { d: path("M0 30 Q 125 2 250 30 T 500 30 T 750 30 T 1000 30"); }
+  30% { d: path("M0 30 Q 125 24 250 30 T 500 30 T 750 30 T 1000 30"); }
+  60% { d: path("M0 30 Q 125 32 250 30 T 500 30 T 750 30 T 1000 30"); }
+  100% { d: path("M0 30 Q 125 2 250 30 T 500 30 T 750 30 T 1000 30"); }
 }
 
-/* Wave 3：細かい波がゆっくり減衰 */
+/* Wave 3 */
 .divider-wave--3 path {
   animation: wave-dissipation-3 8.5s ease-in-out infinite;
 }
 
 @keyframes wave-dissipation-3 {
-  0% {
-    d: path("M0 30 Q 125 8 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  40% {
-    d: path("M0 30 Q 125 20 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  80% {
-    d: path("M0 30 Q 125 26 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  100% {
-    d: path("M0 30 Q 125 8 250 30 T 500 30 T 750 30 T 1000 30");
-  }
+  0% { d: path("M0 30 Q 125 8 250 30 T 500 30 T 750 30 T 1000 30"); }
+  40% { d: path("M0 30 Q 125 20 250 30 T 500 30 T 750 30 T 1000 30"); }
+  80% { d: path("M0 30 Q 125 26 250 30 T 500 30 T 750 30 T 1000 30"); }
+  100% { d: path("M0 30 Q 125 8 250 30 T 500 30 T 750 30 T 1000 30"); }
 }
 
-/* Wave 4：深めの波、周期長め（存在感強めだけど静か） */
+/* Wave 4 */
 .divider-wave--4 path {
   animation: wave-dissipation-4 10s ease-in-out infinite;
 }
 
 @keyframes wave-dissipation-4 {
-  0% {
-    d: path("M0 30 Q 125 0 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  35% {
-    d: path("M0 30 Q 125 24 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  65% {
-    d: path("M0 30 Q 125 34 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  100% {
-    d: path("M0 30 Q 125 0 250 30 T 500 30 T 750 30 T 1000 30");
-  }
+  0% { d: path("M0 30 Q 125 0 250 30 T 500 30 T 750 30 T 1000 30"); }
+  35% { d: path("M0 30 Q 125 24 250 30 T 500 30 T 750 30 T 1000 30"); }
+  65% { d: path("M0 30 Q 125 34 250 30 T 500 30 T 750 30 T 1000 30"); }
+  100% { d: path("M0 30 Q 125 0 250 30 T 500 30 T 750 30 T 1000 30"); }
 }
 
-/* Wave 5：わずかにランダム感のある減衰波 */
+/* Wave 5 */
 .divider-wave--5 path {
   animation: wave-dissipation-5 9s ease-in-out infinite;
 }
 
 @keyframes wave-dissipation-5 {
-  0% {
-    d: path("M0 30 Q 125 10 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  20% {
-    d: path("M0 30 Q 125 4 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  50% {
-    d: path("M0 30 Q 125 22 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  80% {
-    d: path("M0 30 Q 125 30 250 30 T 500 30 T 750 30 T 1000 30");
-  }
-  100% {
-    d: path("M0 30 Q 125 10 250 30 T 500 30 T 750 30 T 1000 30");
-  }
+  0% { d: path("M0 30 Q 125 10 250 30 T 500 30 T 750 30 T 1000 30"); }
+  20% { d: path("M0 30 Q 125 4 250 30 T 500 30 T 750 30 T 1000 30"); }
+  50% { d: path("M0 30 Q 125 22 250 30 T 500 30 T 750 30 T 1000 30"); }
+  80% { d: path("M0 30 Q 125 30 250 30 T 500 30 T 750 30 T 1000 30"); }
+  100% { d: path("M0 30 Q 125 10 250 30 T 500 30 T 750 30 T 1000 30"); }
 }
 
-/* Footer 波（フッター専用） */
+/* Footer wave */
 .divider-wave--footer {
-  /* 上下のマージンを詰める */
   margin: 10px 0 8px;
   height: 40px;
 }
@@ -344,6 +276,23 @@ body {
   padding: 20px 0 32px;
 }
 
+/* === Name + Title (fixed) === */
+.bio-name-title {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.bio-name-title .bio-name {
+  font-weight: 600;
+}
+
+.bio-name-title .bio-title {
+  color: #555;
+  font-size: 0.95rem;
+}
+
 /* Mobile tweaks */
 @media (max-width: 600px) {
   .hero-logo {
@@ -359,7 +308,6 @@ body {
   .section p {
     padding-left: 1px;
   }
-
   .divider-wave {
     height: 40px;
     margin: 32px 0 40px;
