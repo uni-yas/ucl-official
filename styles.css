@@ -298,6 +298,7 @@ body {
   height: 40px;
 }
 
+/* フッター専用は少しだけ濃い */
 .divider-wave--footer path {
   stroke: #000;
   animation: waveDissipateFooter 6s infinite ease-in-out;
@@ -319,21 +320,24 @@ body {
   padding: 20px 0 32px;
 }
 
-/* Name + Title（Yasuhito / Echo） */
+/* ===== Name + Title（Yasuhito / Echo） ===== */
+
 .bio-name-title {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
   margin-bottom: 6px;
 }
 
 .bio-name {
-  display: block;
   font-weight: 600;
 }
 
 .bio-title {
-  display: block;
   font-weight: 600;
   font-size: 0.95rem;
   color: #444;
+  white-space: nowrap;
 }
 
 /* Mobile tweaks */
@@ -362,5 +366,10 @@ body {
 
   .concept-caption {
     padding: 0 8px;
+  }
+
+  /* 幅が足りないときだけ肩書き折り返しを許可 */
+  .bio-title {
+    white-space: normal;
   }
 }
