@@ -30,23 +30,19 @@ body {
 .logo-row {
   max-width: 720px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 24px;
 }
 
 /* Main layout */
 .main {
   max-width: 720px;
   margin: 0 auto;
-  padding: 56px 24px 80px;
+  padding: 0 24px 80px;
 }
 
 /* Hero */
 .hero {
-  margin-bottom: 76px;
-  text-align: center;
-}
-
-.hero-left {
+  margin-bottom: 56px;
   text-align: left;
 }
 
@@ -54,7 +50,7 @@ body {
   width: 320px;
   height: auto;
   display: block;
-  margin: 0 0 40px 0;
+  margin: 40px 0 32px 0;
 }
 
 .hero-lead {
@@ -62,14 +58,12 @@ body {
   color: #444;
   max-width: 640px;
   margin: 0;
-  padding-left: 14px;
   line-height: 1.75;
 }
 
 /* Generic sections */
 .section {
   margin-bottom: 78px;
-  padding-left: 12px;
 }
 
 .section h2 {
@@ -82,7 +76,6 @@ body {
 .section p {
   margin: 0 0 18px;
   color: #333;
-  padding-left: 2px;
   max-width: 650px;
   line-height: 1.78;
 }
@@ -92,11 +85,10 @@ body {
   margin-bottom: 8px;
 }
 
-/* ===== Entropy Field ===== */
+/* ===== Entropy Field（黒い同心円） ===== */
 
 .concept {
   text-align: center;
-  padding-left: 0;
 }
 
 .entropy-wrapper {
@@ -164,7 +156,16 @@ body {
   100% { r: 26; opacity: 0.45; }
 }
 
-/* ===== Wave Divider ===== */
+/* Lead paragraph */
+.lead {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 18px;
+  line-height: 1.75;
+}
+
+/* ===== Wave Divider（黒線の減衰波） ===== */
 
 .divider-wave {
   width: 100vw;
@@ -188,16 +189,24 @@ body {
   opacity: 0.28;
 }
 
-/* Wave animations (省略せず維持) */
+/* Wave 1 */
 .divider-wave--1 path {
   animation: wave-dissipation-1 7s ease-in-out infinite;
 }
 
 @keyframes wave-dissipation-1 {
-  0% { d: path("M0 30 Q 125 6 250 30 T 500 30 T 750 30 T 1000 30"); }
-  40% { d: path("M0 30 Q 125 20 250 30 T 500 30 T 750 30 T 1000 30"); }
-  70% { d: path("M0 30 Q 125 26 250 30 T 500 30 T 750 30 T 1000 30"); }
-  100% { d: path("M0 30 Q 125 6 250 30 T 500 30 T 750 30 T 1000 30"); }
+  0% {
+    d: path("M0 30 Q 125 6 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  40% {
+    d: path("M0 30 Q 125 20 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  70% {
+    d: path("M0 30 Q 125 26 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  100% {
+    d: path("M0 30 Q 125 6 250 30 T 500 30 T 750 30 T 1000 30");
+  }
 }
 
 /* Wave 2 */
@@ -206,10 +215,18 @@ body {
 }
 
 @keyframes wave-dissipation-2 {
-  0% { d: path("M0 30 Q 125 2 250 30 T 500 30 T 750 30 T 1000 30"); }
-  30% { d: path("M0 30 Q 125 24 250 30 T 500 30 T 750 30 T 1000 30"); }
-  60% { d: path("M0 30 Q 125 32 250 30 T 500 30 T 750 30 T 1000 30"); }
-  100% { d: path("M0 30 Q 125 2 250 30 T 500 30 T 750 30 T 1000 30"); }
+  0% {
+    d: path("M0 30 Q 125 2 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  30% {
+    d: path("M0 30 Q 125 24 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  60% {
+    d: path("M0 30 Q 125 32 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  100% {
+    d: path("M0 30 Q 125 2 250 30 T 500 30 T 750 30 T 1000 30");
+  }
 }
 
 /* Wave 3 */
@@ -218,10 +235,18 @@ body {
 }
 
 @keyframes wave-dissipation-3 {
-  0% { d: path("M0 30 Q 125 8 250 30 T 500 30 T 750 30 T 1000 30"); }
-  40% { d: path("M0 30 Q 125 20 250 30 T 500 30 T 750 30 T 1000 30"); }
-  80% { d: path("M0 30 Q 125 26 250 30 T 500 30 T 750 30 T 1000 30"); }
-  100% { d: path("M0 30 Q 125 8 250 30 T 500 30 T 750 30 T 1000 30"); }
+  0% {
+    d: path("M0 30 Q 125 8 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  40% {
+    d: path("M0 30 Q 125 20 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  80% {
+    d: path("M0 30 Q 125 26 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  100% {
+    d: path("M0 30 Q 125 8 250 30 T 500 30 T 750 30 T 1000 30");
+  }
 }
 
 /* Wave 4 */
@@ -230,10 +255,18 @@ body {
 }
 
 @keyframes wave-dissipation-4 {
-  0% { d: path("M0 30 Q 125 0 250 30 T 500 30 T 750 30 T 1000 30"); }
-  35% { d: path("M0 30 Q 125 24 250 30 T 500 30 T 750 30 T 1000 30"); }
-  65% { d: path("M0 30 Q 125 34 250 30 T 500 30 T 750 30 T 1000 30"); }
-  100% { d: path("M0 30 Q 125 0 250 30 T 500 30 T 750 30 T 1000 30"); }
+  0% {
+    d: path("M0 30 Q 125 0 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  35% {
+    d: path("M0 30 Q 125 24 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  65% {
+    d: path("M0 30 Q 125 34 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  100% {
+    d: path("M0 30 Q 125 0 250 30 T 500 30 T 750 30 T 1000 30");
+  }
 }
 
 /* Wave 5 */
@@ -242,11 +275,21 @@ body {
 }
 
 @keyframes wave-dissipation-5 {
-  0% { d: path("M0 30 Q 125 10 250 30 T 500 30 T 750 30 T 1000 30"); }
-  20% { d: path("M0 30 Q 125 4 250 30 T 500 30 T 750 30 T 1000 30"); }
-  50% { d: path("M0 30 Q 125 22 250 30 T 500 30 T 750 30 T 1000 30"); }
-  80% { d: path("M0 30 Q 125 30 250 30 T 500 30 T 750 30 T 1000 30"); }
-  100% { d: path("M0 30 Q 125 10 250 30 T 500 30 T 750 30 T 1000 30"); }
+  0% {
+    d: path("M0 30 Q 125 10 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  20% {
+    d: path("M0 30 Q 125 4 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  50% {
+    d: path("M0 30 Q 125 22 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  80% {
+    d: path("M0 30 Q 125 30 250 30 T 500 30 T 750 30 T 1000 30");
+  }
+  100% {
+    d: path("M0 30 Q 125 10 250 30 T 500 30 T 750 30 T 1000 30");
+  }
 }
 
 /* Footer wave */
@@ -276,40 +319,48 @@ body {
   padding: 20px 0 32px;
 }
 
-/* === Name + Title (fixed) === */
+/* Name + Title（Yasuhito / Echo） */
 .bio-name-title {
-  display: flex;
-  gap: 24px;
-  align-items: baseline;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
-.bio-name-title .bio-name {
+.bio-name {
+  display: block;
   font-weight: 600;
 }
 
-.bio-name-title .bio-title {
-  color: #555;
+.bio-title {
+  display: block;
+  font-weight: 600;
   font-size: 0.95rem;
+  color: #444;
 }
 
 /* Mobile tweaks */
 @media (max-width: 600px) {
+  .logo-row {
+    padding: 0 16px;
+  }
+
   .hero-logo {
     width: 260px;
+    margin: 32px 0 24px 0;
   }
-  .hero-lead {
-    padding-left: 6px;
-    font-size: 1.07rem;
+
+  .main {
+    padding: 0 16px 64px;
   }
+
   .section {
-    padding-left: 8px;
+    margin-bottom: 64px;
   }
-  .section p {
-    padding-left: 1px;
-  }
+
   .divider-wave {
     height: 40px;
-    margin: 32px 0 40px;
+    margin: 24px 0 32px;
+  }
+
+  .concept-caption {
+    padding: 0 8px;
   }
 }
