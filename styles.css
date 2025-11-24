@@ -1,0 +1,176 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Global */
+body {
+  font-family: "Helvetica Neue", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  background-color: #fafafa;
+  color: #1e1e1e;
+  line-height: 1.85; /* 少し広げて視線誘導を良くする */
+}
+
+/* Header */
+.site-header {
+  padding: 0;
+  background: #fafafa;
+  border-bottom: none;
+}
+
+.logo-row {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Main layout */
+.main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+/* Hero */
+.hero {
+  margin-bottom: 76px; /* 下余白をほんの少し広げる */
+  text-align: center;
+}
+
+.hero-left {
+  text-align: left;
+}
+
+.hero-logo {
+  width: 320px;
+  height: auto;
+  display: block;
+  margin: 0 auto 40px;  /* ロゴと文章の距離を広げ、呼吸を作る */
+}
+
+.hero-lead {
+  font-size: 1.12rem;   /* 視認性アップ（Heroなので少し大きめ） */
+  color: #444;
+  max-width: 640px;
+  margin: 0;
+  padding-left: 14px;   /* インデント調整 */
+  line-height: 1.75;    /* 行間を広げる */
+}
+
+/* Generic sections */
+.section {
+  margin-bottom: 78px;  /* 全体のリズムを揃える */
+  padding-left: 12px;
+}
+
+.section h2 {
+  margin: 0 0 24px;     /* 見出し下の余白を+4pxして美しく */
+  font-size: 1.52rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.section h3 {
+  margin: 28px 0 10px;
+  font-size: 1.06rem;
+  font-weight: 600;
+}
+
+.section p {
+  margin: 0 0 18px;     /* 段落の終わりを少し整える */
+  color: #333;
+  padding-left: 2px;
+  max-width: 650px;
+  line-height: 1.78;
+}
+
+/* Entropy Field */
+.concept {
+  text-align: center;
+  padding-left: 0;
+}
+
+.entropy-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.entropy-field {
+  width: 220px;
+  height: auto;
+  display: block;
+  transform-origin: 50% 50%;
+  animation: entropy-sway 8s ease-in-out infinite;
+}
+
+.entropy-lines line {
+  stroke: #444;
+  stroke-width: 0.6;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+
+.concept-caption {
+  max-width: 480px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.7;   /* キャプション行間を最適化 */
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* Entropy調整（動きがわかるが上品） */
+@keyframes entropy-sway {
+  0%   { transform: rotate(-3deg); }
+  25%  { transform: rotate(0deg); }
+  50%  { transform: rotate(3deg); }
+  75%  { transform: rotate(0.5deg); }
+  100% { transform: rotate(-3deg); }
+}
+
+/* Lead paragraph */
+.lead {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 18px;
+  line-height: 1.75;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: center;
+  font-size: 0.78rem;
+  color: #999;
+  padding: 20px 0 32px;
+}
+
+/* Mobile (optional but enhances quality) */
+@media (max-width: 600px) {
+  .hero-logo {
+    width: 260px;
+  }
+  .hero-lead {
+    padding-left: 6px;
+    font-size: 1.07rem;
+  }
+  .section {
+    padding-left: 8px;
+  }
+  .section p {
+    padding-left: 1px;
+  }
+}
