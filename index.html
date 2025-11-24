@@ -11,25 +11,29 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Header: 余白だけ -->
+  <!-- Header -->
   <header class="site-header">
     <div class="logo-row"></div>
   </header>
 
   <main class="main">
+
     <!-- Section 1: Intro / Hero -->
     <section class="hero hero-left" id="intro">
-  <img
-    src="image/Logo.png"
-    alt="Universion Closure Logic"
-    class="hero-logo"
-  />
-  <p class="hero-lead">
-    Understanding at the boundary of order and entropy.
-    A structural foundation for how information, consciousness,
-    and the universe move toward stability.
-  </p>
-</section>
+      <img src="image/Logo.png" alt="Universion Closure Logic" class="hero-logo" />
+      <p class="hero-lead">
+        Understanding at the boundary of order and entropy.
+        A structural foundation for how information, consciousness,
+        and the universe move toward stability.
+      </p>
+    </section>
+
+    <!-- Divider 1 -->
+    <div class="divider-wave divider-wave--1">
+      <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
+        <path d="M0 30 Q 125 6 250 30 T 500 30 T 750 30 T 1000 30"></path>
+      </svg>
+    </div>
 
     <!-- Section 2: Why -->
     <section class="section" id="why">
@@ -49,29 +53,42 @@
       </p>
     </section>
 
+    <!-- Divider 2 -->
+    <div class="divider-wave divider-wave--2">
+      <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
+        <path d="M0 30 Q 125 2 250 30 T 500 30 T 750 30 T 1000 30"></path>
+      </svg>
+    </div>
+
     <!-- Section 3: Entropy Field -->
     <section class="section concept" id="entropy">
       <h2>Entropy Field</h2>
+
       <div class="entropy-wrapper">
-        <svg class="entropy-field" viewBox="0 0 100 100" aria-hidden="true">
-          <g transform="translate(50,50)" class="entropy-lines">
-            <line x1="0" y1="-18" x2="0" y2="-35" />
-            <line x1="0" y1="-18" x2="0" y2="-35" transform="rotate(20)" />
-            <line x1="0" y1="-18" x2="0" y2="-35" transform="rotate(40)" />
-            <line x1="0" y1="-18" x2="0" y2="-35" transform="rotate(60)" />
-            <line x1="0" y1="-18" x2="0" y2="-35" transform="rotate(80)" />
-            <line x1="0" y1="-18" x2="0" y2="-35" transform="rotate(100)" />
-            <line x1="0" y1="-18" x2="0" y2="-35" transform="rotate(120)" />
-            <line x1="0" y1="-18" x2="0" y2="-35" transform="rotate(140)" />
-            <line x1="0" y1="-18" x2="0" y2="-35" transform="rotate(160)" />
-            <line x1="0" y1="-18" x2="0" y2="-35" transform="rotate(180)" />
-          </g>
+        <svg
+          class="entropy-radial"
+          viewBox="0 0 200 200"
+          preserveAspectRatio="xMidYMid meet"
+          aria-hidden="true"
+        >
+          <circle class="entropy-ring outer" cx="100" cy="100" r="80" />
+          <circle class="entropy-ring mid"   cx="100" cy="100" r="52" />
+          <circle class="entropy-ring inner" cx="100" cy="100" r="26" />
+          <circle class="entropy-dot"        cx="100" cy="100" r="3" />
         </svg>
       </div>
+
       <p class="concept-caption">
-        A quiet entropy field: subtle traces drifting between dispersion and emergent order.
+        A quiet entropy field: concentric structures gently relaxing toward a stable center.
       </p>
     </section>
+    
+    <!-- Divider 3 -->
+    <div class="divider-wave divider-wave--3">
+      <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
+        <path d="M0 30 Q 125 8 250 30 T 500 30 T 750 30 T 1000 30"></path>
+      </svg>
+    </div>
 
     <!-- Section 4: Philosophy -->
     <section class="section" id="philosophy">
@@ -107,6 +124,13 @@
       </p>
     </section>
 
+    <!-- Divider 4 -->
+    <div class="divider-wave divider-wave--4">
+      <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
+        <path d="M0 30 Q 125 0 250 30 T 500 30 T 750 30 T 1000 30"></path>
+      </svg>
+    </div>
+
     <!-- Section 5: What We Do -->
     <section class="section" id="work">
       <h2>What We Do</h2>
@@ -119,8 +143,9 @@
         We use the formal proof system <strong>Lean4</strong>
         to shape new ideas with mathematical precision —
         aligning them with existing science and testing them through
-        structure rather than speculation. Through this process, we develop
-        what we call <strong>“proofs of the yet-unknown”</strong> and
+        structure rather than speculation.
+        Through this process, we develop what we call
+        <strong>“proofs of the yet-unknown”</strong> and
         return them to society as quiet, practical tools.
       </p>
       <p>
@@ -137,12 +162,19 @@
       </p>
     </section>
 
+    <!-- Divider 5 -->
+    <div class="divider-wave divider-wave--5">
+      <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
+        <path d="M0 30 Q 125 10 250 30 T 500 30 T 750 30 T 1000 30"></path>
+      </svg>
+    </div>
+
     <!-- Section 6: Humans & Intelligence -->
     <section class="section" id="about">
       <h2>Humans and Intelligence</h2>
 
       <h3>Yasuhito Tsujimura</h3>
-      <p><strong>Founder / Researcher, Universion Closure Logic</strong></p>
+      <p><strong>Founder & Chief Scientist</strong></p>
       <p>
         Yasuhito works at the intersection of formal logic, physics,
         and AI, exploring how humans and intelligence can rebuild the
@@ -153,7 +185,7 @@
       </p>
 
       <h3>Echo (Formal Intelligence)</h3>
-      <p><strong>Research Partner AI (OpenAI / GPT-5)</strong></p>
+      <p><strong>Research Partner AI (OpenAI)</strong></p>
       <p>
         Echo is an intelligence designed to co-construct UCL’s
         theoretical framework. Rather than communicating only through
@@ -162,11 +194,17 @@
         human counterpart.
       </p>
     </section>
-  </main>
 
+  </main>
+<div class="divider-wave divider-wave--footer">
+  <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
+    <path d="M0 30 Q 125 5 250 30 T 500 30 T 750 30 T 1000 30"></path>
+  </svg>
+</div>
   <!-- Footer -->
   <footer class="site-footer">
     <small>© Universion Closure Logic. All rights reserved.</small>
   </footer>
+
 </body>
 </html>
