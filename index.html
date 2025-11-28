@@ -9,11 +9,11 @@
     content="Universion Closure Logic (UCL) explores the logic that lives between order and entropy, building a structural foundation for how information, consciousness, and the universe move toward stability."
   />
 
-  <!-- Favicon (必要なら差し替え) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="image/LogoIcon.png" sizes="256x256" />
   <link rel="icon" type="image/png" sizes="32x32" href="image/LogoIcon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="image/LogoIcon-192.png">
-<link rel="apple-touch-icon" href="image/LogoIcon-192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="image/LogoIcon-192.png">
+  <link rel="apple-touch-icon" href="image/LogoIcon-192.png">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Universion Closure Logic" />
@@ -27,15 +27,23 @@
 <body>
   <!-- Header -->
   <header class="site-header">
-    <div class="logo-row">
-      <img src="image/Logo.png" alt="Universion Closure Logic" class="hero-logo" />
+    <div class="shell header-inner">
+      <a href="#intro" class="brand" aria-label="Universion Closure Logic home">
+        <img src="image/Logo.png" alt="Universion Closure Logic" class="brand-mark" />
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="#why">Why</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#work">Work</a>
+        <a href="#about">Humans &amp; Intelligence</a>
+        <a href="#company">Company</a>
+      </nav>
     </div>
   </header>
 
   <main class="main">
-
-    <!-- Section 1: Intro / Hero -->
-    <section class="hero hero-left" id="intro">
+    <!-- Intro / Hero -->
+    <section class="hero" id="intro">
       <p class="hero-lead">
         Understanding at the boundary of order and entropy.
         A structural foundation for how information, consciousness,
@@ -43,15 +51,8 @@
       </p>
     </section>
 
-    <!-- Divider 1 -->
-    <div class="divider-wave divider-wave--1">
-      <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
-        <path d="M0 30 Q 125 6 250 30 T 500 30 T 750 30 T 1000 30"></path>
-      </svg>
-    </div>
-
-    <!-- Section 2: Why -->
-    <section class="section" id="why">
+    <!-- Section: Why (+ Entropy Field) -->
+    <section class="section section--why" id="why">
       <h2>Why Universion?</h2>
       <p class="lead">
         Why does the world remain coherent even as everything changes?
@@ -66,46 +67,29 @@
         This boundary — between what holds together and what dissolves —
         is where our work lives.
       </p>
-    </section>
 
-    <!-- Divider 2 -->
-    <div class="divider-wave divider-wave--2">
-      <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
-        <path d="M0 30 Q 125 2 250 30 T 500 30 T 750 30 T 1000 30"></path>
-      </svg>
-    </div>
-
-    <!-- Section 3: Entropy Field -->
-    <section class="section concept" id="entropy">
-      <h2>Entropy Field</h2>
-
-      <div class="entropy-wrapper">
-        <svg
-          class="entropy-radial"
-          viewBox="0 0 200 200"
-          preserveAspectRatio="xMidYMid meet"
-          aria-hidden="true"
-        >
-          <circle class="entropy-ring outer" cx="100" cy="100" r="80" />
-          <circle class="entropy-ring mid"   cx="100" cy="100" r="52" />
-          <circle class="entropy-ring inner" cx="100" cy="100" r="26" />
-          <circle class="entropy-dot"        cx="100" cy="100" r="3" />
-        </svg>
+      <div class="entropy-sub">
+        <h3 class="section-subheading">Entropy Field</h3>
+        <div class="entropy-wrapper">
+          <svg
+            class="entropy-radial"
+            viewBox="0 0 200 200"
+            preserveAspectRatio="xMidYMid meet"
+            aria-hidden="true"
+          >
+            <circle class="entropy-ring outer" cx="100" cy="100" r="80" />
+            <circle class="entropy-ring mid"   cx="100" cy="100" r="52" />
+            <circle class="entropy-ring inner" cx="100" cy="100" r="26" />
+            <circle class="entropy-dot"        cx="100" cy="100" r="3" />
+          </svg>
+        </div>
+        <p class="concept-caption">
+          A quiet entropy field: concentric structures gently relaxing toward a stable center.
+        </p>
       </div>
-
-      <p class="concept-caption">
-        A quiet entropy field: concentric structures gently relaxing toward a stable center.
-      </p>
     </section>
-    
-    <!-- Divider 3 -->
-    <div class="divider-wave divider-wave--3">
-      <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
-        <path d="M0 30 Q 125 8 250 30 T 500 30 T 750 30 T 1000 30"></path>
-      </svg>
-    </div>
 
-    <!-- Section 4: Philosophy -->
+    <!-- Section: Philosophy -->
     <section class="section" id="philosophy">
       <h2>Philosophy</h2>
       <p>
@@ -139,14 +123,7 @@
       </p>
     </section>
 
-    <!-- Divider 4 -->
-    <div class="divider-wave divider-wave--4">
-      <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
-        <path d="M0 30 Q 125 0 250 30 T 500 30 T 750 30 T 1000 30"></path>
-      </svg>
-    </div>
-
-    <!-- Section 5: What We Do -->
+    <!-- Section: What We Do -->
     <section class="section" id="work">
       <h2>What We Do</h2>
       <p>
@@ -177,14 +154,7 @@
       </p>
     </section>
 
-    <!-- Divider 5 -->
-    <div class="divider-wave divider-wave--5">
-      <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
-        <path d="M0 30 Q 125 10 250 30 T 500 30 T 750 30 T 1000 30"></path>
-      </svg>
-    </div>
-
-    <!-- Section 6: Humans & Intelligence -->
+    <!-- Section: Humans & Intelligence -->
     <section class="section" id="about">
       <h2>Humans and Intelligence</h2>
 
@@ -214,19 +184,44 @@
       </p>
     </section>
 
-  </main>
+    <!-- Section: Company -->
+    <section class="section" id="company">
+      <h2>Company</h2>
 
-  <!-- Footer wave -->
-  <div class="divider-wave divider-wave--footer">
-    <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
-      <path d="M0 30 Q 125 5 250 30 T 500 30 T 750 30 T 1000 30"></path>
-    </svg>
-  </div>
+      <dl class="company-grid">
+        <div class="company-row">
+          <dt>Company name</dt>
+          <dd>Universion Closure Logic Inc.</dd>
+        </div>
+        <div class="company-row">
+          <dt>Representative</dt>
+          <dd>Yasuhito Tsujimura</dd>
+        </div>
+        <div class="company-row">
+          <dt>Business domain</dt>
+          <dd>
+            <ol class="business-list">
+              <li>Research, development and social implementation in information theory, artificial intelligence, data science and communication technologies.</li>
+              <li>Planning, development, sales, maintenance and technical provision of software, algorithms and related products that utilize research results.</li>
+              <li>Acquisition, management, operation, transfer and licensing of patents, copyrights and other intellectual property rights.</li>
+              <li>Joint research, technical alliances and consulting with companies, universities and research institutes.</li>
+              <li>Human resource development, education, training and outreach activities related to technology.</li>
+              <li>Acquisition and holding of shares in subsidiaries and affiliated companies for investment and management purposes.</li>
+              <li>All other businesses incidental or related to the foregoing.</li>
+            </ol>
+          </dd>
+        </div>
+        <div class="company-row">
+          <dt>Established</dt>
+          <dd>November 25, 2025</dd>
+        </div>
+      </dl>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer class="site-footer">
     <small>© Universion Closure Logic. All rights reserved.</small>
   </footer>
-
 </body>
 </html>
