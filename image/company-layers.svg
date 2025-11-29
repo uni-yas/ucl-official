@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1400" height="420" viewBox="0 0 1400 420">
+
+  <defs>
+    <!-- 背景：上は淡いブルー、下は少し深いティール -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5f9ff"/>
+      <stop offset="45%" stop-color="#e9f2fb"/>
+      <stop offset="80%" stop-color="#0e3c52"/>
+      <stop offset="100%" stop-color="#06212f"/>
+    </linearGradient>
+
+    <!-- 地平線付近のレンズ的な明るさ -->
+    <radialGradient id="horizonGlow" cx="50%" cy="55%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#dff0ff" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#dff0ff" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 塔の頂上にあるコア（構造の科学） -->
+    <radialGradient id="coreGrad" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#fff6da" stop-opacity="1"/>
+      <stop offset="38%" stop-color="#ffb85a" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#ffb85a" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- コアの外側のティールリング -->
+    <radialGradient id="coreHalo" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#7ef0ff" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#5bd6f0" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#5bd6f0" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 同心円リング用のグラデーション（淡いティール→ラベンダー） -->
+    <linearGradient id="ringStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a3d9f4" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#c7b9ff" stop-opacity="0.6"/>
+    </linearGradient>
+
+    <!-- 塔本体（Company）のグラデーション -->
+    <linearGradient id="towerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fdfefe" stop-opacity="0.97"/>
+      <stop offset="45%" stop-color="#ebf4ff" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#c0dbef" stop-opacity="0.96"/>
+    </linearGradient>
+
+    <!-- 足元の暗い帯（世界／産業のベース） -->
+    <linearGradient id="baseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#02202e"/>
+      <stop offset="50%" stop-color="#021823"/>
+      <stop offset="100%" stop-color="#02202e"/>
+    </linearGradient>
+
+    <!-- 垂直グリッド -->
+    <pattern id="gridPattern" x="0" y="0" width="40" height="40"
+             patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40"
+            fill="none"
+            stroke="#c8d7e6"
+            stroke-width="0.4"
+            stroke-opacity="0.35"/>
+    </pattern>
+  </defs>
+
+  <!-- 背景 -->
+  <rect x="0" y="0" width="1400" height="420" fill="url(#bgGrad)"/>
+  <rect x="0" y="0" width="1400" height="420" fill="url(#gridPattern)" opacity="0.35"/>
+  <rect x="0" y="0" width="1400" height="420" fill="url(#horizonGlow)" opacity="0.9"/>
+
+  <!-- 足元の暗い帯（世界のベース） -->
+  <rect x="0" y="290" width="1400" height="130" fill="url(#baseGrad)"/>
+
+  <!-- 塔の本体（UCL Company） -->
+  <g transform="translate(700,210)">
+    <!-- 塔 -->
+    <rect x="-26" y="0" width="52" height="190"
+          rx="20" ry="20"
+          fill="url(#towerGrad)"/>
+
+    <!-- 塔にわずかなハイライト -->
+    <rect x="-12" y="5" width="12" height="175"
+          rx="6" ry="6"
+          fill="#ffffff" fill-opacity="0.18"/>
+
+    <!-- 塔の頂点のコア円（構造の科学） -->
+    <g transform="translate(0,-80)">
+      <!-- コアのハロー -->
+      <circle cx="0" cy="0" r="88" fill="url(#coreHalo)" opacity="0.9"/>
+      <!-- 暖色コア -->
+      <circle cx="0" cy="0" r="52" fill="url(#coreGrad)"/>
+      <!-- 核の点 -->
+      <circle cx="0" cy="0" r="6" fill="#ffffff" opacity="0.98"/>
+    </g>
+
+    <!-- 同心円リング（精密な構造の場） -->
+    <g transform="translate(0,-80)" fill="none" stroke="url(#ringStroke)"
+       stroke-width="0.95">
+      <circle cx="0" cy="0" r="72"  opacity="0.9"/>
+      <circle cx="0" cy="0" r="104" opacity="0.75"/>
+      <circle cx="0" cy="0" r="138" opacity="0.6"/>
+      <circle cx="0" cy="0" r="172" opacity="0.45"/>
+    </g>
+
+    <!-- コアから外界へ伸びる薄い構造線（接続のポテンシャル） -->
+    <g stroke="#cfe7ff" stroke-width="0.8" stroke-linecap="round" opacity="0.8">
+      <path d="M 0 -80 L 260 -140"/>
+      <path d="M 0 -80 L 260 -20"/>
+      <path d="M 0 -80 L -260 -40"/>
+      <path d="M 0 -80 L -260 -160"/>
+    </g>
+
+    <!-- 塔の足元で世界と接続する細いライン -->
+    <g stroke="#7fd6f3" stroke-width="1.0" stroke-linecap="round" opacity="0.9">
+      <line x1="0" y1="190" x2="0" y2="230"/>
+    </g>
+  </g>
+
+  <!-- 手前の水平ライン（静かな締め） -->
+  <path d="
+    M -40 300
+    C 260 295 520 295 700 298
+    C 880 301 1140 303 1440 300"
+    fill="none"
+    stroke="#0a2a3a"
+    stroke-width="1.4"
+    stroke-opacity="0.7"/>
+
+</svg>

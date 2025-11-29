@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1400" height="420" viewBox="0 0 1400 420">
+
+  <defs>
+    <!-- 背景グラデーション（ごく薄いブルーグレー） -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4f7fa"/>
+      <stop offset="40%" stop-color="#eef3f7"/>
+      <stop offset="100%" stop-color="#e6edf3"/>
+    </linearGradient>
+
+    <!-- 中央レンズ効果（横長にフォーカス） -->
+    <radialGradient id="lensGrad" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 安定核のティールハロー -->
+    <radialGradient id="coreHalo" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#2fe2d6" stop-opacity="0.95"/>
+      <stop offset="40%" stop-color="#2fe2d6" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#2fe2d6" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- ティールのストリーク（中央核へ集束する軌跡） -->
+    <linearGradient id="coreStreak" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2fe2d6" stop-opacity="0"/>
+      <stop offset="45%" stop-color="#2fe2d6" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#2fe2d6" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 放射線用の淡いグラデーション -->
+    <linearGradient id="rayGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#c1d1de" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 左側ノイズ用の暖色（オレンジ寄り） -->
+    <radialGradient id="warmParticle" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#ffb45a" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#ffb45a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 背景（枠線なし） -->
+  <rect x="0" y="0" width="1400" height="420"
+        fill="url(#bgGrad)"/>
+
+  <!-- レンズ効果（中央横長エリアのフォーカス） -->
+  <ellipse cx="700" cy="210" rx="520" ry="140"
+           fill="url(#lensGrad)" opacity="0.85"/>
+
+  <!-- 左側：カオスの波頭をつくるダークトーン（少し太め） -->
+  <path d="
+    M -40 255
+    C 200 165 340 245 480 230
+    C 640 213 760 225 900 215
+    C 1040 205 1160 205 1320 210
+    C 1380 212 1420 215 1460 220"
+    fill="none"
+    stroke="#171f26"
+    stroke-width="2.1"
+    stroke-linecap="round"
+    opacity="0.95"/>
+
+  <!-- 同じ軌跡を細めにずらして重ねる -->
+  <path d="
+    M -10 245
+    C 210 190 340 210 500 220
+    C 650 230 780 230 920 218
+    C 1060 206 1180 208 1340 212
+    C 1405 214 1440 216 1470 218"
+    fill="none"
+    stroke="#2a3742"
+    stroke-width="1.2"
+    stroke-linecap="round"
+    opacity="0.75"/>
+
+  <!-- ごく淡い第3の波 -->
+  <path d="
+    M 0 235
+    C 220 280 380 275 540 245
+    C 700 215 860 210 1040 215
+    C 1200 220 1330 228 1480 240"
+    fill="none"
+    stroke="#a9bdc9"
+    stroke-width="0.85"
+    stroke-linecap="round"
+    opacity="0.6"/>
+
+  <!-- 左側：暖色粒子によるカオス表現 -->
+  <g>
+    <!-- 暖色の「源」 -->
+    <circle cx="80" cy="245" r="22" fill="url(#warmParticle)" opacity="0.65"/>
+    <!-- 黒＋暖色ミックスの粒子 -->
+    <g fill="#15171a" fill-opacity="0.9">
+      <circle cx="45" cy="240" r="1.4"/>
+      <circle cx="62" cy="248" r="1.2"/>
+      <circle cx="70" cy="230" r="1.1"/>
+      <circle cx="90" cy="255" r="1.3"/>
+      <circle cx="105" cy="242" r="1.1"/>
+      <circle cx="55" cy="265" r="1.2"/>
+      <circle cx="35" cy="255" r="1.0"/>
+      <circle cx="115" cy="262" r="1.1"/>
+      <circle cx="95" cy="272" r="1.0"/>
+      <circle cx="130" cy="250" r="1.0"/>
+    </g>
+    <g fill="#ffb45a" fill-opacity="0.85">
+      <circle cx="60" cy="236" r="1.1"/>
+      <circle cx="72" cy="252" r="1.0"/>
+      <circle cx="88" cy="238" r="1.0"/>
+      <circle cx="102" cy="255" r="0.9"/>
+    </g>
+  </g>
+
+  <!-- 左側の淡い構造円弧 -->
+  <g stroke="#a0b7c6" stroke-width="0.7" fill="none" opacity="0.4">
+    <circle cx="260" cy="215" r="110"/>
+    <circle cx="420" cy="210" r="150"/>
+  </g>
+
+  <!-- 右側：安定核からの放射線 -->
+  <g opacity="0.75">
+    <!-- 放射線 -->
+    <g stroke="url(#rayGrad)" stroke-width="0.85">
+      <line x1="920" y1="65"  x2="1080" y2="210"/>
+      <line x1="880" y1="140" x2="1080" y2="210"/>
+      <line x1="880" y1="260" x2="1080" y2="210"/>
+      <line x1="930" y1="340" x2="1080" y2="210"/>
+      <line x1="1010" y1="380" x2="1080" y2="210"/>
+      <line x1="1120" y1="390" x2="1080" y2="210"/>
+      <line x1="1240" y1="370" x2="1080" y2="210"/>
+      <line x1="1380" y1="90"  x2="1080" y2="210"/>
+      <line x1="1440" y1="200" x2="1080" y2="210"/>
+      <line x1="1440" y1="330" x2="1080" y2="210"/>
+    </g>
+
+    <!-- 同心円 -->
+    <g stroke="#a5bacb" fill="none">
+      <circle cx="1080" cy="210" r="32" stroke-width="0.9"/>
+      <circle cx="1080" cy="210" r="58" stroke-width="0.85" opacity="0.8"/>
+      <circle cx="1080" cy="210" r="86" stroke-width="0.8" opacity="0.6"/>
+      <circle cx="1080" cy="210" r="118" stroke-width="0.8" opacity="0.45"/>
+    </g>
+  </g>
+
+  <!-- 右側の3Dグリッド -->
+  <g stroke="#b3c5d3" stroke-width="0.6" opacity="0.6">
+    <!-- 縦グリッド -->
+    <line x1="980" y1="150" x2="1320" y2="270"/>
+    <line x1="1005" y1="150" x2="1345" y2="270"/>
+    <line x1="1030" y1="150" x2="1370" y2="270"/>
+    <line x1="1055" y1="150" x2="1395" y2="270"/>
+    <!-- 横グリッド -->
+    <line x1="980" y1="190" x2="1395" y2="305"/>
+    <line x1="980" y1="215" x2="1395" y2="330"/>
+    <line x1="980" y1="240" x2="1395" y2="355"/>
+  </g>
+
+  <!-- ティールのストリーク -->
+  <path d="
+    M 520 235
+    C 720 225 900 218 1080 210
+    C 1220 204 1320 198 1420 192"
+    fill="none"
+    stroke="url(#coreStreak)"
+    stroke-width="2.6"
+    stroke-linecap="round"
+    opacity="0.96"/>
+
+  <!-- 安定核 -->
+  <g>
+    <circle cx="1080" cy="210" r="40" fill="url(#coreHalo)"/>
+    <circle cx="1080" cy="210" r="6"  fill="#ecffff"/>
+  </g>
+
+</svg>

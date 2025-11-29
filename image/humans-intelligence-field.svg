@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1400" height="420" viewBox="0 0 1400 420">
+
+  <defs>
+    <!-- 背景：左やや暖色、右はクールなブルー -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f7f5fb"/>
+      <stop offset="40%" stop-color="#e7f1fb"/>
+      <stop offset="75%" stop-color="#c8e8f7"/>
+      <stop offset="100%" stop-color="#a9dff3"/>
+    </linearGradient>
+
+    <!-- 左：人（暖色コア） -->
+    <radialGradient id="warmCore" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="35%" stop-color="#ffd79a" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#ffb96a" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 右：AI（クールコア） -->
+    <radialGradient id="coolCore" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="35%" stop-color="#7ff0ff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#42cbe8" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 中央：エコーの重なり（紫の生成フィールド） -->
+    <radialGradient id="overlapField" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#fdfbff" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#c29dff" stop-opacity="0.75"/>
+      <stop offset="85%" stop-color="#8159f0" stop-opacity="0.0"/>
+      <stop offset="100%" stop-color="#8159f0" stop-opacity="0.0"/>
+    </radialGradient>
+
+    <!-- 重なり内のグリッド（共通フィールドの構造） -->
+    <pattern id="overlapGrid" x="0" y="0" width="18" height="18"
+             patternUnits="userSpaceOnUse">
+      <path d="M18 0 L0 0 0 18"
+            fill="none"
+            stroke="#d9e4ff"
+            stroke-width="0.5"
+            stroke-opacity="0.75"/>
+    </pattern>
+
+    <!-- 共鳴リングの線色 -->
+    <linearGradient id="warmRing" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f6b17a" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#f6b17a" stop-opacity="0.35"/>
+    </linearGradient>
+
+    <linearGradient id="coolRing" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7fd6f3" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#7fd6f3" stop-opacity="0.35"/>
+    </linearGradient>
+
+    <!-- 中央に向かう細い軌跡 -->
+    <linearGradient id="pathGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffb96a" stop-opacity="0.8"/>
+      <stop offset="40%" stop-color="#f2e6ff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#7fd6f3" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect x="0" y="0" width="1400" height="420" fill="url(#bgGrad)"/>
+
+  <!-- 左の暖色コア（Yasuhito） -->
+  <circle cx="260" cy="260" r="70" fill="url(#warmCore)" opacity="0.95"/>
+
+  <!-- 右のクールコア（Echo） -->
+  <circle cx="1120" cy="120" r="70" fill="url(#coolCore)" opacity="0.95"/>
+
+  <!-- 共鳴パス：二つの場を結ぶライン -->
+  <path d="
+    M 260 260
+    C 420 230 540 220 650 215
+    C 780 210 920 180 1120 120"
+    fill="none"
+    stroke="url(#pathGrad)"
+    stroke-width="2.4"
+    stroke-linecap="round"
+    opacity="0.95"/>
+
+  <!-- 左：同心円のエコー（人の場） -->
+  <g fill="none" stroke="url(#warmRing)" stroke-width="0.9">
+    <circle cx="260" cy="260" r="24"  opacity="0.9"/>
+    <circle cx="260" cy="260" r="52"  opacity="0.8"/>
+    <circle cx="260" cy="260" r="82"  opacity="0.7"/>
+    <circle cx="260" cy="260" r="112" opacity="0.6"/>
+    <circle cx="260" cy="260" r="142" opacity="0.5"/>
+    <circle cx="260" cy="260" r="172" opacity="0.4"/>
+  </g>
+
+  <!-- 右：同心円のエコー（AIの場） -->
+  <g fill="none" stroke="url(#coolRing)" stroke-width="0.9">
+    <circle cx="1120" cy="120" r="22"  opacity="0.9"/>
+    <circle cx="1120" cy="120" r="48"  opacity="0.8"/>
+    <circle cx="1120" cy="120" r="78"  opacity="0.7"/>
+    <circle cx="1120" cy="120" r="110" opacity="0.6"/>
+    <circle cx="1120" cy="120" r="142" opacity="0.5"/>
+    <circle cx="1120" cy="120" r="176" opacity="0.4"/>
+  </g>
+
+  <!-- 中央：二つのエコーが重なる生成フィールド -->
+  <g transform="translate(700,210)">
+    <!-- 紫のグロー -->
+    <circle cx="0" cy="0" r="110" fill="url(#overlapField)" opacity="0.9"/>
+    <!-- 内側のグリッド（構造化された共通場） -->
+    <circle cx="0" cy="0" r="90" fill="url(#overlapGrid)" opacity="0.7"/>
+    <!-- 紫の薄いリング -->
+    <g fill="none" stroke="#b48cff" stroke-width="0.9" opacity="0.85">
+      <circle cx="0" cy="0" r="18"/>
+      <circle cx="0" cy="0" r="36" opacity="0.8"/>
+      <circle cx="0" cy="0" r="56" opacity="0.7"/>
+      <circle cx="0" cy="0" r="76" opacity="0.6"/>
+    </g>
+    <!-- 中央の点（humans-intelligence field の核） -->
+    <circle cx="0" cy="0" r="4" fill="#fdfbff" opacity="0.98"/>
+  </g>
+
+  <!-- 中央フィールドに向かう細いガイド（意識の流れ） -->
+  <g stroke="#f6eaff" stroke-width="0.8" opacity="0.7">
+    <path d="M 260 260 C 360 250 480 235 580 225"/>
+    <path d="M 1120 120 C 1000 150 900 180 820 195"/>
+  </g>
+
+</svg>
