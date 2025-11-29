@@ -2,129 +2,133 @@
      width="1400" height="420" viewBox="0 0 1400 420">
 
   <defs>
-    <!-- 背景：左は明るく、右は深いブルーグレーへ -->
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#f5f7fb"/>
-      <stop offset="40%" stop-color="#e8eff7"/>
-      <stop offset="75%" stop-color="#283748"/>
-      <stop offset="100%" stop-color="#101722"/>
+    <!-- 背景：ごく淡いブルーグレー -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7f9fc"/>
+      <stop offset="50%" stop-color="#f1f4fa"/>
+      <stop offset="100%" stop-color="#e6edf7"/>
     </linearGradient>
 
-    <!-- 境界内部の暖色グロー -->
-    <radialGradient id="coreWarm" cx="50%" cy="50%" r="55%">
-      <stop offset="0%" stop-color="#fff7d8" stop-opacity="1"/>
-      <stop offset="40%" stop-color="#ffb85a" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#ffb85a" stop-opacity="0"/>
+    <!-- わずかなグリッド（構造の気配） -->
+    <pattern id="gridPattern" x="0" y="0" width="40" height="40"
+             patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40"
+            fill="none"
+            stroke="#d1d9e8"
+            stroke-width="0.4"
+            stroke-opacity="0.35"/>
+    </pattern>
+
+    <!-- 境界のオレンジセグメント -->
+    <radialGradient id="boundaryWarm" cx="40%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#ffe9c4" stop-opacity="1"/>
+      <stop offset="45%" stop-color="#ffb56a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ffb56a" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- 中心近くの強い光 -->
-    <radialGradient id="coreHot" cx="50%" cy="50%" r="60%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
-      <stop offset="35%" stop-color="#ffe8b0" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#ffb85a" stop-opacity="0"/>
-    </radialGradient>
-
-    <!-- ビーム本体（シアン〜ティール） -->
-    <linearGradient id="beamFill" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#7df2ff" stop-opacity="0.2"/>
-      <stop offset="25%" stop-color="#63e0ff" stop-opacity="0.95"/>
-      <stop offset="65%" stop-color="#37b8e7" stop-opacity="0.7"/>
-      <stop offset="100%" stop-color="#13639a" stop-opacity="0"/>
+    <!-- 境界リングのストローク -->
+    <linearGradient id="ringStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22252b" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#555b68" stop-opacity="0.7"/>
     </linearGradient>
 
-    <!-- ビームのハイライト -->
-    <linearGradient id="beamCore" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
-      <stop offset="30%" stop-color="#a8f7ff" stop-opacity="1"/>
-      <stop offset="80%" stop-color="#58d2ff" stop-opacity="0.2"/>
-      <stop offset="100%" stop-color="#58d2ff" stop-opacity="0"/>
-    </linearGradient>
-
-    <!-- 暖色の点（外側のエネルギー粒子） -->
-    <radialGradient id="warmDot" cx="50%" cy="50%" r="60%">
-      <stop offset="0%" stop-color="#ffb85a" stop-opacity="1"/>
-      <stop offset="100%" stop-color="#ffb85a" stop-opacity="0"/>
+    <!-- ティールのアクセント（未明側） -->
+    <radialGradient id="tealDot" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#7ff2ff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#7ff2ff" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
-  <!-- 背景 -->
+  <!-- 背景＋グリッド -->
   <rect x="0" y="0" width="1400" height="420" fill="url(#bgGrad)"/>
+  <rect x="0" y="0" width="1400" height="420" fill="url(#gridPattern)" opacity="0.25"/>
 
-  <!-- 境界となる大きな円 -->
-  <circle cx="430" cy="210" r="170"
-          fill="url(#coreWarm)"
-          stroke="#111111"
-          stroke-width="2.2"/>
-
-  <!-- 内側の暖色コア（軽く二重構造） -->
-  <circle cx="430" cy="210" r="85"
-          fill="url(#coreHot)" opacity="0.9"/>
-
-  <!-- ビーム本体：境界から宇宙へ飛び出すエネルギー -->
-  <path d="
-    M 450 210
-    C 620 205 760 190 900 200
-    C 1040 210 1180 220 1400 190
-    L 1400 250
-    C 1180 260 1040 250 900 240
-    C 760 230 620 220 450 220 Z"
-    fill="url(#beamFill)"
-    opacity="0.95"/>
-
-  <!-- ビームの芯（細いハイライト） -->
-  <path d="
-    M 450 210
-    C 620 200 780 200 930 205
-    C 1120 212 1270 210 1400 205"
-    fill="none"
-    stroke="url(#beamCore)"
-    stroke-width="3.0"
-    stroke-linecap="round"
-    opacity="0.95"/>
-
-  <!-- ビームに沿った補助ライン（科学的な精度感） -->
-  <g stroke="#c7e7ff" stroke-width="0.9" opacity="0.65">
+  <!-- 大きな境界円（ほぼモノクロ） -->
+  <!-- 中心と半径は少し左寄りに配置 -->
+  <g transform="translate(340,210)">
+    <!-- オレンジのセグメント（境界の内側の「知っている世界」） -->
     <path d="
-      M 450 206
-      C 610 195 770 190 930 198
-      C 1120 208 1270 206 1400 198"/>
-    <path d="
-      M 450 214
-      C 610 208 770 206 930 212
-      C 1120 218 1270 218 1400 212"/>
-  </g>
+      M 0 0
+      L -200 0
+      A 200 200 0 0 1 0 -200
+      Z"
+      fill="url(#boundaryWarm)" opacity="0.9"/>
 
-  <!-- 円の中心から伸びるガイド線（境界の中心を示す） -->
-  <g stroke="#222222" stroke-width="0.7" opacity="0.7">
-    <line x1="430" y1="210" x2="570" y2="210"/>
-    <line x1="430" y1="210" x2="370" y2="150"/>
-    <line x1="430" y1="210" x2="370" y2="270"/>
-  </g>
-
-  <!-- 円の内側でのグローの強調 -->
-  <circle cx="430" cy="210" r="20"
-          fill="url(#coreHot)" opacity="0.85"/>
-
-  <!-- 右側宇宙領域の暖色粒子 -->
-  <g opacity="0.9">
-    <!-- 大きめの点 -->
-    <circle cx="1020" cy="260" r="3.0" fill="url(#warmDot)"/>
-    <circle cx="1120" cy="310" r="3.0" fill="url(#warmDot)"/>
-    <circle cx="1220" cy="230" r="3.0" fill="url(#warmDot)"/>
-    <circle cx="1340" cy="290" r="3.0" fill="url(#warmDot)"/>
-    <!-- 小さめ散布 -->
-    <g fill="#ffb85a">
-      <circle cx="980" cy="230" r="1.3"/>
-      <circle cx="1035" cy="300" r="1.3"/>
-      <circle cx="1105" cy="250" r="1.2"/>
-      <circle cx="1180" cy="285" r="1.2"/>
-      <circle cx="1245" cy="260" r="1.2"/>
-      <circle cx="1305" cy="235" r="1.1"/>
-      <circle cx="1370" cy="320" r="1.2"/>
-      <circle cx="1400" cy="260" r="1.1"/>
-      <circle cx="1140" cy="340" r="1.1"/>
-      <circle cx="1260" cy="330" r="1.1"/>
+    <!-- 同心円リング -->
+    <g fill="none" stroke="url(#ringStroke)" stroke-width="0.9">
+      <circle cx="0" cy="0" r="60"  opacity="0.85"/>
+      <circle cx="0" cy="0" r="90"  opacity="0.8"/>
+      <circle cx="0" cy="0" r="120" opacity="0.75"/>
+      <circle cx="0" cy="0" r="150" opacity="0.7"/>
+      <circle cx="0" cy="0" r="180" opacity="0.6"/>
+      <circle cx="0" cy="0" r="210" opacity="0.5"/>
     </g>
+
+    <!-- 外縁の太い境界線 -->
+    <circle cx="0" cy="0" r="210"
+            fill="none"
+            stroke="#171a1f"
+            stroke-width="1.4"
+            opacity="0.9"/>
   </g>
 
+  <!-- 境界から外へほどけていく軌道群 -->
+  <g fill="none" stroke="#30343c" stroke-width="0.85" opacity="0.8">
+    <!-- メインアーク -->
+    <path d="M 340 210
+             C 520 190 680 210 840 230
+             C 1010 252 1170 260 1340 252" />
+    <!-- 少し上の軌道 -->
+    <path d="M 340 190
+             C 530 170 700 180 880 200
+             C 1040 218 1200 228 1385 220" />
+    <!-- 少し下の軌道 -->
+    <path d="M 340 230
+             C 520 220 680 230 840 245
+             C 1010 262 1180 270 1400 268" />
+    <!-- 外側に向かう薄いドット軌道 -->
+    <path d="M 340 210
+             C 560 260 770 290 960 300
+             C 1130 308 1270 306 1400 300"
+          stroke-dasharray="1 6" stroke-width="0.7" opacity="0.6"/>
+  </g>
+
+  <!-- 軌道上のノード群（モノクロの観測点） -->
+  <g fill="#1e2127" opacity="0.9">
+    <circle cx="520" cy="200" r="3"/>
+    <circle cx="600" cy="215" r="3"/>
+    <circle cx="660" cy="190" r="3.5"/>
+    <circle cx="720" cy="225" r="3"/>
+    <circle cx="780" cy="240" r="3.5"/>
+    <circle cx="860" cy="230" r="4.5"/>
+    <circle cx="930" cy="245" r="3.2"/>
+    <circle cx="990" cy="255" r="2.8"/>
+    <circle cx="1060" cy="262" r="3.5"/>
+    <circle cx="1140" cy="268" r="2.8"/>
+  </g>
+
+  <!-- もう少し遠いノード（グレー） -->
+  <g fill="#6a707c" opacity="0.9">
+    <circle cx="560" cy="250" r="2.4"/>
+    <circle cx="640" cy="260" r="2.6"/>
+    <circle cx="725" cy="270" r="2.2"/>
+    <circle cx="810" cy="282" r="2.4"/>
+    <circle cx="900" cy="292" r="2.4"/>
+  </g>
+
+  <!-- 左側背景の散乱点（既知世界のノイズ） -->
+  <g fill="#8b909b" opacity="0.55">
+    <circle cx="120" cy="160" r="1.6"/>
+    <circle cx="170" cy="130" r="1.2"/>
+    <circle cx="190" cy="200" r="1.4"/>
+    <circle cx="230" cy="250" r="1.1"/>
+    <circle cx="180" cy="280" r="1.3"/>
+    <circle cx="140" cy="230" r="1.2"/>
+  </g>
+
+  <!-- 右端のティールの一点：境界の外にある未明 -->
+  <g>
+    <circle cx="1240" cy="230" r="10" fill="url(#tealDot)" opacity="0.95"/>
+    <circle cx="1240" cy="230" r="3.2" fill="#00c7df" opacity="1"/>
+  </g>
 </svg>

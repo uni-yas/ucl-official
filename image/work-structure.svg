@@ -2,174 +2,202 @@
      width="1400" height="420" viewBox="0 0 1400 420">
 
   <defs>
-    <!-- 背景グラデーション（左やや明るく、右やや深め） -->
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#f4f7fb"/>
-      <stop offset="40%" stop-color="#e4f0f7"/>
-      <stop offset="75%" stop-color="#1c4f67"/>
-      <stop offset="100%" stop-color="#10364a"/>
+    <!-- 背景グラデーション（universionトーン） -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7f9fc"/>
+      <stop offset="40%" stop-color="#eef3fa"/>
+      <stop offset="100%" stop-color="#e3edf7"/>
     </linearGradient>
 
-    <!-- グリッド用パターン（やや強め） -->
-    <pattern id="gridPattern" x="0" y="0" width="24" height="24"
+    <!-- グリッドパターン（ごく薄い構造感） -->
+    <pattern id="gridPattern" x="0" y="0" width="32" height="32"
              patternUnits="userSpaceOnUse">
-      <path d="M24 0 L0 0 0 24"
+      <path d="M32 0 L0 0 0 32"
             fill="none"
-            stroke="#9ac3d7"
-            stroke-opacity="0.55"
-            stroke-width="0.4"/>
+            stroke="#cfd9e9"
+            stroke-width="0.35"
+            stroke-opacity="0.35"/>
     </pattern>
 
-    <!-- カード背景用グラデーション -->
-    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#fafdff" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#e6f2fb" stop-opacity="0.95"/>
-    </linearGradient>
-
-    <!-- 右パネル内側のグラデーション -->
-    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#e4f2fb" stop-opacity="0.15"/>
-      <stop offset="100%" stop-color="#0d2f40" stop-opacity="0.4"/>
-    </linearGradient>
-
-    <!-- コア接続点のグロー（青） -->
-    <radialGradient id="coreGlow" cx="0%" cy="50%" r="65%">
-      <stop offset="0%" stop-color="#7df2ff" stop-opacity="1"/>
-      <stop offset="40%" stop-color="#4bd5ff" stop-opacity="0.7"/>
-      <stop offset="100%" stop-color="#4bd5ff" stop-opacity="0"/>
+    <!-- 左のアイデア源のハロー（暖色） -->
+    <radialGradient id="sourceGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#fff7df" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#ffbd6a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ffbd6a" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- 右パネルのオレンジ枠グロー -->
-    <radialGradient id="accentOrange" cx="50%" cy="50%" r="70%">
-      <stop offset="0%" stop-color="#ffc777" stop-opacity="1"/>
-      <stop offset="100%" stop-color="#ffc777" stop-opacity="0"/>
+    <!-- 中央コアのリングストローク -->
+    <linearGradient id="coreRingStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1b2734" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#3b4a5d" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- 右側アウトプットのティールグロー -->
+    <radialGradient id="outputGlow" cx="0%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#7ff2ff" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#4ad2e8" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#4ad2e8" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- 暖色粒子 -->
+    <!-- 暖色ノード -->
     <radialGradient id="warmDot" cx="50%" cy="50%" r="60%">
-      <stop offset="0%" stop-color="#ffc46a" stop-opacity="1"/>
-      <stop offset="100%" stop-color="#ffc46a" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#ffb45e" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#ffb45e" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
-  <!-- 背景 -->
+  <!-- 背景＋グリッド -->
   <rect x="0" y="0" width="1400" height="420" fill="url(#bgGrad)"/>
+  <rect x="0" y="0" width="1400" height="420" fill="url(#gridPattern)" opacity="0.25"/>
 
-  <!-- グリッド（全体に敷きつつ、左側はやや弱く） -->
-  <rect x="0" y="0" width="1400" height="420"
-        fill="url(#gridPattern)" opacity="0.45"/>
-
-  <!-- 左側：フレームの集合を示すブレース -->
-  <g stroke="#1d5b74" stroke-width="4" fill="none" opacity="0.9">
-    <!-- 左ブレース -->
-    <path d="
-      M 150 110
-      C 130 110 120 120 120 140
-      L 120 175
-      C 120 185 115 190 105 195
-      C 115 200 120 205 120 215
-      L 120 250
-      C 120 270 130 280 150 280"
-      />
-    <!-- 右ブレース -->
-    <path d="
-      M 210 110
-      C 230 110 240 120 240 140
-      L 240 175
-      C 240 185 245 190 255 195
-      C 245 200 240 205 240 215
-      L 240 250
-      C 240 270 230 280 210 280"
-      />
-  </g>
-
-  <!-- 中央：3つのカード（フレームワーク／コード／仕様） -->
-  <g stroke="#2b6a86" stroke-width="1.4" fill="url(#cardGrad)" opacity="0.98">
-    <rect x="320" y="90"  width="210" height="90" rx="18" ry="18"/>
-    <rect x="320" y="185" width="210" height="90" rx="18" ry="18"/>
-    <rect x="320" y="280" width="210" height="90" rx="18" ry="18"/>
-  </g>
-
-  <!-- カード内部の簡易アイコン -->
-  <!-- 上：ツリー構造（証明木 / 型） -->
-  <g stroke="#2b6a86" stroke-width="2" fill="none" opacity="0.9">
-    <line x1="425" y1="120" x2="425" y2="135"/>
-    <line x1="425" y1="135" x2="395" y2="160"/>
-    <line x1="425" y1="135" x2="455" y2="160"/>
-    <line x1="395" y1="160" x2="382" y2="182"/>
-    <line x1="395" y1="160" x2="408" y2="182"/>
-    <line x1="455" y1="160" x2="442" y2="182"/>
-    <line x1="455" y1="160" x2="468" y2="182"/>
-    <circle cx="425" cy="115" r="5" fill="none"/>
-    <circle cx="395" cy="160" r="5" fill="none"/>
-    <circle cx="455" cy="160" r="5" fill="none"/>
-    <circle cx="382" cy="182" r="5" fill="none"/>
-    <circle cx="408" cy="182" r="5" fill="none"/>
-    <circle cx="442" cy="182" r="5" fill="none"/>
-    <circle cx="468" cy="182" r="5" fill="none"/>
-  </g>
-
-  <!-- 中カード：抽象コード行 -->
-  <g stroke="#89a8ba" stroke-width="1.4" stroke-linecap="round" opacity="0.9">
-    <line x1="350" y1="215" x2="480" y2="215"/>
-    <line x1="350" y1="230" x2="460" y2="230"/>
-    <line x1="350" y1="245" x2="430" y2="245"/>
-  </g>
-
-  <!-- 下カード：別のコード/仕様行 -->
-  <g stroke="#89a8ba" stroke-width="1.4" stroke-linecap="round" opacity="0.9">
-    <line x1="350" y1="310" x2="480" y2="310"/>
-    <line x1="350" y1="325" x2="460" y2="325"/>
-    <line x1="350" y1="340" x2="430" y2="340"/>
-  </g>
-
-  <!-- ブレースから中央カードへの接続線 -->
-  <g stroke="#1d5b74" stroke-width="1.6" opacity="0.9">
-    <line x1="240" y1="195" x2="320" y2="230"/>
-  </g>
-
-  <!-- 中央カードから右パネルのコア接続点へ -->
-  <g stroke="#1d5b74" stroke-width="1.6" opacity="0.9">
-    <line x1="530" y1="230" x2="860" y2="230"/>
-    <line x1="530" y1="325" x2="860" y2="230"/>
-  </g>
-
-  <!-- 右パネル：Lean4 / Core への到達点 -->
-  <g>
-    <!-- パネル本体 -->
-    <rect x="880" y="80" width="320" height="260"
-          rx="26" ry="26"
-          fill="url(#panelGrad)"
-          stroke="#ffc777"
-          stroke-width="1.8"
-          opacity="0.96"/>
-    <!-- パネルの内側の淡いオレンジ光 -->
-    <rect x="880" y="80" width="320" height="260"
-          rx="26" ry="26"
-          fill="url(#accentOrange)"
-          opacity="0.18"/>
-  </g>
-
-  <!-- コア接続点のグロー（パネル左辺中央） -->
-  <g>
-    <circle cx="880" cy="230" r="55" fill="url(#coreGlow)" opacity="0.95"/>
-    <circle cx="880" cy="230" r="6" fill="#ffffff" opacity="0.96"/>
-  </g>
-
-  <!-- 右側の暖色粒子（外部世界への展開） -->
-  <g opacity="0.9">
-    <circle cx="1190" cy="130" r="2.6" fill="url(#warmDot)"/>
-    <circle cx="1270" cy="190" r="2.6" fill="url(#warmDot)"/>
-    <circle cx="1225" cy="260" r="2.6" fill="url(#warmDot)"/>
-    <circle cx="1160" cy="300" r="2.6" fill="url(#warmDot)"/>
-    <g fill="#ffc46a">
-      <circle cx="1120" cy="115" r="1.4"/>
-      <circle cx="1180" cy="165" r="1.4"/>
-      <circle cx="1265" cy="140" r="1.4"/>
-      <circle cx="1320" cy="230" r="1.4"/>
-      <circle cx="1210" cy="320" r="1.4"/>
-      <circle cx="1290" cy="290" r="1.4"/>
+  <!-- ======================= 左：アイデア／観測の起点 ======================= -->
+  <g id="source" transform="translate(160,210)">
+    <!-- ハロー -->
+    <circle cx="0" cy="0" r="70" fill="url(#sourceGlow)" opacity="0.95"/>
+    <!-- 内側の小円 -->
+    <circle cx="0" cy="0" r="10" fill="#ffffff" stroke="#22252a" stroke-width="1"/>
+    <!-- 放射線 -->
+    <g stroke="#1f242b" stroke-width="0.9" stroke-linecap="round" opacity="0.9">
+      <line x1="0" y1="-40" x2="0" y2="-70"/>
+      <line x1="0" y1="40"  x2="0" y2="70"/>
+      <line x1="-40" y1="0" x2="-70" y2="0"/>
+      <line x1="40"  y1="0" x2="70"  y2="0"/>
+      <line x1="-28" y1="-28" x2="-52" y2="-52"/>
+      <line x1="28"  y1="-28" x2="52"  y2="-52"/>
+      <line x1="-28" y1="28"  x2="-52" y2="52"/>
+      <line x1="28"  y1="28"  x2="52"  y2="52"/>
     </g>
+    <!-- 小さな散乱点 -->
+    <g fill="#20252d" opacity="0.75">
+      <circle cx="-90" cy="-18" r="1.8"/>
+      <circle cx="-70" cy="40"  r="1.4"/>
+      <circle cx="-35" cy="65"  r="1.2"/>
+      <circle cx="-82" cy="-52" r="1.5"/>
+    </g>
+  </g>
+
+  <!-- 起点から中央コアへの水平ライン -->
+  <g stroke="#1f2732" stroke-width="1.1" stroke-linecap="round" opacity="0.9">
+    <line x1="170" y1="210" x2="460" y2="210"/>
+  </g>
+
+  <!-- ======================= 中央：フレームワーク / Lean4 コア ======================= -->
+  <g id="core" transform="translate(560,210)">
+    <!-- 外側の大きなリング -->
+    <circle cx="0" cy="0" r="110" fill="none"
+            stroke="url(#coreRingStroke)" stroke-width="1.4"/>
+
+    <!-- 中間リング群 -->
+    <g fill="none" stroke="url(#coreRingStroke)" stroke-width="0.8" opacity="0.85">
+      <circle cx="0" cy="0" r="86"/>
+      <circle cx="0" cy="0" r="64"/>
+      <circle cx="0" cy="0" r="46"/>
+    </g>
+
+    <!-- 内側リングに刻まれた「セグメント」 -->
+    <g transform="rotate(-12)">
+      <circle cx="0" cy="0" r="55"
+              fill="none" stroke="#1f2732" stroke-width="9" stroke-opacity="0.45"
+              stroke-dasharray="5 9"/>
+    </g>
+
+    <!-- クロスヘア -->
+    <g stroke="#1f2732" stroke-width="1.1">
+      <line x1="-120" y1="0" x2="120" y2="0"/>
+      <line x1="0" y1="-120" x2="0" y2="120"/>
+    </g>
+
+    <!-- コア中心の小円 -->
+    <circle cx="0" cy="0" r="10" fill="#ffffff"
+            stroke="#1f2732" stroke-width="1.2"/>
+
+    <!-- コア周辺の小ノード -->
+    <g fill="#1f2732" opacity="0.95">
+      <circle cx="-70" cy="-18" r="3"/>
+      <circle cx="62"  cy="-32" r="3"/>
+      <circle cx="78"  cy="26"  r="3"/>
+      <circle cx="-52" cy="40"  r="3"/>
+    </g>
+  </g>
+
+  <!-- ======================= 右側：構造化されたアウトプット ======================= -->
+
+  <!-- 中央コアから右へ伸びるメインライン -->
+  <g stroke="#202836" stroke-width="1.2" stroke-linecap="round" opacity="0.95">
+    <line x1="560" y1="210" x2="1080" y2="210"/>
+  </g>
+
+  <!-- メインラインに沿って並ぶノード＆分岐 -->
+  <g fill="#1f2732" stroke="none" opacity="0.95">
+    <circle cx="660" cy="210" r="3.1"/>
+    <circle cx="740" cy="210" r="3.1"/>
+    <circle cx="820" cy="210" r="3.1"/>
+    <circle cx="900" cy="210" r="3.1"/>
+    <circle cx="980" cy="210" r="3.1"/>
+  </g>
+
+  <!-- 上下への分岐ライン -->
+  <g stroke="#1f2732" stroke-width="1" stroke-linecap="round" opacity="0.9">
+    <!-- 740 上下 -->
+    <line x1="740" y1="210" x2="740" y2="150"/>
+    <line x1="740" y1="210" x2="740" y2="270"/>
+    <!-- 820 上下 -->
+    <line x1="820" y1="210" x2="820" y2="135"/>
+    <line x1="820" y1="210" x2="820" y2="285"/>
+    <!-- 900 上下 -->
+    <line x1="900" y1="210" x2="900" y2="160"/>
+    <line x1="900" y1="210" x2="900" y2="300"/>
+  </g>
+
+  <!-- 上部の小構造（矢印や三角形） -->
+  <g stroke="#1f2732" stroke-width="1" fill="none" opacity="0.9">
+    <path d="M 740 150 L 720 125"/>
+    <path d="M 820 135 L 845 110"/>
+    <path d="M 900 160 L 930 135"/>
+    <!-- 三角形ノード -->
+    <path d="M 720 125 L 715 115 L 725 115 Z" fill="#1f2732"/>
+    <path d="M 845 110 L 840 100 L 850 100 Z" fill="#1f2732"/>
+    <path d="M 930 135 L 925 125 L 935 125 Z" fill="#1f2732"/>
+  </g>
+
+  <!-- 下部の階段状・曲線状の構造 -->
+  <g stroke="#1f2732" stroke-width="1" fill="none" opacity="0.9">
+    <!-- 階段 -->
+    <path d="M 720 270 L 720 295 L 740 295 L 740 320 L 765 320 L 765 340"/>
+    <!-- 曲線 -->
+    <path d="M 820 285 C 850 305 880 315 920 320"/>
+    <path d="M 900 300 C 930 320 960 335 1000 340"/>
+  </g>
+
+  <!-- 右端：アウトプットノード（ティール＋オレンジ） -->
+  <g transform="translate(1120,210)">
+    <!-- ティールのグロー -->
+    <circle cx="0" cy="0" r="70" fill="url(#outputGlow)" opacity="0.9"/>
+    <!-- 外枠の円弧 -->
+    <g fill="none" stroke="#1f2732" stroke-width="1" opacity="0.8">
+      <path d="M -40 -50 A 70 70 0 0 1 40 -50"/>
+      <path d="M -50 10 A 80 80 0 0 0 50 40" stroke-dasharray="4 6"/>
+    </g>
+    <!-- ティールの正方形 -->
+    <rect x="14" y="-14" width="32" height="32"
+          fill="#24b8d4" fill-opacity="0.9"
+          stroke="#122029" stroke-width="1"/>
+    <!-- 中心の小さなオレンジ点 -->
+    <circle cx="-22" cy="0" r="6" fill="url(#warmDot)" opacity="1"/>
+  </g>
+
+  <!-- 右端さらに先の小さなティール点（遠い応用領域） -->
+  <g>
+    <circle cx="1310" cy="190" r="7" fill="url(#outputGlow)" opacity="0.9"/>
+    <circle cx="1310" cy="190" r="2.4" fill="#00c4e0"/>
+  </g>
+
+  <!-- 全体に散らばる小さな暖色ノード（成果の粒） -->
+  <g opacity="0.85">
+    <circle cx="640" cy="155" r="3" fill="url(#warmDot)"/>
+    <circle cx="705" cy="260" r="3" fill="url(#warmDot)"/>
+    <circle cx="860" cy="175" r="3" fill="url(#warmDot)"/>
+    <circle cx="950" cy="285" r="3" fill="url(#warmDot)"/>
   </g>
 
 </svg>
