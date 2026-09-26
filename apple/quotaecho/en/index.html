@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#060e21">
+  <meta name="theme-color" content="#f7f8fa">
   <meta name="description" content="QuotaEcho is a macOS menu bar app that places your Codex weekly allowance beside time to reset, then helps you review periods with the largest usage changes.">
-  <title>QuotaEcho — Turn Codex usage pace into your next decision.</title>
+  <title>QuotaEcho — A clearer view of your Codex usage.</title>
   <link rel="canonical" href="https://universion-closure-logic.com/apple/quotaecho/en/">
   <link rel="alternate" hreflang="ja" href="https://universion-closure-logic.com/apple/quotaecho/">
   <link rel="alternate" hreflang="en" href="https://universion-closure-logic.com/apple/quotaecho/en/">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23091835'/%3E%3Cpath d='M14 20h35M14 32h25M14 44h19' stroke='%232994ff' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M49 20v12H39v12' fill='none' stroke='%23e6f2ff' stroke-opacity='.55' stroke-width='3'/%3E%3Ccircle cx='49' cy='20' r='4' fill='%23f6f9ff'/%3E%3Ccircle cx='39' cy='32' r='4' fill='%23ff9c33'/%3E%3Ccircle cx='33' cy='44' r='4' fill='%235ac8c8'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" href="../assets/quotaecho-icon.png">
   <link rel="apple-touch-icon" href="../assets/quotaecho-icon.png">
-  <link rel="stylesheet" href="../assets/styles.css">
-  <script src="../assets/site.js" defer></script>
+  <link rel="stylesheet" href="../assets/styles.css?v=100-30-store">
+  <link rel="stylesheet" href="../assets/story.css?v=1">
+  <script src="../assets/site.js?v=069-2" defer></script>
+  <script src="../assets/story.js?v=1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -33,6 +35,17 @@
           <a href="#company">Company</a>
           <a href="#support">Support</a>
         </nav>
+        <details class="mobile-menu">
+          <summary>Menu <span aria-hidden="true">⌄</span></summary>
+          <nav aria-label="Page menu">
+            <a href="#experience">Experience</a>
+            <a href="#features">Features</a>
+            <a href="#daily-use">Daily use</a>
+            <a href="#privacy">Privacy</a>
+            <a href="#company">Company</a>
+            <a href="#support">Support</a>
+          </nav>
+        </details>
         <a class="lang-switch" href="../" hreflang="ja" lang="ja" data-language-switch aria-label="日本語に切り替え">JA</a>
       </div>
     </div>
@@ -42,37 +55,28 @@
     <section class="hero" id="top">
       <div class="hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Local-first Codex usage companion</p>
-          <h1>Have you had moments <span class="quiet">like these with Codex?</span></h1>
-          <p class="hero-lead">Your allowance dropped faster than expected. You want to remember what was running. Or you still have room to use and do not want it to go unnoticed. QuotaEcho brings the observations for those decisions into one continuous view.</p>
-          <div class="store-action">
-            <button class="app-store-badge" type="button" disabled aria-label="Coming soon on the Mac App Store">
-              <small>MAC APP STORE</small>
-              <strong>COMING SOON</strong>
-            </button>
-          </div>
+          <p class="eyebrow">A Mac app for OpenAI Codex</p>
+          <h1>Your Codex usage.<span class="quiet">A clearer view.</span></h1>
+          <p class="hero-lead">Compare time left with allowance remaining. Review tasks and recorded model settings from the periods with the largest drops.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#experience">See the familiar moments</a>
-            <a class="button button-secondary" href="#features">See what QuotaEcho shows</a>
+            <a class="button button-primary" href="#features">Explore the features <span aria-hidden="true">↓</span></a>
+            <!-- store-cta:start -->
+            <button class="app-store-badge" type="button" disabled aria-label="Coming soon on the Mac App Store">
+              <small>Mac App Store</small>
+              <strong>Coming soon</strong>
+            </button>
+            <!-- store-cta:end -->
           </div>
           <div class="platform-line" aria-label="Compatibility">
             <span>macOS 13 or later</span>
             <span>Apple Silicon</span>
             <span>日本語 / English</span>
-            <span>Compatible with OpenAI Codex</span>
           </div>
         </div>
 
         <div class="app-stage reveal" aria-label="QuotaEcho app screen">
-          <img class="hero-icon" src="../assets/quotaecho-icon.png" alt="QuotaEcho app icon" width="104" height="104">
           <div class="app-window">
-            <div class="window-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-            <img src="../assets/quotaecho-home.png" alt="QuotaEcho screen showing Time left, Gap, and Amount left" width="330" height="520">
-          </div>
-          <div class="rail-signature" aria-hidden="true">
-            <div class="mini-rail" style="--rail-color: var(--time); --fill: 86%;"><span>TIME</span><i class="mini-rail-track"></i><strong>85.7</strong></div>
-            <div class="mini-rail" style="--rail-color: var(--orange); --fill: 35%;"><span>GAP</span><i class="mini-rail-track"></i><strong>+5.7</strong></div>
-            <div class="mini-rail" style="--rail-color: var(--blue); --fill: 80%;"><span>AMOUNT</span><i class="mini-rail-track"></i><strong>80.0</strong></div>
+            <img src="../assets/quotaecho-home.png?v=100-30" alt="QuotaEcho screen showing Time left, Gap, and Amount left" width="360" height="560">
           </div>
         </div>
       </div>
@@ -83,101 +87,100 @@
         <div class="section-heading reveal">
           <div>
             <span class="section-number">01 / EXPERIENCE</span>
-            <h2>A usage number alone does not make the next decision.</h2>
+            <h2>Sound familiar?</h2>
           </div>
-          <p class="section-intro">QuotaEcho closes the gap between knowing how much remains and deciding what to do next.</p>
+          <p class="section-intro">Sometimes you need to pace yourself. Sometimes you have room to explore. See your remaining allowance alongside the time and work behind it.</p>
         </div>
 
         <div class="pain-grid">
           <article class="pain-card reveal">
             <span class="pain-index">01</span>
-            <h3>The current pace is hard to read</h3>
-            <p>You can see the allowance left, but it is still difficult to tell whether usage is ahead of time or whether you have headroom before reset.</p>
+            <h3>Am I using too much this week?</h3>
+            <p>A remaining percentage tells only part of the story. Compare it with the time until reset to understand your current pace.</p>
           </article>
           <article class="pain-card reveal">
             <span class="pain-index">02</span>
-            <h3>You want context for a large change</h3>
-            <p>When allowance changes more than expected, finding which tasks and processing were active during that period takes time.</p>
+            <h3>What was running when it dropped?</h3>
+            <p>Your allowance fell faster than expected. You want to revisit the tasks, model settings, and overlapping work from that time.</p>
           </article>
           <article class="pain-card reveal">
             <span class="pain-index">03</span>
-            <h3>You do not want headroom to go unnoticed</h3>
-            <p>If the weekly allowance still has room, you want that information to help you decide whether to begin something new before reset.</p>
+            <h3>Is there still room before reset?</h3>
+            <p>The reset is close and you still have allowance left. It could be a chance to try something new or go deeper on your work.</p>
           </article>
         </div>
 
         <div class="bridge reveal">
           <span class="bridge-mark" aria-hidden="true">↘</span>
           <div>
-            <strong>Go beyond the remaining number. Return from the changed period to the work context.</strong>
-            <p>QuotaEcho places observed time, processing, and tasks together as clues for your own judgment.</p>
+            <strong>See the room ahead and the work behind you.</strong>
+            <p>QuotaEcho brings the information for your next decision into your Mac menu bar.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section features" id="features">
-      <div class="section-inner">
-        <div class="section-heading reveal">
-          <div>
-            <span class="section-number">02 / WHAT YOU CAN SEE</span>
-            <h2>Here is what QuotaEcho lets you see.</h2>
+    <section class="features story-features" id="features">
+      <div class="story-section-label section-inner"><span class="section-number">02 / WHAT YOU CAN SEE</span><p>From your allowance back to your work.</p></div>
+      <article class="scroll-story pace-story" data-story="pace" aria-labelledby="pace-title">
+        <div class="story-sticky">
+          <div class="story-inner">
+            <div class="story-topline"><span>01 — YOUR PACE</span><a href="#pace-in-app">See the app <span aria-hidden="true">↘</span></a></div>
+            <h2 class="sr-only" id="pace-title">Time and allowance together reveal your headroom.</h2>
+            <div class="story-headlines" aria-hidden="true">
+              <p class="story-title" data-step="0">26.5% left.</p>
+              <p class="story-title" data-step="1">Now, add time.</p>
+              <p class="story-title" data-step="2">Room to do more.<br>Now you can see it.</p>
+            </div>
+            <p class="sr-only">For example, with 26.5% of your weekly allowance and 14.3% of the time remaining, Gap is minus 12.2 percentage points. You have headroom relative to an evenly spread usage pace.</p>
+            <div class="pace-diagram" aria-hidden="true">
+              <div class="pace-quota"><div class="pace-metric"><span>Amount left</span><strong>26.5<small>%</small></strong></div><div class="story-track"><i style="width:26.5%"></i></div></div>
+              <div class="pace-time"><div class="pace-metric"><span>Time left</span><strong>14.3<small>%</small></strong></div><div class="story-track"><i style="width:14.3%"></i></div></div>
+              <div class="pace-comparison"><i class="pace-guide quota-guide"></i><i class="pace-guide time-guide"></i><i class="pace-distance"></i></div>
+              <div class="pace-axis"><span>0%</span><span>50%</span><span>100%</span></div>
+              <div class="pace-result"><div class="pace-gap-value"><span>Gap</span><strong>−12.2<small>pt</small></strong></div><p>Headroom against<br>an evenly spread pace.</p></div>
+            </div>
+            <div class="story-bottom"><span>An example of usage pace</span><span class="story-scroll-cue">Scroll to explore <b aria-hidden="true">↓</b></span><span class="story-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
           </div>
-          <p class="section-intro">Your current pace, periods with the largest changes, and the processing observed during those periods—connected in one flow.</p>
         </div>
+      </article>
 
-        <div class="feature-grid">
-          <article class="feature-card primary reveal">
-            <div class="feature-copy">
-              <span class="feature-kicker">Current pace</span>
-              <h3>Time left and allowance left, on the same scale.</h3>
-              <p>QuotaEcho places time until the next reset and the remaining Codex weekly allowance on a shared 0–100% scale. Gap shows whether usage is ahead of an evenly spread pace or whether headroom remains.</p>
-              <ul class="feature-list">
-                <li>Time left until the next reset</li>
-                <li>Amount left in the Codex weekly allowance</li>
-                <li>Gap between the two</li>
-              </ul>
-            </div>
-            <figure class="feature-visual">
-              <img src="../assets/quotaecho-home.png" alt="QuotaEcho pace view" width="330" height="520" loading="lazy">
-            </figure>
-          </article>
-
-          <article class="feature-card half reveal">
-            <div class="feature-copy">
-              <span class="feature-kicker">Top 5 periods</span>
-              <h3>Periods with the largest usage changes.</h3>
-              <p>Within the current Codex weekly window, QuotaEcho compares continuous periods of about one hour observed while the app is running and shows up to five with the largest allowance decreases.</p>
-              <ul class="feature-list">
-                <li>Recording begins when read access is first granted</li>
-                <li>If started mid-window, the first view covers that point through reset</li>
-                <li>Time while the app is quit or records are missing is not reconstructed</li>
-              </ul>
-            </div>
-            <figure class="feature-visual">
-              <img src="../assets/quotaecho-top5.png" alt="QuotaEcho screen showing up to five periods with the largest usage changes" width="330" height="520" loading="lazy">
-            </figure>
-          </article>
-
-          <article class="feature-card half reveal">
-            <div class="feature-copy">
-              <span class="feature-kicker">Processing context</span>
-              <h3>Processing and tasks observed in that period.</h3>
-              <p>For a selected period, QuotaEcho summarizes counts, time, and overlapping activity from local records on your Mac. Related Codex tasks can be opened directly for review.</p>
-              <ul class="feature-list">
-                <li>Turn count, cumulative processing time, and peak concurrent turns</li>
-                <li>Recorded subagent, command, web search, MCP, and compaction counts</li>
-                <li>A recent median when at least three comparable periods are available</li>
-              </ul>
-            </div>
-            <figure class="feature-visual">
-              <img src="../assets/quotaecho-detail.png" alt="QuotaEcho period detail comparing observed processing with a recent median" width="330" height="520" loading="lazy">
-            </figure>
-          </article>
-        </div>
-
-        <p class="boundary-note reveal">QuotaEcho shows facts observed in local records on the Mac you are using. It does not determine exact per-task consumption or establish why allowance changed.</p>
+      <div class="story-landing section-inner" id="pace-in-app">
+        <div class="story-landing-copy"><span class="feature-kicker">IN THE APP · ANOTHER EXAMPLE</span><h3>That little insight.<br>Right in your menu bar.</h3><p>Time and allowance, on one shared scale. Their difference shows whether usage is ahead of an even pace or you have headroom.</p><ul class="feature-list"><li>Hours and minutes until the reset time recorded by Codex</li><li>Positive Gap: usage ahead. Negative Gap: headroom</li><li>Automatic updates from the latest Codex records</li></ul><a class="story-next" href="#work-story">What about that bigger drop? <span aria-hidden="true">↓</span></a></div>
+        <figure class="story-app-shot"><img src="../assets/quotaecho-home.png?v=100-30" alt="Actual QuotaEcho English screen: an example with 85.7% time left, 80.0% allowance left and a positive 5.7-point Gap" width="360" height="560" loading="lazy"><figcaption>QuotaEcho · Your pace</figcaption></figure>
       </div>
+
+      <article class="scroll-story work-story" id="work-story" data-story="work" aria-labelledby="work-title">
+        <div class="story-sticky">
+          <div class="story-inner">
+            <div class="story-topline"><span>02 — WORK IN CONTEXT</span><a href="#work-in-app">See the app <span aria-hidden="true">↘</span></a></div>
+            <h2 class="sr-only" id="work-title">From a drop in allowance to the tasks and models active during that period.</h2>
+            <div class="story-headlines" aria-hidden="true">
+              <p class="story-title" data-step="0">That bigger drop.</p>
+              <p class="story-title" data-step="1">What happened then?</p>
+              <p class="story-title" data-step="2">Your tasks and models.<br>Back in view.</p>
+            </div>
+            <p class="sr-only">Choose a period with a large drop to see the tasks active at the time and their recorded model and reasoning settings. These are clues to revisit your work, not per-task consumption figures.</p>
+            <div class="work-diagram" aria-hidden="true">
+              <div class="work-dossier"></div>
+              <div class="work-selected"><span class="work-hour">14:00–15:00</span><span class="work-bar"><i style="width:88%"></i></span><span class="work-amount">4.0 pt</span><span class="work-select-cue">↗</span></div>
+              <div class="work-others">
+                <div class="work-period"><span>10:00–11:00</span><span class="work-bar"><i style="width:66%"></i></span><span>3.0 pt</span></div>
+                <div class="work-period"><span>16:00–17:00</span><span class="work-bar"><i style="width:44%"></i></span><span>2.0 pt</span></div>
+                <div class="work-period"><span>09:00–10:00</span><span class="work-bar"><i style="width:22%"></i></span><span>1.0 pt</span></div>
+              </div>
+              <div class="work-tasks"><div class="work-context">Tasks active during this period</div><div class="work-task"><span>01</span><div><h3>Refining a web page</h3><p>GPT-6 Astra · Max</p></div></div><div class="work-task"><span>02</span><div><h3>Reviewing code</h3><p>GPT-6 Astra · Ultra</p></div></div><p class="work-tasks-cue">A little context for your next decision.</p></div>
+            </div>
+            <div class="story-bottom"><span>An example of work in context</span><span class="story-scroll-cue">Scroll to explore <b aria-hidden="true">↓</b></span><span class="story-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          </div>
+        </div>
+      </article>
+
+      <div class="story-landing work-landing section-inner" id="work-in-app">
+        <div class="story-landing-copy"><span class="feature-kicker">IN THE APP · ANOTHER EXAMPLE</span><h3>From a period<br>back to your work.</h3><p>See up to five periods with the largest usage changes over the last 7 days (168 hours). Pick one to review its tasks and model settings, then open a task in Codex.</p><ul class="feature-list"><li>Usage is compared at roughly hourly checks. Displayed periods use the actual timestamps recorded by Codex; older records without timestamps use QuotaEcho check times</li><li>If the recorded interval differs from about an hour, its duration is shown too</li><li>History stays after reset. Each period must fall entirely within the last 7 days; older periods leave the list as time passes</li><li>Usage changes calculated separately within each weekly window</li><li>Processing counts, duration, concurrency, and tool use. A recent median when the selected record interval is roughly an hour and at least three other periods are comparable</li><li>Automatic checks while the display is off or locked; missed periods reconstructed where the remaining usage records allow</li></ul></div>
+        <div class="story-app-pair"><figure class="story-app-shot"><img src="../assets/quotaecho-top5.png?v=100-30" alt="Actual QuotaEcho English screen showing up to five periods with the largest usage changes" width="360" height="560" loading="lazy"><figcaption>Choose a period</figcaption></figure><figure class="story-app-shot"><img src="../assets/quotaecho-detail.png?v=100-30" alt="Actual QuotaEcho English screen showing a task, model setting and processing during the selected period" width="360" height="560" loading="lazy"><figcaption>Revisit tasks and models</figcaption></figure></div>
+      </div>
+      <div class="section-inner"><p class="boundary-note">Codex, Work and other supported services share the allowance. QuotaEcho displays usage recorded by Codex on your Mac, alongside tasks and processing activity available on that same Mac. Use them to review changes alongside the work happening at the time. They do not establish per-task consumption or the cause of a change.</p></div>
     </section>
 
     <section class="section everyday" id="daily-use">
@@ -186,8 +189,8 @@
           <article class="behavior-panel menu-story reveal">
             <div class="behavior-copy">
               <span class="section-number">02.1 / MENU BAR</span>
-              <h2>After launch, the current state is in the menu bar.</h2>
-              <p>When QuotaEcho launches, the current Gap appears in the menu bar and the details panel opens once automatically. After that, click the menu bar item to open or close Time left, Gap, Amount left, and the review views at any time.</p>
+              <h2>A quick check.<br>Right in your menu bar.</h2>
+              <p>Your current Gap appears in the menu bar when QuotaEcho is running. Click it to see your remaining allowance or explore a period in more detail.</p>
             </div>
             <div class="menubar-journey" aria-hidden="true">
               <div class="menu-strip">
@@ -213,17 +216,17 @@
           <article class="behavior-panel appearance-story reveal">
             <div class="behavior-copy">
               <span class="section-number">02.2 / APPEARANCE</span>
-              <h2>Follows your Mac in Light and Dark.</h2>
-              <p>QuotaEcho follows the macOS appearance setting automatically, keeping the same information clear in both bright and dark workspaces.</p>
+              <h2>Light or Dark.<br>Make yourself at home.</h2>
+              <p>Choose either appearance in Help, independently of macOS. Your choice stays with you after relaunch. You can also turn button and refresh sounds on or off.</p>
             </div>
             <div class="appearance-pair" aria-label="QuotaEcho in Light and Dark appearance">
               <figure class="appearance-shot is-light">
                 <figcaption>LIGHT</figcaption>
-                <img src="../assets/quotaecho-home-en-light.png" alt="QuotaEcho in English Light appearance" width="330" height="520" loading="lazy">
+                <img src="../assets/quotaecho-home-en-light.png?v=100-30" alt="QuotaEcho in English Light appearance" width="360" height="560" loading="lazy">
               </figure>
               <figure class="appearance-shot is-dark">
                 <figcaption>DARK</figcaption>
-                <img src="../assets/quotaecho-home.png" alt="QuotaEcho in English Dark appearance" width="330" height="520" loading="lazy">
+                <img src="../assets/quotaecho-home.png?v=100-30" alt="QuotaEcho in English Dark appearance" width="360" height="560" loading="lazy">
               </figure>
             </div>
           </article>
@@ -236,31 +239,31 @@
         <div class="section-heading reveal">
           <div>
             <span class="section-number">03 / PRIVACY</span>
-            <h2>Your work context stays on your Mac.</h2>
+            <h2>Your usage stays<br>on your Mac.</h2>
           </div>
-          <p class="section-intro">QuotaEcho adds no OpenAI sign-in. It reads only the needed information from the local Codex records you permit and processes it on your Mac.</p>
+          <p class="section-intro">Allow read access once. QuotaEcho updates its display as Codex saves new usage records. There is no QuotaEcho account to create.</p>
         </div>
 
         <div class="privacy-promises">
           <article class="promise reveal"><span class="promise-icon">ID</span><h3>No account credentials</h3><p>You do not enter an OpenAI ID, password, or API key into QuotaEcho.</p></article>
           <article class="promise reveal"><span class="promise-icon">RO</span><h3>Read-only access</h3><p>QuotaEcho reads permitted local Codex records. It does not change Codex tasks or records.</p></article>
           <article class="promise reveal"><span class="promise-icon">⌂</span><h3>Processed on your Mac</h3><p>Weekly allowance, task names, processing times, and needed counts are processed in the app.</p></article>
-          <article class="promise reveal"><span class="promise-icon">↛</span><h3>Not sent to the developer</h3><p>Information read by the app is not transmitted to 株式会社Universion Closure Logic.</p></article>
+          <article class="promise reveal"><span class="promise-icon">↛</span><h3>No developer telemetry</h3><p>The app does not send the information it reads to Universion Closure Logic.</p></article>
         </div>
 
         <article class="policy-shell reveal" aria-labelledby="privacy-policy-title">
           <header class="policy-header">
             <h3 id="privacy-policy-title">Privacy Policy</h3>
-            <p class="policy-date">Last updated: September 22, 2026</p>
+            <p class="policy-date">Last updated: September 26, 2026</p>
           </header>
           <div class="policy-grid">
             <section class="policy-item">
               <h4>Scope</h4>
-              <p>This policy describes how 株式会社Universion Closure Logic (“we,” “us,” or “the Company”) handles information in the macOS app QuotaEcho.</p>
+              <p>This policy describes how Universion Closure Logic, K.K. (“we,” “us,” or “the Company”) handles information in the macOS app QuotaEcho.</p>
             </section>
             <section class="policy-item">
               <h4>Information used by the app</h4>
-              <p>After you grant read-only access in macOS, QuotaEcho reads metadata from Codex records stored on your Mac, including the weekly allowance, task names, processing times, and processing counts. This information is processed on your Mac and is not transmitted to us by the app.</p>
+              <p>After you grant read-only access in macOS, QuotaEcho extracts metadata from Codex records, including the weekly allowance, task names, processing times and counts, and recorded model and reasoning settings. This information is processed on your Mac and is not transmitted to us by the app.</p>
             </section>
             <section class="policy-item">
               <h4>Information we do not obtain</h4>
@@ -268,11 +271,11 @@
             </section>
             <section class="policy-item">
               <h4>Information stored on your Mac</h4>
-              <p>QuotaEcho stores the current weekly allowance history, language preference, read-only permission information, and a randomly generated local identifier inside the app sandbox. Task names and processing summaries are used only while displayed and are not retained in the weekly history.</p>
+              <p>QuotaEcho stores the current weekly allowance and the usage history needed to compare the last 7 days, language, appearance and sound preferences, read-only permission information, a local matching value used to renew that permission safely for the same records folder, and a randomly generated local identifier inside the app sandbox. Task names, model settings and processing summaries are used in memory only while displayed and are not retained in the usage history.</p>
             </section>
             <section class="policy-item">
               <h4>Retention and deletion</h4>
-              <p>The weekly history is replaced when a new weekly allowance begins. You can remove QuotaEcho’s saved history, settings, and read permission through the uninstall instructions in the app. This does not delete or modify Codex tasks or records.</p>
+              <p>History needed to review the last 7 days is kept after the weekly allowance resets. Records from past weekly windows that are no longer part of that comparison are pruned at startup and while the app runs. The last confirmed allowance record is kept until a valid new weekly allowance is obtained. You can remove QuotaEcho’s saved history, settings and read permission through the uninstall instructions in Help. Codex tasks and records are kept.</p>
             </section>
             <section class="policy-item">
               <h4>Support communications</h4>
@@ -292,7 +295,7 @@
             </section>
             <section class="policy-item">
               <h4>Contact</h4>
-              <p>株式会社Universion Closure Logic<br><a href="mailto:support.quotaecho@universion-closure-logic.com">support.quotaecho@universion-closure-logic.com</a></p>
+              <p>Universion Closure Logic, K.K.<br><a href="mailto:support.quotaecho@universion-closure-logic.com">support.quotaecho@universion-closure-logic.com</a></p>
             </section>
           </div>
         </article>
@@ -303,11 +306,12 @@
       <div class="section-inner company-layout">
         <div class="company-copy reveal">
           <span class="section-number">04 / COMPANY</span>
-          <h2>The company behind QuotaEcho.</h2>
-          <p>QuotaEcho is planned, developed, and provided by 株式会社Universion Closure Logic. As an independent product, it is designed to turn observable information into context for the user’s own decisions.</p>
+          <img class="company-logo" src="../assets/ucl-company-black.png" alt="Universion Closure Logic" width="4096" height="687" loading="lazy">
+          <h2>Tools for<br>everyday decisions.</h2>
+          <p>QuotaEcho is designed and developed by Universion Closure Logic, K.K. We turn Codex usage records into a clear view, so people can choose a pace that works for them.</p>
         </div>
         <dl class="company-card reveal">
-          <div class="company-row"><dt>Operator</dt><dd>株式会社Universion Closure Logic</dd></div>
+          <div class="company-row"><dt>Company</dt><dd>Universion Closure Logic, K.K.</dd></div>
           <div class="company-row"><dt>Product</dt><dd>QuotaEcho</dd></div>
           <div class="company-row"><dt>Description</dt><dd>A macOS companion for reviewing your Codex usage pace</dd></div>
           <div class="company-row"><dt>Website</dt><dd><a href="https://universion-closure-logic.com/">universion-closure-logic.com</a></dd></div>
@@ -321,8 +325,8 @@
         <div class="support-panel reveal">
           <div>
             <span class="section-number">05 / SUPPORT</span>
-            <h2>When you need help with QuotaEcho.</h2>
-            <p>If usage does not appear or the app asks about read access, use Codex once and then try Refresh in QuotaEcho.</p>
+            <h2>Need a hand?</h2>
+            <p>If QuotaEcho asks for read access, follow the on-screen instructions. Once access is allowed, usage updates as Codex saves new records while you work. You can also click Refresh to check now.</p>
             <p>If the issue remains, contact QuotaEcho Support.</p>
             <a class="support-email" href="mailto:support.quotaecho@universion-closure-logic.com?subject=QuotaEcho%20Support">support.quotaecho@universion-closure-logic.com</a>
           </div>
@@ -344,8 +348,9 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div>
-        <div class="footer-brand">© <span data-year>2026</span> 株式会社Universion Closure Logic</div>
+        <div class="footer-brand"><img src="../assets/ucl-mark-black.png" alt="" width="24" height="25">© <span data-year>2026</span> Universion Closure Logic, K.K.</div>
         <p class="footer-note">QuotaEcho is an independent application and is not affiliated with, sponsored by, or endorsed by OpenAI. OpenAI and Codex are trademarks of their respective owners.</p>
+        <p class="footer-note">Apple, the Apple logo, Mac, and macOS are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc.</p>
       </div>
       <a class="to-top" href="#top" aria-label="Back to top">↑</a>
     </div>

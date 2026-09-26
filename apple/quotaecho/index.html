@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#060e21">
+  <meta name="theme-color" content="#f7f8fa">
   <meta name="description" content="QuotaEchoは、Codexの週間使用枠とリセットまでの時間を並べ、使用ペースと大きく変化した時間帯を振り返るためのMac用メニューバーアプリです。">
-  <title>QuotaEcho — Codexの使用ペースを、次の判断へ。</title>
+  <title>QuotaEcho — Codexの余力を、ひと目で。</title>
   <link rel="canonical" href="https://universion-closure-logic.com/apple/quotaecho/">
   <link rel="alternate" hreflang="ja" href="https://universion-closure-logic.com/apple/quotaecho/">
   <link rel="alternate" hreflang="en" href="https://universion-closure-logic.com/apple/quotaecho/en/">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23091835'/%3E%3Cpath d='M14 20h35M14 32h25M14 44h19' stroke='%232994ff' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M49 20v12H39v12' fill='none' stroke='%23e6f2ff' stroke-opacity='.55' stroke-width='3'/%3E%3Ccircle cx='49' cy='20' r='4' fill='%23f6f9ff'/%3E%3Ccircle cx='39' cy='32' r='4' fill='%23ff9c33'/%3E%3Ccircle cx='33' cy='44' r='4' fill='%235ac8c8'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" href="./assets/quotaecho-icon.png">
   <link rel="apple-touch-icon" href="./assets/quotaecho-icon.png">
-  <link rel="stylesheet" href="./assets/styles.css">
-  <script src="./assets/site.js" defer></script>
+  <link rel="stylesheet" href="./assets/styles.css?v=100-30-store">
+  <link rel="stylesheet" href="./assets/story.css?v=1">
+  <script src="./assets/site.js?v=069-2" defer></script>
+  <script src="./assets/story.js?v=1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">本文へ移動</a>
@@ -33,6 +35,17 @@
           <a href="#company">会社概要</a>
           <a href="#support">サポート</a>
         </nav>
+        <details class="mobile-menu">
+          <summary>メニュー <span aria-hidden="true">⌄</span></summary>
+          <nav aria-label="ページ内メニュー">
+            <a href="#experience">体験</a>
+            <a href="#features">見られる情報</a>
+            <a href="#daily-use">使い方</a>
+            <a href="#privacy">プライバシー</a>
+            <a href="#company">会社概要</a>
+            <a href="#support">サポート</a>
+          </nav>
+        </details>
         <a class="lang-switch" href="./en/" hreflang="en" lang="en" data-language-switch aria-label="Switch to English">EN</a>
       </div>
     </div>
@@ -42,37 +55,28 @@
     <section class="hero" id="top">
       <div class="hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Local-first Codex usage companion</p>
-          <h1>Codexを使っていて、<span class="quiet">こんな体験はありませんか？</span></h1>
-          <p class="hero-lead">想定より早く使用枠が減った。どの作業だったか振り返りたい。逆に、まだ使える余力を見逃したくない。QuotaEchoは、その判断に必要な観測情報をひとつの流れにまとめます。</p>
-          <div class="store-action">
+          <p class="eyebrow">OpenAI Codex対応 · Mac用アプリ</p>
+          <h1>Codexの余力を、<span class="quiet">ひと目で。</span></h1>
+          <p class="hero-lead">残り枠と時間で、使うペースをつかむ。<br>減った時間帯のタスクとモデルを振り返る。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#features">見られる情報 <span aria-hidden="true">↓</span></a>
+            <!-- store-cta:start -->
             <button class="app-store-badge" type="button" disabled aria-label="Mac App Storeで公開予定">
-              <small>MAC APP STORE</small>
+              <small>Mac App Store</small>
               <strong>公開予定</strong>
             </button>
-          </div>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#experience">よくある体験を見る</a>
-            <a class="button button-secondary" href="#features">見られる情報へ</a>
+            <!-- store-cta:end -->
           </div>
           <div class="platform-line" aria-label="対応環境">
             <span>macOS 13以降</span>
             <span>Apple Silicon</span>
             <span>日本語 / English</span>
-            <span>OpenAI Codex対応</span>
           </div>
         </div>
 
         <div class="app-stage reveal" aria-label="QuotaEchoのアプリ画面">
-          <img class="hero-icon" src="./assets/quotaecho-icon.png" alt="QuotaEchoアプリアイコン" width="104" height="104">
           <div class="app-window">
-            <div class="window-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-            <img src="./assets/quotaecho-home-ja.png" alt="残り時間、差分、残り使用枠を表示するQuotaEchoの日本語画面" width="330" height="520">
-          </div>
-          <div class="rail-signature" aria-hidden="true">
-            <div class="mini-rail" style="--rail-color: var(--time); --fill: 86%;"><span>TIME</span><i class="mini-rail-track"></i><strong>85.7</strong></div>
-            <div class="mini-rail" style="--rail-color: var(--orange); --fill: 35%;"><span>GAP</span><i class="mini-rail-track"></i><strong>+5.7</strong></div>
-            <div class="mini-rail" style="--rail-color: var(--blue); --fill: 80%;"><span>AMOUNT</span><i class="mini-rail-track"></i><strong>80.0</strong></div>
+            <img src="./assets/quotaecho-home-ja.png?v=100-30" alt="残り時間、差分、残り使用枠を表示するQuotaEchoの日本語画面" width="360" height="560">
           </div>
         </div>
       </div>
@@ -83,101 +87,100 @@
         <div class="section-heading reveal">
           <div>
             <span class="section-number">01 / EXPERIENCE</span>
-            <h2>使用量の数字だけでは、次の判断まで届かない。</h2>
+            <h2>Codexを使っていて、<br>こんなことはありませんか？</h2>
           </div>
-          <p class="section-intro">QuotaEchoが埋めるのは、残量を知ることと、次に何をするかを決めることの間にある距離です。</p>
+          <p class="section-intro">使うペースを調整したいときも、余った枠を活かしたいときも。残量に、時間と作業の手掛かりを添えます。</p>
         </div>
 
         <div class="pain-grid">
           <article class="pain-card reveal">
             <span class="pain-index">01</span>
-            <h3>今のペースが分かりにくい</h3>
-            <p>残り使用枠は見えても、リセットまでの時間と比べて余裕があるのか、使用量が先行しているのか判断しづらい。</p>
+            <h3>今週、少し使いすぎた？</h3>
+            <p>残量だけでは、リセットまで余裕があるのか分かりづらい。時間の経過と並べて、今のペースを確かめたい。</p>
           </article>
           <article class="pain-card reveal">
             <span class="pain-index">02</span>
-            <h3>大きく減った時間を振り返りたい</h3>
-            <p>使用枠が想定以上に変化したとき、その時間にどのタスクや処理が動いていたのかを、あとから探すのに時間がかかる。</p>
+            <h3>大きく減ったとき、何をしていた？</h3>
+            <p>想定より使用枠が減った。その時間に動いていたタスクやモデル、同時に進めた処理を振り返りたい。</p>
           </article>
           <article class="pain-card reveal">
             <span class="pain-index">03</span>
-            <h3>使える余力を見逃したくない</h3>
-            <p>週間使用枠にまだ余裕があるなら、新しい作業を始める判断材料にしたい。残量を余らせたままリセットを迎えたくない。</p>
+            <h3>リセットまで、まだ使える？</h3>
+            <p>もうすぐリセットなのに、まだ枠が残っている。新しいことを試したり、作業を深めたりする余力に気づきたい。</p>
           </article>
         </div>
 
         <div class="bridge reveal">
           <span class="bridge-mark" aria-hidden="true">↘</span>
           <div>
-            <strong>残量を見るだけで終わらない。変化した時間帯から、作業の文脈まで戻る。</strong>
-            <p>観測された時間・処理・タスクを、あなたが判断するための手掛かりとして並べます。</p>
+            <strong>今の余力と、これまでの使い方を。</strong>
+            <p>QuotaEchoは、次にどう使うかを考えるための情報を、メニューバーにまとめます。</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section features" id="features">
-      <div class="section-inner">
-        <div class="section-heading reveal">
-          <div>
-            <span class="section-number">02 / WHAT YOU CAN SEE</span>
-            <h2>QuotaEchoは、こんな情報が見られます。</h2>
+    <section class="features story-features" id="features">
+      <div class="story-section-label section-inner"><span class="section-number">02 / WHAT YOU CAN SEE</span><p>残り枠から、作業の振り返りまで。</p></div>
+      <article class="scroll-story pace-story" data-story="pace" aria-labelledby="pace-title">
+        <div class="story-sticky">
+          <div class="story-inner">
+            <div class="story-topline"><span>01 — 今のペース</span><a href="#pace-in-app">アプリ画面へ <span aria-hidden="true">↘</span></a></div>
+            <h2 class="sr-only" id="pace-title">時間と残量を並べると、今の余力が見えてくる。</h2>
+            <div class="story-headlines" aria-hidden="true">
+              <p class="story-title" data-step="0">残り枠は、26.5%。</p>
+              <p class="story-title" data-step="1">残り時間と、並べる。</p>
+              <p class="story-title" data-step="2">まだ使える。<br>その余力に気づく。</p>
+            </div>
+            <p class="sr-only">例えば、週間使用枠の残りが26.5%、残り時間が14.3%なら、差分はマイナス12.2ポイント。均等に使うペースより、使用枠に余裕があります。</p>
+            <div class="pace-diagram" aria-hidden="true">
+              <div class="pace-quota"><div class="pace-metric"><span>残り使用枠</span><strong>26.5<small>%</small></strong></div><div class="story-track"><i style="width:26.5%"></i></div></div>
+              <div class="pace-time"><div class="pace-metric"><span>残り時間</span><strong>14.3<small>%</small></strong></div><div class="story-track"><i style="width:14.3%"></i></div></div>
+              <div class="pace-comparison"><i class="pace-guide quota-guide"></i><i class="pace-guide time-guide"></i><i class="pace-distance"></i></div>
+              <div class="pace-axis"><span>0%</span><span>50%</span><span>100%</span></div>
+              <div class="pace-result"><div class="pace-gap-value"><span>差分</span><strong>−12.2<small>pt</small></strong></div><p>均等に使うペースより、<br>使用枠に余裕。</p></div>
+            </div>
+            <div class="story-bottom"><span>使用ペースの例</span><span class="story-scroll-cue">スクロールして見る <b aria-hidden="true">↓</b></span><span class="story-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
           </div>
-          <p class="section-intro">現在のペース、変化の大きかった時間帯、その時間に観測された処理。数字から作業の振り返りまでを一続きにします。</p>
         </div>
+      </article>
 
-        <div class="feature-grid">
-          <article class="feature-card primary reveal">
-            <div class="feature-copy">
-              <span class="feature-kicker">Current pace</span>
-              <h3>残り時間と残り使用枠を、同じ目盛りで。</h3>
-              <p>次回リセットまでの時間と、Codexの週間使用枠の残りを0〜100%の共通目盛りで並べます。Gapを見ると、均等なペースより消費が先行しているか、余裕があるかを確認できます。</p>
-              <ul class="feature-list">
-                <li>リセットまでの「残り時間」</li>
-                <li>Codexの「残り使用枠」</li>
-                <li>二つの差を表す「Gap」</li>
-              </ul>
-            </div>
-            <figure class="feature-visual">
-              <img src="./assets/quotaecho-home-ja.png" alt="QuotaEchoの日本語使用ペース画面" width="330" height="520" loading="lazy">
-            </figure>
-          </article>
-
-          <article class="feature-card half reveal">
-            <div class="feature-copy">
-              <span class="feature-kicker">Top 5 periods</span>
-              <h3>使用量が大きく変化した時間帯。</h3>
-              <p>現在のCodex週間使用枠で、QuotaEchoの起動中に観測できた連続した約1時間の区間を比べ、残り使用枠が大きく減った時間帯を最大5件表示します。</p>
-              <ul class="feature-list">
-                <li>記録は初めて読み取りを許可した時点から開始</li>
-                <li>週間枠の途中なら、最初はその時点から次のリセットまで</li>
-                <li>終了中や欠測した時間を遡って補完しない</li>
-              </ul>
-            </div>
-            <figure class="feature-visual">
-              <img src="./assets/quotaecho-top5-ja.png" alt="使用量の変化が大きかった時間帯を最大5件表示する日本語画面" width="330" height="520" loading="lazy">
-            </figure>
-          </article>
-
-          <article class="feature-card half reveal">
-            <div class="feature-copy">
-              <span class="feature-kicker">Processing context</span>
-              <h3>その時間に観測された処理とタスク。</h3>
-              <p>選択した時間帯について、利用中のMacにあるローカル記録から、処理の回数・時間・並行して動いた様子をまとめます。関連するCodexタスクは、そのまま開いて確認できます。</p>
-              <ul class="feature-list">
-                <li>ターン数、処理時間の合計、最大同時ターン</li>
-                <li>サブエージェント、コマンド、Web検索、MCPなどの記録件数</li>
-                <li>条件がそろった区間が3件以上ある場合は最近の中央値も表示</li>
-              </ul>
-            </div>
-            <figure class="feature-visual">
-              <img src="./assets/quotaecho-detail-ja.png" alt="選択した時間帯の処理と最近の中央値を比べる日本語画面" width="330" height="520" loading="lazy">
-            </figure>
-          </article>
-        </div>
-
-        <p class="boundary-note reveal">QuotaEchoが示すのは、利用中のMacのローカル記録で観測できた事実です。各タスクの正確な使用量や、使用量が変化した原因を確定するものではありません。</p>
+      <div class="story-landing section-inner" id="pace-in-app">
+        <div class="story-landing-copy"><span class="feature-kicker">アプリでの別の表示例</span><h3>その気づきを、<br>いつものメニューバーに。</h3><p>残り時間と使用枠を、同じ目盛りで。二つの差を見ると、消費が先行しているか、余力があるかを確認できます。</p><ul class="feature-list"><li>Codexが記録したリセット時刻までを「時間：分」で表示</li><li>プラスの差分は消費が先行、マイナスなら余裕</li><li>最新のCodex記録に合わせて、自動で更新</li></ul><a class="story-next" href="#work-story">では、大きく減った時間には？ <span aria-hidden="true">↓</span></a></div>
+        <figure class="story-app-shot"><img src="./assets/quotaecho-home-ja.png?v=100-30" alt="QuotaEchoの実際の日本語画面。残り時間85.7%、使用枠80.0%、差分プラス5.7ポイントを表示した例" width="360" height="560" loading="lazy"><figcaption>QuotaEcho · 今のペース</figcaption></figure>
       </div>
+
+      <article class="scroll-story work-story" id="work-story" data-story="work" aria-labelledby="work-title">
+        <div class="story-sticky">
+          <div class="story-inner">
+            <div class="story-topline"><span>02 — 作業の手掛かり</span><a href="#work-in-app">アプリ画面へ <span aria-hidden="true">↘</span></a></div>
+            <h2 class="sr-only" id="work-title">大きく減った時間から、タスクとモデルを振り返る。</h2>
+            <div class="story-headlines" aria-hidden="true">
+              <p class="story-title" data-step="0">大きく減った、あの時間。</p>
+              <p class="story-title" data-step="1">その時間に、何をした？</p>
+              <p class="story-title" data-step="2">タスクとモデルが、<br>見えてくる。</p>
+            </div>
+            <p class="sr-only">使用枠の減少が大きかった時間帯を選ぶと、その時間に動いていたタスクと、記録されたモデル・推論設定が見られます。タスクごとの消費量ではなく、作業を振り返る手掛かりです。</p>
+            <div class="work-diagram" aria-hidden="true">
+              <div class="work-dossier"></div>
+              <div class="work-selected"><span class="work-hour">14:00–15:00</span><span class="work-bar"><i style="width:88%"></i></span><span class="work-amount">4.0 pt</span><span class="work-select-cue">↗</span></div>
+              <div class="work-others">
+                <div class="work-period"><span>10:00–11:00</span><span class="work-bar"><i style="width:66%"></i></span><span>3.0 pt</span></div>
+                <div class="work-period"><span>16:00–17:00</span><span class="work-bar"><i style="width:44%"></i></span><span>2.0 pt</span></div>
+                <div class="work-period"><span>09:00–10:00</span><span class="work-bar"><i style="width:22%"></i></span><span>1.0 pt</span></div>
+              </div>
+              <div class="work-tasks"><div class="work-context">その時間に動いていたタスク</div><div class="work-task"><span>01</span><div><h3>Webページの改善</h3><p>GPT-6 Astra · Max</p></div></div><div class="work-task"><span>02</span><div><h3>コードの検証</h3><p>GPT-6 Astra · Ultra</p></div></div><p class="work-tasks-cue">使い方を振り返る、次の手掛かりに。</p></div>
+            </div>
+            <div class="story-bottom"><span>時間帯から振り返る例</span><span class="story-scroll-cue">スクロールして見る <b aria-hidden="true">↓</b></span><span class="story-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          </div>
+        </div>
+      </article>
+
+      <div class="story-landing work-landing section-inner" id="work-in-app">
+        <div class="story-landing-copy"><span class="feature-kicker">アプリでの別の表示例</span><h3>時間帯から、<br>仕事を振り返る。</h3><p>直近7日間（168時間）から、使用量の変化が大きかった時間帯を最大5件表示。選ぶとタスクとモデル設定が見られ、該当するタスクをCodexで開けます。</p><ul class="feature-list"><li>約1時間ごとに確認した使用量を比較。表示にはCodexが実際に記録した時刻を使い、時刻がない古い履歴はQuotaEchoの確認時刻を使います</li><li>記録の間隔が約1時間と異なる場合は、その長さも表示</li><li>リセット後も履歴を保持。区間全体が直近7日間に入るものを表示し、古い区間から対象外に</li><li>使用量の変化は、それぞれの週間枠の中で計算</li><li>処理の回数・時間・同時実行、ツールの利用を確認。選択した区間の記録間隔が約1時間で、ほかに比較できる区間が3件以上あれば、最近の中央値も表示</li><li>画面の消灯中やロック中も自動で確認。取り逃した区間は、残っている使用量記録から確認できる範囲で補完</li></ul></div>
+        <div class="story-app-pair"><figure class="story-app-shot"><img src="./assets/quotaecho-top5-ja.png?v=100-30" alt="使用量の変化が大きかった時間帯を最大5件表示するQuotaEchoの日本語画面" width="360" height="560" loading="lazy"><figcaption>時間帯を選ぶ</figcaption></figure><figure class="story-app-shot"><img src="./assets/quotaecho-detail-ja.png?v=100-30" alt="タスク名、モデル設定、その時間の処理を表示するQuotaEchoの日本語画面" width="360" height="560" loading="lazy"><figcaption>タスクとモデルを振り返る</figcaption></figure></div>
+      </div>
+      <div class="section-inner"><p class="boundary-note">使用枠はCodexやWorkなどで共有されています。QuotaEchoは、Codexがご利用のPCに保存した使用量と、同じPCで確認できるタスクや処理を表示します。使用量の変化と、その時間の作業を振り返る手掛かりとしてご利用ください。タスク別の消費量や、変化の原因を示すものではありません。</p></div>
     </section>
 
     <section class="section everyday" id="daily-use">
@@ -187,7 +190,7 @@
             <div class="behavior-copy">
               <span class="section-number">02.1 / MENU BAR</span>
               <h2>起動後は、メニューバーからすぐ確認。</h2>
-              <p>QuotaEchoを起動すると、メニューバーに現在の状態を示すGapが表示され、詳細パネルも一度自動で開きます。その後はメニューバーの項目をクリックするだけで、残り時間・差分・残り使用枠と振り返り画面をいつでも開閉できます。</p>
+              <p>起動すると、メニューバーに今の差分が表示されます。クリックすれば詳細が開き、残り枠や気になる時間帯をすぐに確認できます。</p>
             </div>
             <div class="menubar-journey" aria-hidden="true">
               <div class="menu-strip">
@@ -213,17 +216,17 @@
           <article class="behavior-panel appearance-story reveal">
             <div class="behavior-copy">
               <span class="section-number">02.2 / APPEARANCE</span>
-              <h2>Macの外観に合わせて、ライトとダークを自動で切り替え。</h2>
-              <p>QuotaEchoはmacOSの外観設定に合わせて表示されます。明るいデスクトップでも暗い作業環境でも、同じ情報を自然な見た目で確認できます。</p>
+              <h2>ライトも、ダークも。<br>使いやすい方で。</h2>
+              <p>外観はヘルプから切り替えられます。Macの設定とは別に選べて、次回の起動後もそのまま。ボタンの操作音も、お好みでオン・オフできます。</p>
             </div>
             <div class="appearance-pair" aria-label="QuotaEchoのライト表示とダーク表示">
               <figure class="appearance-shot is-light">
                 <figcaption>LIGHT</figcaption>
-                <img src="./assets/quotaecho-home-ja-light.png" alt="QuotaEchoの日本語ライト表示" width="330" height="520" loading="lazy">
+                <img src="./assets/quotaecho-home-ja-light.png?v=100-30" alt="QuotaEchoの日本語ライト表示" width="360" height="560" loading="lazy">
               </figure>
               <figure class="appearance-shot is-dark">
                 <figcaption>DARK</figcaption>
-                <img src="./assets/quotaecho-home-ja.png" alt="QuotaEchoの日本語ダーク表示" width="330" height="520" loading="lazy">
+                <img src="./assets/quotaecho-home-ja.png?v=100-30" alt="QuotaEchoの日本語ダーク表示" width="360" height="560" loading="lazy">
               </figure>
             </div>
           </article>
@@ -236,9 +239,9 @@
         <div class="section-heading reveal">
           <div>
             <span class="section-number">03 / PRIVACY</span>
-            <h2>作業の文脈は、あなたのMacの中に。</h2>
+            <h2>利用データは、<br>PCの中で扱います。</h2>
           </div>
-          <p class="section-intro">OpenAIへのログインを追加せず、許可されたCodexのローカル記録から必要な情報だけを読み取り、Mac内で処理します。</p>
+          <p class="section-intro">初回にCodex記録の読み取りを許可すれば、あとは自動で更新。QuotaEchoへのアカウント登録は必要ありません。</p>
         </div>
 
         <div class="privacy-promises">
@@ -251,7 +254,7 @@
         <article class="policy-shell reveal" aria-labelledby="privacy-policy-title">
           <header class="policy-header">
             <h3 id="privacy-policy-title">プライバシーポリシー</h3>
-            <p class="policy-date">最終更新日：2026年9月22日</p>
+            <p class="policy-date">最終更新日：2026年9月26日</p>
           </header>
           <div class="policy-grid">
             <section class="policy-item">
@@ -260,7 +263,7 @@
             </section>
             <section class="policy-item">
               <h4>アプリが利用する情報</h4>
-              <p>QuotaEchoは、利用者がmacOS上で読み取りを許可したCodexの記録から、週間使用枠、タスク名、処理日時および処理件数などのメタデータを読み取り、利用者のMac内で処理します。アプリは、これらの情報を当社へ送信しません。</p>
+              <p>QuotaEchoは、利用者がmacOS上で読み取りを許可したCodexの記録から、週間使用枠、タスク名、処理日時・件数、モデル名・推論設定などのメタデータを読み取り、利用者のPC内で処理します。アプリは、これらの情報を当社へ送信しません。</p>
             </section>
             <section class="policy-item">
               <h4>取得しない情報</h4>
@@ -268,11 +271,11 @@
             </section>
             <section class="policy-item">
               <h4>Mac内に保存する情報</h4>
-              <p>現在の週間使用枠の比較履歴、表示言語、読み取り許可情報およびランダムに生成したローカル識別子を、アプリのSandbox内に保存します。タスク名と処理状況の集計は表示中のみ使用し、週間履歴には保存しません。</p>
+              <p>現在の週間使用枠と直近7日間の比較に必要な使用量履歴、表示言語・外観・操作音の設定、読み取り許可情報、その許可を同じ保存場所へ安全に更新するためのローカル照合情報、およびランダムに生成したローカル識別子を、アプリのSandbox内に保存します。タスク名・モデル設定・処理状況の集計は表示中のメモリでのみ使用し、使用量履歴には保存しません。</p>
             </section>
             <section class="policy-item">
               <h4>保存期間と削除</h4>
-              <p>週間履歴は、新しい週間使用枠が始まると置き換えられます。QuotaEchoが保存した履歴、設定および読み取り許可は、アプリ内の「アンインストールの手順」から削除できます。この操作によってCodexのタスクや記録が削除されることはありません。</p>
+              <p>週間使用枠のリセット後も、直近7日間を振り返るための履歴を保持します。比較対象から外れた過去の週間枠の記録は、起動時や稼働中に整理します。最後に確認した使用枠の記録は、次の有効な使用枠を取得するまで保持します。QuotaEchoが保存した履歴、設定および読み取り許可は、ヘルプのアンインストール案内から削除できます。Codexのタスクや記録は残ります。</p>
             </section>
             <section class="policy-item">
               <h4>サポートへのお問い合わせ</h4>
@@ -303,8 +306,9 @@
       <div class="section-inner company-layout">
         <div class="company-copy reveal">
           <span class="section-number">04 / COMPANY</span>
-          <h2>QuotaEchoをつくる会社。</h2>
-          <p>QuotaEchoは、株式会社Universion Closure Logicが企画・開発・提供するmacOSアプリです。OpenAIとは独立した製品として、観測できる情報をユーザー自身の判断につなげることを目指しています。</p>
+          <img class="company-logo" src="./assets/ucl-company-black.png" alt="Universion Closure Logic" width="4096" height="687" loading="lazy">
+          <h2>日々の判断に、<br>役立つ道具を。</h2>
+          <p>QuotaEchoは、株式会社Universion Closure Logicが企画・開発しています。Codexの利用状況を見やすく整理し、使う人が自分のペースを考えられる道具を届けます。</p>
         </div>
         <dl class="company-card reveal">
           <div class="company-row"><dt>運営会社</dt><dd>株式会社Universion Closure Logic</dd></div>
@@ -322,7 +326,7 @@
           <div>
             <span class="section-number">05 / SUPPORT</span>
             <h2>QuotaEchoのことで困ったら。</h2>
-            <p>使用量が表示されない場合や読み取り許可について案内が表示された場合は、まずCodexを一度使用してから、QuotaEchoの「更新」をお試しください。</p>
+            <p>読み取り許可の案内が出ている場合は、画面に従って許可してください。許可後は、Codexで作業して新しい記録が保存されると自動で反映されます。今すぐ確認するには、QuotaEchoの「更新」を押してください。</p>
             <p>解決しない場合は、QuotaEcho Supportまでお問い合わせください。</p>
             <a class="support-email" href="mailto:support.quotaecho@universion-closure-logic.com?subject=QuotaEcho%20Support">support.quotaecho@universion-closure-logic.com</a>
           </div>
@@ -344,8 +348,9 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div>
-        <div class="footer-brand">© <span data-year>2026</span> 株式会社Universion Closure Logic</div>
+        <div class="footer-brand"><img src="./assets/ucl-mark-black.png" alt="" width="24" height="25">© <span data-year>2026</span> 株式会社Universion Closure Logic</div>
         <p class="footer-note">QuotaEchoはOpenAIとは独立して提供されるアプリです。OpenAIとの提携、後援または承認を示すものではありません。OpenAIおよびCodexは、それぞれの権利者に帰属する商標です。</p>
+        <p class="footer-note">Apple、Appleのロゴ、Mac、macOSは、米国およびその他の国で登録されたApple Inc.の商標です。App StoreはApple Inc.のサービスマークです。</p>
       </div>
       <a class="to-top" href="#top" aria-label="ページ上部へ戻る">↑</a>
     </div>
