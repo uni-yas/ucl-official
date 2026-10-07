@@ -253,7 +253,7 @@
         <article class="policy-shell reveal" aria-labelledby="privacy-policy-title">
           <header class="policy-header">
             <h3 id="privacy-policy-title">Privacy Policy</h3>
-            <p class="policy-date">Last updated: September 26, 2026</p>
+            <p class="policy-date">Last updated: October 7, 2026</p>
           </header>
           <div class="policy-grid">
             <section class="policy-item">
@@ -262,7 +262,7 @@
             </section>
             <section class="policy-item">
               <h4>Information used by the app</h4>
-              <p>After you grant read-only access in macOS, QuotaEcho extracts metadata from Codex records, including the weekly allowance, task names, processing times and counts, and recorded model and reasoning settings. This information is processed on your Mac and is not transmitted to us by the app.</p>
+              <p>After you grant read-only access in macOS, QuotaEcho extracts metadata from Codex records, including the weekly allowance, available credit balances, task names, processing times and counts, and recorded model and reasoning settings. This information is processed on your Mac and is not transmitted to us by the app.</p>
             </section>
             <section class="policy-item">
               <h4>Information we do not obtain</h4>
@@ -271,10 +271,12 @@
             <section class="policy-item">
               <h4>Information stored on your Mac</h4>
               <p>QuotaEcho stores the current weekly allowance and the usage history needed to compare the last 7 days, language, appearance and sound preferences, read-only permission information, a local matching value used to renew that permission safely for the same records folder, and a randomly generated local identifier inside the app sandbox. Task names, model settings and processing summaries are used in memory only while displayed and are not retained in the usage history.</p>
+              <p>In version 1.1 and later, after the weekly allowance is exhausted, the app stores the first confirmed credit balance and its timestamp, the latest balance and timestamp, and the associated weekly allowance window to display the net balance change.</p>
             </section>
             <section class="policy-item">
               <h4>Retention and deletion</h4>
               <p>History needed to review the last 7 days is kept after the weekly allowance resets. Records from past weekly windows that are no longer part of that comparison are pruned at startup and while the app runs. The last confirmed allowance record is kept until a valid new weekly allowance is obtained. You can remove QuotaEcho’s saved history, settings and read permission through the uninstall instructions in Help. Codex tasks and records are kept.</p>
+              <p>The starting credit balance is retained across app restarts. When a new weekly window with remaining allowance is confirmed, the previous credit record is cleared. If the new window is also exhausted, it is replaced with a record for that window. Stored data is retained while updated records are unavailable. Credit tracking can be deleted with other app data through the uninstall guidance in Help.</p>
             </section>
             <section class="policy-item">
               <h4>Support communications</h4>
