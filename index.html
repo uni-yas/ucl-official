@@ -1,35 +1,1433 @@
 <!doctype html>
-<html lang="en" data-composition="signature" data-renderer="loading">
+<html lang="ja" data-composition="signature" data-renderer="loading" data-page="home">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fcfcfd">
-  <meta
-    name="description"
-    content="Universion Closure Logic (UCL) explores the logic that lives between order and entropy, building a structural foundation for how information, consciousness, and the universe move toward stability."
-  />
-  <meta property="og:title" content="Universion Closure Logic" />
-  <meta property="og:description" content="Understanding at the boundary of order and entropy." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://universion-closure-logic.com/" />
-  <meta property="og:image" content="https://universion-closure-logic.com/image/Logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="index,follow">
+  <meta name="description" content="株式会社Universion Closure Logicの公式サイト。研究、製品・サービス、会社概要、お問い合わせをご案内します。">
   <link rel="canonical" href="https://universion-closure-logic.com/">
-  <style>html,body{margin:0;background:#fcfcfd}</style>
-  <title>Universion Closure Logic</title>
+  <meta name="theme-color" content="#fcfcfd">
+  <title>株式会社Universion Closure Logic｜公式サイト</title>
   <link rel="icon" href="ucl-g.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="ucl-identity.css?v=20261011-glass-4">
-  <script type="importmap">{"imports":{"three":"./ucl-three.module.min.js"}}</script>
+  <link rel="stylesheet" href="ucl-identity.css?v=contact-20261012-1">
   <noscript><style>.fallback{opacity:1;visibility:visible}</style></noscript>
+  <script type="importmap">{"imports":{"three":"./ucl-three.module.min.js","three/addons/loaders/SVGLoader.js":"./ucl-SVGLoader.js"}}</script>
 </head>
 <body>
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="icon-home" viewBox="0 0 24 24">
+        <path d="m3.5 10 8.5-7 8.5 7M5.5 8.5V21H10v-7h4v7h4.5V8.5"/>
+      </symbol>
+      <symbol id="icon-research" viewBox="0 0 24 24">
+        <ellipse cx="12" cy="12" rx="10" ry="4.3" transform="rotate(-45 12 12)"/>
+        <ellipse cx="12" cy="12" rx="10" ry="4.3" transform="rotate(45 12 12)"/>
+        <circle cx="12" cy="12" r="1.45" fill="currentColor" stroke="none"/>
+      </symbol>
+      <symbol id="icon-company" viewBox="0 0 24 24">
+        <path d="M5 21V5l9-2v18M14 9l5 2v10M3 21h18M8.5 8h2M8.5 12h2M8.5 16h2M17 14v.01M17 17v.01"/>
+      </symbol>
+      <symbol id="icon-products" viewBox="0 0 24 24">
+        <path d="m12 2 9 5v10l-9 5-9-5V7l9-5ZM3 7l9 5 9-5M12 12v10M7.5 4.5l9 5V13"/>
+      </symbol>
+      <symbol id="icon-contact" viewBox="0 0 24 24">
+        <rect x="2.5" y="5" width="19" height="14" rx="2.5"/>
+        <path d="m3.5 6.5 8.5 6 8.5-6"/>
+      </symbol>
+      <symbol id="icon-update" viewBox="0 0 24 24">
+        <path d="M20 9a8.2 8.2 0 1 0 .2 5M20 4v5h-5M12 16V8m-3 3 3-3 3 3"/>
+      </symbol>
+    </defs>
+  </svg>
+  <header class="site-header">
+    <a class="home-link" href="#home" aria-current="page">
+      <svg class="ui-icon" aria-hidden="true"><use href="#icon-home"/></svg>
+      <span data-home-label>ホーム</span>
+    </a>
+    <div class="language-switch" role="group" aria-label="言語">
+      <button type="button" data-language="en" lang="en" aria-pressed="false"><span class="language-pointer" aria-hidden="true">▶︎</span>English</button>
+      <span class="language-divider" aria-hidden="true">/</span>
+      <button type="button" data-language="ja" lang="ja" aria-pressed="true"><span class="language-pointer" aria-hidden="true">▶︎</span>日本語</button>
+    </div>
+  </header>
   <main class="identity" aria-label="Universion Closure Logic">
     <div class="fallback" aria-hidden="true">
       <img class="fallback-mark" src="ucl-g.svg" alt="">
       <img class="fallback-name" src="ucl-wordmark.svg" alt="">
     </div>
     <canvas class="identity-canvas" aria-hidden="true"></canvas>
-    <h1 class="sr-only">Universion Closure Logic</h1>
+    <div class="site-watermark" aria-hidden="true">
+      <div class="watermark-mark"><img src="ucl-g.svg" alt="" draggable="false"></div>
+      <div class="watermark-name"><img src="ucl-wordmark.svg" alt="" draggable="false"></div>
+    </div>
+    <section class="home-view" aria-labelledby="home-heading" tabindex="0">
+      <div class="home-hero">
+        <h1 class="sr-only" id="home-heading" tabindex="-1">Universion Closure Logic</h1>
+        <button class="home-news-cue" type="button" aria-label="Scroll to news">
+          <span>News</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15m-5-5 5 5 5-5"/></svg>
+        </button>
+      </div>
+      <section class="home-news" aria-labelledby="news-heading">
+        <h2 id="news-heading" tabindex="-1">News</h2>
+        <ol class="news-list" role="list">
+          <li class="news-item">
+            <span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-update"/></svg></span>
+            <div class="news-copy">
+              <time datetime="2026-10-09">October 9, 2026</time>
+              <h3><a data-quotaecho-link href="https://universion-closure-logic.com/apple/quotaecho/en/">QuotaEcho 1.1 update in preparation</a></h3>
+              <p>We’re preparing improvements to usage-limit refresh handling and data availability indicators.</p>
+            </div>
+          </li>
+          <li class="news-item">
+            <span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-products"/></svg></span>
+            <div class="news-copy">
+              <time datetime="2026-10-01">October 1, 2026</time>
+              <h3><a data-quotaecho-link href="https://universion-closure-logic.com/apple/quotaecho/en/">QuotaEcho released on the Mac App Store</a></h3>
+              <p>A macOS menu bar app for understanding your Codex usage pace.</p>
+            </div>
+          </li>
+          <li class="news-item">
+            <span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-company"/></svg></span>
+            <div class="news-copy">
+              <time datetime="2025-11-25">November 25, 2025</time>
+              <h3><a href="#company">Universion Closure Logic established</a></h3>
+            </div>
+          </li>
+        </ol>
+      </section>
+    </section>
+    <section class="section-view" aria-labelledby="section-heading" hidden>
+      <div class="section-heading">
+        <h1 id="section-heading" tabindex="-1">Research</h1>
+        <div class="section-art" data-kind="research" aria-hidden="true">
+          <svg class="research-orbit" viewBox="0 0 120 120" fill="none">
+            <defs>
+              <radialGradient id="orbit-core" cx=".32" cy=".28" r=".85">
+                <stop stop-color="#f8fbff"/>
+                <stop offset=".48" stop-color="#b2c6e1"/>
+                <stop offset="1" stop-color="#7f95b7"/>
+              </radialGradient>
+              <radialGradient id="orbit-halo">
+                <stop stop-color="#b9c9e8" stop-opacity=".2"/>
+                <stop offset="1" stop-color="#c2b1de" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="orbit-glow-0">
+                <stop stop-color="#ffffff" stop-opacity=".95"/>
+                <stop offset=".22" stop-color="#819fd3" stop-opacity=".7"/>
+                <stop offset="1" stop-color="#819fd3" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="orbit-tail-0" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#819fd3" stop-opacity="0"/>
+                <stop offset="1" stop-color="#819fd3" stop-opacity=".85"/>
+              </linearGradient>
+              <radialGradient id="orbit-glow-1">
+                <stop stop-color="#ffffff" stop-opacity=".95"/>
+                <stop offset=".22" stop-color="#a28acb" stop-opacity=".7"/>
+                <stop offset="1" stop-color="#a28acb" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="orbit-tail-1" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#a28acb" stop-opacity="0"/>
+                <stop offset="1" stop-color="#a28acb" stop-opacity=".85"/>
+              </linearGradient>
+              <radialGradient id="orbit-glow-2">
+                <stop stop-color="#ffffff" stop-opacity=".95"/>
+                <stop offset=".22" stop-color="#c5ab82" stop-opacity=".7"/>
+                <stop offset="1" stop-color="#c5ab82" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="orbit-tail-2" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#c5ab82" stop-opacity="0"/>
+                <stop offset="1" stop-color="#c5ab82" stop-opacity=".85"/>
+              </linearGradient>
+            </defs>
+            <g class="orbit-back">
+              <path class="orbit-track" transform="rotate(-30 60 60)" d="M 8 60 A 52 18 0 0 1 112 60"/>
+              <path class="orbit-track" transform="rotate(36 60 60)" d="M 9 60 A 51 21 0 0 1 111 60"/>
+              <path class="orbit-track" transform="rotate(94 60 60)" d="M 8 60 A 52 17 0 0 1 112 60"/>
+            </g>
+            <g class="orbit-movers-back"></g>
+            <g class="orbit-nucleus">
+              <circle cx="60" cy="60" r="9" fill="url(#orbit-halo)"/>
+              <circle cx="60" cy="60" r="4.2" fill="url(#orbit-core)"/>
+              <circle cx="58.9" cy="58.7" r=".55" fill="#fff" opacity=".75"/>
+            </g>
+            <g class="orbit-front">
+              <path class="orbit-track" transform="rotate(-30 60 60)" d="M 112 60 A 52 18 0 0 1 8 60"/>
+              <path class="orbit-track" transform="rotate(36 60 60)" d="M 111 60 A 51 21 0 0 1 9 60"/>
+              <path class="orbit-track" transform="rotate(94 60 60)" d="M 112 60 A 52 17 0 0 1 8 60"/>
+            </g>
+            <g class="orbit-movers-front">
+              <g data-orbit="0" data-rx="52" data-ry="18" transform="rotate(-30 60 60)">
+                <path class="orbit-tail" stroke="url(#orbit-tail-0)"/>
+                <g class="orbit-light">
+                  <circle class="orbit-glow" r="1.65" fill="url(#orbit-glow-0)"/>
+                  <path d="M -1.15 0 H 1.15 M 0 -1.15 V 1.15" stroke="#819fd3" stroke-width=".35" vector-effect="non-scaling-stroke" opacity=".55"/>
+                  <circle class="orbit-particle" r=".4" stroke="#819fd3" stroke-width=".35" vector-effect="non-scaling-stroke"/>
+                </g>
+              </g>
+              <g data-orbit="1" data-rx="51" data-ry="21" transform="rotate(36 60 60)">
+                <path class="orbit-tail" stroke="url(#orbit-tail-1)"/>
+                <g class="orbit-light">
+                  <circle class="orbit-glow" r="1.65" fill="url(#orbit-glow-1)"/>
+                  <path d="M -1.15 0 H 1.15 M 0 -1.15 V 1.15" stroke="#a28acb" stroke-width=".35" vector-effect="non-scaling-stroke" opacity=".55"/>
+                  <circle class="orbit-particle" r=".4" stroke="#a28acb" stroke-width=".35" vector-effect="non-scaling-stroke"/>
+                </g>
+              </g>
+              <g data-orbit="2" data-rx="52" data-ry="17" transform="rotate(94 60 60)">
+                <path class="orbit-tail" stroke="url(#orbit-tail-2)"/>
+                <g class="orbit-light">
+                  <circle class="orbit-glow" r="1.65" fill="url(#orbit-glow-2)"/>
+                  <path d="M -1.15 0 H 1.15 M 0 -1.15 V 1.15" stroke="#c5ab82" stroke-width=".35" vector-effect="non-scaling-stroke" opacity=".55"/>
+                  <circle class="orbit-particle" r=".4" stroke="#c5ab82" stroke-width=".35" vector-effect="non-scaling-stroke"/>
+                </g>
+              </g>
+            </g>
+          </svg>
+          <svg class="company-structure" viewBox="0 0 120 120" fill="none">
+            <defs>
+              <linearGradient id="company-glass" x1="20" y1="20" x2="94" y2="106" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#eaf4ff" stop-opacity=".3"/>
+                <stop offset=".55" stop-color="#b4c8e3" stop-opacity=".12"/>
+                <stop offset="1" stop-color="#d8bfde" stop-opacity=".24"/>
+              </linearGradient>
+              <linearGradient id="company-side" x1="35" y1="28" x2="102" y2="100" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#aebed8" stop-opacity=".18"/>
+                <stop offset="1" stop-color="#c5b8d9" stop-opacity=".08"/>
+              </linearGradient>
+              <linearGradient id="company-light" x1="32" y1="22" x2="92" y2="98" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#8daecb"/><stop offset=".5" stop-color="#ffffff"/><stop offset="1" stop-color="#b3a0c6"/>
+              </linearGradient>
+              <linearGradient id="company-person-blue" x1="-1" y1="-10" x2="1.4" y2="0" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#ffffff" stop-opacity=".74"/>
+                <stop offset=".32" stop-color="#819fd3" stop-opacity=".46"/>
+                <stop offset="1" stop-color="#819fd3" stop-opacity=".76"/>
+              </linearGradient>
+              <radialGradient id="company-person-glow-blue">
+                <stop stop-color="#fff" stop-opacity=".6"/>
+                <stop offset=".35" stop-color="#819fd3" stop-opacity=".18"/>
+                <stop offset="1" stop-color="#819fd3" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="company-person-lilac" x1="-1" y1="-10" x2="1.4" y2="0" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#ffffff" stop-opacity=".74"/>
+                <stop offset=".32" stop-color="#a28acb" stop-opacity=".46"/>
+                <stop offset="1" stop-color="#a28acb" stop-opacity=".76"/>
+              </linearGradient>
+              <radialGradient id="company-person-glow-lilac">
+                <stop stop-color="#fff" stop-opacity=".6"/>
+                <stop offset=".35" stop-color="#a28acb" stop-opacity=".18"/>
+                <stop offset="1" stop-color="#a28acb" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <g class="company-people-back company-people-lane"></g>
+            <g class="company-prism company-prism-back">
+              <path d="M70 43 87 33 105 43 88 53Z" fill="#fff" fill-opacity=".38"/>
+              <path d="M70 43 88 53V92L70 82Z" fill="url(#company-glass)"/>
+              <path d="M88 53 105 43V82L88 92Z" fill="url(#company-side)"/>
+              <path class="company-edge company-edge-back" d="M70 43 87 33 105 43V82L88 92 70 82V43L88 53 105 43M88 53V92"/>
+              <path class="company-glint" pathLength="100" d="M70 43 87 33 105 43V82L88 92 70 82Z"/>
+            </g>
+            <g class="company-prism company-prism-left">
+              <path d="M26 58 43 48 61 58 44 68Z" fill="#fff" fill-opacity=".4"/>
+              <path d="M26 58 44 68V105L26 95Z" fill="url(#company-glass)"/>
+              <path d="M44 68 61 58V95L44 105Z" fill="url(#company-side)"/>
+              <path class="company-edge" d="M26 58 43 48 61 58V95L44 105 26 95V58L44 68 61 58M44 68V105"/>
+              <path class="company-glint" pathLength="100" d="M26 58 43 48 61 58V95L44 105 26 95Z"/>
+            </g>
+            <g class="company-prism company-prism-center">
+              <path d="M48 25 65 15 83 25 66 35Z" fill="#fff" fill-opacity=".5"/>
+              <path d="M48 25 66 35V95L48 85Z" fill="url(#company-glass)"/>
+              <path d="M66 35 83 25V85L66 95Z" fill="url(#company-side)"/>
+              <path class="company-edge" d="M48 25 65 15 83 25V85L66 95 48 85V25L66 35 83 25M66 35V95"/>
+              <path class="company-seam" d="M48 45 66 55 83 45M48 65 66 75 83 65"/>
+              <path class="company-glint" pathLength="100" d="M48 25 65 15 83 25V85L66 95 48 85Z"/>
+            </g>
+            <g class="company-people-front company-people-lane">
+              <g class="company-person" data-person="0" style="color:#819fd3" opacity="0">
+                <path class="person-arm-back person-limb person-back"/>
+                <path class="person-leg-back person-limb person-back"/>
+                <path class="person-body" d="M-.24-7.3C.62-7.55 1.14-7.15 1.11-6.49L.72-4.12C.12-3.78-.66-3.92-.8-4.41L-.8-6.39C-.84-6.92-.7-7.13-.24-7.3Z" fill="url(#company-person-blue)"/>
+                <path class="person-leg-front person-limb"/>
+                <path class="person-arm-front person-limb"/>
+                <circle class="person-aura" cx=".47" cy="-8.65" r="1.65" fill="url(#company-person-glow-blue)"/>
+                <circle class="person-head" cx=".47" cy="-8.65" r=".86" fill="url(#company-person-blue)"/>
+                <path d="M.1-9.08 .48-9.26" stroke="#fff" stroke-width=".28" stroke-linecap="round" opacity=".8"/>
+              </g>
+              <g class="company-person" data-person="1" style="color:#a28acb" opacity="0">
+                <path class="person-arm-back person-limb person-back"/>
+                <path class="person-leg-back person-limb person-back"/>
+                <path class="person-body" d="M-.24-7.3C.62-7.55 1.14-7.15 1.11-6.49L.72-4.12C.12-3.78-.66-3.92-.8-4.41L-.8-6.39C-.84-6.92-.7-7.13-.24-7.3Z" fill="url(#company-person-lilac)"/>
+                <path class="person-leg-front person-limb"/>
+                <path class="person-arm-front person-limb"/>
+                <circle class="person-aura" cx=".47" cy="-8.65" r="1.65" fill="url(#company-person-glow-lilac)"/>
+                <circle class="person-head" cx=".47" cy="-8.65" r=".86" fill="url(#company-person-lilac)"/>
+                <path d="M.1-9.08 .48-9.26" stroke="#fff" stroke-width=".28" stroke-linecap="round" opacity=".8"/>
+              </g>
+            </g>
+          </svg>
+          <svg class="product-exchange" viewBox="0 0 120 120" fill="none" data-phase="empty" data-item="heart">
+            <defs>
+
+    <linearGradient id="product-hand-glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbfdff" stop-opacity=".74"/>
+      <stop offset=".46" stop-color="#cbdcf1" stop-opacity=".37"/>
+      <stop offset="1" stop-color="#bcaada" stop-opacity=".23"/>
+    </linearGradient>
+    <linearGradient id="product-hand-edge" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#9cabc3" stop-opacity=".28"/>
+      <stop offset=".62" stop-color="#8195b3" stop-opacity=".74"/>
+      <stop offset="1" stop-color="#faffff" stop-opacity=".96"/>
+    </linearGradient>
+    <!-- Wrist reaches the outer/lower side. Four fingers curl upward toward the box. -->
+    <g id="product-hand-left" stroke-linecap="round" stroke-linejoin="round">
+      <path fill="url(#product-hand-glass)" stroke="url(#product-hand-edge)" stroke-width=".55"
+        d="M-18.6 6.8l4.7-1.4c2.7-.8 4.7-2.6 6-4.7l2.1-4.5c.45-.97 1.3-1.4 2.02-1.05.77.38.88 1.27.56 2.21l-1.42 4.1c-.35 1.03.04 1.89.9 2.11.65.17 1.28-.09 2.09-.62L4.4-1.19c.8-.54 1.57-.57 2.04.07.42.58.15 1.37-.54 1.94L1.92 4l4.11-2.07c.86-.43 1.58-.26 1.87.36.31.65-.05 1.35-.85 1.84L2.68 6.8l3.08-1.17c.8-.3 1.45-.06 1.63.55.19.62-.18 1.18-.93 1.55L2.43 9.8l2.03-.58c.73-.2 1.31.01 1.45.58.15.59-.24 1.08-.98 1.38l-4.36 1.76c-2.95 1.19-5.32 1.43-7.89.88l-3.39-.71-5.18 1.07z"/>
+      <path fill="none" stroke="#9baec9" stroke-opacity=".53" stroke-width=".43"
+        d="M-2.87 4.05C-5.7 5.1-7.27 6.7-7.38 8.84M1.92 4l-3.69 2.35M2.68 6.8l-3.22 1.66M2.43 9.8l-2.49.89"/>
+      <path fill="none" stroke="#fff" stroke-opacity=".77" stroke-width=".43"
+        d="M-16.68 7.23l3.13-.94c2.8-.83 4.99-2.64 6.34-4.73M-6.13 12.76c2.1.27 4.42-.18 6.66-1.08"/>
+      <path fill="none" stroke="#91a5c5" stroke-opacity=".22" stroke-width=".38"
+        d="M-12.61 6.79c.73 1.12 1.2 2.29 1.35 3.6"/>
+    </g>
+
+
+    <g id="product-smoking-hand-back" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Middle finger rises vertically behind the shaft. Thumb, ring and little
+           fingers fold naturally toward the palm. Wrist leaves to lower right. -->
+      <path fill="url(#product-hand-glass)" stroke="url(#product-hand-edge)" stroke-width=".29"
+        d="M10.95 12.43 8.13 10.39C7.07 9.48 6.54 8.1 6.57 6.69 6.61 5.38 6.88 3.85 6.24 2.64L4.87.69C4.43.06 3.79-.27 3.27.07 2.77.4 2.93 1.01 3.35 1.6L4.18 2.77C4.58 3.4 4.37 4.06 3.78 4.64L3.2 5.22 2.48 1.43C2.24.1 1.74-1.41 1.29-2.94L.73-5.3C.55-6.07.04-6.45-.51-6.27-1.06-6.1-1.21-5.55-1.02-4.83L-.1-1.05.56 3.07C.73 4.07.48 5.01-.2 5.94L-.93 6.79C-.76 8.72.71 10.41 2.79 11.56L7.94 15.31Z"/>
+      <!-- Ring finger curves into the palm instead of becoming a third upright rod. -->
+      <path fill="none" stroke="#92a7c4" stroke-opacity=".56" stroke-width=".24"
+        d="M3.28 5.18 2.52 2.19C2.34 1.55 2.62 1.12 3.06 1.16M4.23 3.14 5.13 4.68C5.5 5.37 5.25 6.13 4.66 6.63"/>
+      <!-- Folded little finger and the soft thumb crease. -->
+      <path fill="none" stroke="#93a6c3" stroke-opacity=".47" stroke-width=".23"
+        d="M4.89 6.12 3.7 4.57C3.29 4.05 2.81 3.89 2.42 4.19M6.07 3.1C5.79 3.74 5.45 4.19 4.72 4.45M2.39 8.45C3.35 8.58 4.33 8.32 5.02 7.83"/>
+      <path fill="none" stroke="#fff" stroke-opacity=".79" stroke-width=".24"
+        d="M-.48-5.84C-.16-5.78-.05-5.5.04-5.13L.6-2.82C1.08-1.23 1.51.18 1.81 1.64M8.15 10.84 10.36 12.46"/>
+      <path fill="none" stroke="#94a9c7" stroke-opacity=".41" stroke-width=".22"
+        d="M-.5-3.11.58-3.35M.24.36 1.55.04M5.46 10.49 6.53 10.08"/>
+    </g>
+    <g id="product-smoking-hand-front" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Long index crosses in FRONT of the horizontal cigarette at x=-2..-.5.
+           Its tip points upward, never along the cigarette axis. -->
+      <path fill="url(#product-hand-glass)" stroke="url(#product-hand-edge)" stroke-width=".29"
+        d="M.12 7.2C-.88 6.54-1.4 5.3-1.53 3.91L-1.95.29-3.07-5.54C-3.24-6.34-2.96-6.99-2.38-7.11-1.78-7.23-1.3-6.71-1.15-5.94L-.15-.88.65 2.65C.97 4.15 1.72 5.18 3.07 5.99"/>
+      <!-- A restrained nail / edge highlight reinforces the upright fingertip. -->
+      <path fill="none" stroke="#fff" stroke-opacity=".88" stroke-width=".24"
+        d="M-2.49-6.68C-2.14-6.78-1.92-6.34-1.83-5.91L-.84-.77M-1.23 3.82C-1.09 5.02-.72 5.91.02 6.48"/>
+      <path fill="none" stroke="#8fa5c3" stroke-opacity=".5" stroke-width=".22"
+        d="M-2.31-3.51-1.11-3.79M-1.58.94-.13.61M-1.26 3.05.35 2.66"/>
+      <path fill="#fff" fill-opacity=".24" stroke="none"
+        d="M-2.39-6.4c.29-.06.43.32.5.65l.13.66c.05.23-.03.36-.2.39-.17.03-.29-.07-.34-.3l-.14-.66c-.07-.34-.16-.69.05-.74Z"/>
+    </g>
+  
+    <!-- Right hand mirrors the same geometry so the two palms read as a pair. -->
+    <g id="product-hand-right" transform="scale(-1 1)"><use href="#product-hand-left"/></g>
+  
+    <linearGradient id="product-heart-body" x1="-7" y1="-8" x2="6" y2="9" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff3fa"/>
+      <stop offset=".26" stop-color="#f3b5d2" stop-opacity=".94"/>
+      <stop offset=".58" stop-color="#dcaddc" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#aaa6dc" stop-opacity=".96"/>
+    </linearGradient>
+    <linearGradient id="product-heart-rim" x1="-8" y1="-6" x2="7" y2="8" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".98"/>
+      <stop offset=".42" stop-color="#fbe6f4" stop-opacity=".66"/>
+      <stop offset="1" stop-color="#9f96c9" stop-opacity=".6"/>
+    </linearGradient>
+    <linearGradient id="product-heart-inner" x1="-4" y1="-6" x2="5" y2="7" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffedf6" stop-opacity=".88"/>
+      <stop offset=".55" stop-color="#ebc3e7" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#918ec7" stop-opacity=".26"/>
+    </linearGradient>
+    <linearGradient id="product-heart-reflection" x1="-5" y1="-7" x2="0" y2="4" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="product-star-body" x1="-7" y1="-8" x2="6" y2="8" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff9e9"/>
+      <stop offset=".38" stop-color="#eed5ac" stop-opacity=".94"/>
+      <stop offset=".68" stop-color="#d9c6dd" stop-opacity=".93"/>
+      <stop offset="1" stop-color="#aba8d4" stop-opacity=".97"/>
+    </linearGradient>
+    <linearGradient id="product-star-rim" x1="-7" y1="-6" x2="6" y2="7" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity="1"/>
+      <stop offset=".42" stop-color="#fff6e1" stop-opacity=".72"/>
+      <stop offset="1" stop-color="#a8a0c8" stop-opacity=".68"/>
+    </linearGradient>
+
+    <!-- Both reusable shapes are centered on (0, 0). No outer glow/filter. -->
+    <g id="product-heart">
+      <path d="M0 8.5C-1.8 6.88-8.9 2.27-8.9-3.13C-8.9-6.06-6.98-8.08-4.35-8.08C-2.5-8.08-.99-7.05 0-5.38C.99-7.05 2.5-8.08 4.35-8.08C6.98-8.08 8.9-6.06 8.9-3.13C8.9 2.27 1.8 6.88 0 8.5Z" fill="url(#product-heart-body)" stroke="url(#product-heart-rim)" stroke-width=".3"/>
+      <path d="M0 7.03C-1.96 5.49-7.46 1.36-7.46-3.12C-7.46-5.38-6.14-6.79-4.34-6.79C-2.39-6.79-.97-5.21 0-3.86C.97-5.21 2.39-6.79 4.34-6.79C6.14-6.79 7.46-5.38 7.46-3.12C7.46 1.36 1.96 5.49 0 7.03Z" fill="url(#product-heart-inner)"/>
+      <path d="M-7.13-2.8C-7.31-5.49-5.46-7.02-3.53-6.59C-2.52-6.36-1.54-5.53-.9-4.51C-3.15-4.82-5.13-3.08-5.13-.68C-5.13.89-4.23 2.55-3.23 3.84C-5.24 1.97-7-0.39-7.13-2.8Z" fill="url(#product-heart-reflection)"/>
+      <path d="M4.28-6.83C6.38-6.81 7.49-5.16 7.5-3.39" fill="none" stroke="#fff" stroke-opacity=".68" stroke-width=".38" stroke-linecap="round"/>
+      <path d="M-5.49 3.05C-3.76 5.02-1.54 6.88 0 8.02C1.28 6.99 3.43 5.21 4.96 3.65" fill="none" stroke="#a99dd0" stroke-opacity=".35" stroke-width=".3" stroke-linecap="round"/>
+    </g>
+
+    <g id="product-star">
+      <path d="M0-9L2.116-2.912L8.56-2.781L3.424 1.112L5.29 7.281L0 3.6L-5.29 7.281L-3.424 1.112L-8.56-2.781L-2.116-2.912Z" fill="url(#product-star-body)" stroke="url(#product-star-rim)" stroke-width=".3" stroke-linejoin="round"/>
+      <path d="M0-9L0-.3L-2.116-2.912Z" fill="#fffbed" fill-opacity=".82"/>
+      <path d="M0-9L2.116-2.912L0-.3Z" fill="#e6cea8" fill-opacity=".34"/>
+      <path d="M8.56-2.781L0-.3L2.116-2.912Z" fill="#fff8e6" fill-opacity=".62"/>
+      <path d="M8.56-2.781L3.424 1.112L0-.3Z" fill="#c2b4cd" fill-opacity=".32"/>
+      <path d="M5.29 7.281L0-.3L3.424 1.112Z" fill="#e6d4e8" fill-opacity=".6"/>
+      <path d="M5.29 7.281L0 3.6L0-.3Z" fill="#999acc" fill-opacity=".38"/>
+      <path d="M-5.29 7.281L0-.3L0 3.6Z" fill="#f4e3dc" fill-opacity=".57"/>
+      <path d="M-5.29 7.281L-3.424 1.112L0-.3Z" fill="#b5a4c3" fill-opacity=".25"/>
+      <path d="M-8.56-2.781L0-.3L-3.424 1.112Z" fill="#e0c8b4" fill-opacity=".4"/>
+      <path d="M-8.56-2.781L-2.116-2.912L0-.3Z" fill="#fffaf0" fill-opacity=".86"/>
+      <path d="M0-8.2L0-.3L7.73-2.53M0-.3L-4.77 6.61" fill="none" stroke="#fff" stroke-opacity=".51" stroke-width=".22" stroke-linecap="round"/>
+      <circle cx="0" cy="-.3" r=".43" fill="#fff" fill-opacity=".71"/>
+    </g>
+  
+              <linearGradient id="product-box-front" x1="29" y1="65" x2="59" y2="96" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#f5faff" stop-opacity=".36"/>
+                <stop offset=".52" stop-color="#c8dcf2" stop-opacity=".19"/>
+                <stop offset="1" stop-color="#c8b8df" stop-opacity=".26"/>
+              </linearGradient>
+              <linearGradient id="product-box-side" x1="44" y1="73" x2="61" y2="92" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#c7d4ea" stop-opacity=".26"/>
+                <stop offset="1" stop-color="#b2b8d4" stop-opacity=".13"/>
+              </linearGradient>
+              <linearGradient id="product-box-edge" x1="29" y1="60" x2="59" y2="96" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#bbc7d9" stop-opacity=".45"/>
+                <stop offset=".5" stop-color="#91a7c3" stop-opacity=".74"/>
+                <stop offset="1" stop-color="#b7a9ca" stop-opacity=".67"/>
+              </linearGradient>
+              <radialGradient id="product-heart-aura"><stop stop-color="#edb5d9" stop-opacity=".28"/><stop offset="1" stop-color="#edb5d9" stop-opacity="0"/></radialGradient>
+              <radialGradient id="product-star-aura"><stop stop-color="#e9c799" stop-opacity=".3"/><stop offset="1" stop-color="#e9c799" stop-opacity="0"/></radialGradient>
+              <linearGradient id="product-smoke-pearl" x1="0" y1="1" x2="1" y2="0">
+                <stop stop-color="#9aa9c6" stop-opacity=".42"/><stop offset=".46" stop-color="#c5b4d9" stop-opacity=".28"/><stop offset="1" stop-color="#ecf5ff" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="product-cigarette-paper" x1="0" y1="0" x2="0" y2="1">
+                <stop stop-color="#fffefa"/><stop offset=".5" stop-color="#eeeae5"/><stop offset="1" stop-color="#c9cbd1"/>
+              </linearGradient>
+              <linearGradient id="product-flame-color" x1="0" y1="1" x2="0" y2="0">
+                <stop stop-color="#a6c9ef"/><stop offset=".4" stop-color="#f3bd86"/><stop offset="1" stop-color="#fff4d2"/>
+              </linearGradient>
+              <radialGradient id="product-ember-glow"><stop stop-color="#ffd7a0" stop-opacity=".72"/><stop offset=".35" stop-color="#e9aa93" stop-opacity=".36"/><stop offset="1" stop-color="#e9aa93" stop-opacity="0"/></radialGradient>
+              <filter id="product-smoke-soft" x="-30%" y="-60%" width="160%" height="220%" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation=".75"/></filter>
+            </defs>
+            <g class="product-box-back" opacity="0">
+              <path d="M29 68 44 60 59 68 44 76Z" fill="#bbcce2" fill-opacity=".13"/>
+              <path d="M29 68 44 60 59 68V88L44 96 29 88Z" fill="#f9fcff" fill-opacity=".08"/>
+              <path class="product-box-line" d="M29 68 44 60 59 68M44 60V79" opacity=".7"/>
+              <path d="M31 68 44 61.1 57 68" stroke="#fff" stroke-opacity=".82" stroke-width=".45" vector-effect="non-scaling-stroke"/>
+            </g>
+            <g class="product-cargo" opacity="0">
+              <g class="product-cargo-heart"><circle r="15" fill="url(#product-heart-aura)"/><use href="#product-heart"/></g>
+              <g class="product-cargo-star" display="none"><circle r="15" fill="url(#product-star-aura)"/><use href="#product-star"/></g>
+            </g>
+            <g class="product-box-front" opacity="0">
+              <path d="M29 68 44 76V96L29 88Z" fill="url(#product-box-front)"/>
+              <path d="M44 76 59 68V88L44 96Z" fill="url(#product-box-side)"/>
+              <path class="product-box-line" d="M29 68 44 76 59 68V88L44 96 29 88V68M44 76V96"/>
+              <path d="M30.2 70.2V87.2L43.9 94.5M45.2 76.5 57.7 69.9" stroke="#fff" stroke-opacity=".75" stroke-width=".55" vector-effect="non-scaling-stroke"/>
+              <path d="M32.5 71.5V86.4L35 87.7V72.8Z" fill="#fff" fill-opacity=".2"/>
+            </g>
+            <g class="product-left-hand" transform="translate(32 87) scale(.58)"><use href="#product-hand-left"/></g>
+            <g class="product-right-hand" transform="translate(53 87) scale(.58)"><use href="#product-hand-right"/></g>
+            <!-- The third beat reveals only a fine profile at the lips, keeping the hands as the main silhouette. -->
+            <g class="product-smoking" opacity="0">
+              <g class="product-profile" transform="translate(-23.7 0)" opacity="0" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M67.6 49.8C67 52.2 66 53.6 64.7 55.1L63.3 56.5Q63.1 57.2 65 57.5L65.2 58.6 63.3 59.5Q65.8 60 64.1 61.3C64.2 63.7 66.6 65.3 69.1 65.6" stroke="#a9b6cc" stroke-opacity=".5" stroke-width=".32"/>
+                <path d="M65.3 58.6 67 58.8M65.2 61.3 66.5 61.5" stroke="#fff" stroke-opacity=".7" stroke-width=".24"/>
+              </g>
+              <g class="product-lighter" opacity="0">
+                <rect x="-1.85" y="0" width="3.7" height="7.2" rx=".9" fill="url(#product-hand-glass)" stroke="#9eacc3" stroke-opacity=".62" stroke-width=".3"/>
+                <path d="M-1.8 1.65H1.8M-.8 2.8V5.9" stroke="#fff" stroke-opacity=".85" stroke-width=".28" stroke-linecap="round"/>
+                <rect x="-1.45" y="-.65" width="2.9" height="1.7" rx=".35" fill="#bdc7d9"/>
+                <circle cx="1.2" cy="-.2" r=".7" fill="#9eacc2"/>
+                <g class="product-flame" opacity="0">
+                  <ellipse cy="-1.9" rx="3.3" ry="4.5" fill="url(#product-ember-glow)"/>
+                  <path d="M0-4.6C-.1-3.15-1.45-2.25-1.18-1.02C-.92.39.93.4 1.16-1.02C1.42-2.13.4-3.03 0-4.6Z" fill="url(#product-flame-color)"/>
+                  <path d="M0-2.1C-.7-1.26-.68-.34 0-.22C.73-.35.65-1.13 0-2.1Z" fill="#fff9e8"/>
+                </g>
+              </g>
+              <g class="product-grip-back" opacity="0"><use href="#product-smoking-hand-back"/></g>
+              <g class="product-cigarette" opacity="0">
+                <rect x="-10" y="-3.15" width="12" height="1.4" rx=".25" fill="url(#product-cigarette-paper)" stroke="#9da7b8" stroke-width=".17" stroke-opacity=".6"/>
+                <path d="M-1.3-3.12H1.75V-1.78H-1.3Z" fill="#dac2a7"/>
+                <path d="M-.6-2.9V-2M.2-2.9V-2M1-2.9V-2" stroke="#fff" stroke-width=".14" stroke-opacity=".65"/>
+                <path d="M-9.6-2.9H-1.7" stroke="#fff" stroke-width=".2"/>
+                <g class="product-ember" opacity="0">
+                  <circle cx="-10" cy="-2.45" r="2.5" fill="url(#product-ember-glow)"/>
+                  <path d="M-10-3.02V-1.86" stroke="#e8a785" stroke-width=".62" stroke-linecap="round"/>
+                  <path d="M-10.1-2.83V-2.11" stroke="#fff0cc" stroke-width=".21" stroke-linecap="round"/>
+                </g>
+              </g>
+              <g class="product-grip-front" opacity="0"><use href="#product-smoking-hand-front"/></g>
+              <g class="product-exhaled-smoke" opacity="0">
+                <path class="product-smoke-cloud" fill="#a8acc6" fill-opacity=".18" filter="url(#product-smoke-soft)"/>
+                <path class="product-smoke-ribbon" fill="url(#product-smoke-pearl)"/>
+                <path class="product-smoke-thread" fill="none" stroke="#b2b7d0" stroke-opacity=".3" stroke-width=".3" stroke-linecap="round"/>
+                <path class="product-smoke-highlight" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width=".22" stroke-linecap="round"/>
+              </g>
+            </g>
+            <g class="product-sparkles" opacity="0" stroke-linecap="round">
+              <path d="M33 55V59M31 57H35" stroke="#c1a4d2" stroke-width=".45"/>
+              <path d="M55 51V54M53.5 52.5H56.5" stroke="#d9bd91" stroke-width=".4"/>
+              <circle cx="54" cy="63" r=".45" fill="#fff"/>
+            </g>
+          </svg>
+          <svg class="contact-envelope" viewBox="0 0 120 120" fill="none" data-phase="rest">
+            <defs>
+    <linearGradient id="contact-envelope-back" x1="28" y1="73" x2="58" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fbfdff" stop-opacity=".28"/>
+      <stop offset=".58" stop-color="#c7d7ee" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#c4b8db" stop-opacity=".2"/>
+    </linearGradient>
+    <linearGradient id="contact-envelope-front" x1="30" y1="76" x2="56" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".31"/>
+      <stop offset=".52" stop-color="#d4e2f3" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#cdc0e1" stop-opacity=".23"/>
+    </linearGradient>
+    <linearGradient id="contact-envelope-fold" x1="32" y1="77" x2="57" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e5edf8" stop-opacity=".13"/>
+      <stop offset="1" stop-color="#b5b9d3" stop-opacity=".23"/>
+    </linearGradient>
+    <linearGradient id="contact-envelope-edge" x1="28" y1="73" x2="59" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#adbdd4" stop-opacity=".55"/>
+      <stop offset=".55" stop-color="#91a6c2" stop-opacity=".68"/>
+      <stop offset="1" stop-color="#b2a4ca" stop-opacity=".56"/>
+    </linearGradient>
+    <linearGradient id="contact-envelope-flap" x1="32" y1="73" x2="53" y2="85" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".35"/>
+      <stop offset=".6" stop-color="#d5e3f5" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#c6b8dc" stop-opacity=".24"/>
+    </linearGradient>
+    <linearGradient id="contact-envelope-open-flap" x1="34" y1="62" x2="54" y2="75" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".39"/>
+      <stop offset=".53" stop-color="#d6e2f2" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#bdb5d3" stop-opacity=".19"/>
+    </linearGradient>
+    <linearGradient id="contact-letter-glass" x1="32" y1="70" x2="56" y2="91" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".87"/>
+      <stop offset=".6" stop-color="#f2f7fd" stop-opacity=".83"/>
+      <stop offset="1" stop-color="#e2e2f2" stop-opacity=".77"/>
+    </linearGradient>
+    <linearGradient id="contact-letter-mark" x1="50" y1="73" x2="52.6" y2="75.6" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#b5cce6" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#b9acd5" stop-opacity=".57"/>
+    </linearGradient>
+    <!-- Clip moves with the envelope only, never with the letter. It hides the
+         lower paper edge as a letter starts nine units below its resting pose. -->
+    <clipPath id="contact-letter-window" clipPathUnits="userSpaceOnUse">
+      <path d="M28 48H60V95.45H28Z"/>
+    </clipPath>
+    <radialGradient id="contact-blue-bloom"><stop stop-color="#79aee8" stop-opacity=".54"/><stop offset=".35" stop-color="#79aee8" stop-opacity=".22"/><stop offset="1" stop-color="#79aee8" stop-opacity="0"/></radialGradient>
+    <radialGradient id="contact-red-bloom"><stop stop-color="#e88d9d" stop-opacity=".54"/><stop offset=".35" stop-color="#e88d9d" stop-opacity=".22"/><stop offset="1" stop-color="#e88d9d" stop-opacity="0"/></radialGradient>
+              <radialGradient id="contact-ground-glow"><stop stop-color="#a9b7d0" stop-opacity=".22"/><stop offset="1" stop-color="#b5bfd4" stop-opacity="0"/></radialGradient>
+            </defs>
+            <ellipse class="contact-ground" cx="44" cy="98" rx="19" ry="2.4" fill="url(#contact-ground-glow)" opacity="0"/>
+            <g class="contact-arc-blue" opacity="0" stroke-linecap="round" transform="translate(30 85) scale(-1 1)">
+              <path class="contact-arc-haze" fill="none" stroke="#79aee8" stroke-opacity=".09" stroke-width="3.4" vector-effect="non-scaling-stroke"/>
+              <path class="contact-arc-trail" fill="none" stroke="#79aee8" stroke-opacity=".65" stroke-width=".8" vector-effect="non-scaling-stroke"/>
+              <g class="contact-arc-pearl"><circle r="2.2" fill="url(#contact-blue-bloom)"/><circle r=".46" fill="#a9cff0"/><circle r=".2" fill="#fff"/></g>
+            </g>
+            <g class="contact-arc-red" opacity="0" stroke-linecap="round" transform="translate(58 85)">
+              <path class="contact-arc-haze" fill="none" stroke="#e88d9d" stroke-opacity=".09" stroke-width="3.4" vector-effect="non-scaling-stroke"/>
+              <path class="contact-arc-trail" fill="none" stroke="#e88d9d" stroke-opacity=".65" stroke-width=".8" vector-effect="non-scaling-stroke"/>
+              <g class="contact-arc-pearl"><circle r="2.2" fill="url(#contact-red-bloom)"/><circle r=".46" fill="#efb4c0"/><circle r=".2" fill="#fff"/></g>
+            </g>
+            <g class="contact-envelope-body" opacity="0">
+
+  <!-- These five parts are ordered back to front for direct integration. -->
+  <g class="contact-body-back" id="contact-body-back">
+    <path d="M29 73.5H60.4V94.3L59.8 95.2H28.8Z" fill="#c0c9db" fill-opacity=".1"/>
+    <path d="M29.2 74H58.8Q60 74 60 75.2V94.8Q60 96 58.8 96H29.2Q28 96 28 94.8V75.2Q28 74 29.2 74Z" fill="url(#contact-envelope-back)" stroke="url(#contact-envelope-edge)" stroke-width=".6" vector-effect="non-scaling-stroke"/>
+    <path d="M29.4 75.15H58.55M58.9 75.5V94.4" stroke="#fff" stroke-opacity=".54" stroke-width=".5" vector-effect="non-scaling-stroke" stroke-linecap="round"/>
+  </g>
+
+  <!-- Hinge y=74. Open tip y=63; hide when using the closed flap. -->
+  <g class="contact-flap-open" id="contact-flap-open" opacity="0">
+    <path d="M28.5 74 43.36 63.35Q44 62.88 44.64 63.35L59.5 74Z" fill="url(#contact-envelope-open-flap)" stroke="url(#contact-envelope-edge)" stroke-width=".6" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>
+    <path d="M30.1 73.38 43.65 63.86Q44 63.6 44.35 63.86L57.9 73.38" stroke="#fff" stroke-opacity=".64" stroke-width=".5" vector-effect="non-scaling-stroke" stroke-linecap="round"/>
+    <path d="M28.8 74H59.2" stroke="#a9b8cf" stroke-opacity=".24" stroke-width=".5" vector-effect="non-scaling-stroke"/>
+  </g>
+
+  <!-- Keep the clip wrapper static. Animate contact-letter-sheet vertically:
+       translate(0 9) is recessed; translate(0 0) is revealed. -->
+  <g class="contact-letter" id="contact-letter" opacity="0" clip-path="url(#contact-letter-window)">
+    <g class="contact-letter-sheet" id="contact-letter-sheet">
+      <rect x="32" y="70" width="24" height="21" rx="1.05" fill="url(#contact-letter-glass)" stroke="url(#contact-envelope-edge)" stroke-opacity=".7" stroke-width=".5" vector-effect="non-scaling-stroke"/>
+      <path d="M33.25 71.15H54.4M33.1 72.1V88.8" stroke="#fff" stroke-opacity=".79" stroke-width=".5" vector-effect="non-scaling-stroke" stroke-linecap="round"/>
+      <path d="M36 76H46.2M36 79.3H51.7M36 82.6H47.9" stroke="#9faec7" stroke-opacity=".61" stroke-width=".55" vector-effect="non-scaling-stroke" stroke-linecap="round"/>
+      <path d="M51.3 72.9 52.5 74.1 51.3 75.3 50.1 74.1Z" fill="url(#contact-letter-mark)"/>
+      <path d="M50.65 74.1 51.3 73.45 51.95 74.1" stroke="#fff" stroke-opacity=".68" stroke-width=".5" vector-effect="non-scaling-stroke" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <g class="contact-body-front" id="contact-body-front">
+    <path d="M28 75.1 44 85.2 60 75.1V94.8Q60 96 58.8 96H29.2Q28 96 28 94.8Z" fill="url(#contact-envelope-front)"/>
+    <path d="M28 75.1 42.35 85.45 28.5 95.2ZM60 75.1 45.65 85.45 59.5 95.2Z" fill="url(#contact-envelope-fold)"/>
+    <path d="M28.6 95.38 42.97 84.64Q44 83.89 45.03 84.64L59.4 95.38" fill="url(#contact-envelope-front)" stroke="url(#contact-envelope-edge)" stroke-opacity=".57" stroke-width=".5" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>
+    <path d="M28.15 75.2 41.65 84.26M59.85 75.2 46.35 84.26M28 75.2V94.8Q28 96 29.2 96H58.8Q60 96 60 94.8V75.2" stroke="url(#contact-envelope-edge)" stroke-width=".6" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M29.3 88.5V94.2Q29.3 94.75 29.85 94.75H57.6" stroke="#fff" stroke-opacity=".66" stroke-width=".5" vector-effect="non-scaling-stroke" stroke-linecap="round"/>
+    <path d="M58.55 79.35V90.95" stroke="#fff" stroke-opacity=".45" stroke-width=".5" vector-effect="non-scaling-stroke" stroke-linecap="round"/>
+  </g>
+
+  <!-- Hinge y=74. Closed tip y=84. Hidden for this open-envelope preview. -->
+  <g class="contact-flap-closed" id="contact-flap-closed" opacity="1">
+    <path d="M28.5 74H59.5L44.65 83.69Q44 84.11 43.35 83.69Z" fill="url(#contact-envelope-flap)" stroke="url(#contact-envelope-edge)" stroke-width=".6" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>
+    <path d="M29.9 74.95 43.66 83.05Q44 83.27 44.34 83.05L58.1 74.95" stroke="#fff" stroke-opacity=".77" stroke-width=".5" vector-effect="non-scaling-stroke" stroke-linecap="round"/>
+  </g>
+</g>
+          </svg>
+          <svg class="section-static-icon" viewBox="0 0 120 120" fill="none">
+            <use href="#icon-company" x="18" y="18" width="84" height="84"/>
+          </svg>
+        </div>
+      </div>
+      <article class="research-content" lang="en" hidden>
+        <section class="research-summary" aria-labelledby="research-summary-heading">
+          <h2 class="research-eyebrow content-divider" id="research-summary-heading">Summary</h2>
+          <p class="research-lead">Which structures are selected from a finite set of candidates, and under what conditions do they remain stable?</p>
+          <p>UCL is an interdisciplinary research program exploring this question through mathematics and computational experiments. It examines the structures that can be found, the criteria used to choose among competing candidates, and how those choices and structures hold up as conditions change.</p>
+          <p>Formal verification and reproducible procedures are central to this work. The aim is to make results verifiable by preserving the findings together with their assumptions, inputs, and methods, so that both the reasoning and the calculations can be traced and checked.</p>
+        </section>
+        <section class="research-details" aria-labelledby="research-details-heading">
+          <div class="research-details-heading">
+            <h2 class="research-eyebrow" id="research-details-heading">Details</h2>
+            <span class="research-range" aria-hidden="true">01 — 06</span>
+          </div>
+          <p class="research-intro">Six fields form the foundation of the research program.</p>
+          <ol class="research-fields" role="list">
+            <li>
+              <span class="field-number" aria-hidden="true">01</span>
+              <div class="field-copy">
+                <h3>Applied and Discrete Mathematics</h3>
+                <p class="field-purpose">Describing structure</p>
+                <p>Candidate sets and states are represented mathematically to examine their relationships and properties. This provides a foundation for grouping equivalent structures and identifying forms that satisfy specified conditions.</p>
+              </div>
+            </li>
+            <li>
+              <span class="field-number" aria-hidden="true">02</span>
+              <div class="field-copy">
+                <h3>Optimization and Model Selection</h3>
+                <p class="field-purpose">Defining how to choose</p>
+                <p>Candidates are compared using criteria such as error, complexity, and the available computational budget. The aim is to make the basis for selection explicit and understand how different criteria affect the outcome.</p>
+              </div>
+            </li>
+            <li>
+              <span class="field-number" aria-hidden="true">03</span>
+              <div class="field-copy">
+                <h3>Formal Methods and Mathematical Logic</h3>
+                <p class="field-purpose">Checking the reasoning</p>
+                <p>Formal verification checks whether a conclusion follows from stated definitions and assumptions. The program has used Lean4 to verify steps in mathematical proofs by computer. The scope of these checks is the set of definitions and assumptions used in each proof.</p>
+              </div>
+            </li>
+            <li>
+              <span class="field-number" aria-hidden="true">04</span>
+              <div class="field-copy">
+                <h3>Signal Processing and Pattern Recognition</h3>
+                <p class="field-purpose">Identifying patterns</p>
+                <p>Periodic behavior, spectral components, and discrete patterns in data are analyzed to find regularities. This includes examining how reliably patterns can be identified or recovered when noise is introduced.</p>
+              </div>
+            </li>
+            <li>
+              <span class="field-number" aria-hidden="true">05</span>
+              <div class="field-copy">
+                <h3>Computational Science and Complex Systems</h3>
+                <p class="field-purpose">Exploring changing conditions</p>
+                <p>Computational experiments vary conditions to examine structural stability and the boundaries at which outcomes change. The focus is on identifying which conditions preserve a result and where a different outcome emerges.</p>
+              </div>
+            </li>
+            <li>
+              <span class="field-number" aria-hidden="true">06</span>
+              <div class="field-copy">
+                <h3>Reproducible Research and Scientific Software Engineering</h3>
+                <p class="field-purpose">Making results checkable</p>
+                <p>Inputs, computational procedures, execution environments, and results are recorded so that runs can be repeated and compared under the same conditions. Control experiments help distinguish what has been observed from the claims those observations can support.</p>
+              </div>
+            </li>
+          </ol>
+        </section>
+      </article>
+      <article class="research-content company-content" lang="en" hidden>
+        <section aria-labelledby="company-summary-heading">
+          <h2 class="research-eyebrow content-divider" id="company-summary-heading">Summary</h2>
+          <p class="research-lead">Turning scientific ideas into useful technology.</p>
+          <p>Universion Closure Logic is a technology company rooted in scientific inquiry. We bring together information theory, artificial intelligence, data science, and communication technologies to develop software, algorithms, and digital products.</p>
+          <p>From research and development to practical application, our aim is to turn knowledge into tools and experiences that people and organizations can use.</p>
+        </section>
+        <section class="research-details" aria-label="Company facts">
+          <dl class="company-facts">
+            <div class="company-fact">
+              <dt>Company name</dt>
+              <dd>UNIVERSION CLOSURE LOGIC, K.K.<span class="company-legal-name" data-company-secondary data-content-ja="UNIVERSION CLOSURE LOGIC, K.K." lang="ja">株式会社Universion Closure Logic</span></dd>
+            </div>
+            <div class="company-fact company-president">
+              <dt>President</dt>
+              <dd>Yasuhito Tsujimura</dd>
+            </div>
+            <div class="company-fact">
+              <dt>Established</dt>
+              <dd><time datetime="2025-11-25">November 25, 2025</time></dd>
+            </div>
+            <div class="company-fact">
+              <dt>Principal bank</dt>
+              <dd>Sumitomo Mitsui Banking Corporation<span class="company-legal-name">SMBC</span></dd>
+            </div>
+            <div class="company-fact company-business-domain">
+              <dt>Business domain</dt>
+              <dd>
+                <ol class="company-business-list" role="list">
+                  <li><span class="field-number" aria-hidden="true">01</span><p>Research, development and social implementation in information theory, artificial intelligence, data science and communication technologies.</p></li>
+                  <li><span class="field-number" aria-hidden="true">02</span><p>Planning, development, sales, maintenance and technical provision of software, algorithms and related products that utilize research results.</p></li>
+                  <li><span class="field-number" aria-hidden="true">03</span><p>Acquisition, management, operation, transfer and licensing of patents, copyrights and other intellectual property rights.</p></li>
+                  <li><span class="field-number" aria-hidden="true">04</span><p>Joint research, technical alliances and consulting with companies, universities and research institutes.</p></li>
+                  <li><span class="field-number" aria-hidden="true">05</span><p>Human resource development, education, training and outreach activities related to technology.</p></li>
+                  <li><span class="field-number" aria-hidden="true">06</span><p>Acquisition and holding of shares in subsidiaries and affiliated companies for investment and management purposes.</p></li>
+                  <li><span class="field-number" aria-hidden="true">07</span><p>All other businesses incidental or related to the foregoing.</p></li>
+                </ol>
+              </dd>
+            </div>
+          </dl>
+        </section>
+      </article>
+      <article class="research-content products-content" lang="en" hidden>
+        <nav class="portfolio-jump" aria-label="On this page">
+          <button type="button" data-scroll-target="portfolio-products-heading">Products</button>
+          <span aria-hidden="true">/</span>
+          <button type="button" data-scroll-target="portfolio-services-heading">Services <span aria-hidden="true">↓</span></button>
+        </nav>
+        <section aria-labelledby="portfolio-products-heading">
+          <h2 class="research-eyebrow content-divider" id="portfolio-products-heading">Products</h2>
+          <div class="portfolio-list">
+            <section class="portfolio-entry" aria-labelledby="portfolio-quotaecho">
+              <div class="portfolio-meta"><span>B2C · macOS</span><span>Released <time datetime="2026-10-01">October 1, 2026</time></span></div>
+              <h3 id="portfolio-quotaecho">QuotaEcho</h3>
+              <p class="portfolio-lead">A clearer view of your Codex usage.</p>
+              <figure class="portfolio-visual visual-quotaecho" aria-label="QuotaEcho app and sample usage screen">
+                <div class="quotaecho-orbit" aria-hidden="true"></div>
+                <img class="quotaecho-app-icon" src="./ucl-quotaecho-icon-256.webp" alt="" width="256" height="256" decoding="async">
+                <img class="quotaecho-app-screen" src="./ucl-quotaecho-screen-en.webp" alt="QuotaEcho sample screen comparing time left, amount left, and the gap between them." width="720" height="1120" decoding="async">
+              </figure>
+              <p>A macOS menu bar app for understanding your Codex usage pace. Compare remaining allowance with time to reset, and revisit the tasks and model settings active during periods of larger usage changes.</p>
+              <a class="portfolio-link" href="https://universion-closure-logic.com/apple/quotaecho/en/">Visit product website <span aria-hidden="true">↗</span></a>
+            </section>
+            <section class="portfolio-entry" aria-labelledby="portfolio-sensegap">
+              <div class="portfolio-meta"><span>B2C · App</span><span class="portfolio-status">In development</span></div>
+              <h3 id="portfolio-sensegap">SenseGap</h3>
+              <p class="portfolio-lead">Discover your taste. Explore other perspectives.</p>
+              <figure class="portfolio-visual visual-sensegap" aria-label="SenseGap image choices">
+                <div class="sensegap-pair">
+                  <img src="./ucl-sensegap-city-600.webp" alt="A neon-lit city on a rainy evening." width="1024" height="1024" loading="lazy" decoding="async">
+                  <img src="./ucl-sensegap-lake-600.webp" alt="A quiet turquoise lake surrounded by mountains." width="1024" height="1024" loading="lazy" decoding="async">
+                </div>
+                <span class="sensegap-pearl" aria-hidden="true"></span>
+              </figure>
+              <p>A visual discovery app built around choosing between two images. Explore what draws you in, see how your preferences compare with others, and discover how people respond to your own images.</p>
+            </section>
+            <section class="portfolio-entry" aria-labelledby="portfolio-reactionlift">
+              <div class="portfolio-meta"><span>B2C · Game</span><span class="portfolio-status">In development</span></div>
+              <h3 id="portfolio-reactionlift">Reaction Lift</h3>
+              <p class="portfolio-lead">Unexpected strength. Unforgettable reactions.</p>
+              <figure class="portfolio-visual visual-reactionlift">
+                <img src="./ucl-reaction-lift-concept-960.webp" srcset="./ucl-reaction-lift-concept-480.webp 480w, ./ucl-reaction-lift-concept-960.webp 960w" sizes="(min-width: 768px) 680px, calc(100vw - 56px)" alt="Reaction Lift concept: a slender fashion model lifts a huge barbell as a muscular onlooker recoils in surprise." width="1844" height="853" loading="lazy" decoding="async">
+                <figcaption>Concept visual</figcaption>
+              </figure>
+              <p>A playful mobile game where a slender model lifts the unexpected and surprises a cast of expressive characters. Collect their most spectacular reactions.</p>
+            </section>
+            <section class="portfolio-entry" aria-labelledby="portfolio-mge">
+              <div class="portfolio-meta"><span>B2B · Materials research</span><span class="portfolio-status">Research prototype</span></div>
+              <h3 id="portfolio-mge">MGE</h3>
+              <p class="portfolio-lead">Material Governance Engine</p>
+              <figure class="portfolio-visual visual-mge" aria-hidden="true">
+                <img src="./ucl-mge.svg" alt="" width="720" height="360" loading="lazy" decoding="async">
+              </figure>
+              <p>A research prototype for screening material candidates and reviewing those outside standard selection rules. It is designed to make selection criteria and decisions traceable, and to organize candidates for further computational or experimental evaluation.</p>
+            </section>
+          </div>
+        </section>
+        <section class="portfolio-services" aria-labelledby="portfolio-services-heading">
+          <h2 class="research-eyebrow content-divider" id="portfolio-services-heading">Services</h2>
+          <p class="research-lead">Practical technology for your everyday work.</p>
+          <p>We help businesses simplify everyday work, build practical digital tools, and turn scattered information into usable data.</p>
+          <ol class="research-fields portfolio-service-list" role="list">
+            <li><span class="field-number" aria-hidden="true">01</span><div class="field-copy"><h3>Workflow &amp; AI Automation</h3><figure class="service-visual" aria-hidden="true"><img src="./ucl-automation.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p>Reduce repetitive work with workflows tailored to your business. We connect existing tools, automate routine tasks, and incorporate AI where it adds value.</p><p class="service-examples">File processing · Tool integrations · Report generation · Content scheduling</p></div></li>
+            <li><span class="field-number" aria-hidden="true">02</span><div class="field-copy"><h3>Web &amp; App Development</h3><figure class="service-visual" aria-hidden="true"><img src="./ucl-web-app.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p>We create and improve websites, dashboards, and lightweight applications around your needs—from a service website to a practical tool for everyday operations.</p><p class="service-examples">Business websites · Internal tools · Dashboards · App improvements</p></div></li>
+            <li><span class="field-number" aria-hidden="true">03</span><div class="field-copy"><h3>Data Processing &amp; Research</h3><figure class="service-visual" aria-hidden="true"><img src="./ucl-data-research.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p>Turn files and public information into organized, usable data. We support web research, data entry, format conversion, cleanup, and reporting, with checks against agreed requirements.</p><p class="service-examples">Research lists · Spreadsheet cleanup · Data consolidation · Reports</p></div></li>
+          </ol>
+          <div class="service-approach">
+            <p>Every project starts with a clear scope, defined deliverables, and agreed checks.</p>
+            <p class="portfolio-lead">Tell us what you want to improve.</p>
+            <p>We’ll help define a practical way forward.</p>
+            <a class="portfolio-link service-contact-link" href="#contact">Contact us <span aria-hidden="true">↗</span></a>
+          </div>
+        </section>
+      </article>
+      <article class="contact-content" hidden>
+        <div class="contact-compose">
+          <div class="contact-intro">
+            <h2 data-contact-copy="lead">どんなことでも、お聞かせください。</h2>
+            <p data-contact-copy="intro">ご質問、アイデア、お仕事のご相談など。</p>
+            <p class="contact-direct"><span data-contact-copy="direct">メールでもお問い合わせいただけます。</span><a href="mailto:contact@universion-closure-logic.com">contact@universion-closure-logic.com</a></p>
+          </div>
+          <form class="contact-form" action="https://formsubmit.co/contact@universion-closure-logic.com" method="post" novalidate aria-label="お問い合わせフォーム" data-state="idle">
+            <div class="contact-field">
+              <label for="contact-name"><span data-contact-copy="name">Name / Company</span><span class="contact-field-hint" data-contact-copy="optional">Optional</span></label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="120">
+            </div>
+            <div class="contact-field">
+              <label for="contact-email"><span data-contact-copy="email">Email</span><span class="contact-field-hint" data-contact-copy="required">Required</span></label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" required aria-describedby="contact-email-error">
+              <p class="contact-error" id="contact-email-error" hidden></p>
+            </div>
+            <div class="contact-field">
+              <label for="contact-message"><span data-contact-copy="message">Message</span><span class="contact-field-hint" data-contact-copy="required">Required</span></label>
+              <textarea id="contact-message" name="message" rows="3" maxlength="5000" required aria-describedby="contact-message-error"></textarea>
+              <p class="contact-error" id="contact-message-error" hidden></p>
+            </div>
+            <div class="contact-actions">
+              <input class="contact-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <button class="contact-send" type="submit" disabled aria-describedby="contact-privacy-note">
+                <span data-contact-copy="send">Send message</span>
+                <svg class="ui-icon contact-send-icon" aria-hidden="true"><use href="#icon-contact"/></svg>
+                <span class="contact-send-pearl" aria-hidden="true"></span>
+              </button>
+              <p class="contact-note" id="contact-privacy-note" data-contact-copy="privacy">入力内容はお問い合わせへの対応に利用します。</p>
+              <details class="contact-privacy">
+                <summary data-contact-copy="privacyTitle">送信内容の取り扱い</summary>
+                <p data-contact-copy="privacyDetail">お名前、メールアドレス、お問い合わせ内容は、メール送信サービス FormSubmit を通じて当社へ届きます。送信内容は同サービスに30日間保存されます。</p>
+                <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer" data-contact-copy="privacyLink">FormSubmit のプライバシーポリシー</a>
+              </details>
+              <p class="contact-status" role="alert" hidden></p>
+              <noscript><p class="contact-note">フォームには JavaScript が必要です。メールでお問い合わせください。 / Please enable JavaScript or contact us by email.</p></noscript>
+            </div>
+          </form>
+        </div>
+        <div class="contact-complete" hidden>
+          <div class="contact-complete-light" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="25"/><path d="m21 32 7 7 16-17"/></svg>
+            <span></span><span></span>
+          </div>
+          <h2 id="contact-complete-heading" tabindex="-1" data-contact-copy="thanks">Thank you.</h2>
+          <p class="contact-complete-title" data-contact-copy="completeTitle">お問い合わせを送信しました。</p>
+          <p class="contact-note" data-contact-copy="completeNote">内容を確認し、ご入力のメールアドレスへ返信いたします。</p>
+          <button class="contact-again" type="button" data-contact-copy="again">別のお問い合わせを送る</button>
+        </div>
+        <p class="sr-only" id="contact-announcement" role="status" aria-live="polite" aria-atomic="true"></p>
+      </article>
+    </section>
   </main>
-  <script type="module" src="ucl-identity.js?v=20261011-glass-4" onerror="document.documentElement.dataset.renderer='fallback'"></script>
+  <nav class="global-nav" aria-label="Main navigation">
+    <a class="global-link" href="#research" data-page-link="research">
+      <svg class="ui-icon" aria-hidden="true"><use href="#icon-research"/></svg>
+      <span class="nav-label"><span>Research</span></span>
+    </a>
+    <a class="global-link" href="#company" data-page-link="company">
+      <svg class="ui-icon" aria-hidden="true"><use href="#icon-company"/></svg>
+      <span class="nav-label"><span>Company</span><span>Profile</span></span>
+    </a>
+    <a class="global-link" href="#products" data-page-link="products">
+      <svg class="ui-icon" aria-hidden="true"><use href="#icon-products"/></svg>
+      <span class="nav-label"><span>Products &amp;</span><span>Services</span></span>
+    </a>
+    <a class="global-link" href="#contact" data-page-link="contact">
+      <svg class="ui-icon" aria-hidden="true"><use href="#icon-contact"/></svg>
+      <span class="nav-label"><span>Contact Us</span></span>
+    </a>
+  </nav>
+  <script src="ucl-content-i18n.js?v=contact-20261012-1"></script>
+  <script type="module">
+    import { sendContactMessage } from './ucl-contact.js?v=contact-20261012-1';
+    (()=>{
+      const root=document.documentElement;
+      const copy={
+        en:{home:'Home',navigation:'Main navigation',research:['Research'],company:['Company','Profile'],products:['Products &','Services'],contact:['Contact Us']},
+        ja:{home:'ホーム',navigation:'メインナビゲーション',research:['研究'],company:['会社概要'],products:['製品・サービス'],contact:['お問い合わせ']}
+      };
+      const section=document.querySelector('.section-view');
+      const sectionHeading=document.querySelector('#section-heading');
+      const sectionArt=document.querySelector('.section-art');
+      const staticIcon=document.querySelector('.section-static-icon use');
+      const researchContent=document.querySelector('.research-content:not(.company-content):not(.products-content)');
+      const companyContent=document.querySelector('.company-content');
+      const productsContent=document.querySelector('.products-content');
+      const contactContent=document.querySelector('.contact-content');
+      const homeHeading=document.querySelector('#home-heading');
+      const homeView=document.querySelector('.home-view');
+      const newsHeading=document.querySelector('#news-heading');
+      const links=[...document.querySelectorAll('[data-page-link]')];
+      const homeLink=document.querySelector('.home-link');
+      // Native vector arcs stay smooth and hairline-thin at any display scale.
+      const orbitSvg=document.querySelector('.research-orbit');
+      const orbitFront=orbitSvg.querySelector('.orbit-movers-front');
+      const orbitBack=orbitSvg.querySelector('.orbit-movers-back');
+      const orbitReduced=matchMedia('(prefers-reduced-motion: reduce)');
+      function syncHomeScroll(){
+        root.style.setProperty('--home-scroll',`${homeView.scrollTop}px`);
+        window.dispatchEvent(new Event('ucl:homescroll'));
+      }
+      homeView.addEventListener('scroll',syncHomeScroll,{passive:true});
+      homeLink.addEventListener('click',event=>{
+        if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||root.dataset.page!=='home')return;
+        event.preventDefault();
+        homeView.scrollTo({top:0,behavior:orbitReduced.matches?'instant':'smooth'});
+        homeHeading.focus({preventScroll:true});
+      });
+      document.querySelector('.home-news-cue').addEventListener('click',()=>{
+        const y=newsHeading.getBoundingClientRect().top-homeView.getBoundingClientRect().top+homeView.scrollTop-document.querySelector('.site-header').getBoundingClientRect().height-30;
+        homeView.scrollTo({top:Math.max(0,y),behavior:orbitReduced.matches?'instant':'smooth'});
+        newsHeading.focus({preventScroll:true});
+      });
+      const orbitParticles=[...orbitSvg.querySelectorAll('[data-orbit]')].map(node=>({
+        node,rx:Number(node.dataset.rx),ry:Number(node.dataset.ry),
+        offset:Number(node.dataset.orbit)*Math.PI*2/3,
+        light:node.querySelector('.orbit-light'),
+        glow:node.querySelector('.orbit-glow'),
+        point:node.querySelector('.orbit-particle'),
+        tail:node.querySelector('.orbit-tail'),
+        gradient:orbitSvg.querySelector(`#orbit-tail-${node.dataset.orbit}`)
+      }));
+      let orbitFrame=0,orbitLast=0,orbitTime=0,orbitVisible=true,orbitPaused=false;
+      function paintOrbit(){
+        const phase=orbitTime/3*Math.PI*2;
+        for(const p of orbitParticles){
+          const angle=phase+p.offset;
+          const depth=(Math.sin(angle)+1)/2;
+          const x=60+p.rx*Math.cos(angle),y=60+p.ry*Math.sin(angle);
+          const from=angle-.14;
+          const tx=60+p.rx*Math.cos(from),ty=60+p.ry*Math.sin(from);
+          const layer=Math.sin(angle)>=0?orbitFront:orbitBack;
+          if(p.node.parentNode!==layer)layer.append(p.node);
+          p.node.setAttribute('opacity',(.65+depth*.35).toFixed(3));
+          p.light.setAttribute('transform',`translate(${x.toFixed(3)} ${y.toFixed(3)})`);
+          p.point.setAttribute('r',(.32+depth*.12).toFixed(3));
+          p.glow.setAttribute('opacity',(.84+.16*Math.sin(angle*2+p.offset)).toFixed(3));
+          p.tail.setAttribute('d',`M ${tx.toFixed(3)} ${ty.toFixed(3)} A ${p.rx} ${p.ry} 0 0 1 ${x.toFixed(3)} ${y.toFixed(3)}`);
+          p.gradient.setAttribute('x1',tx.toFixed(3));p.gradient.setAttribute('y1',ty.toFixed(3));
+          p.gradient.setAttribute('x2',x.toFixed(3));p.gradient.setAttribute('y2',y.toFixed(3));
+        }
+      }
+      function tickOrbit(now){
+        orbitFrame=0;
+        if(orbitLast)orbitTime=(orbitTime+(now-orbitLast)/1000)%3;
+        orbitLast=now;paintOrbit();
+        orbitFrame=requestAnimationFrame(tickOrbit);
+      }
+      function syncOrbit(){
+        if(orbitFrame)cancelAnimationFrame(orbitFrame);
+        orbitFrame=0;orbitLast=0;
+        const playing=root.dataset.page==='research'&&orbitVisible&&!document.hidden&&!orbitReduced.matches&&!orbitPaused;
+        sectionArt.dataset.motion=playing?'playing':'still';
+        paintOrbit();
+        if(playing)orbitFrame=requestAnimationFrame(tickOrbit);
+      }
+      const orbitObserver=new IntersectionObserver(entries=>{
+        orbitVisible=entries[0].isIntersecting;syncOrbit();
+      },{root:section,threshold:0});
+      orbitObserver.observe(sectionArt);
+      document.addEventListener('visibilitychange',syncOrbit);
+      orbitReduced.addEventListener('change',syncOrbit);
+      window.addEventListener('pagehide',()=>{if(orbitFrame)cancelAnimationFrame(orbitFrame);orbitFrame=0;});
+      window.addEventListener('pageshow',syncOrbit);
+      window.addEventListener('message',event=>{
+        if(event.origin!==location.origin||event.source!==window.parent||event.data?.type!=='ucl-identity')return;
+        const d=event.data;
+        if(typeof d.paused==='boolean')orbitPaused=d.paused;
+        if(d.replay)orbitTime=0;
+        if(Number.isFinite(d.seek))orbitTime=Math.max(0,d.seek)%3;
+        syncOrbit();
+      });
+      // Research completes one orbit in 3 seconds. A 4.5-second passage
+      // gives these figures two-thirds of that cycle rate.
+      const COMPANY_WALK_PERIOD=3/(2/3);
+      const companySvg=document.querySelector('.company-structure');
+      const companyBack=companySvg.querySelector('.company-people-back');
+      const companyFront=companySvg.querySelector('.company-people-front');
+      const companyPeople=[...companySvg.querySelectorAll('[data-person]')].map(node=>({
+        node,offset:Number(node.dataset.person)*.5,
+        armBack:node.querySelector('.person-arm-back'),armFront:node.querySelector('.person-arm-front'),
+        legBack:node.querySelector('.person-leg-back'),legFront:node.querySelector('.person-leg-front')
+      }));
+      const companyRoute=[[0,9,101],[.32,32,99],[.44,39,99],[.57,48,99],[.69,53,100],[1,66,104]];
+      let companyTime=.16*COMPANY_WALK_PERIOD,companyLast=0,companyFrame=0,companyVisible=true,companyPaused=false;
+      const easeBetween=(a,b,value)=>{const t=Math.max(0,Math.min(1,(value-a)/(b-a)));return t*t*(3-2*t);};
+      function paintCompanyPeople(){
+        companySvg.dataset.walkDuration=String(COMPANY_WALK_PERIOD);
+        for(const person of companyPeople){
+          const phase=(companyTime/COMPANY_WALK_PERIOD+person.offset)%1;
+          let part=1;
+          while(part<companyRoute.length-1&&phase>companyRoute[part][0])part++;
+          const a=companyRoute[part-1],b=companyRoute[part];
+          const fraction=(phase-a[0])/(b[0]-a[0]);
+          const x=a[1]+(b[1]-a[1])*fraction,y=a[2]+(b[2]-a[2])*fraction;
+          const arriving=easeBetween(0,.10,phase)*(1-easeBetween(.29,.41,phase));
+          const leaving=easeBetween(.60,.72,phase)*(1-easeBetween(.87,1,phase));
+          const visibility=Math.max(arriving,leaving)*.86;
+          const layer=phase<.57?companyBack:companyFront;
+          if(person.node.parentNode!==layer)layer.append(person.node);
+          const gait=phase*Math.PI*2*6;
+          const swing=Math.sin(gait),opposite=-swing;
+          const bob=.10*(1-Math.cos(gait*2));
+          person.node.setAttribute('transform',`translate(${x.toFixed(3)} ${(y-bob).toFixed(3)})`);
+          person.node.setAttribute('opacity',visibility.toFixed(3));
+          person.node.dataset.progress=phase.toFixed(3);
+          person.node.dataset.stage=phase<.41?'entering':phase<.60?'inside':'leaving';
+          const leg=value=>{
+            const kneeX=.7*value,kneeY=-2.2+.3*Math.max(0,-value);
+            const footX=1.6*value,footY=-.5*Math.max(0,-value);
+            return `M 0 -4.15 Q ${kneeX.toFixed(3)} ${kneeY.toFixed(3)} ${footX.toFixed(3)} ${footY.toFixed(3)} l .6 .04`;
+          };
+          const arm=value=>`M .2 -6.85 Q ${(.85*value).toFixed(3)} -5.65 ${(1.45*value).toFixed(3)} -4.75`;
+          person.legBack.setAttribute('d',leg(opposite));person.legFront.setAttribute('d',leg(swing));
+          person.armBack.setAttribute('d',arm(swing));person.armFront.setAttribute('d',arm(opposite));
+        }
+      }
+      function tickCompanyPeople(now){
+        companyFrame=0;
+        if(companyLast)companyTime=(companyTime+(now-companyLast)/1000)%COMPANY_WALK_PERIOD;
+        companyLast=now;paintCompanyPeople();
+        companyFrame=requestAnimationFrame(tickCompanyPeople);
+      }
+      function syncCompanyPeople(){
+        if(companyFrame)cancelAnimationFrame(companyFrame);
+        companyFrame=0;companyLast=0;
+        const playing=root.dataset.page==='company'&&companyVisible&&!document.hidden&&!orbitReduced.matches&&!companyPaused;
+        companySvg.dataset.walkMotion=playing?'playing':'still';
+        paintCompanyPeople();
+        if(playing)companyFrame=requestAnimationFrame(tickCompanyPeople);
+      }
+      const companyObserver=new IntersectionObserver(entries=>{
+        companyVisible=entries[0].isIntersecting;syncCompanyPeople();
+      },{root:section,threshold:0});
+      companyObserver.observe(companySvg);
+      document.addEventListener('visibilitychange',syncCompanyPeople);
+      orbitReduced.addEventListener('change',syncCompanyPeople);
+      window.addEventListener('ucl:pagechange',syncCompanyPeople);
+      window.addEventListener('pagehide',()=>{if(companyFrame)cancelAnimationFrame(companyFrame);companyFrame=0;});
+      window.addEventListener('pageshow',syncCompanyPeople);
+      window.addEventListener('message',event=>{
+        if(event.origin!==location.origin||event.source!==window.parent||event.data?.type!=='ucl-identity')return;
+        const d=event.data;
+        if(typeof d.paused==='boolean')companyPaused=d.paused;
+        if(d.replay)companyTime=.16*COMPANY_WALK_PERIOD;
+        if(Number.isFinite(d.seek))companyTime=Math.max(0,d.seek)%COMPANY_WALK_PERIOD;
+        syncCompanyPeople();
+      });
+      // Heart, star, then a brief cigarette interlude. Each beat returns to
+      // exactly the same empty hands before the next scene is introduced.
+      const PRODUCT_PASS=7.2,PRODUCT_LOOP=PRODUCT_PASS*3;
+      const productSvg=document.querySelector('.product-exchange');
+      const productBack=productSvg.querySelector('.product-box-back');
+      const productFront=productSvg.querySelector('.product-box-front');
+      const productCargo=productSvg.querySelector('.product-cargo');
+      const productHeart=productSvg.querySelector('.product-cargo-heart');
+      const productStar=productSvg.querySelector('.product-cargo-star');
+      const productLeft=productSvg.querySelector('.product-left-hand');
+      const productRight=productSvg.querySelector('.product-right-hand');
+      const productSparkles=productSvg.querySelector('.product-sparkles');
+      const productSmoking=productSvg.querySelector('.product-smoking');
+      const productProfile=productSvg.querySelector('.product-profile');
+      const productLighter=productSvg.querySelector('.product-lighter');
+      const productFlame=productSvg.querySelector('.product-flame');
+      const productCigarette=productSvg.querySelector('.product-cigarette');
+      const productGripBack=productSvg.querySelector('.product-grip-back');
+      const productGripFront=productSvg.querySelector('.product-grip-front');
+      const productEmber=productSvg.querySelector('.product-ember');
+      const productSmoke=productSvg.querySelector('.product-exhaled-smoke');
+      const productSmokeCloud=productSvg.querySelector('.product-smoke-cloud');
+      const productSmokeRibbon=productSvg.querySelector('.product-smoke-ribbon');
+      const productSmokeThread=productSvg.querySelector('.product-smoke-thread');
+      const productSmokeHighlight=productSvg.querySelector('.product-smoke-highlight');
+      let productTime=0,productLast=0,productFrame=0,productVisible=true,productPaused=false,productWasActive=false;
+      function paintProductCigarette(time){
+        for(const element of [productBack,productFront,productCargo,productSparkles])element.setAttribute('opacity','0');
+        productSmoking.setAttribute('opacity','1');
+        const prepare=easeBetween(.5,1.15,time),rest=1-easeBetween(5.85,6.95,time);
+        const lift=easeBetween(2.25,3.15,time)*(1-easeBetween(3.85,4.6,time));
+        const lighterLift=prepare*(1-easeBetween(2.15,2.95,time));
+        // The relaxed fingers cross the cigarette. Rotate the complete grip
+        // around its contact point so the lit end points slightly downward.
+        const cigaretteAngle=-16,cigaretteRadians=cigaretteAngle*Math.PI/180;
+        const filterX=-1+3*Math.cos(cigaretteRadians),filterY=-2.45+3*Math.sin(cigaretteRadians);
+        const emberX=-1-9*Math.cos(cigaretteRadians),emberY=-2.45-9*Math.sin(cigaretteRadians);
+        const leftX=32+(53+emberX-32)*lighterLift,leftY=87+(81+emberY+5.45-87)*lighterLift;
+        // The resting hands are centered on x=42.5. Center the profile on
+        // that same axis, then bring the filter precisely to its lips.
+        const rightX=53+(39.6-filterX-53)*lift;
+        const rightY=87+(-6*prepare+(59.5-filterY-81)*lift)*rest;
+        productLeft.setAttribute('transform',`translate(${leftX.toFixed(3)} ${leftY.toFixed(3)}) scale(.58)`);
+        productRight.setAttribute('transform',`translate(${rightX.toFixed(3)} ${rightY.toFixed(3)}) scale(.58)`);
+        const props=easeBetween(.65,1.05,time)*(1-easeBetween(5.85,6.55,time));
+        productRight.setAttribute('opacity',(1-props).toFixed(3));
+        const gripTransform=`translate(${rightX.toFixed(3)} ${rightY.toFixed(3)}) rotate(${cigaretteAngle} -1 -2.45)`;
+        for(const grip of [productGripBack,productGripFront]){
+          grip.setAttribute('opacity',props.toFixed(3));
+          grip.setAttribute('transform',gripTransform);
+        }
+        productCigarette.setAttribute('opacity',props.toFixed(3));
+        productCigarette.setAttribute('transform',gripTransform);
+        productLighter.setAttribute('opacity',(easeBetween(.65,1.05,time)*(1-easeBetween(2.3,2.95,time))).toFixed(3));
+        productLighter.setAttribute('transform',`translate(${leftX.toFixed(3)} ${(leftY-3).toFixed(3)})`);
+        const flame=easeBetween(1.25,1.4,time)*(1-easeBetween(1.98,2.15,time));
+        productFlame.setAttribute('opacity',flame.toFixed(3));
+        productFlame.setAttribute('transform',`scale(${(1+.07*Math.sin(time*28)).toFixed(3)} ${(1+.12*Math.sin(time*19)).toFixed(3)})`);
+        const inhale=easeBetween(3.1,3.32,time)*(1-easeBetween(3.72,4.04,time));
+        productEmber.setAttribute('opacity',(easeBetween(1.65,1.93,time)*(.54+.46*inhale)).toFixed(3));
+        const headTurn=easeBetween(3.82,4.30,time),headScale=Math.cos(headTurn*Math.PI),headAngle=-22*headTurn;
+        productProfile.setAttribute('transform',`translate(42.5 58) rotate(${headAngle.toFixed(3)}) scale(${headScale.toFixed(4)} 1) translate(-66.2 -58)`);
+        productProfile.setAttribute('opacity',(easeBetween(2.75,3.2,time)*(1-easeBetween(5.2,6.1,time))).toFixed(3));
+        // A tapered ribbon grows from the lips, curls upward and detaches as
+        // it disperses. Every coordinate derives from the shared seekable clock.
+        const exhale=easeBetween(4.32,5.75,time),drift=easeBetween(5.2,6.85,time);
+        const smokeOpacity=easeBetween(4.32,4.58,time)*(1-easeBetween(5.55,6.85,time));
+        const radians=headAngle*Math.PI/180,lipX=-2.9*headScale,lipY=1.5;
+        const originX=42.5+lipX*Math.cos(radians)-lipY*Math.sin(radians);
+        const originY=58+lipX*Math.sin(radians)+lipY*Math.cos(radians);
+        productSmoke.setAttribute('transform',`translate(${originX.toFixed(3)} ${originY.toFixed(3)}) rotate(-12) scale(-1 1)`);
+        const mouthX=-3*drift,mouthY=-3*drift;
+        const tipX=mouthX-14*exhale,tipY=mouthY-8*exhale;
+        const spread=2.6*exhale;
+        productSmoke.setAttribute('opacity',smokeOpacity.toFixed(3));
+        productSmokeCloud.setAttribute('d',`M${mouthX} ${mouthY} C${mouthX-6*exhale} ${mouthY-3*exhale} ${tipX+10*exhale} ${tipY+11*exhale} ${tipX+3*exhale} ${tipY+6*exhale} C${tipX-3*exhale} ${tipY+4*exhale} ${tipX+4*exhale} ${tipY+2*exhale} ${tipX} ${tipY-2*exhale} C${tipX-7*exhale} ${tipY-4*exhale} ${tipX-7*exhale} ${tipY+2*exhale} ${tipX-4*exhale} ${tipY+5*exhale} C${tipX-11*exhale} ${tipY+5*exhale} ${tipX-7*exhale} ${tipY+12*exhale} ${tipX-2*exhale} ${tipY+13*exhale} C${tipX+4*exhale} ${tipY+15*exhale} ${tipX+10*exhale} ${tipY+9*exhale} ${mouthX} ${mouthY}Z`);
+        productSmokeRibbon.setAttribute('d',`M${mouthX} ${mouthY} C${mouthX-5*exhale} ${mouthY-2*exhale} ${tipX+13*exhale} ${tipY+12*exhale} ${tipX+6*exhale} ${tipY+5*exhale} S${tipX+5*exhale} ${tipY-4*exhale} ${tipX} ${tipY} C${tipX+8*exhale} ${tipY-7*exhale-spread} ${tipX-3*exhale} ${tipY+8*exhale+spread} ${tipX+9*exhale} ${tipY+7*exhale+spread} S${mouthX-6*exhale} ${mouthY+2*exhale} ${mouthX} ${mouthY}Z`);
+        const thread=`M${mouthX} ${mouthY} C${mouthX-6*exhale} ${mouthY-1.4*exhale} ${tipX+13*exhale} ${tipY+10*exhale} ${tipX+7*exhale} ${tipY+5*exhale} S${tipX+6*exhale} ${tipY-3*exhale} ${tipX} ${tipY}`;
+        productSmokeThread.setAttribute('d',thread);
+        productSmokeHighlight.setAttribute('d',thread);productSmokeHighlight.setAttribute('transform',`translate(0 ${(-.55*exhale).toFixed(3)})`);
+        productSvg.dataset.phase=time<.5?'empty':time<1.25?'preparing':time<2.15?'lighting':time<3.15?'raising':time<3.85?'inhaling':time<6.85?'exhaling':'empty';
+      }
+      function paintProductExchange(){
+        const clock=orbitReduced.matches?4.8:productTime;
+        const time=clock%PRODUCT_PASS,stage=Math.floor(clock/PRODUCT_PASS)%3,star=stage===1;
+        productSvg.dataset.item=['heart','star','cigarette'][stage];
+        productSvg.dataset.time=time.toFixed(3);productSvg.dataset.loopDuration=String(PRODUCT_LOOP);
+        if(stage===2){paintProductCigarette(time);return;}
+        productSmoking.setAttribute('opacity','0');
+        productRight.setAttribute('opacity','1');
+        const receive=easeBetween(.55,1.85,time),send=easeBetween(5.15,6.35,time);
+        const boxOpacity=easeBetween(.93,1.28,time)*(1-easeBetween(5.60,6.35,time));
+        const boxX=-24*(1-receive)+30*send;
+        const boxY=-2*(1-receive)-2*Math.sin(send*Math.PI);
+        const boxTransform=`translate(${boxX.toFixed(3)} ${boxY.toFixed(3)})`;
+        for(const box of [productBack,productFront]){
+          box.setAttribute('transform',boxTransform);box.setAttribute('opacity',boxOpacity.toFixed(3));
+        }
+        const reach=easeBetween(2.35,3.05,time)*(1-easeBetween(4.30,4.65,time));
+        const lower=easeBetween(3.45,4.30,time);
+        const catchX=-9*Math.sin(receive*Math.PI);
+        const give=easeBetween(5.15,6.05,time)*(1-easeBetween(6.05,6.95,time));
+        const settle=.6*Math.sin(receive*Math.PI);
+        const leftX=32+catchX+9*give,leftY=87+settle-1.5*give;
+        const rightX=53+catchX+2*reach+6*give,rightY=87+settle+reach*(-29+25*lower)-2*give;
+        productLeft.setAttribute('transform',`translate(${leftX.toFixed(3)} ${leftY.toFixed(3)}) rotate(${(-5*give).toFixed(3)}) scale(.58)`);
+        productRight.setAttribute('transform',`translate(${rightX.toFixed(3)} ${rightY.toFixed(3)}) rotate(${(-8*reach+4*give).toFixed(3)}) scale(.58)`);
+        const cargoOpacity=easeBetween(2.55,2.96,time)*boxOpacity;
+        const cargoY=54+26*lower+boxY;
+        const cargoAngle=(star?8:-6)*(1-lower);
+        productCargo.setAttribute('opacity',cargoOpacity.toFixed(3));
+        productCargo.setAttribute('transform',`translate(${(44+boxX).toFixed(3)} ${cargoY.toFixed(3)}) rotate(${cargoAngle.toFixed(3)}) scale(.88)`);
+        productHeart.setAttribute('display',star?'none':'inline');productStar.setAttribute('display',star?'inline':'none');
+        const sparkle=Math.sin(easeBetween(3.00,3.65,time)*Math.PI)*.62;
+        productSparkles.setAttribute('opacity',Math.max(0,sparkle).toFixed(3));
+        productSvg.dataset.phase=time<.55?'empty':time<1.85?'receiving':time<2.35?'holding':time<3.45?'presenting':time<4.65?'placing':time<5.15?'ready':time<6.35?'giving':'empty';
+      }
+      function tickProductExchange(now){
+        productFrame=0;
+        if(productLast)productTime=(productTime+(now-productLast)/1000)%PRODUCT_LOOP;
+        productLast=now;paintProductExchange();
+        productFrame=requestAnimationFrame(tickProductExchange);
+      }
+      function syncProductExchange(){
+        if(productFrame)cancelAnimationFrame(productFrame);
+        productFrame=0;productLast=0;
+        const playing=root.dataset.page==='products'&&productVisible&&!document.hidden&&!orbitReduced.matches&&!productPaused;
+        productSvg.dataset.motion=playing?'playing':'still';
+        paintProductExchange();
+        if(playing)productFrame=requestAnimationFrame(tickProductExchange);
+      }
+      const productObserver=new IntersectionObserver(entries=>{
+        productVisible=entries[0].isIntersecting;syncProductExchange();
+      },{root:section,threshold:0});
+      productObserver.observe(productSvg);
+      window.addEventListener('ucl:pagechange',()=>{
+        const active=root.dataset.page==='products';
+        if(active&&!productWasActive)productTime=0;
+        productWasActive=active;syncProductExchange();
+      });
+      document.addEventListener('visibilitychange',syncProductExchange);
+      orbitReduced.addEventListener('change',syncProductExchange);
+      window.addEventListener('pagehide',()=>{if(productFrame)cancelAnimationFrame(productFrame);productFrame=0;});
+      window.addEventListener('pageshow',syncProductExchange);
+      window.addEventListener('message',event=>{
+        if(event.origin!==location.origin||event.source!==window.parent||event.data?.type!=='ucl-identity')return;
+        const d=event.data;
+        if(typeof d.paused==='boolean')productPaused=d.paused;
+        if(d.replay)productTime=0;
+        if(Number.isFinite(d.seek))productTime=Math.max(0,d.seek)%PRODUCT_LOOP;
+        syncProductExchange();
+      });
+      // A letter arrives from the left, pauses, then opens with a small joyful hop.
+      // Two pearls trace upward arcs; no expanding fans or radial jets.
+      const CONTACT_LOOP=8.4;
+      const contactSvg=document.querySelector('.contact-envelope');
+      const contactBody=contactSvg.querySelector('.contact-envelope-body');
+      const contactClosed=contactSvg.querySelector('.contact-flap-closed');
+      const contactOpen=contactSvg.querySelector('.contact-flap-open');
+      const contactLetter=contactSvg.querySelector('.contact-letter');
+      const contactSheet=contactSvg.querySelector('.contact-letter-sheet');
+      const contactGround=contactSvg.querySelector('.contact-ground');
+      const contactArcs=['blue','red'].map(colour=>{
+        const group=contactSvg.querySelector(`.contact-arc-${colour}`);
+        return {group,trail:group.querySelector('.contact-arc-trail'),haze:group.querySelector('.contact-arc-haze'),pearl:group.querySelector('.contact-arc-pearl')};
+      });
+      let contactArrivalDistance=140;
+      let contactTime=0,contactLast=0,contactFrame=0,contactVisible=true,contactPaused=false,contactWasActive=false;
+      function paintContact(){
+        const clock=orbitReduced.matches?5.2:contactTime;
+        const time=clock-.85;
+        const arrivalProgress=Math.max(0,Math.min(1,(clock-.08)/1.12));
+        const arrive=1-Math.pow(1-arrivalProgress,3);
+        const departure=1-easeBetween(7.05,7.65,clock);
+        const visible=easeBetween(.08,.3,clock)*departure;
+        const arrivalX=-contactArrivalDistance*(1-arrive);
+        const arrivalY=2.4*(1-arrive);
+        const open=easeBetween(.75,1.48,time)*(1-easeBetween(4.65,5.35,time));
+        const flap=Math.cos(open*Math.PI);
+        contactClosed.setAttribute('opacity',flap>=0?'1':'0');
+        contactClosed.setAttribute('transform',`translate(0 74) scale(1 ${Math.max(.001,flap).toFixed(4)}) translate(0 -74)`);
+        contactOpen.setAttribute('opacity',flap<0?'1':'0');
+        contactOpen.setAttribute('transform',`translate(0 74) scale(1 ${Math.max(.001,-flap).toFixed(4)}) translate(0 -74)`);
+        const peek=easeBetween(1.18,1.95,time)*(1-easeBetween(4.38,4.95,time));
+        contactSheet.setAttribute('transform',`translate(0 ${(9-11*peek).toFixed(3)})`);
+        contactLetter.setAttribute('opacity',(easeBetween(1.12,1.5,time)*(1-easeBetween(4.62,5.06,time))).toFixed(3));
+        const anticipate=Math.sin(Math.PI*easeBetween(1.42,1.65,time));
+        const flight=easeBetween(1.65,2.05,time)-easeBetween(2.05,2.55,time);
+        const landing=Math.sin(Math.PI*easeBetween(2.55,2.83,time));
+        const settle=Math.sin(Math.PI*easeBetween(2.83,3.26,time));
+        const hop=.8*anticipate-5.3*flight+.7*landing-1.05*settle;
+        const sx=1+.025*anticipate+.025*landing-.012*flight;
+        const sy=1-.035*anticipate-.035*landing+.018*flight;
+        contactBody.setAttribute('opacity',visible.toFixed(3));
+        contactBody.setAttribute('transform',`translate(${(44+arrivalX).toFixed(3)} ${(96+hop+arrivalY).toFixed(3)}) scale(${sx.toFixed(4)} ${sy.toFixed(4)}) translate(-44 -96)`);
+        contactGround.setAttribute('rx',(19-3*flight).toFixed(3));
+        contactGround.setAttribute('opacity',((.75-.36*flight)*easeBetween(.78,1.28,clock)*departure).toFixed(3));
+        // Exact quadratic sub-arcs: each pearl rises, softens at the crest, then falls.
+        contactArcs.forEach(({group,trail,haze,pearl},index)=>{
+          const start=2.58+index*.07;
+          const u=Math.max(0,Math.min(1,(clock-start)/1.35));
+          const tail=Math.max(0,u-.43);
+          const y=v=>43.5*v*v-42*v;
+          const controlY=y(tail)+(u-tail)*(87*tail-42)/2;
+          const path=`M${(17*tail).toFixed(3)} ${y(tail).toFixed(3)} Q${(17*(tail+u)/2).toFixed(3)} ${controlY.toFixed(3)} ${(17*u).toFixed(3)} ${y(u).toFixed(3)}`;
+          trail.setAttribute('d',path);haze.setAttribute('d',path);
+          pearl.setAttribute('transform',`translate(${(17*u).toFixed(3)} ${y(u).toFixed(3)})`);
+          const light=easeBetween(0,.16,u)*(1-easeBetween(.62,1,u));
+          group.setAttribute('opacity',(light*.92).toFixed(3));
+        });
+        contactSvg.dataset.phase=clock<1.2?'arriving':clock<1.6?'arrived':time<1.42?'opening':time<1.65?'anticipating':time<2.55?'jumping':time<3.26?'settling':time<4.38?'open':time<5.35?'closing':clock<7.05?'rest':clock<7.65?'fading':'waiting';
+        contactSvg.dataset.time=clock.toFixed(3);contactSvg.dataset.loopDuration=String(CONTACT_LOOP);
+
+      }
+      function tickContact(now){
+        contactFrame=0;
+        if(contactLast)contactTime=(contactTime+(now-contactLast)/1000)%CONTACT_LOOP;
+        contactLast=now;paintContact();contactFrame=requestAnimationFrame(tickContact);
+      }
+      function syncContact(){
+        if(contactFrame)cancelAnimationFrame(contactFrame);
+        contactFrame=0;contactLast=0;
+        const playing=root.dataset.page==='contact'&&contactVisible&&!document.hidden&&!orbitReduced.matches&&!contactPaused;
+        if(root.dataset.page==='contact'){
+          const bounds=contactSvg.getBoundingClientRect();
+          if(bounds.width>0)contactArrivalDistance=Math.max(72,bounds.left/(bounds.width/120)+72);
+        }
+        contactSvg.dataset.motion=playing?'playing':'still';paintContact();
+        if(playing)contactFrame=requestAnimationFrame(tickContact);
+      }
+      const contactObserver=new IntersectionObserver(entries=>{
+        contactVisible=entries[0].isIntersecting;syncContact();
+      },{root:section,threshold:0});
+      contactObserver.observe(contactSvg);
+      window.addEventListener('ucl:pagechange',()=>{
+        const active=root.dataset.page==='contact';
+        if(active&&!contactWasActive)contactTime=0;
+        contactWasActive=active;syncContact();
+      });
+      document.addEventListener('visibilitychange',syncContact);
+      window.addEventListener('resize',syncContact);
+      orbitReduced.addEventListener('change',syncContact);
+      window.addEventListener('pagehide',()=>{if(contactFrame)cancelAnimationFrame(contactFrame);contactFrame=0;});
+      window.addEventListener('pageshow',syncContact);
+      window.addEventListener('message',event=>{
+        if(event.origin!==location.origin||event.source!==window.parent||event.data?.type!=='ucl-identity')return;
+        const d=event.data;
+        if(typeof d.paused==='boolean')contactPaused=d.paused;
+        if(d.replay)contactTime=0;
+        if(Number.isFinite(d.seek))contactTime=Math.max(0,d.seek)%CONTACT_LOOP;
+        syncContact();
+      });
+      let pageAnimations=[];
+      function fadePageContent(page){
+        pageAnimations.forEach(animation=>animation.cancel());pageAnimations=[];
+        if(orbitReduced.matches||page==='home')return;
+        const article={research:researchContent,company:companyContent,products:productsContent,contact:contactContent}[page];
+        for(const node of [sectionHeading,article]){
+          pageAnimations.push(node.animate([{opacity:0},{opacity:1}],{duration:180,easing:'cubic-bezier(.2,.65,.35,1)'}));
+        }
+      }
+      orbitReduced.addEventListener('change',()=>{if(orbitReduced.matches){pageAnimations.forEach(animation=>animation.cancel());pageAnimations=[];}});
+      document.querySelectorAll('[data-scroll-target]').forEach(button=>button.addEventListener('click',()=>{
+        const target=document.getElementById(button.dataset.scrollTarget);
+        const y=target.getBoundingClientRect().top-section.getBoundingClientRect().top+section.scrollTop-document.querySelector('.site-header').getBoundingClientRect().height-24;
+        section.scrollTo({top:Math.max(0,y),behavior:orbitReduced.matches?'instant':'smooth'});
+        target.setAttribute('tabindex','-1');target.focus({preventScroll:true});
+      }));
+      links.forEach(link=>link.addEventListener('click',event=>{
+        if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+        if(link.dataset.pageLink!==root.dataset.page)return;
+        event.preventDefault();
+        section.scrollTo({top:0,behavior:orbitReduced.matches?'instant':'smooth'});
+        sectionHeading.focus({preventScroll:true});
+      }));
+      let language='ja';
+      try{language=localStorage.getItem('ucl-site-language')==='en'?'en':'ja';}catch{}
+      const requestedLanguage=new URLSearchParams(location.search).get('lang');
+      if(requestedLanguage==='en'||requestedLanguage==='ja')language=requestedLanguage;
+      function render(focus=false){
+        const urlLanguage=new URLSearchParams(location.search).get('lang');
+        if(urlLanguage==='en'||urlLanguage==='ja')language=urlLanguage;
+        const previousPage=root.dataset.page;
+        const requestedPage=location.hash.slice(1);
+        const page=links.some(link=>link.dataset.pageLink===requestedPage)?requestedPage:'home';
+        const words=copy[language];
+        root.lang=language;root.dataset.page=page;
+        document.querySelector('[data-home-label]').textContent=words.home;
+        document.querySelector('.language-switch').setAttribute('aria-label',language==='ja'?'言語':'Language');
+        document.querySelector('.global-nav').setAttribute('aria-label',words.navigation);
+        document.querySelectorAll('[data-language]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.language===language)));
+        for(const link of links){
+          const key=link.dataset.pageLink;
+          const lines=words[key];
+          link.setAttribute('aria-label',lines.join(' '));
+          link.querySelector('.nav-label').replaceChildren(...lines.map(text=>{
+            const line=document.createElement('span');line.textContent=text;return line;
+          }));
+          if(key===page)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');
+        }
+        if(page==='home')homeLink.setAttribute('aria-current','page');else homeLink.removeAttribute('aria-current');
+        section.hidden=page==='home';homeView.hidden=page!=='home';
+        researchContent.hidden=page!=='research';
+        companyContent.hidden=page!=='company';
+        productsContent.hidden=page!=='products';
+        contactContent.hidden=page!=='contact';
+        window.renderUclContent?.(language);
+        renderContactCopy();
+        if(page!==previousPage){section.scrollTop=0;homeView.scrollTop=0;syncHomeScroll();}
+        if(page!=='home'){
+          if(page==='products'){
+            const lines=language==='en'?['Products &','Services']:['製品・','サービス'];
+            sectionHeading.replaceChildren(...lines.map((text,index)=>{
+              const span=document.createElement('span');span.className='heading-line';span.textContent=text+(index===0?' ':'');return span;
+            }));
+          }else sectionHeading.textContent=words[page].join(' ');
+          sectionArt.dataset.kind=page;
+          staticIcon.setAttribute('href',`#icon-${page}`);
+        }
+        document.title=language==='ja'
+          ? (page==='home'?'株式会社Universion Closure Logic｜公式サイト':`${words[page].join(' ')}｜株式会社Universion Closure Logic`)
+          : (page==='home'?'Universion Closure Logic — Official Website':`${words[page].join(' ')} · Universion Closure Logic`);
+        syncOrbit();
+        window.dispatchEvent(new Event('ucl:pagechange'));
+        if(page!==previousPage)fadePageContent(page);
+        if(focus)(page==='home'?homeHeading:sectionHeading).focus({preventScroll:true});
+      }
+      document.querySelectorAll('[data-language]').forEach(button=>button.addEventListener('click',()=>{
+        language=button.dataset.language;
+        const url=new URL(location.href);url.searchParams.set('lang',language);
+        history.replaceState(history.state,'',url);
+        try{localStorage.setItem('ucl-site-language',language);}catch{}
+        render();
+      }));
+      const contactWords={
+        en:{lead:'Tell us what you have in mind.',intro:'Questions, ideas, or a project to discuss.',direct:'You can also reach us by email.',name:'Name / Company',optional:'Optional',email:'Email',required:'Required',message:'Message',send:'Send message',sending:'Sending…',privacy:'We use your information to respond to your inquiry.',privacyTitle:'How your message is handled',privacyDetail:'Your name, email address, and message are delivered to us through FormSubmit. That service retains submissions for 30 days.',privacyLink:'FormSubmit privacy policy',thanks:'Thank you.',completeTitle:'Your inquiry has been sent.',completeNote:'We’ll review your message and reply to the email address you provided.',again:'Send another message',formLabel:'Contact form',emailMissing:'Please enter your email address.',emailInvalid:'Please enter a valid email address.',messageMissing:'Please add a message.',invalid:'Please check the highlighted fields.',failed:'We couldn’t confirm your submission. Your message is still here. Please try again or email us directly.',timeout:'The request timed out, so we couldn’t confirm your submission. Your message is still here. Please wait a moment before retrying or email us directly.',notReady:'The form is temporarily unavailable. Your message is still here. Please email us directly.'},
+        ja:{lead:'どんなことでも、お聞かせください。',intro:'ご質問、アイデア、お仕事のご相談など。',direct:'メールでもお問い合わせいただけます。',name:'お名前・会社名',optional:'任意',email:'メールアドレス',required:'必須',message:'お問い合わせ内容',send:'メッセージを送る',sending:'送信中…',privacy:'入力内容はお問い合わせへの対応に利用します。',privacyTitle:'送信内容の取り扱い',privacyDetail:'お名前、メールアドレス、お問い合わせ内容は、メール送信サービス FormSubmit を通じて当社へ届きます。送信内容は同サービスに30日間保存されます。',privacyLink:'FormSubmit のプライバシーポリシー',thanks:'ありがとうございます。',completeTitle:'お問い合わせを送信しました。',completeNote:'内容を確認し、ご入力のメールアドレスへ返信いたします。',again:'別のお問い合わせを送る',formLabel:'お問い合わせフォーム',emailMissing:'メールアドレスを入力してください。',emailInvalid:'メールアドレスの形式を確認してください。',messageMissing:'お問い合わせ内容を入力してください。',invalid:'入力欄のメッセージをご確認ください。',failed:'送信を確認できませんでした。入力内容は残っています。もう一度お試しいただくか、メールでお問い合わせください。',timeout:'通信に時間がかかり、送信を確認できませんでした。入力内容は残っています。少し待って再送するか、メールでお問い合わせください。',notReady:'現在フォームを利用できません。入力内容は残っています。メールでお問い合わせください。'}
+      };
+      const contactForm=contactContent.querySelector('form');
+      const contactCompose=contactContent.querySelector('.contact-compose');
+      const contactComplete=contactContent.querySelector('.contact-complete');
+      const contactButton=contactContent.querySelector('.contact-send');
+      const contactAnnouncement=contactContent.querySelector('#contact-announcement');
+      const contactEmail=contactContent.querySelector('#contact-email');
+      const contactMessage=contactContent.querySelector('#contact-message');
+      const contactStatus=contactContent.querySelector('.contact-status');
+      let contactSubmitting=false;
+      contactButton.disabled=false;
+      function contactErrorKey(input){
+        if(!input.value.trim())return input===contactEmail?'emailMissing':'messageMissing';
+        if(input===contactEmail&&input.validity.typeMismatch)return 'emailInvalid';
+        return '';
+      }
+      function showContactError(input){
+        const key=contactErrorKey(input);
+        const error=contactContent.querySelector(`#${input.id}-error`);
+        input.setAttribute('aria-invalid',String(!!key));
+        error.dataset.errorKey=key;error.textContent=key?contactWords[language][key]:'';error.hidden=!key;
+        return !key;
+      }
+      function renderContactCopy(){
+        contactContent.lang=language;
+        contactContent.querySelectorAll('[data-contact-copy]').forEach(node=>{
+          const key=node.dataset.contactCopy;
+          node.textContent=contactWords[language][key==='send'&&contactSubmitting?'sending':key];
+        });
+        contactForm.setAttribute('aria-label',contactWords[language].formLabel);
+        contactContent.querySelectorAll('[data-error-key]').forEach(node=>{
+          if(node.dataset.errorKey)node.textContent=contactWords[language][node.dataset.errorKey];
+        });
+        if(contactStatus.dataset.errorKey)contactAnnouncement.textContent=contactWords[language][contactStatus.dataset.errorKey];
+      }
+      [contactEmail,contactMessage].forEach(input=>{
+        input.addEventListener('blur',()=>{if(input.value||input.getAttribute('aria-invalid')==='true')showContactError(input);});
+        input.addEventListener('input',()=>{if(input.hasAttribute('aria-invalid'))showContactError(input);});
+      });
+      function setContactSubmitting(submitting){
+        contactSubmitting=submitting;
+        contactForm.dataset.state=submitting?'sending':'idle';
+        contactForm.setAttribute('aria-busy',String(submitting));contactButton.disabled=submitting;
+        contactForm.querySelectorAll('input,textarea').forEach(input=>input.readOnly=submitting);
+        renderContactCopy();
+      }
+      contactForm.addEventListener('submit',async event=>{
+        event.preventDefault();
+        if(contactSubmitting)return;
+        contactStatus.hidden=true;contactStatus.textContent='';delete contactStatus.dataset.errorKey;
+        contactEmail.value=contactEmail.value.trim();
+        const valid=[contactEmail,contactMessage].map(showContactError).every(Boolean);
+        if(!valid){
+          contactAnnouncement.textContent=contactWords[language].invalid;
+          contactForm.querySelector('[aria-invalid="true"]').focus();return;
+        }
+        const fields=Object.fromEntries(new FormData(contactForm));fields.language=language;
+        setContactSubmitting(true);contactAnnouncement.textContent=contactWords[language].sending;
+        try{
+          await sendContactMessage(fields);
+          contactForm.reset();
+          [contactEmail,contactMessage].forEach(input=>input.removeAttribute('aria-invalid'));
+          contactCompose.hidden=true;contactComplete.hidden=false;
+          contactAnnouncement.textContent=contactWords[language].completeNote;
+          if(root.dataset.page==='contact'){
+            section.scrollTo({top:0,behavior:orbitReduced.matches?'instant':'smooth'});
+            contactContent.querySelector('#contact-complete-heading').focus({preventScroll:true});
+          }
+          contactTime=2.8;syncContact();
+        }catch(error){
+          const key=['invalid','timeout','notReady'].includes(error.code)?error.code:'failed';
+          contactStatus.dataset.errorKey=key;contactStatus.textContent=contactWords[language][key];contactStatus.hidden=false;
+          contactAnnouncement.textContent=contactWords[language][key];
+        }finally{setContactSubmitting(false);}
+      });
+      contactContent.querySelector('.contact-again').addEventListener('click',()=>{
+        contactComplete.hidden=true;contactCompose.hidden=false;contactAnnouncement.textContent='';
+        contactContent.querySelector('#contact-name').focus({preventScroll:true});
+      });
+      window.addEventListener('popstate',()=>render(true));
+      window.addEventListener('hashchange',()=>render(true));
+      render();
+    })();
+  </script>
+  <script type="module" src="ucl-identity.js?v=contact-20261012-1"></script>
 </body>
 </html>

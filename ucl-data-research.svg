@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" fill="none">
+  <defs>
+    <linearGradient id="glass" x1="176" y1="93" x2="545" y2="271" gradientUnits="userSpaceOnUse"><stop stop-color="#fff" stop-opacity=".92"/><stop offset=".5" stop-color="#e3ecf9" stop-opacity=".67"/><stop offset="1" stop-color="#eadcef" stop-opacity=".64"/></linearGradient>
+    <linearGradient id="edge" x1="165" y1="77" x2="553" y2="288" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset=".3" stop-color="#acbfd5" stop-opacity=".86"/><stop offset=".8" stop-color="#adaac9" stop-opacity=".9"/><stop offset="1" stop-color="#fff"/></linearGradient>
+    <linearGradient id="blue" x1="412" y1="163" x2="472" y2="266" gradientUnits="userSpaceOnUse"><stop stop-color="#dfedfb"/><stop offset="1" stop-color="#b5cce6" stop-opacity=".78"/></linearGradient>
+    <linearGradient id="rose" x1="488" y1="152" x2="506" y2="266" gradientUnits="userSpaceOnUse"><stop stop-color="#f2e6f6"/><stop offset="1" stop-color="#d2b8d8" stop-opacity=".74"/></linearGradient>
+    <radialGradient id="pearl"><stop stop-color="#fff"/><stop offset=".3" stop-color="#f3fcff"/><stop offset="1" stop-color="#a9c7e1"/></radialGradient>
+    <filter id="blur" x="-40%" y="-120%" width="180%" height="340%"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+  <ellipse cx="364" cy="293" rx="205" ry="14" fill="#91a5bf" opacity=".13" filter="url(#blur)"/>
+  <path d="M227 220c47 0 54-54 95-54s39 35 77 35" stroke="#afc2d9" stroke-opacity=".76" stroke-width="1" stroke-dasharray="2.5 6"/>
+  <path d="M202 130c46-11 78-32 110-21 21 7 41 16 70 9" stroke="#c6b5d6" stroke-opacity=".64" stroke-width="1" stroke-dasharray="2.5 6"/>
+  <g stroke="url(#edge)" stroke-width="1" stroke-linejoin="round">
+    <path d="m147 144 88-27 55 29v115l-143 29Z" fill="#d9e5f5" fill-opacity=".43"/>
+    <path d="m166 116 85-22 45 32v118l-130 34Z" fill="#eef2fb" fill-opacity=".66"/>
+    <path d="m189 86 83-16 34 29v118l-117 28Z" fill="url(#glass)"/>
+    <path d="m272 70 1 34 33-5" fill="#e7deef" fill-opacity=".5"/>
+    <path d="m195 88 70-14" stroke="#fff" stroke-width="1.3"/>
+  </g>
+  <g stroke="#a3b8d1" stroke-opacity=".67" stroke-width="2.2" stroke-linecap="round">
+    <path d="m205 126 42-9m-42 23 75-16m-75 30 54-12m-54 28 67-15"/>
+    <path d="m205 196 20-4m7-2 19-4m7-2 22-4" stroke="#bdabc9"/>
+  </g>
+  <g stroke="url(#edge)" stroke-linejoin="round" stroke-width="1">
+    <path d="m382 67 186 32a12 12 0 0 1 10 13v162a9 9 0 0 1-10 9l-186-32a12 12 0 0 1-10-13V76a9 9 0 0 1 10-9Z" fill="#cbd8e9" fill-opacity=".29"/>
+    <path d="m370 77 186 32a12 12 0 0 1 10 13v162a9 9 0 0 1-10 9l-186-32a12 12 0 0 1-10-13V86a9 9 0 0 1 10-9Z" fill="url(#glass)"/>
+    <path d="m371 79 181 31" stroke="#fff" stroke-width="1.3"/>
+  </g>
+  <path d="m379 112 34 6m10 2 37 6" stroke="#a4b6ce" stroke-opacity=".74" stroke-width="3" stroke-linecap="round"/>
+  <path d="m382 148 164 28m-164-2 164 28m-164-1 164 28m-164-1 164 28M417 138v118m43-110v117m43-110v118" stroke="#b2c1d6" stroke-opacity=".5" stroke-width=".7"/>
+  <g stroke="#a7bbd3" stroke-width=".8" stroke-linejoin="round">
+    <path d="m392 213 15 2v40l-15-2Z" fill="url(#blue)"/>
+    <path d="m430 186 16 3v72l-16-3Z" fill="url(#blue)"/>
+    <path d="m473 197 16 3v68l-16-3Z" fill="url(#blue)"/>
+    <path d="m516 167 16 3v106l-16-3Z" fill="url(#rose)" stroke="#baabc9"/>
+  </g>
+  <path d="m391 187 47-27 41 17 48-45" stroke="#fff" stroke-opacity=".8" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m391 187 47-27 41 17 48-45" stroke="#a2bad5" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="url(#pearl)" stroke="#b3c5da" stroke-width=".6"><circle cx="391" cy="187" r="3.2"/><circle cx="438" cy="160" r="3.2"/><circle cx="479" cy="177" r="3.2"/><circle cx="527" cy="132" r="3.7"/></g>
+  <circle cx="322" cy="166" r="5.5" fill="url(#pearl)"/>
+  <circle cx="328" cy="109" r="3.6" fill="#d7c3df"/>
+  <circle cx="323" cy="248" r="2.2" fill="#adc8dd"/>
+  <path d="M596 164v-7m-3.5 3.5h7" stroke="#bcaed0" stroke-width=".8"/>
+</svg>

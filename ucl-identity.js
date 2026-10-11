@@ -1,27 +1,29 @@
 import * as THREE from 'three';
-import { SVGLoader } from './ucl-SVGLoader.js';
+import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
 
-// Canonical SVG outlines, extruded in place. The ambient field retains Opal v3's
-// closed 48-second path. The complete identity is stationary: only light moves.
+// Canonical SVG outlines remain stationary. Their dark fill samples the same
+// closed 48-second Opal field as the background, with an inverted slate palette.
 const root=document.documentElement;
 const canvas=document.querySelector('.identity-canvas');
+const homeView=document.querySelector('.home-view');
 const params=new URLSearchParams(location.search);
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-const LOOP=48, TAU=Math.PI*2, REVEAL_SECONDS=.9;
+const LOOP=48, REVEAL_SECONDS=.9;
+const IDENTITY_SCALE=.5;
 const state={composition:params.get('composition')==='mark'?'mark':'signature',paused:params.get('paused')==='1',time:0,ambient:0,ready:false};
 root.dataset.composition=state.composition;
 const clamp=THREE.MathUtils.clamp;
 const smooth=x=>{const t=clamp(x,0,1);return t*t*(3-2*t);};
 let renderer,scene,camera,background,backgroundScene,backgroundCamera,backgroundMaterial;
-let mark,name,markParts=[],letters=[],materials=[];
+let mark,name,markParts=[],letters=[];
 let nameSurface,nameEdge;
 let layout,frame=0,last=0,lastStatus=0,compositionAmount=state.composition==='signature'?1:0;
-let keyLight,rimLight,fillLight,groundGlow;
+let groundGlow;
 let presented=false,revealAt=0;
-const glassUniforms={uGlassPhase:{value:0}};
+const inkUniforms={uOpalField:{value:null},uIdentityHeight:{value:1},uScrollWorld:{value:0}};
 
 function report(error){
-  const detail={type:'ucl-identity-status',renderer:root.dataset.renderer,revision:'opal-glass-4',phase:'light',startup:root.dataset.startup,composition:state.composition,motion:state.paused||reduced.matches?'paused':'playing',time:+state.time.toFixed(2),ambient:+state.ambient.toFixed(2)};
+  const detail={type:'ucl-identity-status',renderer:root.dataset.renderer,revision:'opal-ink-2',phase:'ink',startup:root.dataset.startup,composition:state.composition,motion:state.paused||reduced.matches?'paused':'playing',time:+state.time.toFixed(2),ambient:+state.ambient.toFixed(2)};
   if(renderer){detail.viewport=`${innerWidth} × ${innerHeight}`;detail.draws=renderer.info.render.calls;detail.triangles=renderer.info.render.triangles;}
   if(error)detail.error=error;
   root.dataset.phase=detail.phase;
@@ -29,72 +31,48 @@ function report(error){
   window.parent.postMessage(detail,location.origin);
 }
 
-function makeStudio(){
-  // HDR softboxes and negative fill: contrasting reflections make clear glass
-  // readable on white, without a black outline or an unrelated chrome texture.
-  const width=768,height=384,data=new Float32Array(width*height*4);
-  const wrap=(a,b)=>Math.min(Math.abs(a-b),1-Math.abs(a-b));
-  const box=(u,v,x,y,w,h,soft)=>{
-    const dx=wrap(u,x)/w,dy=Math.abs(v-y)/h;
-    return (1-smooth((dx-1+soft)/soft))*(1-smooth((dy-1+soft)/soft));
-  };
-  for(let y=0;y<height;y++)for(let x=0;x<width;x++){
-    const u=x/width,v=y/height,i=(y*width+x)*4;
-    const ceiling=.05+.14*smooth((v-.3)/.5);
-    let r=ceiling*.91,g=ceiling*.94,b=ceiling*1.05;
-    const panels=[
-      [.67,.63,.075,.32,.92,6.0,6.1,6.4],
-      [.88,.50,.055,.31,.90,3.3,4.0,5.7],
-      [.53,.72,.16,.10,.94,4.1,3.8,3.3],
-      [.21,.58,.18,.24,.90,1.7,1.7,1.85],
-      [.96,.48,.09,.36,1.0,1.1,.55,1.05],
-      [.55,.43,.085,.36,1.0,.65,1.05,1.85],
-      [.76,.80,.18,.07,.96,3.6,3.1,2.4]
-    ];
-    for(const [px,py,pw,ph,soft,pr,pg,pb] of panels){const m=box(u,v,px,py,pw,ph,soft);r+=m*pr;g+=m*pg;b+=m*pb;}
-    data[i]=r;data[i+1]=g;data[i+2]=b;data[i+3]=1;
-  }
-  const texture=new THREE.DataTexture(data,width,height,THREE.RGBAFormat,THREE.FloatType);
-  texture.mapping=THREE.EquirectangularReflectionMapping;
-  texture.needsUpdate=true;
-  const pmrem=new THREE.PMREMGenerator(renderer);
-  const target=pmrem.fromEquirectangular(texture);
-  texture.dispose();pmrem.dispose();
-  return target.texture;
-}
-
-function material(overrides={}){
-  const m=new THREE.MeshPhysicalMaterial({
-    color:0xe4edfc,metalness:.015,roughness:.05,transmission:.96,
-    thickness:7,ior:1.52,attenuationColor:0xccdff7,attenuationDistance:1.8,
-    iridescence:.42,iridescenceIOR:1.32,iridescenceThicknessRange:[220,380],
-    clearcoat:.65,clearcoatRoughness:.075,envMapIntensity:1.30,
-    dispersion:.12,...overrides
+function material(edge=0){
+  return new THREE.ShaderMaterial({
+    uniforms:{...inkUniforms,uEdge:{value:edge}},
+    vertexShader:`
+      varying vec3 vIdentityWorld;
+      varying vec3 vIdentityNormal;
+      void main(){
+        vec4 world=modelMatrix*vec4(position,1.);
+        vIdentityWorld=world.xyz;
+        vIdentityNormal=normalize(normalMatrix*normal);
+        gl_Position=projectionMatrix*viewMatrix*world;
+      }
+    `,
+    fragmentShader:`
+      uniform sampler2D uOpalField;
+      uniform float uIdentityHeight;
+      uniform float uScrollWorld;
+      uniform float uEdge;
+      varying vec3 vIdentityWorld;
+      varying vec3 vIdentityNormal;
+      void main(){
+        // Expand the full ambient field across the lockup. One world-space
+        // mapping keeps the color continuous across every disconnected glyph.
+        vec2 identityPosition=vIdentityWorld.xy-vec2(0.,uScrollWorld);
+        vec2 uv=identityPosition/(uIdentityHeight*vec2(1.04,1.52))+vec2(.5,.52);
+        vec3 field=texture2D(uOpalField,clamp(uv,vec2(.001),vec2(.999))).rgb;
+        vec3 opal=mix(field*12.92,1.055*pow(max(field,vec3(0.)),vec3(1./2.4))-.055,step(vec3(.0031308),field));
+        vec3 inverse=vec3(1.)-opal;
+        // The white Opal field has a deliberately quiet center. Expand its
+        // small inverse values into visible midtones instead of crushing them
+        // into the dark menu base; preserve complementary color differences.
+        vec3 luminous=pow(vec3(1.)-exp(-max(inverse,vec3(0.))*5.2),vec3(.78));
+        vec3 ink=vec3(51.,59.,75.)/255.+luminous*.64;
+        float bevel=1.-pow(abs(normalize(vIdentityNormal).z),8.);
+        ink=clamp(ink,vec3(.16),vec3(.90))*(1.-uEdge*.07-bevel*.035);
+        vec3 linearInk=mix(ink/12.92,pow((ink+.055)/1.055,vec3(2.4)),step(vec3(.04045),ink));
+        gl_FragColor=vec4(linearInk,1.);
+        #include <colorspace_fragment>
+      }
+    `,
+    toneMapped:false
   });
-  m.onBeforeCompile=shader=>{
-    Object.assign(shader.uniforms,glassUniforms);
-    shader.vertexShader='varying vec3 vIdentityWorld;\n'+shader.vertexShader;
-    shader.vertexShader=shader.vertexShader.replace('#include <worldpos_vertex>','#include <worldpos_vertex>\nvIdentityWorld=(modelMatrix*vec4(transformed,1.0)).xyz;');
-    shader.fragmentShader='uniform float uGlassPhase;\nvarying vec3 vIdentityWorld;\n'+shader.fragmentShader;
-    shader.fragmentShader=shader.fragmentShader.replace('#include <normal_fragment_maps>',
-      `#include <normal_fragment_maps>\nfloat faceFactor=pow(abs(normal.z),12.0);\nvec2 lens=vec2(sin(vIdentityWorld.y*1.2+vIdentityWorld.x*.5)*.055,cos(vIdentityWorld.x*1.1-vIdentityWorld.y*.4)*.035);\nnormal=normalize(normal+vec3(lens*faceFactor,0.));`);
-    shader.fragmentShader=shader.fragmentShader.replace('#include <opaque_fragment>',
-      `
-        float glassAxis=vIdentityWorld.x*.82+vIdentityWorld.y*.30;
-        float lightCenter=2.35*sin(uGlassPhase-.60);
-        float lightDistance=(glassAxis-lightCenter)/.72;
-        float softReflection=exp(-lightDistance*lightDistance);
-        float fillDistance=(glassAxis-lightCenter-.78)/1.18;
-        float negativeFill=exp(-fillDistance*fillDistance);
-        float filmDistance=(glassAxis-lightCenter+.48)/.30;
-        float film=exp(-filmDistance*filmDistance);
-        vec3 filmColor=mix(vec3(.62,.78,1.),vec3(1.,.77,.58),.5+.5*sin(uGlassPhase+1.1));
-        outgoingLight*=1.-negativeFill*.16;
-        outgoingLight+=softReflection*vec3(.20,.21,.24)+film*filmColor*.075;
-      \n#include <opaque_fragment>`);
-  };
-  m.customProgramCacheKey=()=> 'ucl-opal-glass-3';
-  materials.push(m);return m;
 }
 
 function makeParts(data,{depth,bevel,curveSegments,center},surface,edge){
@@ -117,7 +95,7 @@ function makeParts(data,{depth,bevel,curveSegments,center},surface,edge){
 
 function combineWordmark(parts){
   // The name is fixed, so batch its 22 glyphs into two material draws instead
-  // of maintaining a separate animated, transmissive mesh for every letter.
+  // of maintaining a separate mesh for every letter.
   const groups=[[],[]],attributes={},sizes={};let vertices=0;
   for(const {mesh,base} of parts){
     const geometry=mesh.geometry;geometry.translate(base.x,base.y,base.z);
@@ -144,7 +122,8 @@ function combineWordmark(parts){
 async function init(){
   root.dataset.startup='preparing';
   renderer=new THREE.WebGLRenderer({canvas,alpha:false,antialias:true,powerPreference:'high-performance'});
-  renderer.setPixelRatio(Math.min(Math.max(devicePixelRatio||1,1.5),1.75));
+  // Two device pixels per CSS pixel keep the thin curved surfaces smooth.
+  renderer.setPixelRatio(2);
   renderer.outputColorSpace=THREE.SRGBColorSpace;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure=1.04;
@@ -152,7 +131,6 @@ async function init(){
   scene=new THREE.Scene();
   camera=new THREE.PerspectiveCamera(32,innerWidth/innerHeight,.1,100);
   camera.position.set(0,0,10.6);
-  scene.environment=makeStudio();
 
   const [g,n,frag]=await Promise.all([
     new SVGLoader().loadAsync('ucl-g.svg'),
@@ -177,21 +155,18 @@ async function init(){
   }));
   backdrop.frustumCulled=false;backdrop.renderOrder=-1000;scene.add(backdrop);
 
+  inkUniforms.uOpalField.value=background.texture;
   const front=material();
-  const edge=material({color:0xaebed8,transmission:.88,roughness:.055,metalness:.12,iridescence:.55,thickness:7,attenuationColor:0xcbdcf6,attenuationDistance:1.8});
+  const edge=material(1);
   mark=new THREE.Group();
   markParts=makeParts(g,{depth:5,bevel:.7,curveSegments:10,center:[128,128]},front,edge);
   markParts.forEach(p=>mark.add(p.mesh));scene.add(mark);
   name=new THREE.Group();
-  // Share the glass palette and world-space light; a faintly denser tint keeps
-  // the small wordmark readable without a separate dark lettering treatment.
-  nameSurface=material({color:0xbac9df,transmission:.94});
-  nameEdge=material({color:0xaebed8,transmission:.88,roughness:.055,metalness:.12,iridescence:.55,attenuationColor:0xcbdcf6,attenuationDistance:1.8});
+  // The wordmark shares the exact same continuous field as the symbol.
+  nameSurface=material();
+  nameEdge=material(1);
   letters=makeParts(n,{depth:1.5,bevel:.85,curveSegments:8,center:[757.878,45.0115]},nameSurface,nameEdge);
   name.add(combineWordmark(letters));scene.add(name);
-  keyLight=new THREE.DirectionalLight(0xfff7ed,1.6);keyLight.position.set(-3,5,8);scene.add(keyLight);
-  rimLight=new THREE.DirectionalLight(0xc8dcff,2);rimLight.position.set(3,2,-1);scene.add(rimLight);
-  fillLight=new THREE.DirectionalLight(0xf7d7e9,.8);fillLight.position.set(-4,-2,3);scene.add(fillLight);
 
   const glowCanvas=document.createElement('canvas');glowCanvas.width=256;glowCanvas.height=64;
   const glow=glowCanvas.getContext('2d');
@@ -207,7 +182,7 @@ async function init(){
   await renderer.compileAsync(scene,camera);
   state.ready=true;
   if(reduced.matches)state.time=6;
-  // Warm the actual background, transmission and main render passes while
+  // Warm the actual background and identity render passes while
   // hidden. Shader compilation alone does not prepare every first-use pass.
   draw();
   await new Promise(requestAnimationFrame);
@@ -228,35 +203,33 @@ function resize(){
   background.setSize(size.x,size.y);backgroundMaterial.uniforms.resolution.value.copy(size);
   const worldHeight=2*Math.tan(THREE.MathUtils.degToRad(camera.fov*.5))*camera.position.z;
   const unit=worldHeight/innerHeight;
-  const markPx=Math.min(innerHeight*.48,innerWidth*.66*208/199.324,560);
-  const namePx=Math.min(innerWidth*.82,780);
+  const markPx=Math.min(innerHeight*.48,innerWidth*.66*208/199.324,560)*IDENTITY_SCALE;
+  const namePx=Math.min(innerWidth*.82,780)*IDENTITY_SCALE;
   const nameHeight=namePx*74.023/1499.756;
-  const gap=clamp(innerHeight*.053,28,56);
+  const gap=clamp(innerHeight*.053,28,56)*IDENTITY_SCALE;
   layout={unit,markPx,namePx,nameHeight,gap};
   mark.scale.setScalar(markPx/208*unit);
   name.scale.setScalar(namePx/1499.756*unit);
-  // Three.js scales optical thickness with the object. Compensate for the
-  // different SVG units so the name retains the mark's glass density.
-  nameSurface.thickness=nameEdge.thickness=7*mark.scale.x/name.scale.x;
+  inkUniforms.uIdentityHeight.value=markPx*unit;
   if(state.ready)draw();
 }
 
 function pose(){
-  const angle=TAU*state.ambient/LOOP;
-  glassUniforms.uGlassPhase.value=angle;
+  const home=!root.dataset.page||root.dataset.page==='home';
+  mark.visible=home;groundGlow.visible=home;
   const {unit,markPx,nameHeight,gap}=layout;
+  const scrollWorld=home?(homeView?.scrollTop||0)*unit:0;
+  inkUniforms.uScrollWorld.value=scrollWorld;
   const stack=(gap+nameHeight)*compositionAmount;
-  mark.position.y=stack*.5*unit;
+  mark.position.y=stack*.5*unit+scrollWorld;
   mark.rotation.set(.018,-.035,0);
-  name.position.y=-(markPx*.5+gap+nameHeight*.5-stack*.5)*unit;
+  name.position.y=-(markPx*.5+gap+nameHeight*.5-stack*.5)*unit+scrollWorld;
   groundGlow.position.y=mark.position.y-(markPx*.5+gap*.48)*unit;
   groundGlow.scale.set(markPx*.9*unit,markPx*.12*unit,1);
   groundGlow.material.opacity=.25;
-  name.visible=state.composition==='signature';
+  name.visible=home&&state.composition==='signature';
   name.rotation.set(0,0,0);
-  scene.environmentRotation.set(.012*Math.sin(angle),.58+.26*Math.sin(angle)+.035*Math.sin(angle*2),0);
-  keyLight.position.set(-3+.8*Math.sin(angle),5+.35*Math.cos(angle),8);
-  rimLight.position.set(3+.5*Math.sin(angle),2+.3*Math.cos(angle),-1);
+
 }
 
 function draw(){
@@ -301,9 +274,61 @@ window.addEventListener('message',event=>{
   sync();
 });
 window.addEventListener('resize',resize,{passive:true});
+window.addEventListener('ucl:pagechange',draw);
+window.addEventListener('ucl:homescroll',()=>{if(!frame)draw();});
 document.addEventListener('visibilitychange',sync);
 reduced.addEventListener('change',sync);
 canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();state.ready=false;root.dataset.renderer='fallback';if(frame)cancelAnimationFrame(frame);report('Graphics context lost; canonical SVG fallback displayed.');});
 window.addEventListener('pagehide',()=>{if(frame)cancelAnimationFrame(frame);});
 window.addEventListener('pageshow',sync);
 export const ready=init().catch(error=>{root.dataset.renderer='fallback';report(error.message);console.error('UCL identity:',error);});
+
+// Invoked only by the local verification page. Samples actual GPU output for
+// loop continuity and visible motion, rather than just comparing parameters.
+export async function verifyRenderedLoop(){
+  await ready;
+  if(!state.ready)throw new Error('WebGL initialization failed');
+  const previous={...state};
+  state.paused=true;sync();
+  state.time=6;compositionAmount=1;state.composition='signature';
+  const gl=renderer.getContext(),size=renderer.getDrawingBufferSize(new THREE.Vector2());
+  const sample=seconds=>{
+    state.ambient=seconds;draw();
+    const pixels=new Uint8Array(size.x*size.y*4);
+    gl.readPixels(0,0,size.x,size.y,gl.RGBA,gl.UNSIGNED_BYTE,pixels);
+    return pixels;
+  };
+  const compare=(a,b)=>{
+    let total=0,max=0,changed=0;
+    for(let i=0;i<a.length;i++){if(i%4===3)continue;const d=Math.abs(a[i]-b[i]);total+=d;max=Math.max(max,d);if(d>1)changed++;}
+    return {meanByteDifference:+(total/(a.length*.75)).toFixed(5),maxByteDifference:max,channelsChangedAboveOne:+(changed/(a.length*.75)).toFixed(5)};
+  };
+  const matrices=()=>[...mark.matrixWorld.elements,...name.matrixWorld.elements,...markParts.flatMap(p=>Array.from(p.mesh.matrixWorld.elements))];
+  const start=sample(0),startPose=matrices();
+  // Compare against the actual background at the same phase. This keeps the
+  // identity mask valid when the palette changes from dark to luminous.
+  mark.visible=false;name.visible=false;
+  renderer.render(scene,camera);
+  const withoutIdentity=new Uint8Array(size.x*size.y*4);
+  gl.readPixels(0,0,size.x,size.y,gl.RGBA,gl.UNSIGNED_BYTE,withoutIdentity);
+  const end=sample(48),before=sample(48-1/60),after=sample(1/60),later=sample(4),laterPose=matrices();
+  // The background must not be able to make a static logo pass the motion check.
+  // Compare only the clearly covered pixels of the stationary identity.
+  let inkPixels=0,inkDifference=0,inkSeamMax=0;
+  for(let y=Math.floor(size.y*.2);y<size.y*.8;y++)for(let x=Math.floor(size.x*.15);x<size.x*.85;x++){
+    const i=(y*size.x+x)*4;
+    if(Math.max(...[0,1,2].map(c=>Math.abs(start[i+c]-withoutIdentity[i+c])))<30)continue;
+    inkPixels++;
+    for(let c=0;c<3;c++){
+      inkDifference+=Math.abs(start[i+c]-later[i+c]);
+      inkSeamMax=Math.max(inkSeamMax,Math.abs(start[i+c]-end[i+c]));
+    }
+  }
+  const inkMotion={pixels:inkPixels,fourSecondMeanByteDifference:+(inkDifference/Math.max(1,inkPixels*3)).toFixed(5),endpointMaxByteDifference:inkSeamMax};
+  const poseDelta=Math.max(...startPose.map((value,i)=>Math.abs(value-laterPose[i])));
+  const result={revision:'opal-ink-2',size:[size.x,size.y],loopSeconds:LOOP,markParts:markParts.length,wordmarkGlyphs:letters.length,draws:renderer.info.render.calls,geometryTransformDelta:poseDelta,endpoints:compare(start,end),seamStep:compare(before,start),followingStep:compare(start,after),fourSecondMotion:compare(start,later),webglError:gl.getError()};
+  result.inkMotion=inkMotion;
+  result.passed=result.endpoints.maxByteDifference<=1&&result.fourSecondMotion.meanByteDifference>1&&inkPixels>0&&inkMotion.fourSecondMeanByteDifference>1&&poseDelta===0&&result.webglError===0;
+  Object.assign(state,previous);sync();
+  return result;
+}
