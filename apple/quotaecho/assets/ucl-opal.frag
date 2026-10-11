@@ -1,0 +1,47 @@
+
+    precision highp float;
+    uniform vec2 resolution;
+    uniform float phase;
+    uniform vec3 paper;
+    uniform vec3 colorA;
+    uniform vec3 colorB;
+    uniform vec3 colorC;
+
+    float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453); }
+    float noise(vec2 p) {
+      vec2 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f);
+      return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);
+    }
+    float mist(vec2 p) { return noise(p)*0.64+noise(p*2.03+8.4)*0.25+noise(p*4.01+1.7)*0.11; }
+    float cloud(vec2 p, vec2 center, vec2 radius) {
+      vec2 d=(p-center)/radius; return exp(-dot(d,d)*1.45);
+    }
+    void main() {
+      vec2 uv=gl_FragCoord.xy/resolution;
+      // Integer harmonics of one phase: positions AND velocities join at 48s.
+      // Even the noise travels a closed path, so no texture resets at the seam.
+      float t=phase*6.28318530718;
+      vec2 flowA=vec2(cos(t*2.0),sin(t*2.0))*0.72;
+      vec2 flowB=vec2(cos(t+1.2),sin(t+1.2))*0.84;
+      vec2 drift=vec2(mist(uv*2.4+flowA+vec2(0.0,1.2)),mist(uv*2.2+flowB+vec2(4.2,0.0)))-0.5;
+      vec2 p=uv+drift*0.30;
+      float a=cloud(p,vec2(0.16+0.22*sin(t*2.0+0.4),0.77+0.16*cos(t*2.0+0.4)),vec2(0.62,0.52));
+      float b=cloud(p,vec2(0.84+0.22*cos(t*2.0+0.6),0.25+0.20*sin(t*2.0+0.6)),vec2(0.62,0.54));
+      float c=cloud(p,vec2(0.48+0.30*cos(t*3.0+1.8),0.15+0.18*sin(t*3.0+0.6)),vec2(0.54,0.40));
+      float sweep=0.13+0.17*sin(t*3.0-0.45);
+      float slope=0.66+0.10*sin(t*2.0+0.8);
+      float ribbon=p.y-(sweep+p.x*slope+0.10*sin(p.x*4.8-t*2.0));
+      float iridescence=exp(-pow((ribbon+0.07)/0.145,2.0));
+      float sheen=exp(-pow((ribbon-0.065)/0.040,2.0));
+      float secondary=exp(-pow((ribbon-0.22)/0.085,2.0));
+      float center=cloud(uv,vec2(0.50,0.53),vec2(0.56,0.29));
+      float quiet=1.0-center*0.62;
+      vec3 color=paper;
+      color=mix(color,colorA,a*0.87*quiet);
+      color=mix(color,colorB,b*0.84*quiet);
+      color=mix(color,colorC,min(0.62,c*0.38+iridescence*0.32)*quiet);
+      color=mix(color,vec3(1.0),sheen*0.50+secondary*0.17);
+      color+=vec3((hash(gl_FragCoord.xy)-0.5)*0.0018);
+      gl_FragColor=vec4(color,1.0);
+    }
+  

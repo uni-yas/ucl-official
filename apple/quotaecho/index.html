@@ -2,8 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f8fa">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#292e3b">
+  <meta name="robots" content="index,follow">
   <meta name="description" content="QuotaEchoは、Codexの週間使用枠とリセットまでの時間を並べ、使用ペースと大きく変化した時間帯を振り返るためのMac用メニューバーアプリです。">
   <title>QuotaEcho — Codexの余力を、ひと目で。</title>
   <link rel="canonical" href="https://universion-closure-logic.com/apple/quotaecho/">
@@ -12,47 +13,58 @@
   <link rel="icon" type="image/png" href="./assets/quotaecho-icon.png">
   <link rel="apple-touch-icon" href="./assets/quotaecho-icon.png">
   <link rel="stylesheet" href="./assets/styles.css?v=100-30-store">
-  <link rel="stylesheet" href="./assets/story.css?v=1">
-  <script src="./assets/site.js?v=069-2" defer></script>
-  <script src="./assets/story.js?v=1" defer></script>
+  <link rel="stylesheet" href="./assets/story.css?v=ucl-20261012-2">
+  <script src="./assets/site.js?v=ucl-20261012-1" defer></script>
+  <script src="./assets/story.js?v=ucl-20261012-2" defer></script>
+<link rel="stylesheet" href="./assets/ucl-shell.css?v=ucl-20261012-1">
+<link rel="stylesheet" href="./assets/quotaecho-ucl.css?v=ucl-20261012-3">
+<script src="./assets/ucl-shell.js?v=ucl-20261012-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">本文へ移動</a>
-  <div class="scroll-progress" aria-hidden="true"></div>
+  
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="#top" aria-label="QuotaEcho トップへ">
-        <img src="./assets/quotaecho-icon.png" alt="" width="31" height="31">
-        <span>QuotaEcho</span>
-      </a>
-      <div class="header-actions">
-        <nav class="site-nav" aria-label="ページ内ナビゲーション">
-          <a href="#experience">体験</a>
-          <a href="#features">見られる情報</a>
-          <a href="#daily-use">使い方</a>
-          <a href="#privacy">プライバシー</a>
-          <a href="#company">会社概要</a>
-          <a href="#support">サポート</a>
-        </nav>
-        <details class="mobile-menu">
-          <summary>メニュー <span aria-hidden="true">⌄</span></summary>
-          <nav aria-label="ページ内メニュー">
-            <a href="#experience">体験</a>
-            <a href="#features">見られる情報</a>
-            <a href="#daily-use">使い方</a>
-            <a href="#privacy">プライバシー</a>
-            <a href="#company">会社概要</a>
-            <a href="#support">サポート</a>
-          </nav>
-        </details>
-        <a class="lang-switch" href="./en/" hreflang="en" lang="en" data-language-switch aria-label="Switch to English">EN</a>
-      </div>
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="icon-home" viewBox="0 0 24 24">
+        <path d="m3.5 10 8.5-7 8.5 7M5.5 8.5V21H10v-7h4v7h4.5V8.5"/>
+      </symbol>
+      <symbol id="icon-research" viewBox="0 0 24 24">
+        <ellipse cx="12" cy="12" rx="10" ry="4.3" transform="rotate(-45 12 12)"/>
+        <ellipse cx="12" cy="12" rx="10" ry="4.3" transform="rotate(45 12 12)"/>
+        <circle cx="12" cy="12" r="1.45" fill="currentColor" stroke="none"/>
+      </symbol>
+      <symbol id="icon-company" viewBox="0 0 24 24">
+        <path d="M5 21V5l9-2v18M14 9l5 2v10M3 21h18M8.5 8h2M8.5 12h2M8.5 16h2M17 14v.01M17 17v.01"/>
+      </symbol>
+      <symbol id="icon-products" viewBox="0 0 24 24">
+        <path d="m12 2 9 5v10l-9 5-9-5V7l9-5ZM3 7l9 5 9-5M12 12v10M7.5 4.5l9 5V13"/>
+      </symbol>
+      <symbol id="icon-contact" viewBox="0 0 24 24">
+        <rect x="2.5" y="5" width="19" height="14" rx="2.5"/>
+        <path d="m3.5 6.5 8.5 6 8.5-6"/>
+      </symbol>
+      <symbol id="icon-update" viewBox="0 0 24 24">
+        <path d="M20 9a8.2 8.2 0 1 0 .2 5M20 4v5h-5M12 16V8m-3 3 3-3 3 3"/>
+      </symbol>
+    </defs>
+  </svg>
+    <div class="ucl-ambient" aria-hidden="true"><canvas></canvas></div><div class="site-watermark" aria-hidden="true">
+      <div class="watermark-mark"><img src="./assets/ucl-g.svg" alt="" draggable="false"></div>
+      <div class="watermark-name"><img src="./assets/ucl-wordmark.svg" alt="" draggable="false"></div>
     </div>
-  </header>
+    <header class="site-header ucl-header">
+      <a class="home-link" href="/?lang=ja#home"><svg class="ui-icon" aria-hidden="true"><use href="#icon-home"/></svg><span>ホーム</span></a>
+      <nav class="language-switch" aria-label="言語"><a href="/apple/quotaecho/en/" data-ucl-language="en" lang="en" hreflang="en"><span class="language-pointer" aria-hidden="true">▶︎</span>English</a><span class="language-divider" aria-hidden="true">/</span><a href="/apple/quotaecho/" data-ucl-language="ja" lang="ja" hreflang="ja" aria-current="true"><span class="language-pointer" aria-hidden="true">▶︎</span>日本語</a></nav>
+    </header>
 
   <main id="main">
-    <section class="hero" id="top">
+    <div class="product-context">
+      <nav class="product-breadcrumb" aria-label="現在地"><a href="/?lang=ja#products">製品・サービス</a><span aria-hidden="true">›</span><span aria-current="page">QuotaEcho</span></nav>
+      <a class="product-brand" href="#top"><img src="./assets/quotaecho-icon.png" alt="" width="44" height="44"><span>QuotaEcho</span></a>
+      <nav class="product-toc" aria-label="このページの内容"><a href="#experience">特徴</a><a href="#features">機能</a><a href="#daily-use">使い方</a><a href="#privacy">プライバシー</a><a href="#support">サポート</a></nav>
+    </div>
+<section class="hero" id="top">
       <div class="hero-grid">
         <div class="hero-copy reveal">
           <p class="eyebrow">OpenAI Codex対応 · Mac用アプリ</p>
@@ -307,7 +319,7 @@
       <div class="section-inner company-layout">
         <div class="company-copy reveal">
           <span class="section-number">04 / COMPANY</span>
-          <img class="company-logo" src="./assets/ucl-company-black.png" alt="Universion Closure Logic" width="4096" height="687" loading="lazy">
+          <img class="company-logo" src="./assets/ucl-horizontal-black.png" alt="Universion Closure Logic" width="4096" height="283" loading="lazy">
           <h2>日々の判断に、<br>役立つ道具を。</h2>
           <p>QuotaEchoは、株式会社Universion Closure Logicが企画・開発しています。Codexの利用状況を見やすく整理し、使う人が自分のペースを考えられる道具を届けます。</p>
         </div>
@@ -315,7 +327,7 @@
           <div class="company-row"><dt>運営会社</dt><dd>株式会社Universion Closure Logic</dd></div>
           <div class="company-row"><dt>提供製品</dt><dd>QuotaEcho</dd></div>
           <div class="company-row"><dt>製品概要</dt><dd>macOS向けCodex使用ペース確認アプリ</dd></div>
-          <div class="company-row"><dt>Web</dt><dd><a href="https://universion-closure-logic.com/">universion-closure-logic.com</a></dd></div>
+          <div class="company-row"><dt>Web</dt><dd><a href="/?lang=ja#company">universion-closure-logic.com</a></dd></div>
           <div class="company-row"><dt>サポート</dt><dd><a href="mailto:support.quotaecho@universion-closure-logic.com">support.quotaecho@universion-closure-logic.com</a></dd></div>
         </dl>
       </div>
@@ -356,5 +368,6 @@
       <a class="to-top" href="#top" aria-label="ページ上部へ戻る">↑</a>
     </div>
   </footer>
+<nav class="global-nav" aria-label="メインナビゲーション"><a class="global-link" href="/?lang=ja#research"><svg class="ui-icon" aria-hidden="true"><use href="#icon-research"/></svg><span class="nav-label">研究</span></a><a class="global-link" href="/?lang=ja#company"><svg class="ui-icon" aria-hidden="true"><use href="#icon-company"/></svg><span class="nav-label">会社概要</span></a><a class="global-link" href="/?lang=ja#products" aria-current="true"><svg class="ui-icon" aria-hidden="true"><use href="#icon-products"/></svg><span class="nav-label">製品・サービス</span></a><a class="global-link" href="/?lang=ja#contact"><svg class="ui-icon" aria-hidden="true"><use href="#icon-contact"/></svg><span class="nav-label">お問い合わせ</span></a></nav>
 </body>
 </html>

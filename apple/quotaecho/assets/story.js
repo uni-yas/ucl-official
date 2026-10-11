@@ -21,6 +21,8 @@ function quotaEchoStoryFrame(progress) {
   if (!chapters.length || !window.matchMedia || !window.requestAnimationFrame) return;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const short = window.matchMedia('(max-height: 700px)');
+  const narrow = window.matchMedia('(max-width: 767px)');
+  const shortPhone = window.matchMedia('(max-height: 599px)');
   let scheduled = false;
   let active = false;
 
@@ -37,6 +39,7 @@ function quotaEchoStoryFrame(progress) {
     if (!active) return;
     // Read every geometry first; write afterward to avoid layout thrashing.
     const frames = chapters.map(chapter => {
+      if (!chapter.classList.contains('is-enhanced')) return [chapter, 1];
       const rect = chapter.getBoundingClientRect();
       const sticky = chapter.querySelector('.story-sticky');
       const top = parseFloat(window.getComputedStyle(sticky).top) || 0;
@@ -53,10 +56,20 @@ function quotaEchoStoryFrame(progress) {
   };
 
   const configure = () => {
-    active = !reduced.matches && !short.matches;
-    chapters.forEach(chapter => {
-      chapter.classList.toggle('is-enhanced', active);
-      if (!active) paint(chapter, 1);
+    const eligible = !reduced.matches && !(narrow.matches ? shortPhone.matches : short.matches);
+    chapters.forEach(chapter => chapter.classList.toggle('is-enhanced', eligible));
+    // Safe areas and enlarged text can leave less room than the viewport suggests.
+    const fits = chapters.map(chapter => {
+      if (!eligible) return false;
+      const sticky = chapter.querySelector('.story-sticky');
+      const style = window.getComputedStyle(sticky);
+      const padding = (parseFloat(style.paddingTop) || 0) + (parseFloat(style.paddingBottom) || 0);
+      return chapter.querySelector('.story-inner').offsetHeight + padding <= sticky.clientHeight;
+    });
+    active = fits.some(Boolean);
+    chapters.forEach((chapter, index) => {
+      chapter.classList.toggle('is-enhanced', fits[index]);
+      if (!fits[index]) paint(chapter, 1);
     });
     schedule();
   };
@@ -66,5 +79,7 @@ function quotaEchoStoryFrame(progress) {
   window.addEventListener('pageshow', configure);
   reduced.addEventListener('change', configure);
   short.addEventListener('change', configure);
+  narrow.addEventListener('change', configure);
+  shortPhone.addEventListener('change', configure);
   configure();
 })();

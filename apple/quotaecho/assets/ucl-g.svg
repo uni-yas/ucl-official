@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="768" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">g-light</title>
+  <desc id="desc">Lighter comparison of the same reconstructed UCL arrangement, produced with parallel inward offsets and restored overall outer bounds. Key faces and projecting foot remain; individual vertices are not identical to the base.</desc>
+  <g fill="#171717">
+    <path id="u" d="M 28.338 67.912 L 58.468 50.557 L 58.468 165.157 L 73.799 173.880 L 73.799 54.054 L 129.117 24.000 L 162.600 42.495 L 92.080 77.302 L 92.080 192.524 L 113.326 203.308 L 168.734 180.153 L 168.734 209.902 L 116.211 232.000 L 28.338 180.859 Z"/>
+    <path id="c" d="M 104.267 82.157 L 165.349 53.595 L 165.349 79.650 L 126.659 97.134 L 126.659 163.286 L 165.107 145.323 L 165.107 170.902 L 118.556 192.005 L 104.267 184.401 Z"/>
+    <path id="l" d="M 179.229 50.926 L 202.346 65.236 L 202.346 169.942 L 227.662 184.459 L 179.229 207.595 Z"/>
+  </g>
+</svg>

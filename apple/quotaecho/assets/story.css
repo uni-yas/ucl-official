@@ -140,7 +140,7 @@ html[lang="en"] .story-landing h3 { line-height: 1.25; }
   .story-app-pair { grid-template-columns: 1fr; gap: 30px; }
 }
 /* Short windows, zoomed layouts, reduced motion, and print keep the complete view. */
-@media (max-height: 700px), (prefers-reduced-motion: reduce), print {
+@media (min-width: 768px) and (max-height: 700px), (max-width: 767px) and (max-height: 599px), (prefers-reduced-motion: reduce), print {
   .scroll-story.is-enhanced { height: auto; }
   .is-enhanced .story-sticky { position: static; height: auto; padding-block: 40px; }
   .scroll-story { --time: 1 !important; --gap: 1 !important; --expand: 1 !important; --detail: 1 !important; --title-0: 0 !important; --title-1: 0 !important; --title-2: 1 !important; }

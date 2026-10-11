@@ -5,7 +5,6 @@ const progress = document.querySelector(".scroll-progress");
 const reveals = document.querySelectorAll(".reveal");
 const sections = document.querySelectorAll("main section[id]");
 const navLinks = document.querySelectorAll(".site-nav a[href^='#']");
-const languageSwitch = document.querySelector("[data-language-switch]");
 const year = document.querySelector("[data-year]");
 const mobileMenu = document.querySelector(".mobile-menu");
 
@@ -54,12 +53,5 @@ if ("IntersectionObserver" in window) {
 } else {
   reveals.forEach((item) => item.classList.add("is-visible"));
 }
-
-languageSwitch?.addEventListener("click", (event) => {
-  const target = languageSwitch.getAttribute("href");
-  if (!target || !window.location.hash) return;
-  event.preventDefault();
-  window.location.href = `${target}${window.location.hash}`;
-});
 
 if (year) year.textContent = new Date().getFullYear();

@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f8fa">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#292e3b">
+  <meta name="robots" content="index,follow">
   <meta name="description" content="QuotaEcho is a macOS menu bar app that places your Codex weekly allowance beside time to reset, then helps you review periods with the largest usage changes.">
   <title>QuotaEcho — A clearer view of your Codex usage.</title>
   <link rel="canonical" href="https://universion-closure-logic.com/apple/quotaecho/en/">
@@ -12,47 +13,58 @@
   <link rel="icon" type="image/png" href="../assets/quotaecho-icon.png">
   <link rel="apple-touch-icon" href="../assets/quotaecho-icon.png">
   <link rel="stylesheet" href="../assets/styles.css?v=100-30-store">
-  <link rel="stylesheet" href="../assets/story.css?v=1">
-  <script src="../assets/site.js?v=069-2" defer></script>
-  <script src="../assets/story.js?v=1" defer></script>
+  <link rel="stylesheet" href="../assets/story.css?v=ucl-20261012-2">
+  <script src="../assets/site.js?v=ucl-20261012-1" defer></script>
+  <script src="../assets/story.js?v=ucl-20261012-2" defer></script>
+<link rel="stylesheet" href="../assets/ucl-shell.css?v=ucl-20261012-1">
+<link rel="stylesheet" href="../assets/quotaecho-ucl.css?v=ucl-20261012-3">
+<script src="../assets/ucl-shell.js?v=ucl-20261012-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="scroll-progress" aria-hidden="true"></div>
+  
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="#top" aria-label="QuotaEcho home">
-        <img src="../assets/quotaecho-icon.png" alt="" width="31" height="31">
-        <span>QuotaEcho</span>
-      </a>
-      <div class="header-actions">
-        <nav class="site-nav" aria-label="On this page">
-          <a href="#experience">Experience</a>
-          <a href="#features">What you can see</a>
-          <a href="#daily-use">Everyday use</a>
-          <a href="#privacy">Privacy</a>
-          <a href="#company">Company</a>
-          <a href="#support">Support</a>
-        </nav>
-        <details class="mobile-menu">
-          <summary>Menu <span aria-hidden="true">⌄</span></summary>
-          <nav aria-label="Page menu">
-            <a href="#experience">Experience</a>
-            <a href="#features">Features</a>
-            <a href="#daily-use">Daily use</a>
-            <a href="#privacy">Privacy</a>
-            <a href="#company">Company</a>
-            <a href="#support">Support</a>
-          </nav>
-        </details>
-        <a class="lang-switch" href="../" hreflang="ja" lang="ja" data-language-switch aria-label="日本語に切り替え">JA</a>
-      </div>
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="icon-home" viewBox="0 0 24 24">
+        <path d="m3.5 10 8.5-7 8.5 7M5.5 8.5V21H10v-7h4v7h4.5V8.5"/>
+      </symbol>
+      <symbol id="icon-research" viewBox="0 0 24 24">
+        <ellipse cx="12" cy="12" rx="10" ry="4.3" transform="rotate(-45 12 12)"/>
+        <ellipse cx="12" cy="12" rx="10" ry="4.3" transform="rotate(45 12 12)"/>
+        <circle cx="12" cy="12" r="1.45" fill="currentColor" stroke="none"/>
+      </symbol>
+      <symbol id="icon-company" viewBox="0 0 24 24">
+        <path d="M5 21V5l9-2v18M14 9l5 2v10M3 21h18M8.5 8h2M8.5 12h2M8.5 16h2M17 14v.01M17 17v.01"/>
+      </symbol>
+      <symbol id="icon-products" viewBox="0 0 24 24">
+        <path d="m12 2 9 5v10l-9 5-9-5V7l9-5ZM3 7l9 5 9-5M12 12v10M7.5 4.5l9 5V13"/>
+      </symbol>
+      <symbol id="icon-contact" viewBox="0 0 24 24">
+        <rect x="2.5" y="5" width="19" height="14" rx="2.5"/>
+        <path d="m3.5 6.5 8.5 6 8.5-6"/>
+      </symbol>
+      <symbol id="icon-update" viewBox="0 0 24 24">
+        <path d="M20 9a8.2 8.2 0 1 0 .2 5M20 4v5h-5M12 16V8m-3 3 3-3 3 3"/>
+      </symbol>
+    </defs>
+  </svg>
+    <div class="ucl-ambient" aria-hidden="true"><canvas></canvas></div><div class="site-watermark" aria-hidden="true">
+      <div class="watermark-mark"><img src="../assets/ucl-g.svg" alt="" draggable="false"></div>
+      <div class="watermark-name"><img src="../assets/ucl-wordmark.svg" alt="" draggable="false"></div>
     </div>
-  </header>
+    <header class="site-header ucl-header">
+      <a class="home-link" href="/?lang=en#home"><svg class="ui-icon" aria-hidden="true"><use href="#icon-home"/></svg><span>Home</span></a>
+      <nav class="language-switch" aria-label="Language"><a href="/apple/quotaecho/en/" data-ucl-language="en" lang="en" hreflang="en" aria-current="true"><span class="language-pointer" aria-hidden="true">▶︎</span>English</a><span class="language-divider" aria-hidden="true">/</span><a href="/apple/quotaecho/" data-ucl-language="ja" lang="ja" hreflang="ja"><span class="language-pointer" aria-hidden="true">▶︎</span>日本語</a></nav>
+    </header>
 
   <main id="main">
-    <section class="hero" id="top">
+    <div class="product-context">
+      <nav class="product-breadcrumb" aria-label="Breadcrumb"><a href="/?lang=en#products">Products & Services</a><span aria-hidden="true">›</span><span aria-current="page">QuotaEcho</span></nav>
+      <a class="product-brand" href="#top"><img src="../assets/quotaecho-icon.png" alt="" width="44" height="44"><span>QuotaEcho</span></a>
+      <nav class="product-toc" aria-label="On this page"><a href="#experience">Overview</a><a href="#features">Features</a><a href="#daily-use">Everyday use</a><a href="#privacy">Privacy</a><a href="#support">Support</a></nav>
+    </div>
+<section class="hero" id="top">
       <div class="hero-grid">
         <div class="hero-copy reveal">
           <p class="eyebrow">A Mac app for OpenAI Codex</p>
@@ -307,7 +319,7 @@
       <div class="section-inner company-layout">
         <div class="company-copy reveal">
           <span class="section-number">04 / COMPANY</span>
-          <img class="company-logo" src="../assets/ucl-company-black.png" alt="Universion Closure Logic" width="4096" height="687" loading="lazy">
+          <img class="company-logo" src="../assets/ucl-horizontal-black.png" alt="Universion Closure Logic" width="4096" height="283" loading="lazy">
           <h2>Tools for<br>everyday decisions.</h2>
           <p>QuotaEcho is designed and developed by Universion Closure Logic, K.K. We turn Codex usage records into a clear view, so people can choose a pace that works for them.</p>
         </div>
@@ -315,7 +327,7 @@
           <div class="company-row"><dt>Company</dt><dd>Universion Closure Logic, K.K.</dd></div>
           <div class="company-row"><dt>Product</dt><dd>QuotaEcho</dd></div>
           <div class="company-row"><dt>Description</dt><dd>A macOS companion for reviewing your Codex usage pace</dd></div>
-          <div class="company-row"><dt>Website</dt><dd><a href="https://universion-closure-logic.com/">universion-closure-logic.com</a></dd></div>
+          <div class="company-row"><dt>Website</dt><dd><a href="/?lang=en#company">universion-closure-logic.com</a></dd></div>
           <div class="company-row"><dt>Support</dt><dd><a href="mailto:support.quotaecho@universion-closure-logic.com">support.quotaecho@universion-closure-logic.com</a></dd></div>
         </dl>
       </div>
@@ -356,5 +368,6 @@
       <a class="to-top" href="#top" aria-label="Back to top">↑</a>
     </div>
   </footer>
+<nav class="global-nav" aria-label="Main navigation"><a class="global-link" href="/?lang=en#research"><svg class="ui-icon" aria-hidden="true"><use href="#icon-research"/></svg><span class="nav-label">Research</span></a><a class="global-link" href="/?lang=en#company"><svg class="ui-icon" aria-hidden="true"><use href="#icon-company"/></svg><span class="nav-label"><span>Company</span><span>Profile</span></span></a><a class="global-link" href="/?lang=en#products" aria-current="true"><svg class="ui-icon" aria-hidden="true"><use href="#icon-products"/></svg><span class="nav-label"><span>Products &amp;</span><span>Services</span></span></a><a class="global-link" href="/?lang=en#contact"><svg class="ui-icon" aria-hidden="true"><use href="#icon-contact"/></svg><span class="nav-label">Contact Us</span></a></nav>
 </body>
 </html>
