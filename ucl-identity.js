@@ -7,7 +7,7 @@ const root=document.documentElement;
 const canvas=document.querySelector('.identity-canvas');
 const params=new URLSearchParams(location.search);
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-const LOOP=48, TAU=Math.PI*2;
+const LOOP=48, TAU=Math.PI*2, REVEAL_SECONDS=.9;
 const state={composition:params.get('composition')==='mark'?'mark':'signature',paused:params.get('paused')==='1',time:0,ambient:0,ready:false};
 root.dataset.composition=state.composition;
 const clamp=THREE.MathUtils.clamp;
@@ -17,10 +17,11 @@ let mark,name,markParts=[],letters=[],materials=[];
 let nameSurface,nameEdge;
 let layout,frame=0,last=0,lastStatus=0,compositionAmount=state.composition==='signature'?1:0;
 let keyLight,rimLight,fillLight,groundGlow;
+let presented=false,revealAt=0;
 const glassUniforms={uGlassPhase:{value:0}};
 
 function report(error){
-  const detail={type:'ucl-identity-status',renderer:root.dataset.renderer,revision:'opal-glass-3',phase:'light',composition:state.composition,motion:state.paused||reduced.matches?'paused':'playing',time:+state.time.toFixed(2),ambient:+state.ambient.toFixed(2)};
+  const detail={type:'ucl-identity-status',renderer:root.dataset.renderer,revision:'opal-glass-4',phase:'light',startup:root.dataset.startup,composition:state.composition,motion:state.paused||reduced.matches?'paused':'playing',time:+state.time.toFixed(2),ambient:+state.ambient.toFixed(2)};
   if(renderer){detail.viewport=`${innerWidth} × ${innerHeight}`;detail.draws=renderer.info.render.calls;detail.triangles=renderer.info.render.triangles;}
   if(error)detail.error=error;
   root.dataset.phase=detail.phase;
@@ -141,6 +142,7 @@ function combineWordmark(parts){
 }
 
 async function init(){
+  root.dataset.startup='preparing';
   renderer=new THREE.WebGLRenderer({canvas,alpha:false,antialias:true,powerPreference:'high-performance'});
   renderer.setPixelRatio(Math.min(Math.max(devicePixelRatio||1,1.5),1.75));
   renderer.outputColorSpace=THREE.SRGBColorSpace;
@@ -200,10 +202,21 @@ async function init(){
   groundGlow.position.z=-.5;scene.add(groundGlow);
 
   resize();
+  pose();
+  await renderer.compileAsync(backgroundScene,backgroundCamera);
   await renderer.compileAsync(scene,camera);
-  state.ready=true;root.dataset.renderer='webgl';
+  state.ready=true;
   if(reduced.matches)state.time=6;
-  draw();sync();report();
+  // Warm the actual background, transmission and main render passes while
+  // hidden. Shader compilation alone does not prepare every first-use pass.
+  draw();
+  await new Promise(requestAnimationFrame);
+  draw();
+  await new Promise(requestAnimationFrame);
+  presented=true;revealAt=performance.now();
+  root.dataset.startup=reduced.matches?'ambient':'revealing';
+  root.dataset.renderer='webgl';
+  sync();
 }
 
 function resize(){
@@ -257,7 +270,12 @@ function animate(now){
   frame=0;
   if(document.hidden)return;
   const dt=last?Math.min((now-last)/1000,.06):0;last=now;
-  if(!state.paused&&!reduced.matches){state.time+=dt;state.ambient=(state.ambient+dt)%LOOP;}
+  const visibleSeconds=Math.max(0,(now-revealAt)/1000);
+  // Reveal one complete, still frame. Only then bring the light gently up to
+  // its normal speed, so startup opacity and moving color never compete.
+  const motionRate=smooth((visibleSeconds-REVEAL_SECONDS)/.65);
+  root.dataset.startup=visibleSeconds<REVEAL_SECONDS?'revealing':'ambient';
+  if(!state.paused&&!reduced.matches){state.time+=dt*motionRate;state.ambient=(state.ambient+dt*motionRate)%LOOP;}
   const target=state.composition==='signature'?1:0;
   compositionAmount=THREE.MathUtils.damp(compositionAmount,target,8,dt);
   if(Math.abs(compositionAmount-target)<.001)compositionAmount=target;
@@ -268,7 +286,7 @@ function animate(now){
 function sync(){
   if(frame)cancelAnimationFrame(frame);
   frame=0;last=0;
-  if(!state.ready||document.hidden)return;
+  if(!state.ready||!presented||document.hidden)return;
   if(reduced.matches){state.time=Math.max(state.time,6);compositionAmount=state.composition==='signature'?1:0;}
   if((!state.paused&&!reduced.matches)||compositionAmount!==(state.composition==='signature'?1:0))frame=requestAnimationFrame(animate);
   draw();report();
