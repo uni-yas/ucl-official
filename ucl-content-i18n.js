@@ -104,6 +104,27 @@
     ['Talk to us', '相談する']
   ]);
 
+  // Editorial wrap opportunities for short Japanese copy only.
+  // The original text nodes are restored before each language render.
+  const japanesePhrases = new Map([
+    ["Codexの利用状況を、もっとわかりやすく。", ["Codexの利用状況を、", "もっとわかりやすく。"]],
+    ["自分の好みを知る。誰かの感性に出会う。", ["自分の好みを知る。", "誰かの感性に出会う。"]],
+    ["まさかの怪力。忘れられないリアクション。", ["まさかの怪力。", "忘れられないリアクション。"]],
+    ["科学の発想を、役立つ技術へ。", ["科学の発想を、", "役立つ技術へ。"]],
+    ["日々の仕事に、使える技術を。", ["日々の仕事に、", "使える技術を。"]],
+    ["改善したいことを、お聞かせください。", ["改善したいことを、", "お聞かせください。"]],
+    ["限られた候補の中で、どの構造が選ばれ、どの条件で安定するのか。", ["限られた候補の中で、", "どの構造が選ばれ、", "どの条件で安定するのか。"]],
+    ["研究の基盤にあるのは、次の6つの分野です。", ["研究の基盤にあるのは、", "次の6つの分野です。"]],
+    ["再現可能研究・科学ソフトウェア工学", ["再現可能研究・", "科学ソフトウェア工学"]],
+    ["QuotaEcho 1.1 アップデートを準備中", ["QuotaEcho 1.1 ", "アップデートを準備中"]],
+    ["QuotaEchoをリリースしました", ["QuotaEchoを", "リリースしました"]],
+    ["株式会社Universion Closure Logicを設立しました", ["株式会社Universion ", "Closure Logicを", "設立しました"]],
+    ["ファイル処理・ツール連携・レポート生成・コンテンツ配信予約", ["ファイル処理・", "ツール連携・", "レポート生成・", "コンテンツ配信予約"]],
+    ["企業・サービスサイト・社内ツール・ダッシュボード・アプリ改善", ["企業・サービスサイト・", "社内ツール・", "ダッシュボード・", "アプリ改善"]],
+    ["調査リスト・表計算データの整理・データ統合・レポート", ["調査リスト・", "表計算データの整理・", "データ統合・", "レポート"]],
+  ]);
+  const phraseWrappers = new Map();
+
   const textRecords = new Map();
   const attributeRecords = new Map();
 
@@ -139,6 +160,8 @@
 
   window.renderUclContent = function renderUclContent(language) {
     const locale = language === 'ja' ? 'ja' : 'en';
+    for (const [node, wrapper] of phraseWrappers) wrapper.replaceWith(node);
+    phraseWrappers.clear();
     const articles = document.querySelectorAll('.research-content, .home-view');
     for (const article of articles) {
       captureArticle(article);
@@ -147,6 +170,22 @@
     for (const [node, copies] of textRecords) node.nodeValue = copies[locale];
     for (const [element, records] of attributeRecords) {
       for (const [attribute, copies] of records) element.setAttribute(attribute, copies[locale]);
+    }
+    if (locale === 'ja') {
+      for (const [node, copies] of textRecords) {
+        const phrases = japanesePhrases.get(copies.ja.trim());
+        if (!phrases || !node.parentNode) continue;
+        const wrapper = document.createElement('span');
+        wrapper.dataset.jaPhrases = '';
+        for (const phrase of phrases) {
+          const part = document.createElement('span');
+          part.className = 'ja-phrase';
+          part.textContent = phrase;
+          wrapper.append(part);
+        }
+        node.replaceWith(wrapper);
+        phraseWrappers.set(node, wrapper);
+      }
     }
     const companySecondary = document.querySelector('[data-company-secondary]');
     if (companySecondary) companySecondary.lang = locale === 'ja' ? 'en' : 'ja';

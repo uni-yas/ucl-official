@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#fcfcfd">
   <title>株式会社Universion Closure Logic｜公式サイト</title>
   <link rel="icon" href="ucl-g.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="ucl-identity.css?v=contact-20261012-1">
+  <link rel="stylesheet" href="ucl-identity.css?v=mobile-20261012-2">
   <noscript><style>.fallback{opacity:1;visibility:visible}</style></noscript>
   <script type="importmap">{"imports":{"three":"./ucl-three.module.min.js","three/addons/loaders/SVGLoader.js":"./ucl-SVGLoader.js"}}</script>
 </head>
@@ -762,7 +762,6 @@
           <div class="contact-intro">
             <h2 data-contact-copy="lead">どんなことでも、お聞かせください。</h2>
             <p data-contact-copy="intro">ご質問、アイデア、お仕事のご相談など。</p>
-            <p class="contact-direct"><span data-contact-copy="direct">メールでもお問い合わせいただけます。</span><a href="mailto:contact@universion-closure-logic.com">contact@universion-closure-logic.com</a></p>
           </div>
           <form class="contact-form" action="https://formsubmit.co/contact@universion-closure-logic.com" method="post" novalidate aria-label="お問い合わせフォーム" data-state="idle">
             <div class="contact-field">
@@ -793,7 +792,7 @@
                 <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer" data-contact-copy="privacyLink">FormSubmit のプライバシーポリシー</a>
               </details>
               <p class="contact-status" role="alert" hidden></p>
-              <noscript><p class="contact-note">フォームには JavaScript が必要です。メールでお問い合わせください。 / Please enable JavaScript or contact us by email.</p></noscript>
+              <noscript><p class="contact-note">フォームをご利用いただくには JavaScript を有効にしてください。 / Please enable JavaScript to use this form.</p></noscript>
             </div>
           </form>
         </div>
@@ -829,9 +828,9 @@
       <span class="nav-label"><span>Contact Us</span></span>
     </a>
   </nav>
-  <script src="ucl-content-i18n.js?v=contact-20261012-1"></script>
+  <script src="ucl-content-i18n.js?v=mobile-20261012-2"></script>
   <script type="module">
-    import { sendContactMessage } from './ucl-contact.js?v=contact-20261012-1';
+    import { sendContactMessage } from './ucl-contact.js?v=mobile-20261012-2';
     (()=>{
       const root=document.documentElement;
       const copy={
@@ -1317,8 +1316,8 @@
         renderContactCopy();
         if(page!==previousPage){section.scrollTop=0;homeView.scrollTop=0;syncHomeScroll();}
         if(page!=='home'){
-          if(page==='products'){
-            const lines=language==='en'?['Products &','Services']:['製品・','サービス'];
+          if(page==='products'&&language==='en'){
+            const lines=['Products &','Services'];
             sectionHeading.replaceChildren(...lines.map((text,index)=>{
               const span=document.createElement('span');span.className='heading-line';span.textContent=text+(index===0?' ':'');return span;
             }));
@@ -1342,8 +1341,8 @@
         render();
       }));
       const contactWords={
-        en:{lead:'Tell us what you have in mind.',intro:'Questions, ideas, or a project to discuss.',direct:'You can also reach us by email.',name:'Name / Company',optional:'Optional',email:'Email',required:'Required',message:'Message',send:'Send message',sending:'Sending…',privacy:'We use your information to respond to your inquiry.',privacyTitle:'How your message is handled',privacyDetail:'Your name, email address, and message are delivered to us through FormSubmit. That service retains submissions for 30 days.',privacyLink:'FormSubmit privacy policy',thanks:'Thank you.',completeTitle:'Your inquiry has been sent.',completeNote:'We’ll review your message and reply to the email address you provided.',again:'Send another message',formLabel:'Contact form',emailMissing:'Please enter your email address.',emailInvalid:'Please enter a valid email address.',messageMissing:'Please add a message.',invalid:'Please check the highlighted fields.',failed:'We couldn’t confirm your submission. Your message is still here. Please try again or email us directly.',timeout:'The request timed out, so we couldn’t confirm your submission. Your message is still here. Please wait a moment before retrying or email us directly.',notReady:'The form is temporarily unavailable. Your message is still here. Please email us directly.'},
-        ja:{lead:'どんなことでも、お聞かせください。',intro:'ご質問、アイデア、お仕事のご相談など。',direct:'メールでもお問い合わせいただけます。',name:'お名前・会社名',optional:'任意',email:'メールアドレス',required:'必須',message:'お問い合わせ内容',send:'メッセージを送る',sending:'送信中…',privacy:'入力内容はお問い合わせへの対応に利用します。',privacyTitle:'送信内容の取り扱い',privacyDetail:'お名前、メールアドレス、お問い合わせ内容は、メール送信サービス FormSubmit を通じて当社へ届きます。送信内容は同サービスに30日間保存されます。',privacyLink:'FormSubmit のプライバシーポリシー',thanks:'ありがとうございます。',completeTitle:'お問い合わせを送信しました。',completeNote:'内容を確認し、ご入力のメールアドレスへ返信いたします。',again:'別のお問い合わせを送る',formLabel:'お問い合わせフォーム',emailMissing:'メールアドレスを入力してください。',emailInvalid:'メールアドレスの形式を確認してください。',messageMissing:'お問い合わせ内容を入力してください。',invalid:'入力欄のメッセージをご確認ください。',failed:'送信を確認できませんでした。入力内容は残っています。もう一度お試しいただくか、メールでお問い合わせください。',timeout:'通信に時間がかかり、送信を確認できませんでした。入力内容は残っています。少し待って再送するか、メールでお問い合わせください。',notReady:'現在フォームを利用できません。入力内容は残っています。メールでお問い合わせください。'}
+        en:{lead:'Tell us what you have in mind.',intro:'Questions, ideas, or a project to discuss.',name:'Name / Company',optional:'Optional',email:'Email',required:'Required',message:'Message',send:'Send message',sending:'Sending…',privacy:'We use your information to respond to your inquiry.',privacyTitle:'How your message is handled',privacyDetail:'Your name, email address, and message are delivered to us through FormSubmit. That service retains submissions for 30 days.',privacyLink:'FormSubmit privacy policy',thanks:'Thank you.',completeTitle:'Your inquiry has been sent.',completeNote:'We’ll review your message and reply to the email address you provided.',again:'Send another message',formLabel:'Contact form',emailMissing:'Please enter your email address.',emailInvalid:'Please enter a valid email address.',messageMissing:'Please add a message.',invalid:'Please check the highlighted fields.',failed:'We couldn’t confirm your submission. Your message is still here. Please try again.',timeout:'The request timed out, so we couldn’t confirm your submission. Your message is still here. Please wait a moment before trying again.',notReady:'The form is temporarily unavailable. Your message is still here. Please try again later.'},
+        ja:{lead:'どんなことでも、お聞かせください。',intro:'ご質問、アイデア、お仕事のご相談など。',name:'お名前・会社名',optional:'任意',email:'メールアドレス',required:'必須',message:'お問い合わせ内容',send:'メッセージを送る',sending:'送信中…',privacy:'入力内容はお問い合わせへの対応に利用します。',privacyTitle:'送信内容の取り扱い',privacyDetail:'お名前、メールアドレス、お問い合わせ内容は、メール送信サービス FormSubmit を通じて当社へ届きます。送信内容は同サービスに30日間保存されます。',privacyLink:'FormSubmit のプライバシーポリシー',thanks:'ありがとうございます。',completeTitle:'お問い合わせを送信しました。',completeNote:'内容を確認し、ご入力のメールアドレスへ返信いたします。',again:'別のお問い合わせを送る',formLabel:'お問い合わせフォーム',emailMissing:'メールアドレスを入力してください。',emailInvalid:'メールアドレスの形式を確認してください。',messageMissing:'お問い合わせ内容を入力してください。',invalid:'入力欄のメッセージをご確認ください。',failed:'送信を確認できませんでした。入力内容は残っています。もう一度お試しください。',timeout:'通信に時間がかかり、送信を確認できませんでした。入力内容は残っています。少し待ってから、もう一度お試しください。',notReady:'現在フォームを利用できません。入力内容は残っています。時間をおいて、もう一度お試しください。'}
       };
       const contactForm=contactContent.querySelector('form');
       const contactCompose=contactContent.querySelector('.contact-compose');
@@ -1371,7 +1370,16 @@
         contactContent.lang=language;
         contactContent.querySelectorAll('[data-contact-copy]').forEach(node=>{
           const key=node.dataset.contactCopy;
-          node.textContent=contactWords[language][key==='send'&&contactSubmitting?'sending':key];
+          const text=contactWords[language][key==='send'&&contactSubmitting?'sending':key];
+          if(language==='ja'&&(key==='lead'||key==='intro')){
+            // Keep short Japanese phrases together; wrap naturally between phrases.
+            const phrases=text.match(/[^、]+、?/g)||[text];
+            node.replaceChildren(...phrases.map(phrase=>{
+              const span=document.createElement('span');
+              span.className='contact-phrase';span.textContent=phrase;
+              return span;
+            }));
+          }else node.textContent=text;
         });
         contactForm.setAttribute('aria-label',contactWords[language].formLabel);
         contactContent.querySelectorAll('[data-error-key]').forEach(node=>{
@@ -1428,6 +1436,6 @@
       render();
     })();
   </script>
-  <script type="module" src="ucl-identity.js?v=contact-20261012-1"></script>
+  <script type="module" src="ucl-identity.js?v=mobile-20261012-2"></script>
 </body>
 </html>
