@@ -16,7 +16,13 @@
   <link rel="stylesheet" href="ucl-identity.css?v=mobile-20261012-2">
   <noscript><style>.fallback{opacity:1;visibility:visible}</style></noscript>
   <script type="importmap">{"imports":{"three":"./ucl-three.module.min.js","three/addons/loaders/SVGLoader.js":"./ucl-SVGLoader.js"}}</script>
-</head>
+<style data-ucl-intro="emergence-20261012-1">
+:root[data-page="home"],[data-page="home"] body,[data-page="home"] .identity{background:#151219}
+.identity-canvas{transition:opacity .5s ease}
+.home-news-cue{opacity:var(--intro-cue,0);pointer-events:auto}
+[data-renderer="fallback"] .home-news-cue{opacity:1}
+@media(prefers-reduced-motion:reduce){:root[data-page="home"],[data-page="home"] body,[data-page="home"] .identity{background:#fcfcfd}.identity-canvas{transition:none}}
+</style></head>
 <body>
   <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
@@ -77,9 +83,9 @@
           <li class="news-item">
             <span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-update"/></svg></span>
             <div class="news-copy">
-              <time datetime="2026-10-09">October 9, 2026</time>
-              <h3><a data-quotaecho-link href="https://universion-closure-logic.com/apple/quotaecho/en/">QuotaEcho 1.1 update in preparation</a></h3>
-              <p>We’re preparing improvements to usage-limit refresh handling and data availability indicators.</p>
+              <time datetime="2026-10-12">October 12, 2026</time>
+              <h3><a data-quotaecho-link href="https://universion-closure-logic.com/apple/quotaecho/en/">QuotaEcho 1.1 update released</a></h3>
+              <p>We’ve improved usage-limit refresh handling and data availability indicators.</p>
             </div>
           </li>
           <li class="news-item">
@@ -832,7 +838,7 @@
       <span class="nav-label"><span>Contact Us</span></span>
     </a>
   </nav>
-  <script src="ucl-content-i18n.js?v=mobile-20261012-2"></script>
+  <script src="ucl-content-i18n.js?v=logo-news-20261012-1"></script>
   <script type="module">
     import { sendContactMessage } from './ucl-contact.js?v=mobile-20261012-2';
     (()=>{
@@ -1440,6 +1446,6 @@
       render();
     })();
   </script>
-  <script type="module" src="ucl-identity.js?v=mobile-20261012-2"></script>
+  <script type="module" src="ucl-identity.js?v=emergence-20261012-1"></script>
 </body>
 </html>
