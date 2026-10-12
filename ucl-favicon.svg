@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="16 16 224 224"><title>UCL</title><defs><linearGradient id="opal" x2="1" y2="1"><stop stop-color="#edf4ff"/><stop offset=".5" stop-color="#fcfcfd"/><stop offset="1" stop-color="#f2eafa"/></linearGradient></defs><rect x="16" y="16" width="224" height="224" rx="42" fill="url(#opal)"/><g fill="#252a34">
+    <path id="u" d="M 28.338 67.912 L 58.468 50.557 L 58.468 165.157 L 73.799 173.880 L 73.799 54.054 L 129.117 24.000 L 162.600 42.495 L 92.080 77.302 L 92.080 192.524 L 113.326 203.308 L 168.734 180.153 L 168.734 209.902 L 116.211 232.000 L 28.338 180.859 Z"/>
+    <path id="c" d="M 104.267 82.157 L 165.349 53.595 L 165.349 79.650 L 126.659 97.134 L 126.659 163.286 L 165.107 145.323 L 165.107 170.902 L 118.556 192.005 L 104.267 184.401 Z"/>
+    <path id="l" d="M 179.229 50.926 L 202.346 65.236 L 202.346 169.942 L 227.662 184.459 L 179.229 207.595 Z"/>
+  </g></svg>
