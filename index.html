@@ -14,6 +14,8 @@
   <link rel="icon" href="ucl-favicon.svg?v=ucl-20261012-1" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=ucl-20261012-1" sizes="180x180">
   <link rel="stylesheet" href="ucl-identity.css?v=mobile-20261012-2">
+  <link rel="stylesheet" href="ucl-layout.css?v=desktop-20261014-4">
+  <link rel="stylesheet" href="ucl-desktop.css?v=desktop-20261014-4">
   <noscript><style>.fallback{opacity:1;visibility:visible}</style></noscript>
   <script type="importmap">{"imports":{"three":"./ucl-three.module.min.js","three/addons/loaders/SVGLoader.js":"./ucl-SVGLoader.js"}}</script>
 <style data-ucl-intro="emergence-20261012-1">
@@ -51,9 +53,28 @@
   </svg>
   <header class="site-header">
     <a class="home-link" href="#home" aria-current="page">
+      <img class="ucl-header-brand" src="ucl-horizontal.svg" alt="Universion Closure Logic" width="1701" height="162">
       <svg class="ui-icon" aria-hidden="true"><use href="#icon-home"/></svg>
       <span data-home-label>ホーム</span>
     </a>
+  <nav class="global-nav" aria-label="Main navigation">
+    <a class="global-link" href="#research" data-page-link="research">
+      <svg class="ui-icon" aria-hidden="true"><use href="#icon-research"/></svg>
+      <span class="nav-label"><span>Research</span></span>
+    </a>
+    <a class="global-link" href="#company" data-page-link="company">
+      <svg class="ui-icon" aria-hidden="true"><use href="#icon-company"/></svg>
+      <span class="nav-label"><span>Company</span><span>Profile</span></span>
+    </a>
+    <a class="global-link" href="#products" data-page-link="products">
+      <svg class="ui-icon" aria-hidden="true"><use href="#icon-products"/></svg>
+      <span class="nav-label"><span>Products &amp;</span><span>Services</span></span>
+    </a>
+    <a class="global-link" href="#contact" data-page-link="contact">
+      <svg class="ui-icon" aria-hidden="true"><use href="#icon-contact"/></svg>
+      <span class="nav-label"><span>Contact Us</span></span>
+    </a>
+  </nav>
     <div class="language-switch" role="group" aria-label="言語">
       <button type="button" data-language="en" lang="en" aria-pressed="false"><span class="language-pointer" aria-hidden="true">▶︎</span>English</button>
       <span class="language-divider" aria-hidden="true">/</span>
@@ -70,7 +91,7 @@
       <div class="watermark-mark"><img src="ucl-g.svg" alt="" draggable="false"></div>
       <div class="watermark-name"><img src="ucl-wordmark.svg" alt="" draggable="false"></div>
     </div>
-    <section class="home-view" aria-labelledby="home-heading" tabindex="0">
+    <section data-ucl-scroller class="home-view" aria-labelledby="home-heading" tabindex="0">
       <div class="home-hero">
         <h1 class="sr-only" id="home-heading" tabindex="-1">Universion Closure Logic</h1>
         <button class="home-news-cue" type="button" aria-label="Scroll to news">
@@ -105,9 +126,12 @@
           </li>
         </ol>
       </section>
+      <footer class="ucl-site-footer"><div class="ucl-footer-inner"><img class="ucl-footer-brand" src="ucl-horizontal.svg" alt="Universion Closure Logic" width="310" height="24" loading="lazy"><button class="ucl-back-top" type="button" data-ucl-back-top><span data-ucl-back-label>ページの先頭へ</span><span aria-hidden="true">↑</span></button><div class="ucl-footer-bottom"><small>© 2026 Universion Closure Logic. All rights reserved.</small><span class="ucl-footer-company" data-ucl-footer-company>株式会社 Universion Closure Logic</span></div></div></footer>
     </section>
-    <section class="section-view" aria-labelledby="section-heading" hidden>
+    <section data-ucl-scroller class="section-view" aria-labelledby="section-heading" hidden>
+      <div class="section-layout">
       <div class="section-heading">
+        <span class="section-kicker" data-section-kicker aria-hidden="true">RESEARCH</span>
         <h1 id="section-heading" tabindex="-1">Research</h1>
         <div class="section-art" data-kind="research" aria-hidden="true">
           <svg class="research-orbit" viewBox="0 0 120 120" fill="none">
@@ -657,7 +681,7 @@
         </section>
       </article>
       <article class="research-content company-content" lang="en" hidden>
-        <section aria-labelledby="company-summary-heading">
+        <section class="company-summary" aria-labelledby="company-summary-heading">
           <h2 class="research-eyebrow content-divider" id="company-summary-heading">Summary</h2>
           <p class="research-lead">Turning scientific ideas into useful technology.</p>
           <p>Universion Closure Logic is a technology company rooted in scientific inquiry. We bring together information theory, artificial intelligence, data science, and communication technologies to develop software, algorithms, and digital products.</p>
@@ -665,6 +689,7 @@
           <p>By clarifying the scope of a search and priorities for verification, our aim is to support decisions about where to allocate limited computing resources, time, and funding, and to bring these research insights into practical use as tools and experiences for people and organizations.</p>
         </section>
         <section class="research-details" aria-label="Company facts">
+          <div class="company-facts-layout">
           <dl class="company-facts">
             <div class="company-fact">
               <dt>Company name</dt>
@@ -682,6 +707,8 @@
               <dt>Principal bank</dt>
               <dd>Sumitomo Mitsui Banking Corporation<span class="company-legal-name">SMBC</span></dd>
             </div>
+          </dl>
+          <dl class="company-facts company-business-facts">
             <div class="company-fact company-business-domain">
               <dt>Business domain</dt>
               <dd>
@@ -697,6 +724,7 @@
               </dd>
             </div>
           </dl>
+          </div>
         </section>
       </article>
       <article class="research-content products-content" lang="en" hidden>
@@ -705,7 +733,7 @@
           <span aria-hidden="true">/</span>
           <button type="button" data-scroll-target="portfolio-services-heading">Services <span aria-hidden="true">↓</span></button>
         </nav>
-        <section aria-labelledby="portfolio-products-heading">
+        <section class="portfolio-products" aria-labelledby="portfolio-products-heading">
           <h2 class="research-eyebrow content-divider" id="portfolio-products-heading">Products</h2>
           <div class="portfolio-list">
             <section class="portfolio-entry" aria-labelledby="portfolio-quotaecho">
@@ -812,27 +840,13 @@
         </div>
         <p class="sr-only" id="contact-announcement" role="status" aria-live="polite" aria-atomic="true"></p>
       </article>
+      </div>
+      <footer class="ucl-site-footer"><div class="ucl-footer-inner"><img class="ucl-footer-brand" src="ucl-horizontal.svg" alt="Universion Closure Logic" width="310" height="24" loading="lazy"><button class="ucl-back-top" type="button" data-ucl-back-top><span data-ucl-back-label>ページの先頭へ</span><span aria-hidden="true">↑</span></button><div class="ucl-footer-bottom"><small>© 2026 Universion Closure Logic. All rights reserved.</small><span class="ucl-footer-company" data-ucl-footer-company>株式会社 Universion Closure Logic</span></div></div></footer>
     </section>
   </main>
-  <nav class="global-nav" aria-label="Main navigation">
-    <a class="global-link" href="#research" data-page-link="research">
-      <svg class="ui-icon" aria-hidden="true"><use href="#icon-research"/></svg>
-      <span class="nav-label"><span>Research</span></span>
-    </a>
-    <a class="global-link" href="#company" data-page-link="company">
-      <svg class="ui-icon" aria-hidden="true"><use href="#icon-company"/></svg>
-      <span class="nav-label"><span>Company</span><span>Profile</span></span>
-    </a>
-    <a class="global-link" href="#products" data-page-link="products">
-      <svg class="ui-icon" aria-hidden="true"><use href="#icon-products"/></svg>
-      <span class="nav-label"><span>Products &amp;</span><span>Services</span></span>
-    </a>
-    <a class="global-link" href="#contact" data-page-link="contact">
-      <svg class="ui-icon" aria-hidden="true"><use href="#icon-contact"/></svg>
-      <span class="nav-label"><span>Contact Us</span></span>
-    </a>
-  </nav>
+
   <script src="ucl-content-i18n.js?v=content-20261014-1"></script>
+  <script src="ucl-layout.js?v=desktop-20261014-4"></script>
   <script type="module">
     import { sendContactMessage } from './ucl-contact.js?v=mobile-20261012-2';
     (()=>{
@@ -1267,13 +1281,14 @@
         pageAnimations.forEach(animation=>animation.cancel());pageAnimations=[];
         if(orbitReduced.matches||page==='home')return;
         const article={research:researchContent,company:companyContent,products:productsContent,contact:contactContent}[page];
-        for(const node of [sectionHeading,article]){
+        for(const node of [sectionHeading,...(getComputedStyle(article).display==='contents'?[...article.children]:[article])]){
           pageAnimations.push(node.animate([{opacity:0},{opacity:1}],{duration:180,easing:'cubic-bezier(.2,.65,.35,1)'}));
         }
       }
       orbitReduced.addEventListener('change',()=>{if(orbitReduced.matches){pageAnimations.forEach(animation=>animation.cancel());pageAnimations=[];}});
       document.querySelectorAll('[data-scroll-target]').forEach(button=>button.addEventListener('click',()=>{
         const target=document.getElementById(button.dataset.scrollTarget);
+        if(button.dataset.scrollTarget==='portfolio-products-heading'&&matchMedia('(min-width:1100px)').matches){section.scrollTo({top:0,behavior:orbitReduced.matches?'instant':'smooth'});sectionHeading.focus({preventScroll:true});return;}
         const y=target.getBoundingClientRect().top-section.getBoundingClientRect().top+section.scrollTop-document.querySelector('.site-header').getBoundingClientRect().height-24;
         section.scrollTo({top:Math.max(0,y),behavior:orbitReduced.matches?'instant':'smooth'});
         target.setAttribute('tabindex','-1');target.focus({preventScroll:true});

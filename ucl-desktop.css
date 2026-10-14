@@ -1,0 +1,101 @@
+/* Mobile markup and animations stay intact; desktop reorganizes that same content. */
+.section-kicker{display:none}
+.section-view{padding-bottom:0}
+.section-layout{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+.section-view>.ucl-site-footer{margin-inline:-28px}
+.home-news{padding-bottom:96px}
+@media(max-width:350px){.section-view>.ucl-site-footer{margin-inline:-22px}}
+@media(min-width:1100px){
+  :root{--desktop-width:min(1200px,calc(100vw - 112px));--desktop-gap:60px;--desktop-left:calc((var(--desktop-width) - var(--desktop-gap)) * 5 / 11.4);--desktop-right:calc(var(--desktop-width) - var(--desktop-left) - var(--desktop-gap))}
+  :is([data-page="research"],[data-page="company"],[data-page="products"],[data-page="contact"]) body::after{display:none}
+  .site-watermark{display:none}
+  .section-view{padding:148px 0 0;scroll-padding:100px 0 30px}
+  .section-layout{width:var(--desktop-width);margin:0 auto;display:grid;grid-template-columns:minmax(0,var(--desktop-left)) minmax(0,var(--desktop-right));column-gap:var(--desktop-gap);align-items:start;padding-bottom:100px;min-height:calc(100svh - 148px - 180px)}
+  .section-view>.ucl-site-footer{margin-inline:0}
+  :is([data-page="research"],[data-page="company"],[data-page="products"],[data-page="contact"]) .section-heading{grid-column:1;grid-row:1;display:flex;flex-direction:column;gap:0;align-items:flex-start;position:relative;min-width:0;width:100%;max-width:none;min-height:0;margin:0;padding:0}
+  .section-kicker{display:block;font:11px/1.5 Arial,sans-serif;letter-spacing:.2em;color:#7d889b;margin:0 0 24px}
+  :is([data-page="research"],[data-page="company"],[data-page="products"],[data-page="contact"]) .section-heading h1{font-size:50px;line-height:1.2;letter-spacing:-.025em;font-weight:400;max-width:100%;width:100%;overflow-wrap:break-word}
+  html:lang(ja) .section-heading h1{letter-spacing:.02em}
+  :is([data-page="research"],[data-page="company"],[data-page="products"],[data-page="contact"]) .section-art{position:relative;inset:auto;width:calc(100% + 100px);height:auto;aspect-ratio:1;margin:58px 0 0 -50px;flex:none}
+  .section-art[data-kind="research"] .research-orbit{transform:rotate(-9deg)}
+  .section-art[data-kind="company"]{width:calc(100% + 30px);margin:26px 0 0 -15px}
+  .section-art[data-kind="products"]{width:calc(100% + 50px);margin:30px 0 0 -25px}
+  .section-art[data-kind="contact"]{width:calc(100% + 50px);margin:35px 0 0 -25px}
+  .section-art .product-exchange{transform:translate(13%,-15%) scale(1.5);transform-origin:36.667% 70%}
+  .section-art .contact-envelope{transform:translate(13.3%,-24%) scale(1.7);transform-origin:36.667% 70%}
+  .research-content,.research-content:lang(ja){display:contents;font-size:16px;line-height:1.95;letter-spacing:0}
+  .research-content[hidden]{display:none}
+  .research-summary,.company-summary{grid-column:2;grid-row:1;min-width:0}
+  .research-content p{margin-bottom:22px;text-wrap:pretty}
+  .research-summary>p:last-child,.company-summary>p:last-child{margin-bottom:0}
+  .research-content .content-divider{justify-content:flex-start;height:18px;margin-bottom:24px;font-size:10px;line-height:1.5;color:#748095}
+  .research-content .research-lead,.research-content:lang(ja) .research-lead{font-size:27px;line-height:1.65;font-weight:400;letter-spacing:.01em;margin-bottom:30px}
+  .research-lead .ja-phrase{display:inline}
+  .research-details{grid-column:1/-1;margin-top:88px;min-width:0}
+  .research-details-heading{padding:0;border:0;align-items:flex-end}
+  .research-details-heading .research-eyebrow{font-size:30px;line-height:1.3;font-weight:400;letter-spacing:.01em;text-transform:none;color:#505a69}
+  .research-content .research-intro{margin:14px 0 34px;font-size:14px;line-height:1.7}
+  .research-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:38px 60px}
+  .research-fields li{display:block;min-width:0;padding:24px 0 0}
+  .research-fields .field-number{display:block;margin-bottom:14px;padding:0;font-size:11px;letter-spacing:.12em}
+  .research-content .field-copy h3,.research-content:lang(ja) .field-copy h3{font-size:21px;line-height:1.5;font-weight:500;letter-spacing:0}
+  .research-content .field-purpose{font-size:12px;line-height:1.7;margin:9px 0 19px}
+  .field-copy p:last-child{font-size:16px;line-height:1.9;margin:0}
+  .company-content .research-details{margin-top:65px}
+  .company-facts-layout{display:grid;grid-template-columns:minmax(0,var(--desktop-left)) minmax(0,var(--desktop-right));gap:var(--desktop-gap);align-items:start}
+  .company-facts{display:block;min-width:0}
+  .company-fact:not(.company-business-domain){grid-column:1;display:block;padding:0 0 27px;border:0}
+  .company-fact:not(.company-business-domain) dt{padding:0;margin:0 0 8px;font-size:11px}
+  .company-fact:not(.company-business-domain) dd{font-size:23px;line-height:1.5;letter-spacing:0}
+  .company-fact .company-legal-name{font-size:13px;margin-top:6px}
+  .company-fact.company-business-domain{grid-column:2;grid-row:1/5;display:block;padding:0;border:0}
+  .company-business-domain dt{margin:0 0 24px;padding:0;font-size:13px}
+  .company-business-list{font-size:16px;line-height:1.9}
+  .company-business-list li{padding:18px 0;gap:14px}
+  .company-business-list p{margin:0}
+  .products-content>.portfolio-jump{grid-column:2;grid-row:1;align-self:start;z-index:1;position:relative;margin:0;padding:0 0 20px;min-width:0;justify-content:flex-start}
+  .portfolio-products,.portfolio-list{display:contents}
+  .portfolio-products>#portfolio-products-heading{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .portfolio-entry{grid-row:2;padding:34px 0 0;margin-top:72px;min-width:0;display:flex;flex-direction:column;border-top:1px solid #74829926}
+  .portfolio-entry:first-child{grid-column:2;grid-row:1;margin:0;padding:66px 0 0;border-top:0}
+  .portfolio-entry:nth-child(2){grid-column:1}
+  .portfolio-entry:nth-child(3){grid-column:2}
+  .portfolio-entry h3{font-size:34px;line-height:1.25}
+  .products-content .portfolio-lead,.products-content:lang(ja) .portfolio-lead{font-size:18px;line-height:1.7;letter-spacing:0}
+  .portfolio-visual{width:100%;aspect-ratio:1.9;margin:22px 0 26px}
+  .portfolio-entry .portfolio-link{align-self:flex-start}
+  .sensegap-pair{width:80%;gap:15px}
+  .quotaecho-app-screen{width:40%;right:16%;top:8%}
+  .quotaecho-app-icon{width:17%;left:20%;top:28%}
+  .quotaecho-orbit{width:50%;left:5%;top:-8%}
+  .portfolio-services{grid-column:1/-1;grid-row:3;margin-top:88px;min-width:0}
+  .portfolio-services>.research-lead,.portfolio-services>p{max-width:680px}
+  .portfolio-service-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:34px}
+  .portfolio-service-list .field-copy{display:flex;flex-direction:column}
+  .portfolio-service-list .field-copy h3{min-height:64px}
+  .service-visual{width:100%;max-width:none;aspect-ratio:1.8;margin:10px 0 22px}
+  .portfolio-service-list p{font-size:15px;line-height:1.9}
+  .portfolio-service-list .service-examples{font-size:12px;line-height:1.8}
+  .service-approach{padding-top:34px;margin-top:48px;max-width:none}
+  .contact-content{grid-column:2;grid-row:1;width:100%;max-width:none;margin:0;padding-top:39px;font-size:16px;min-width:0}
+  .contact-intro{margin-bottom:32px}
+  .contact-intro h2{font-size:27px;line-height:1.65;max-width:none;font-weight:400}
+  .contact-intro p{font-size:15px;line-height:1.8}
+  .contact-form{gap:25px 24px}
+  .contact-field label{font-size:12px}.contact-field-hint{font-size:10px}
+  .contact-field input{height:54px}.contact-field textarea{min-height:180px;scroll-margin-bottom:40px}
+  .contact-send{width:100%;min-height:56px}
+  .contact-note{font-size:11px}
+  .contact-complete{padding-top:32px;min-height:480px}
+  .home-view{scroll-padding:100px 0 30px}
+  .home-news-cue{bottom:35px}
+  .home-news{width:var(--desktop-width);max-width:none;min-height:0;display:grid;grid-template-columns:minmax(0,var(--desktop-left)) minmax(0,var(--desktop-right));gap:var(--desktop-gap);padding:100px 0 110px}
+  .home-news h2{font-size:50px;margin:0;line-height:1.2}
+  .home-news .news-item{padding:30px 0}
+  .home-news .news-item:first-child{padding-top:0}
+  .home-news .news-copy h3{font-size:21px}
+}
+@media(min-width:1100px) and (max-width:1279px){
+  :root{--desktop-gap:48px}
+  .section-heading h1{font-size:44px!important}
+}

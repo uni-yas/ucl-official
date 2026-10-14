@@ -135,3 +135,11 @@ html:lang(ja) :is(.section h2,.story-landing h3,.pain-card h3){letter-spacing:.0
 }
 @media(max-width:350px){:root{--gutter:22px}.product-toc{gap:0 13px;font-size:10px}.product-brand{font-size:25px}.hero-actions{gap:10px}.button-primary{padding-inline:10px;font-size:11px}.platform-line{gap:5px;font-size:9px}}
 @media(prefers-reduced-motion:reduce){.ucl-ambient canvas{transition:none}}
+/* Desktop shares the corporate header/footer without changing Apple URLs. */
+@media(min-width:1100px){
+  :root{--header:76px}
+  body::after{display:none}
+  html{scroll-padding-bottom:32px}
+  .is-enhanced .story-sticky{height:calc(100svh - var(--header));padding-block:28px}
+  .site-watermark{display:none}
+}
