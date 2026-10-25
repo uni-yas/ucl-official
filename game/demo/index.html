@@ -1,0 +1,1367 @@
+<!doctype html>
+<html lang="ja"><head>
+<meta name="robots" content="noindex, nofollow, noarchive"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#060a10"><meta name="apple-mobile-web-app-capable" content="yes"><title>SONAR · UCL</title>
+<style>
+:root{color-scheme:dark;--bg:#060a10;--panel:#0c141e;--mint:#a1e0d1;--gold:#edd1a4;--red:#f56477;--text:#e1f0eb;--muted:#8eaaa9;--line:#a1e0d124;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;font-synthesis:none}*{box-sizing:border-box}body{margin:0;background:#030609;color:var(--text);overscroll-behavior:none}button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}button:disabled{cursor:default;opacity:.38}button:focus-visible{outline:2px solid var(--mint);outline-offset:4px}button,a{touch-action:manipulation}[hidden]{display:none!important}#app{width:min(100%,480px);height:100svh;height:100dvh;max-height:1000px;margin:0 auto;position:relative;display:flex;flex-direction:column;background:radial-gradient(ellipse at 50% 48%,#0b1720 0,#070c13 55%,#060a10 100%);overflow:hidden;padding-top:env(safe-area-inset-top);border-inline:1px solid #ffffff06}header{height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 19px;flex-shrink:0}.brand{font-size:12px;letter-spacing:5px;font-weight:600}.brand small{letter-spacing:1.8px;color:var(--muted);font-size:9px;margin-left:10px}.header-actions{display:flex;gap:4px}.icon-btn{border:0;background:transparent;width:42px;height:42px;font-size:17px;border-radius:50%;color:var(--muted)}.icon-btn:hover{background:#ffffff08;color:var(--text)}.hud{padding:3px 20px 0;flex-shrink:0}.sequence-line{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-size:11px;letter-spacing:1px;color:var(--muted)}.sequence-line b{color:var(--text);font-size:13px;font-weight:500;letter-spacing:2px}.phase{color:var(--mint)}.phase[data-peak=true]{color:var(--red)}.gauges{display:grid;grid-template-columns:1fr 1.25fr;gap:22px;margin-top:15px}.gauge-label{display:flex;justify-content:space-between;align-items:baseline;font-size:10px;letter-spacing:.5px;color:var(--muted)}.gauge-label strong{font-size:23px;font-weight:400;letter-spacing:0;font-variant-numeric:tabular-nums;color:var(--text)}.gauge-label i{font-size:11px;font-style:normal;color:var(--gold);margin-right:5px}.track{height:3px;background:#ffffff12;position:relative;margin-top:6px;overflow:hidden}.track>span{height:100%;display:block;background:var(--mint);transition:width .12s linear}.energy-track>span{background:var(--gold)}.track>i{position:absolute;top:0;height:100%;background:#fff8}#hp-box[data-low=true] strong{color:var(--red)}#hp-box[data-low=true] .track>span{background:var(--red)}#energy-box[data-low=true] strong{color:var(--red)}.xp-line{display:flex;gap:10px;align-items:center;font-size:9px;color:var(--muted);margin-top:13px;letter-spacing:.7px}.xp-line b{color:var(--mint);white-space:nowrap;font-weight:500}.xp-line .track{flex:1;margin:0;height:2px}.xp-line>span:last-child{min-width:47px;text-align:right;font-variant-numeric:tabular-nums}.field{position:relative;flex:1;min-height:240px;isolation:isolate}canvas{width:100%;height:100%;display:block;touch-action:none;user-select:none}.field-meta{position:absolute;left:20px;right:20px;top:12px;display:flex;justify-content:space-between;pointer-events:none;font-size:9px;letter-spacing:1px;color:#708e93}.field-meta .free{color:var(--gold)}#stage-banner{position:absolute;top:12%;left:12px;right:12px;text-align:center;pointer-events:none;opacity:0;transition:opacity .35s;font-size:16px;letter-spacing:4px;font-weight:300}#stage-banner.visible{opacity:1}#stage-banner small{display:block;font-size:9px;letter-spacing:2px;color:var(--muted);margin-top:9px}#boss-hint{position:absolute;top:42px;left:14px;right:14px;text-align:center;font-size:10px;letter-spacing:.8px;color:var(--red);pointer-events:none}#empty-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-top:110px;pointer-events:none;color:var(--muted);font-size:11px;letter-spacing:1px}.bottom{padding:0 20px max(14px,env(safe-area-inset-bottom));flex-shrink:0}#status{height:47px;text-align:center;display:flex;flex-direction:column;justify-content:center;font-size:12px;font-weight:500;letter-spacing:.5px;line-height:1.6;color:var(--text)}#status small{display:block;font-size:10px;font-weight:400;color:var(--muted);letter-spacing:0}#status[data-mode=chain]{color:var(--gold)}#status[data-group=true]{color:var(--mint)}.control-row{display:grid;grid-template-columns:1fr 132px 1fr;align-items:center;gap:9px;border-top:1px solid var(--line);padding-top:10px}.readout{font-size:9px;line-height:1.8;color:var(--muted)}.readout strong{font-weight:500;font-size:11px;color:var(--text);display:block;font-variant-numeric:tabular-nums}.readout:last-child{text-align:right}#scan{border:1px solid #a1e0d155;border-radius:40px;background:radial-gradient(ellipse,#a1e0d116,transparent);height:48px;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px}#scan strong{font-weight:500;font-size:12px;letter-spacing:3px}#scan small{color:var(--muted);font-size:8px;letter-spacing:.6px}.keys{display:flex;justify-content:center;gap:16px;color:var(--muted);font-size:9px;margin-top:10px;letter-spacing:.2px}.keys i{font-style:normal;color:var(--red);margin-right:4px}.overlay{position:absolute;z-index:10;inset:0;background:#060b12e8;backdrop-filter:blur(13px);display:flex;align-items:center;justify-content:center;padding:25px 22px max(25px,env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain}.sheet{max-width:380px;width:100%;margin:auto;animation:arrive .25s ease-out}.eyebrow{font-size:9px;letter-spacing:3px;color:var(--mint);text-transform:uppercase;margin:0 0 13px}.sheet h1{font-size:40px;font-weight:200;letter-spacing:8px;margin:0 0 10px}.sheet h2{font-size:26px;font-weight:300;letter-spacing:3px;margin:0 0 12px}.sheet h3{font-size:15px;font-weight:500;letter-spacing:1px;margin:0}.sheet p{font-size:12px;color:var(--muted);line-height:1.9;margin:0 0 20px}.hero{height:126px;position:relative;display:grid;place-items:center;margin:0 0 22px}.hero:before,.hero:after{content:"";position:absolute;width:100px;height:100px;border:1px solid #a1e0d13b;border-radius:50%;transform:rotateX(60deg) rotateZ(20deg);box-shadow:0 0 30px #a1e0d106}.hero:after{transform:rotateY(58deg) rotateZ(-20deg);width:116px;height:116px}.hero i{width:38px;height:38px;border:1px solid var(--mint);border-radius:50%;box-shadow:0 0 60px #a1e0d124,inset 0 0 15px #a1e0d11f;display:grid;place-items:center}.hero i:after{content:"";width:3px;height:3px;background:var(--text);border-radius:50%;box-shadow:0 0 12px #fff}.intro-actions{margin:24px 0;display:grid;gap:13px}.intro-action{display:flex;gap:16px;align-items:center;color:var(--text);font-size:12px;line-height:1.65}.intro-action i{font-style:normal;display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--line);border-radius:50%;color:var(--mint);font-size:16px;flex-shrink:0}.intro-action small{display:block;font-size:10px;color:var(--muted)}.btn{width:100%;min-height:49px;border:1px solid #a1e0d145;background:#a1e0d10b;border-radius:5px;padding:13px 16px;font-size:12px;letter-spacing:1px;text-align:center;transition:background .15s,color .15s}.btn:hover{background:#a1e0d119}.btn.primary{background:var(--mint);color:#0b2524;border-color:var(--mint);font-weight:600}.btn.gold{background:#edd1a412;border-color:#edd1a44d;color:var(--gold)}.btn.danger{color:var(--red);border-color:#f5647733}.btn small{display:block;font-size:9px;margin-top:5px;opacity:.75;letter-spacing:0}.stack{display:grid;gap:10px;margin-top:19px}.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quiet{border:0;background:transparent;padding:13px 3px;font-size:11px;color:var(--muted);width:100%;text-align:center;letter-spacing:.5px}.quiet:hover{color:var(--text)}.record-line{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);padding:13px 0;border-block:1px solid var(--line);margin:18px 0}.record-line b{color:var(--text);font-weight:500}.choices{display:grid;gap:12px;margin:26px 0 20px}.choice{position:relative;text-align:left;display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:center;border:1px solid #a1e0d133;background:linear-gradient(120deg,#a1e0d10c,#a1e0d103);padding:18px 16px;border-radius:5px;min-height:93px}.choice:hover{border-color:var(--mint);background:#a1e0d114}.choice>i{font-size:25px;font-style:normal;color:var(--mint);text-align:center;font-weight:200}.choice h3{margin-bottom:6px}.choice p{font-size:10px;margin:0 0 6px}.choice small{color:var(--mint);font-size:11px}.aside{font-size:10px!important;color:#6f8d92!important;margin-top:12px!important}.score-hero{display:flex;align-items:baseline;gap:15px;padding:20px 0 16px;border-bottom:1px solid var(--line);margin-bottom:18px}.score-hero strong{font-size:65px;line-height:1;font-weight:200;letter-spacing:-2px;color:var(--mint)}.score-hero span{font-size:11px;color:var(--muted);line-height:1.8}.score-hero span b{font-size:17px;color:var(--text);font-weight:400;display:block}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}.metrics span{font-size:10px;color:var(--muted)}.metrics b{font-size:21px;font-weight:300;color:var(--text);display:block;margin-top:6px}.reward{display:flex;justify-content:space-between;align-items:center;background:#edd1a409;border:1px solid #edd1a42b;border-radius:5px;padding:17px;color:var(--gold);font-size:12px}.reward b{font-size:27px;font-weight:300}.tiny{font-size:9px!important;line-height:1.7!important}.ad-orbit{width:112px;height:112px;border:1px solid #a1e0d133;border-radius:50%;display:grid;place-items:center;margin:30px auto;font-size:32px;font-weight:200;box-shadow:0 0 55px #a1e0d110}.trait{padding:17px 0;border-bottom:1px solid var(--line)}.trait h3{display:flex;justify-content:space-between;font-size:14px}.trait p{font-size:11px;margin:7px 0 13px}.trait .btn{min-height:39px;padding:9px;font-size:11px}.trait h3 small{font-size:10px;color:var(--gold);font-weight:400}.section-label{font-size:9px;color:var(--muted);letter-spacing:2px;margin:25px 0 10px}.qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:17px 0}.qa-grid .btn{font-size:11px;padding:12px 7px;min-height:65px}.qa-grid small{font-size:9px}.notice{border-left:2px solid var(--gold);padding-left:12px;font-size:11px;color:var(--gold);line-height:1.8;margin:15px 0}.pill{border:1px solid #edd1a43b;color:var(--gold);font-size:9px;padding:4px 7px;border-radius:20px;letter-spacing:.5px}.result-note{color:var(--gold)!important}#toast{position:absolute;z-index:30;top:52px;left:16px;right:16px;padding:12px 16px;text-align:center;border:1px solid var(--line);background:#101f28ec;backdrop-filter:blur(10px);font-size:11px;pointer-events:none;border-radius:5px}#test-state{position:absolute;bottom:0;font-size:1px;opacity:.01;pointer-events:none}@keyframes arrive{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}@media(min-width:650px){body{min-height:100dvh;display:flex;align-items:center}#app{box-shadow:0 0 100px #a1e0d106}}@media(max-height:710px){header{height:41px}.hud{padding-top:0}.gauges{margin-top:9px}.xp-line{margin-top:9px}.bottom{padding-bottom:max(9px,env(safe-area-inset-bottom))}.keys{margin-top:7px}.hero{height:80px;margin-bottom:14px}.hero:before{width:70px;height:70px}.hero:after{width:85px;height:85px}.sheet h1{font-size:34px}.sheet h2{font-size:23px}.intro-actions{gap:10px;margin:17px 0}.choices{gap:10px;margin:18px 0}.choice{min-height:80px;padding:13px}.score-hero{padding-top:12px}.score-hero strong{font-size:54px}.sheet p{margin-bottom:14px}.stack{margin-top:14px}.field{min-height:200px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+#stage-banner{top:17%;font-size:17px;letter-spacing:3px;text-shadow:0 1px 15px #000;transition:opacity .3s,transform .5s;transform:translateY(4px)}
+#stage-banner.visible{transform:translateY(0)}#stage-banner[data-kind=complete]{top:28%;color:var(--mint);font-size:20px;letter-spacing:2px}#stage-banner[data-kind=complete] small{color:var(--gold);font-size:10px;letter-spacing:1px}
+#stage-banner[data-kind=bossArrival]{top:var(--arrival-y,62%)}
+#stage-banner[data-kind=sector]{top:29%;font-size:28px;font-weight:200;letter-spacing:6px}#stage-banner span{display:inline-block;background:radial-gradient(ellipse,#071119c9,transparent 75%);padding:9px 14px}
+#boss-hint{font-size:11px;letter-spacing:.3px;top:39px;padding:5px 0;text-shadow:0 1px 9px #000}#boss-hint[data-open=true]{color:var(--mint)}
+#assist{position:absolute;bottom:30px;left:0;right:0;text-align:center;font-size:9px;letter-spacing:1px;color:#74938f;pointer-events:none;font-variant-numeric:tabular-nums}#assist[data-active=true]{color:var(--mint)}
+#build-strip{position:absolute;bottom:6px;left:0;right:0;display:flex;justify-content:center;gap:12px;color:#87aaa5;pointer-events:none;font-size:13px}#build-strip b{font-weight:400;font-size:8px;margin-left:3px;color:#6d8c87}
+.hero:before{animation:orbit-breathe 5s ease-in-out infinite}.hero:after{animation:orbit-breathe-b 5s ease-in-out infinite}.hero i{animation:core-breathe 3.8s ease-in-out infinite}
+@keyframes orbit-breathe{50%{transform:rotateX(60deg) rotateZ(45deg) scale(1.08);opacity:.6}}@keyframes orbit-breathe-b{50%{transform:rotateY(58deg) rotateZ(-45deg) scale(.93);opacity:.5}}@keyframes core-breathe{50%{box-shadow:0 0 65px #a1e0d138,inset 0 0 22px #a1e0d130;transform:scale(1.04)}}
+#demo-label{position:absolute;top:75px;left:16px;right:16px;text-align:center;pointer-events:none;font-size:10px;letter-spacing:1px;color:var(--gold)}
+#app{transition:box-shadow 1.1s}#app[data-phase=release]{box-shadow:inset 0 0 60px #a1e0d10b,0 0 40px #a1e0d106}#app[data-phase=peak] .sequence-line{border-color:#f5647729}.sequence-line{border-bottom:1px solid #a1e0d114;padding-bottom:8px;transition:border-color .6s}
+#build-strip .evolution-chip{font-size:10px;color:var(--gold);letter-spacing:1px;padding-left:7px;border-left:1px solid #edd1a435}
+.overlay[data-evolution=true] .eyebrow{color:var(--gold)}.overlay[data-evolution=true] .choice{border-color:#edd1a43c;background:linear-gradient(120deg,#edd1a410,#a1e0d105)}.overlay[data-evolution=true] .choice>i,.overlay[data-evolution=true] .choice small{color:var(--gold)}
+.build-summary{display:grid;gap:8px;padding:15px 0;border-block:1px solid var(--line);margin:15px 0}.build-summary>div{display:flex;justify-content:space-between;gap:15px;font-size:10px;line-height:1.5}.build-summary b{font-weight:500;color:var(--mint);white-space:nowrap}.build-summary span{color:var(--muted);text-align:right}.build-summary .evolved{border-top:1px solid #edd1a422;padding-top:8px}.build-summary .evolved b,.build-summary .evolved span{color:var(--gold)}.last-signal{border-left:1px solid #f5647744;padding-left:13px;color:var(--red)!important;font-size:11px!important}.last-signal small{display:block;font-size:10px;color:var(--muted);margin-top:5px}#stage-banner[data-kind=breached]{color:var(--red);font-size:17px;top:28%}#stage-banner[data-kind=breached] small{color:var(--muted)}
+#scan[data-auto=true]{opacity:.8;border-color:#a1e0d125;background:radial-gradient(ellipse,#a1e0d108,transparent);color:var(--mint);cursor:default}#scan[data-auto=true]:before{content:"";position:absolute;left:15px;top:22px;width:3px;height:3px;border-radius:50%;background:var(--mint);box-shadow:0 0 8px #a1e0d199;animation:auto-detect 3.2s ease-in-out infinite}@keyframes auto-detect{50%{opacity:.25;box-shadow:0 0 3px #a1e0d122}}
+</style></head><body>
+<main id="app">
+<header><div class="brand">SONAR<small id="build-mode">UCL</small></div><div class="header-actions"><button id="pause" class="icon-btn" aria-label="一時停止">Ⅱ</button><button id="menu" class="icon-btn" aria-label="メニュー">⋯</button></div></header>
+<div class="hud"><div class="sequence-line"><b id="sector">深度 01 · 接続</b><span id="phase" class="phase">見極め</span><time id="time">0:00</time></div><div class="gauges"><div id="hp-box"><div class="gauge-label"><span>中心 HP</span><strong id="hp">100</strong></div><div class="track"><span id="hp-bar"></span></div></div><div id="energy-box"><div class="gauge-label"><span>エントロピー</span><strong><i id="energy-plan"></i><span id="energy">60</span></strong></div><div class="track energy-track"><span id="energy-bar"></span><i id="energy-reserve"></i></div></div></div><div class="xp-line"><b id="level">Lv.1</b><div class="track"><span id="xp-bar"></span></div><span id="xp">0 / 45</span></div></div>
+<div class="field"><canvas id="sonar-canvas" role="img" aria-label="ソナーの空間"></canvas><div class="field-meta"><span id="tracking">未探知</span><span class="free" id="floating">漂う光 0</span></div><div id="demo-label" hidden>操作デモ</div><div id="assist" hidden></div><div id="build-strip" aria-label="現在の強化"></div><div id="boss-hint" hidden></div><div id="stage-banner"></div><div id="empty-hint">下の「探知」で、周囲の気配を捉える。</div></div>
+<div class="bottom"><div id="status"></div><div class="control-row"><div class="readout">渦の速さ<strong id="speed">0.00 回/秒</strong></div><button id="scan"><strong id="scan-name">探知</strong><small id="scan-detail">周囲へ波動を放つ</small></button><div class="readout">最大連鎖<strong id="best-chain">0 連鎖</strong></div></div><div class="keys"><span><i>○</i>群体はつなぐ</span><span><i>⬡</i>重装は追撃</span><span><i>›</i>高速は先に</span></div></div>
+<div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="sheet-title"></div><div id="toast" hidden></div><output id="test-state" aria-label="試遊状態" aria-live="off"></output>
+</main>
+<script>/* A deterministic art/game study of outward drift, not a thermodynamic model. */
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.ThreadDrift=api;})(typeof globalThis!=='undefined'?globalThis:this,()=>{
+  'use strict';
+  const TAU=Math.PI*2,DURATION=24,TOTAL=300,COUNT=150;
+  const kinds=[
+    {id:'swift',name:'先に離れる',color:[236,223,193],speed:[.050,.068],curl:.035},
+    {id:'wander',name:'揺らぎながら離れる',color:[151,219,211],speed:[.033,.047],curl:-.044},
+    {id:'float',name:'ゆっくり漂う',color:[181,170,226],speed:[.022,.030],curl:.072}
+  ];
+  const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+  function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let x=Math.imul(seed^seed>>>15,1|seed);x=x+Math.imul(x^x>>>7,61|x)^x;return((x^x>>>14)>>>0)/4294967296;};}
+  function create(seed=10424){
+    const random=rng(seed),particles=[];
+    for(let i=0;i<COUNT;i++){
+      const k=i%5<2?0:i%5<4?1:2,kind=kinds[k];
+      particles.push({id:i,kind:k,amount:TOTAL/COUNT,angle:i*2.399963229728653+random()*.18,
+        radius:.08+Math.sqrt(random())*.24,speed:kind.speed[0]+random()*(kind.speed[1]-kind.speed[0]),
+        phase:random()*TAU,frequency:.47+random()*.33,curl:kind.curl*(.7+random()*.6),
+        size:.72+random()*.52,delay:.2+random()*.7});
+    }
+    // Save the exact crossing moment so a point never comes back after it escapes.
+    for(const p of particles){let a=0,b=60;for(let i=0;i<40;i++){const m=(a+b)/2;if(at(p,m).radius<1)a=m;else b=m;}p.escapeAt=(a+b)/2;}
+    return particles;
+  }
+  function at(p,time){
+    const t=Math.max(0,time-p.delay),ease=t-.8*(1-Math.exp(-t/.8));
+    // Positive radial velocity, gently pulsing. Tangential motion is independent.
+    const travel=1.0*ease+.18*(Math.sin(p.phase+p.frequency*ease)-Math.sin(p.phase))/p.frequency;
+    const radius=p.radius+p.speed*travel;
+    const angle=p.angle+p.curl*ease+.10*(Math.sin(p.phase+ease*.44)-Math.sin(p.phase));
+    return {x:Math.cos(angle)*radius,y:Math.sin(angle)*radius,radius,angle,
+      escaped:radius>=1,alpha:radius<1?1:clamp(1-(radius-1)/.34)*.42};
+  }
+  function snapshot(particles,time){
+    time=clamp(Number(time)||0,0,DURATION);let available=0,near=0,escaped=0;
+    const points=particles.map(p=>{const pos=at(p,time);if(pos.escaped)escaped+=p.amount;else {available+=p.amount;if(pos.radius>=.83)near+=p.amount;}return {...pos,particle:p};});
+    return {time,available,near,escaped,points,phase:time<2?'ほどける':escaped>0?'境界の外へ':near>0?'境界へ近づく':'外へ、離れていく'};
+  }
+  return {TAU,DURATION,TOTAL,COUNT,kinds,clamp,create,at,snapshot};
+});
+</script><script>/* Fictional control field. Radius = reach; angular speed = strength. */
+(function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./entropy.js'):root.ThreadDrift);if(typeof module==='object'&&module.exports)module.exports=api;else root.ThreadFlow=api;})(typeof globalThis!=='undefined'?globalThis:this,D=>{
+  'use strict';
+  const {TAU,clamp}=D,CAPTURE=.12;
+  const kinds=[
+    {id:'swift',name:'逃げ足が速い',color:[236,223,193],drift:1.2,response:1.05,inertia:.16},
+    {id:'ribbon',name:'流れに乗る',color:[151,219,211],drift:1,response:1.48,inertia:.23},
+    {id:'heavy',name:'力が要る',color:[181,170,226],drift:.95,response:.58,inertia:.42}
+  ];
+  function field(radius,rps){
+    const size=clamp((radius-.12)/.57),reach=.34+size*.66,speed=clamp(rps,0,2.2);
+    const power=speed>0?.24*Math.pow(speed,.88)/(.4+reach*.8):0;
+    return {reach,power,speed,size};
+  }
+  class World{
+    constructor(seed=10424){
+      this.time=0;this.collected=0;this.escaped=0;this.events=[];this.reach=.65;this.power=0;this.speed=0;this.direction=1;this.rotation=0;this.done=false;
+      this.particles=D.create(seed).map(p=>({...p,r:p.radius*1.65+.21,a:p.angle,vr:0,spin:0,state:'free',age:0,trail:[],x:0,y:0,tailClock:0}));
+      for(const p of this.particles){p.x=Math.cos(p.a)*p.r;p.y=Math.sin(p.a)*p.r;}
+    }
+    step(delta,input={}){
+      if(this.done)return;let left=Math.min(.2,Math.max(0,delta));
+      // Fixed maximum step prevents a frame stall from skipping a boundary.
+      while(left>1e-8){const dt=Math.min(left,1/120);this.advance(dt,input);left-=dt;}
+    }
+    advance(dt,input){
+      this.time+=dt;const f=field(input.radius||.36,input.active?input.rps||0:0),smooth=1-Math.exp(-dt/.10);
+      this.reach+=(f.reach-this.reach)*smooth;this.speed+=(f.speed-this.speed)*smooth;this.power+=(f.power-this.power)*smooth;
+      if(input.active&&input.direction)this.direction=Math.sign(input.direction);
+      this.rotation+=this.direction*this.speed*TAU*dt;
+      for(const p of this.particles){
+        p.age+=dt;
+        if(p.state==='collected')continue;
+        if(p.state==='escaped'){
+          p.r+=dt*(p.speed*1.8+.02);p.a+=dt*p.curl*1.5;p.x=Math.cos(p.a)*p.r;p.y=Math.sin(p.a)*p.r;continue;
+        }
+        const k=kinds[p.kind],edge=clamp((this.reach+.07-p.r)/.16);
+        // Gentle, bounded central attraction. The field still comes from the finger;
+        // nearing the core increases inward speed instead of ending at a fixed glide.
+        const approach=clamp((.62-p.r)/(.62-CAPTURE));
+        const gravity=1+.9*approach*approach;
+        const pull=this.power*k.response*edge*gravity;
+        const outward=p.speed*k.drift*(1+.18*Math.cos(p.phase+this.time*p.frequency));
+        const radial=outward-pull;
+        p.vr+=(radial-p.vr)*(1-Math.exp(-dt/k.inertia));
+        const targetSpin=this.direction*this.speed*2.3*edge;
+        p.spin+=(targetSpin-p.spin)*(1-Math.exp(-dt/.2));
+        p.r+=p.vr*dt;p.a+=(p.curl+.045*Math.cos(p.phase+this.time*.44)+p.spin)*dt;
+        p.x=Math.cos(p.a)*p.r;p.y=Math.sin(p.a)*p.r;
+        p.tailClock+=dt;if(p.tailClock>=.045){p.tailClock=0;p.trail.push({x:p.x,y:p.y});if(p.trail.length>14)p.trail.shift();}
+        if(p.r<=CAPTURE){p.state='collected';p.age=0;this.collected+=p.amount;this.events.push({type:'capture',x:p.x,y:p.y,kind:p.kind,amount:p.amount,inwardSpeed:-p.vr,angularSpeed:p.curl+.045*Math.cos(p.phase+this.time*.44)+p.spin});}
+        else if(p.r>=1){p.r=1;p.state='escaped';p.age=0;this.escaped+=p.amount;this.events.push({type:'escape',x:Math.cos(p.a),y:Math.sin(p.a),kind:p.kind,amount:p.amount});}
+      }
+      this.done=this.collected+this.escaped>=D.TOTAL;
+    }
+    drain(){const events=this.events;this.events=[];return events;}
+    get available(){return D.TOTAL-this.collected-this.escaped;}
+    get near(){return this.particles.reduce((n,p)=>n+(p.state==='free'&&p.r>.83?p.amount:0),0);}
+  }
+  // Fits a moving arc to infer finger radius, including circles away from the core.
+  function fit(points){
+    if(points.length<5)return null;
+    const x=points.reduce((n,p)=>n+p.x,0)/points.length,y=points.reduce((n,p)=>n+p.y,0)/points.length;
+    let uu=0,uv=0,vv=0,uq=0,vq=0;
+    for(const p of points){const u=p.x-x,v=p.y-y,q=u*u+v*v;uu+=u*u;uv+=u*v;vv+=v*v;uq+=u*q;vq+=v*q;}
+    const det=uu*vv-uv*uv;if(det<1e-8)return null;
+    const cx=x+(uq*vv-vq*uv)/(2*det),cy=y+(vq*uu-uq*uv)/(2*det);
+    const radius=points.reduce((n,p)=>n+Math.hypot(p.x-cx,p.y-cy),0)/points.length;
+    if(radius<.075||radius>1.2||!Number.isFinite(radius))return null;
+    let error=0,turn=0,total=0;
+    for(let i=0;i<points.length;i++){
+      error+=Math.abs(Math.hypot(points[i].x-cx,points[i].y-cy)-radius);
+      if(i){const a=points[i-1],b=points[i],theta=Math.atan2((a.x-cx)*(b.y-cy)-(a.y-cy)*(b.x-cx),(a.x-cx)*(b.x-cx)+(a.y-cy)*(b.y-cy));turn+=theta;total+=Math.abs(theta);}
+    }
+    if(error/points.length/radius>.24||Math.abs(turn)<.1||Math.abs(turn)/Math.max(total,1e-6)<.65)return null;
+    const duration=points.at(-1).t-points[0].t;if(duration<.045)return null;
+    return {radius,rps:clamp(Math.abs(turn)/duration/TAU,0,2.2),direction:Math.sign(turn),cx,cy};
+  }
+  class Orbit{
+    constructor(){this.end();}
+    begin(x,y,t){this.points=[{x,y,t}];this.down=true;this.lastMove=t;this.signal={radius:Math.hypot(x,y),rps:0,direction:1};}
+    move(x,y,t){
+      if(!this.down)return;const previous=this.points.at(-1),distance=Math.hypot(x-previous.x,y-previous.y);
+      if(!Number.isFinite(x+y+t)||t<=previous.t||distance<.004)return;
+      this.points.push({x,y,t});while(this.points.length>2&&(this.points[0].t<t-.38||this.points.length>40))this.points.shift();
+      this.lastMove=t;const circle=fit(this.points);
+      if(circle){this.signal=circle;return;}
+      // A short tangent around the visible core responds immediately; no exact circle is required.
+      const dt=t-previous.t,ra=Math.hypot(previous.x,previous.y),rb=Math.hypot(x,y),r=(ra+rb)/2;
+      const turn=Math.atan2(previous.x*y-previous.y*x,previous.x*x+previous.y*y);
+      const tangent=Math.abs(turn)*r;
+      if(dt<.3&&r>.10&&r<1.08&&tangent>Math.abs(rb-ra)*1.3&&Math.abs(turn)<1.4){this.signal={radius:r,rps:clamp(Math.abs(turn)/Math.max(.012,dt)/TAU,0,2.2),direction:Math.sign(turn)};}
+      else this.signal={...this.signal,rps:0};
+    }
+    read(t){return {...this.signal,active:this.down&&t-this.lastMove<.16&&this.signal.rps>.015};}
+    end(){this.down=false;this.points=[];this.lastMove=-1;this.signal={radius:.36,rps:0,direction:1};}
+  }
+  return {World,Orbit,fit,field,kinds,CAPTURE};
+});
+</script><script>/* A fictional sonar / entropy defence study. Collection retains ThreadFlow input. */
+(function(root,factory){
+  const api=factory(typeof module==='object'&&module.exports?require('./entropy-flow.js'):root.ThreadFlow);
+  if(typeof module==='object'&&module.exports)module.exports=api;else root.ThreadSonar=api;
+})(typeof globalThis!=='undefined'?globalThis:this,F=>{
+  'use strict';
+  const TAU=Math.PI*2,clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+  const RULES=Object.freeze({hp:100,capacity:100,initialEnergy:60,shotCost:12,linkCost:8,groupLinkCost:4,shotDamage:20,shotSpeed:.66,enemyHp:20,impact:20,loot:20,xp:10,scanCooldown:2.8,capture:.065,core:.09});
+  const TYPES=Object.freeze({
+    standard:Object.freeze({label:'群体',hp:20,speed:.038,loot:20,xp:10}),
+    heavy:Object.freeze({label:'重装',hp:60,speed:.021,loot:48,xp:30}),
+    swift:Object.freeze({label:'高速',hp:10,speed:.078,loot:14,xp:10})
+  });
+  const FORMATIONS=Object.freeze({
+    line:{label:'横隊',speed:.037,slots:[{type:'standard',side:-.24,depth:0},{type:'standard',side:0,depth:0},{type:'standard',side:.24,depth:0}]},
+    wedge:{label:'V字',speed:.068,slots:[{type:'swift',side:-.20,depth:.04},{type:'swift',side:0,depth:-.16},{type:'swift',side:.20,depth:.04}]},
+    escort:{label:'護衛',speed:.023,slots:[{type:'standard',side:-.24,depth:-.10},{type:'heavy',side:0,depth:.04},{type:'standard',side:.24,depth:-.10}]},
+    column:{label:'縦列',speed:.033,slots:[{type:'standard',side:0,depth:-.24},{type:'standard',side:0,depth:0},{type:'heavy',side:0,depth:.23}]},
+    fan:{label:'扇列',speed:.035,slots:[{type:'standard',side:-.30,depth:-.06},{type:'standard',side:-.10,depth:.06},{type:'standard',side:.10,depth:.06},{type:'standard',side:.30,depth:-.06}]},
+    ring:{label:'包囲環',speed:.035,polar:true,turn:.12,slots:Array.from({length:5},(_,i)=>({type:'standard',side:i*TAU/5,depth:0}))},
+    spiral:{label:'螺旋',speed:.032,polar:true,turn:-.18,slots:Array.from({length:4},(_,i)=>({type:i===3?'heavy':'standard',side:i*.65,depth:-i*.09}))}
+  });
+  const chainCost=n=>n?RULES.shotCost+(n-1)*RULES.linkCost:0;
+  class World{
+    constructor(){
+      this.stats={...RULES};this.scripted=false;this.pullMultiplier=1;this.reachBoost=0;this.particleLimit=Infinity;
+      this.time=0;this.started=false;this.over=false;this.hp=RULES.hp;this.energy=RULES.initialEnergy;
+      this.xp=0;this.kills=0;this.serial=0;this.enemies=[];this.formations=[];this.shots=[];this.particles=[];this.waves=[];this.events=[];
+      this.spent=0;this.released=0;this.absorbed=0;this.stored=0;this.overflow=0;this.escaped=0;
+      this.scanWait=0;this.nextEnemy=6;this.arrivals=0;this.groups=0;this.bestChain=0;this.chainSavings=0;this.reach=.65;this.power=0;this.speed=0;this.direction=1;this.rotation=0;
+      [-2.35,-.48,1.8].forEach((a,i)=>this.spawn(a,[.72,.94,.86][i],['standard','swift','heavy'][i]));
+    }
+    spawn(angle=-1.9+this.arrivals*2.399963,r=.96,type='standard'){
+      const spec=TYPES[type]||TYPES.standard;type=TYPES[type]?type:'standard';
+      const baseSpeed=spec.speed*this.speedScale();
+      const e={id:++this.serial,type,maxHp:spec.hp,hp:spec.hp,loot:spec.loot,xp:spec.xp,a:angle,r,x:Math.cos(angle)*r,y:Math.sin(angle)*r,revealed:false,detectedAt:null,phase:this.arrivals*1.73,speed:baseSpeed,baseSpeed,formation:null,lastHit:-99,trail:[],tail:0};
+      this.enemies.push(e);this.arrivals++;return e;
+    }
+    spawnFormation(kind,angle,r=.90){
+      const spec=FORMATIONS[kind];if(!spec||this.enemies.length+spec.slots.length>12)return null;
+      const group={id:++this.serial,kind,label:spec.label,a:angle,heading:angle,r,age:0,speed:spec.speed*this.speedScale(),members:[],announced:false};
+      for(const slot of spec.slots){
+        const e=this.spawn(angle,r,slot.type);e.formation=group.id;e.slot={side:slot.side,depth:slot.depth};e.speed=group.speed;this.placeMember(group,e);group.members.push(e.id);
+      }
+      this.formations.push(group);return group;
+    }
+    placeMember(g,e){
+      const spec=FORMATIONS[g.kind];if(spec?.polar){const a=g.heading+e.slot.side+g.age*spec.turn;e.r=Math.max(.02,g.r+e.slot.depth);e.a=a;e.x=Math.cos(a)*e.r;e.y=Math.sin(a)*e.r;return;}
+      const radial=g.r+e.slot.depth,side=e.slot.side,c=Math.cos(g.a),s=Math.sin(g.a);
+      e.x=c*radial-s*side;e.y=s*radial+c*side;e.r=Math.hypot(e.x,e.y);e.a=Math.atan2(e.y,e.x);
+    }
+    scan(){
+      if(this.over||this.scanWait>0)return false;
+      this.started=true;this.scanWait=this.stats.scanCooldown;this.waves.push({id:++this.serial,r:0,age:0});this.events.push({type:'scan'});return true;
+    }
+    find(x,y,radius=this.hitRadius||.15){
+      let nearest=null,distance=radius;
+      for(const e of this.enemies){if(!e.revealed||e.hp<=0)continue;const d=Math.hypot(e.x-x,e.y-y);if(d<distance){nearest=e;distance=d;}}
+      return nearest;
+    }
+    pending(id){return this.shots.find(s=>s.route.slice(s.index).includes(id));}
+    incoming(id){return this.shots.reduce((sum,s)=>sum+(s.route.slice(s.index).includes(id)?this.damageFor(this.enemies.find(e=>e.id===id),s):0),0);}
+    needsShot(e){return e.hp>this.incoming(e.id);}
+    quote(ids){
+      const targets=[],seen=new Set();
+      for(const id of ids){const e=this.enemies.find(e=>e.id===id&&e.revealed);if(!e||seen.has(id)||!this.needsShot(e))continue;seen.add(id);targets.push(e);}
+      // Price each consecutive pair. Mixing types remains valid, and only
+      // standard-to-standard links receive the additional saving.
+      const links=targets.map((e,i)=>{
+        const from=targets[i-1],group=!!from&&from.type==='standard'&&e.type==='standard';
+        return{from:from?.id||null,target:e.id,group,cost:i?(group?this.stats.groupLinkCost:this.stats.linkCost):this.stats.shotCost};
+      });
+      const cost=links.reduce((n,l)=>n+l.cost,0),saved=targets.length*this.stats.shotCost-cost,groupSavings=(targets.length?this.stats.shotCost+(targets.length-1)*this.stats.linkCost:0)-cost,estimates=[];let x=0,y=0,eta=0;
+      for(const e of targets){
+        eta+=Math.hypot(e.x-x,e.y-y)/this.stats.shotSpeed;
+        estimates.push({id:e.id,eta,risk:eta+.15>Math.max(0,(e.r-RULES.core)/e.speed)});x=e.x;y=e.y;
+      }
+      return{targets,links,cost,saved,groupSavings,affordable:cost<=this.energy,estimates};
+    }
+    attack(id){return this.launch([id]);}
+    launch(ids){
+      if(!this.started||this.over)return false;
+      const q=this.quote(ids);if(!q.targets.length)return false;
+      if(!q.affordable){this.events.push({type:'empty'});return false;}
+      this.energy-=q.cost;this.spent+=q.cost;this.chainSavings+=q.saved;
+      const route=q.targets.map(e=>e.id);
+      this.shots.push({id:++this.serial,target:route[0],route,links:q.links,index:0,total:route.length,hits:0,kills:0,cost:q.cost,saved:q.saved,groupSavings:q.groupSavings,x:0,y:0,age:0,damage:this.stats.shotDamage,heavyDamage:this.stats.heavyDamage||this.stats.shotDamage,trail:[],visited:[{x:0,y:0,group:false}]});
+      this.events.push({type:'fire',count:route.length,cost:q.cost,saved:q.saved,groupSavings:q.groupSavings,path:[{x:0,y:0},...q.targets.map((e,i)=>({x:e.x,y:e.y,group:q.links[i].group}))]});return true;
+    }
+    defeat(e,extra={}){
+      if(!this.enemies.includes(e))return;
+      this.enemies=this.enemies.filter(o=>o!==e);this.kills++;this.xp+=e.xp;this.released+=e.loot;
+      this.events.push({type:'kill',x:e.x,y:e.y,xp:e.xp,amount:e.loot,enemyType:e.type,...extra});
+      this.releaseParticles(e.x,e.y,e.loot);
+    }
+    speedScale(){return 1+Math.min(.45,this.time*.0025);}
+    damageFor(e,s){return e&&(e.type==='heavy'||e.boss)?s.heavyDamage||s.damage:s.damage;}
+    afterShotHit(e,s,damage){}
+    afterShotMove(s,from,to){}
+    afterShots(dt){}
+    hitEnemy(e,s,extra={}){
+      if(!this.enemies.includes(e)||e.hp<=0)return{damage:0,killed:false};
+      const damage=Math.min(e.hp,Math.max(0,this.damageFor(e,s)));e.hp-=damage;if(damage)e.lastHit=this.time;else e.lastBlocked=this.time;
+      this.afterShotHit(e,s,damage);
+      const killed=e.hp<=0;
+      if(killed)this.defeat(e,extra);
+      else if(damage>0)this.events.push({type:'hit',x:e.x,y:e.y,damage,hp:e.hp,maxHp:e.maxHp,enemyType:e.type,...extra});
+      return{damage,killed};
+    }
+    passivePull(p,r){return 0;}
+    releaseParticles(x0,y0,amount){
+      const free=this.particles.filter(p=>p.state==='free'),n=Math.min(amount,Math.max(0,this.particleLimit-free.length));
+      if(!n&&amount&&free.length){const p=free.reduce((a,b)=>Math.hypot(a.x-x0,a.y-y0)<Math.hypot(b.x-x0,b.y-y0)?a:b);p.amount+=amount;return;}
+      for(let i=0;i<n;i++){
+        const a=i*2.399963,spread=.012+.020*(i%4)/3,x=x0+Math.cos(a)*spread,y=y0+Math.sin(a)*spread,r=Math.max(.001,Math.hypot(x,y));
+        const weight=Math.floor(amount/n)+(i<amount%n?1:0);
+        this.particles.push({id:++this.serial,x,y,r,amount:weight,vr:.025,spin:Math.sin(a)*.22,phase:a,age:0,state:'free',trail:[],tail:0});
+      }
+    }
+    impact(e){
+      const damage=e.impact||this.stats.impact;
+      this.hp=Math.max(0,this.hp-damage);this.enemies=this.enemies.filter(o=>o!==e);this.events.push({type:'impact',x:e.x,y:e.y,damage});
+      if(this.hp===0){this.over=true;this.events.push({type:'over'});}
+    }
+    step(delta,input={}){
+      if(!this.started||this.over)return;
+      let left=clamp(delta,0,.2);
+      while(left>1e-8&&!this.over){const dt=Math.min(left,1/120);this.advance(dt,input);left-=dt;}
+    }
+    advance(dt,input){
+      this.time+=dt;this.scanWait=Math.max(0,this.scanWait-dt);
+      const field=F.field(input.radius||.4,input.active?input.rps||0:0),ease=1-Math.exp(-dt/.10);
+      this.reach+=(Math.max(field.reach,this.reachBoost)-this.reach)*ease;this.power+=(field.power-this.power)*ease;this.speed+=(field.speed-this.speed)*ease;
+      if(input.active)this.direction=input.direction||1;this.rotation+=this.direction*this.speed*TAU*dt;
+      for(const wave of this.waves){wave.prevR=wave.r;wave.r+=dt*.8;wave.age+=dt;}
+      const previous=new Map(this.enemies.map(e=>[e.id,e.r]));
+      for(const g of this.formations){
+        g.age+=dt;g.r-=g.speed*dt;g.a=g.heading+Math.sin(g.age*.25)*.025;
+        for(const e of this.enemies)if(e.formation===g.id)this.placeMember(g,e);
+        if(g.r<=.34){
+          for(const e of this.enemies)if(e.formation===g.id){e.formation=null;e.speed=e.baseSpeed;}
+          g.dissolved=true;
+        }
+      }
+      this.formations=this.formations.filter(g=>!g.dissolved&&this.enemies.some(e=>e.formation===g.id));
+      for(const e of this.enemies){
+        const before=previous.get(e.id);
+        if(!e.formation){e.r=Math.max(0,e.r-e.speed*dt);e.a+=.028*Math.sin(e.phase+this.time*.5)*dt;e.x=Math.cos(e.a)*e.r;e.y=Math.sin(e.a)*e.r;}
+        if(!e.revealed&&this.waves.some(w=>before>=w.prevR&&e.r<=w.r)){
+          e.revealed=true;e.detectedAt=this.time;this.events.push({type:'detect',x:e.x,y:e.y});
+        }
+        if(e.revealed){e.tail+=dt;if(e.tail>.065){e.tail=0;e.trail.push([e.x,e.y]);if(e.trail.length>9)e.trail.shift();}}
+      }
+      for(const g of this.formations)if(!g.announced&&this.enemies.filter(e=>e.formation===g.id&&e.revealed).length>=2){g.announced=true;this.events.push({type:'formation',kind:g.kind,label:g.label});}
+      this.waves=this.waves.filter(w=>w.r<1.16);
+      // A chain is one travelling flow, never a batch of simultaneous hits.
+      // Missing targets (already at the core) are skipped without teleporting the flow.
+      const flying=[];
+      for(const s of this.shots){
+        while(s.index<s.route.length&&!this.enemies.some(e=>e.id===s.route[s.index]&&e.hp>0))s.index++;
+        if(s.index>=s.route.length){this.finish(s);continue;}
+        s.target=s.route[s.index];const e=this.enemies.find(e=>e.id===s.target);
+        s.age+=dt;const from={x:s.x,y:s.y},dx=e.x-s.x,dy=e.y-s.y,d=Math.hypot(dx,dy),travel=this.stats.shotSpeed*dt;
+        if(d<=travel+.023){
+          const group=s.links[s.index].group;s.hitDirection={x:dx/(d||1),y:dy/(d||1)};s.x=e.x;s.y=e.y;s.visited.push({x:e.x,y:e.y,group});s.hits++;
+          const hit=this.hitEnemy(e,s,{chainStep:s.index+1,chainTotal:s.total,group,groupChain:s.groupSavings>0});if(hit.killed)s.kills++;
+          s.index++;s.target=s.route[s.index]||null;
+        }else{s.x+=dx/d*travel;s.y+=dy/d*travel;}
+        this.afterShotMove(s,from,{x:s.x,y:s.y});
+        s.trail.push([s.x,s.y]);if(s.trail.length>54)s.trail.shift();
+        if(s.index<s.route.length)flying.push(s);else this.finish(s);
+      }
+      this.shots=flying;this.afterShots(dt);
+      for(const e of [...this.enemies])if(e.r<=RULES.core){
+        this.impact(e);if(this.over)break;
+      }
+      if(this.over)return;
+      for(const p of this.particles){
+        p.age+=dt;if(p.state!=='free')continue;
+        const r=Math.max(.001,Math.hypot(p.x,p.y)),edge=clamp((this.reach+.09-r)/.18),approach=clamp((.64-r)/(.64-RULES.capture));
+        const gravity=1+1.1*approach*approach,pull=this.power*edge*gravity*this.pullMultiplier+this.passivePull(p,r);
+        const radial=.030+.006*Math.sin(p.phase+this.time*.6)-pull,spin=this.direction*this.speed*1.9*edge,ease=1-Math.exp(-dt/.22);
+        p.vr+=(radial-p.vr)*ease;p.spin+=(spin-p.spin)*ease;
+        const nr=Math.max(0,r+p.vr*dt),a=Math.atan2(p.y,p.x)+p.spin*dt;p.x=Math.cos(a)*nr;p.y=Math.sin(a)*nr;p.r=nr;
+        p.tail+=dt;if(p.tail>.045){p.tail=0;p.trail.push([p.x,p.y]);if(p.trail.length>12)p.trail.shift();}
+        if(nr<=RULES.capture){
+          const accepted=Math.min(p.amount,this.stats.capacity-this.energy);this.energy+=accepted;this.stored+=accepted;this.absorbed+=p.amount;this.overflow+=p.amount-accepted;
+          p.state='collected';p.age=0;this.events.push({type:'capture',x:p.x,y:p.y,amount:accepted});
+        }else if(nr>=1){p.state='escaped';p.age=0;this.escaped+=p.amount;this.events.push({type:'escape',x:p.x,y:p.y});}
+      }
+      this.particles=this.particles.filter(p=>p.state==='free'||p.age<1.2);
+      this.nextEnemy-=dt;
+      if(!this.scripted&&this.nextEnemy<=0){
+        const kind=['line','wedge','escort'][this.groups%3],angle=-1.9+this.groups*2.399963;
+        if(this.spawnFormation(kind,angle)){this.groups++;this.nextEnemy=Math.max(5.8,8.8-this.time*.020);}else this.nextEnemy=1;
+      }
+    }
+    finish(s){if(s.total>1){this.bestChain=Math.max(this.bestChain,s.hits);this.events.push({type:'chainComplete',hits:s.hits,kills:s.kills,survivors:s.route.filter(id=>this.enemies.some(e=>e.id===id)).length,total:s.total,cost:s.cost,saved:s.saved,groupSavings:s.groupSavings,visited:s.visited});}}
+    get available(){return this.released-this.absorbed-this.escaped;}
+    get tracked(){return this.enemies.filter(e=>e.revealed).length;}
+    drain(){const out=this.events;this.events=[];return out;}
+  }
+  class Gesture{
+    constructor(world){this.world=world;this.orbit=new F.Orbit();this.cancel();}
+    begin(x,y,t){
+      if(this.world.over||!this.world.started)return false;
+      this.cancel();this.start=this.last={x,y,t};this.target=this.world.find(x,y);this.mode=this.target?'chain':'collect';
+      this.orbit.begin(x,y,t);if(this.target){this.pick(this.target);this.touching.add(this.target.id);this.nearest=this.target.id;}return true;
+    }
+    move(x,y,t){
+      if(this.mode==='idle')return;
+      if(this.mode==='chain'){
+        this.sync();const a=this.last,dx=x-a.x,dy=y-a.y,len=dx*dx+dy*dy,r=this.world.hitRadius||.15,hits=[];
+        this.dragged=this.dragged||Math.hypot(x-this.start.x,y-this.start.y)>.045;
+        if(this.dragged)for(const e of this.world.enemies){
+          if(!e.revealed)continue;const u=len?clamp(((e.x-a.x)*dx+(e.y-a.y)*dy)/len):0,px=a.x+u*dx,py=a.y+u*dy;
+          if(Math.hypot(e.x-px,e.y-py)<r&&!this.touching.has(e.id)&&this.world.find(px,py)?.id===e.id)hits.push({e,u});
+        }
+        hits.sort((a,b)=>a.u-b.u);for(const h of hits)this.pick(h.e);
+        const nearest=this.world.find(x,y);
+        // Overlapping generous hit areas must still allow reaching the next dot or undoing it.
+        if(this.dragged&&nearest&&nearest.id!==this.nearest)this.pick(nearest);
+        this.nearest=nearest?.id||null;
+        this.touching=new Set(this.world.enemies.filter(e=>e.revealed&&Math.hypot(e.x-x,e.y-y)<r).map(e=>e.id));
+      }else this.orbit.move(x,y,t);
+      this.last={x,y,t};
+    }
+    pick(e){
+      if(this.ids.length>1&&this.ids[this.ids.length-2]===e.id){this.ids.pop();this.blocked=null;this.world.events.push({type:'unselect',x:e.x,y:e.y});return;}
+      if(this.ids.includes(e.id))return;
+      if(!this.world.needsShot(e)){this.blocked={reason:'pending',id:e.id,at:this.world.time};return;}
+      const q=this.world.quote([...this.ids,e.id]);
+      if(!q.affordable){this.blocked={reason:'energy',id:e.id,at:this.world.time};this.world.events.push({type:'limit',x:e.x,y:e.y});return;}
+      const from=q.targets.at(-2),link=q.links.at(-1);
+      this.ids.push(e.id);this.blocked=null;this.world.events.push({type:'select',x:e.x,y:e.y,order:this.ids.length,group:link.group});
+      if(link.group)this.world.events.push({type:'groupLink',from:{x:from.x,y:from.y},x:e.x,y:e.y});
+    }
+    sync(){if(this.mode==='chain')this.ids=this.world.quote(this.ids).targets.map(e=>e.id);}
+    get preview(){this.sync();return this.world.quote(this.ids);}
+    end(cancel=false){const ids=!cancel&&this.mode==='chain'?this.preview.targets.map(e=>e.id):[];this.cancel();return ids.length?this.world.launch(ids):false;}
+    cancel(){this.mode='idle';this.start=null;this.last=null;this.target=null;this.ids=[];this.touching=new Set();this.nearest=null;this.dragged=false;this.blocked=null;this.orbit.end();}
+    read(t){this.sync();return this.mode==='collect'?this.orbit.read(t):{active:false};}
+  }
+  return{World,Gesture,RULES,TYPES,FORMATIONS,TAU,clamp,chainCost};
+});
+</script><script>/* SONAR survival progression. Pure model; no DOM, ads, network or payments. */
+(function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./sonar.js'):root.ThreadSonar);if(typeof module==='object'&&module.exports)module.exports=api;else root.ThreadSurvival=api;})(typeof globalThis!=='undefined'?globalThis:this,M=>{
+  'use strict';
+  const VERSION='survival-2',TAU=M.TAU,clamp=M.clamp;
+  const XP=[45,105,180,270,375,495,630,780,945,1125,1320,1530,1755,1995,2250,2520,2805,3120];
+  const UPGRADES={
+    pull:{name:'吸引',subtitle:'回した光が、より早く還る。',values:[1.2,1.4,1.6],format:v=>'吸引力 ×'+v.toFixed(1)},
+    orbit:{name:'余韻',subtitle:'指を離しても、渦が回収を続ける。',values:[.8,1.25,1.7],format:v=>'回収の余韻 '+v.toFixed(2).replace(/0$/,'')+'秒'},
+    lens:{name:'引力',subtitle:'近くまで来た光を、核が迎え入れる。',values:[.24,.34],format:v=>'内側 '+Math.round(v*100)+'% を自動回収'},
+    link:{name:'連結',subtitle:'異なる敵にも、光をつなぐ。',values:[7,6],format:v=>'追加の消費 '+v},
+    pierce:{name:'貫通',subtitle:'つないでいない奥の敵まで、光が抜ける。',values:[1,2,3],format:v=>['','奥へ貫く ／ 追加威力12','幅広の光束 ／ 追加威力20','最大幅の光束 ／ 追加威力30'][v]},
+    flow:{name:'伝播',subtitle:'連結の先へ、早く届く。',values:[.76,.86],format:v=>'放射速度 '+Math.round(v/.66*100)+'%'},
+    shell:{name:'外殻',subtitle:'もう一度、踏みとどまる。',values:[120,140],format:v=>'中心HP '+v}
+  };
+  const EVOLUTIONS={
+    echo:{name:'反響',icon:'⋈',subtitle:'3つ以上つなぐと、光が軌跡を折り返す。',detail:'戻る光にも威力20 ／ 近くの敵へ届く'},
+    tide:{name:'潮汐',icon:'◉',subtitle:'ぐるぐるの始動で、外側の光を大きく引く。',detail:'全域へ1.2秒の引力波 ／ 再起動まで6秒'},
+    lance:{name:'光槍',icon:'◇',subtitle:'手前の敵を狙うと、奥へ太い光が伸びる。',detail:'貫通幅＋70% ／ 距離＋65% ／ 追加威力＋10'}
+  };
+  function choiceInfo(key){if(key.startsWith('evolve_')){const e=EVOLUTIONS[key.slice(7)];return{...e,values:[1],format:()=>e.detail};}return UPGRADES[key];}
+  const BOSSES={
+    guard:{name:'護衛核',clue:'護衛をつないで、守りを崩す'},
+    iris:{name:'開閉核',clue:'閉じている間は、光を蓄える'},
+    relay:{name:'回路核',clue:'結節から核へ、ひとつの光をつなぐ'},
+    twins:{name:'双極核',clue:'片方が戻る前に、もう片方も崩す'},
+    split:{name:'分裂核',clue:'分かれる先へ、次の光を残す'},
+    wedge:{name:'高速交差',clue:'速い編隊を、短くつなぐ'},
+    cross:{name:'交差包囲',clue:'両側の気配を、順に崩す'}
+  };
+  const TRAITS={
+    balanced:{name:'均衡',description:'基本の核。つないで、取り戻す。',cost:0,sector:0},
+    collector:{name:'集光',description:'吸引＋10% ／ 放射速度−8%',cost:18,sector:2},
+    conductor:{name:'共鳴',description:'通常の連結消費−1 ／ 吸引−10%',cost:36,sector:3}
+  };
+  const NAMES=['接続','潮流','開眼','伝導','分裂','双極','包囲','共鳴'];
+  const SEQUENCES=[
+    [[0,'line',-90,.82],[6,'swift',45,.94],[12,'column',155,.72],[20,'line',-35,.90],[28,'wedge',-140,.94]],
+    [[0,'fan',-90,.82],[6,'wedge',35,.96],[12,'spiral',150,.90],[19,'line',-40,.88],[25,'wedge',-140,.96]],
+    [[0,'column',-80,.70],[7,'fan',80,.82],[14,'escort',-150,.86],[23,'spiral',-45,.88]],
+    [[0,'ring',-90,.89],[8,'wedge',25,.96],[15,'column',155,.72],[23,'fan',-40,.84]],
+    [[0,'spiral',-100,.94],[7,'line',50,.88],[14,'escort',-150,.84],[22,'wedge',-40,.94],[28,'line',135,.86]],
+    [[0,'fan',-90,.83],[6,'column',80,.72],[13,'ring',-140,.88],[22,'wedge',-40,.94]],
+    [[0,'ring',-90,.88],[6,'spiral',10,.92],[13,'column',140,.70],[21,'wedge',-50,.94]],
+    [[0,'column',-90,.72],[6,'fan',80,.84],[12,'spiral',-150,.92],[19,'ring',-40,.90],[26,'wedge',140,.94]]
+  ];
+  function profile(raw={}){
+    const p={version:2,legacyBest:0,crystals:0,bestSector:0,bestTime:0,bestChain:0,bestNoContinue:0,runs:0,traits:['balanced'],trait:'balanced',shellRank:0,seen:[],results:[],passUntil:0,...raw};
+    for(const k of ['legacyBest','crystals','bestSector','bestTime','bestChain','bestNoContinue','runs','shellRank','passUntil'])if(!Number.isFinite(p[k])||p[k]<0)p[k]=0;
+    p.shellRank=Math.min(2,Math.floor(p.shellRank));p.traits=Array.isArray(p.traits)?p.traits.filter(x=>TRAITS[x]):['balanced'];
+    if(!p.traits.includes('balanced'))p.traits.push('balanced');if(!p.traits.includes(p.trait))p.trait='balanced';
+    p.seen=Array.isArray(p.seen)?p.seen.filter(id=>typeof id==='string').slice(-60):[];
+    p.results=Array.isArray(p.results)?p.results.filter(r=>r&&typeof r.id==='string'&&Number.isFinite(r.crystals)&&r.crystals>=0).slice(0,8):[];
+    return p;
+  }
+  function migrateProfile(raw){
+    if(raw.version===2)return raw;
+    return{...raw,version:2,legacyBest:raw.bestSector||0,bestSector:0,bestTime:0,bestChain:0,bestNoContinue:0};
+  }
+  function commit(p,result){
+    if(p.seen.includes(result.id))return false;
+    p.seen.push(result.id);p.seen=p.seen.slice(-60);p.runs++;p.crystals+=result.crystals;
+    p.bestSector=Math.max(p.bestSector,result.sector);p.bestTime=Math.max(p.bestTime,result.time);p.bestChain=Math.max(p.bestChain,result.chain);
+    if(!result.continues)p.bestNoContinue=Math.max(p.bestNoContinue,result.sector);
+    p.results.unshift({...result,bonus:false});p.results=p.results.slice(0,8);return true;
+  }
+  function bonus(p,id){const r=p.results.find(r=>r.id===id);if(!r||r.bonus)return false;r.bonus=true;p.crystals+=r.crystals;return true;}
+  function unlock(p,key){const t=TRAITS[key];if(!t||p.traits.includes(key)||Math.max(p.bestSector,p.legacyBest||0)<t.sector||p.crystals<t.cost)return false;p.crystals-=t.cost;p.traits.push(key);return true;}
+  function reinforce(p){const price=[15,35][p.shellRank];if(price===undefined||p.crystals<price)return false;p.crystals-=price;p.shellRank++;return true;}
+  class World extends M.World{
+    constructor(options={}){
+      super();this.scripted=true;this.enemies=[];this.formations=[];this.serial=0;this.arrivals=0;this.nextEnemy=Infinity;
+      this.seed=Number(options.seed)||2501;this.rngState=this.seed>>>0;this.runId=options.runId||('run-'+Date.now()+'-'+this.seed);
+      this.trait=TRAITS[options.trait]?options.trait:'balanced';this.shellBonus=Math.min(10,Math.max(0,options.shellBonus||0));
+      this.stats.hp+=this.shellBonus;this.hp=this.stats.hp;this.stats.heavyDamage=20;
+      this.sector=1;this.phase='read';this.sectorStarted=0;this.phaseStarted=0;this.encounters=0;this.won=0;this.peak=null;this.peakQueue=[];
+      this.level=1;this.ranks=Object.fromEntries(Object.keys(UPGRADES).map(k=>[k,0]));this.pendingLevels=[];this.choosing=false;this.choices=[];this.inputHeld=false;
+      this.continues=0;this.deaths=0;this.grantedEnergy=0;this.protectedUntil=0;this.settled=false;this.result=null;this.lastThreat=null;this.lastPeakWin=null;
+      this.beams=[];this.evolution=null;this.tideUntil=0;this.tideReady=0;this.manualWasActive=false;this.echoReady=0;this.echoHits=0;this.pierced=0;this.momentum=0;this.momentumInput={};this.lastCapture=-99;this.lastFire=-99;this.lastHurt=-99;this.particleLimit=600;this.trace=[];this.skipped=0;this.autoScanAt=0;this.events=[];this.eventsIndex=0;
+      this.basePull=this.trait==='collector'?1.1:this.trait==='conductor'?.9:1;this.pullMultiplier=this.basePull;
+      if(this.trait==='collector')this.stats.shotSpeed*=.92;if(this.trait==='conductor')this.stats.linkCost=7;
+      this.prepareSector();this.log('created',{seed:this.seed,trait:this.trait});
+    }
+    random(){this.rngState=(1664525*this.rngState+1013904223)>>>0;return this.rngState/4294967296;}
+    log(type,data={}){this.trace.push({time:+this.time.toFixed(3),sector:this.sector,type,...data});if(this.trace.length>700)this.trace.shift();}
+    speedScale(){return 1+Math.min(.38,((this.sector||1)-1)*.055);}
+    get name(){return NAMES[(this.sector-1)%8];}
+    get phaseLabel(){if(this.phase==='breath'&&this.lastPeakWin===false)return '立て直し';return{read:'見極め',build:'組み立て',pressure:'圧力',peak:'山場',release:'解放',breath:'余韻',bridge:'次の核へ'}[this.phase]||'';}
+    get nextXp(){return XP[this.level-1]||null;}
+    get levelFloor(){return this.level>1?XP[this.level-2]:0;}
+    get progress(){return this.phase==='release'||this.phase==='breath'?1:Math.min(.94,(this.time-this.sectorStarted)/(this.peakAt+20));}
+    prepareSector(){
+      const motif=(this.sector-1)%8,epoch=Math.floor((this.sector-1)/8),turn=this.sector===1?0:(this.random()-.5)*TAU;
+      this.peakAt=[36,33,34,33,35,34,31,33][motif]-Math.min(6,epoch*2);
+      this.schedule=SEQUENCES[motif].filter(e=>e[0]<this.peakAt-2).map((e,i)=>({at:e[0],kind:e[1],angle:e[2]/180*Math.PI+turn,r:e[3],done:false,index:i}));
+      if(this.sector>8){
+        const interval=Math.max(2.4,8-(this.sector-9)*.35);
+        for(let at=5,i=0;at<this.peakAt-3;at+=interval,i++)this.schedule.push({at,kind:['fan','wedge','column','spiral'][i%4],angle:turn+i*2.399963,r:i%4===2?.72:.92,done:false,index:40+i});
+        this.schedule.sort((a,b)=>a.at-b.at);
+      }
+      this.peakKinds=[['guard'],['cross'],['iris'],['relay'],['split'],['twins'],['guard'],['iris','relay']][motif];
+      if(motif===7)this.peakKinds=[['iris','relay'],['twins','split'],['guard','iris'],['relay','twins']][epoch%4];
+      this.peakQueue=[...this.peakKinds];this.peakAngle=-Math.PI/2+turn;this.phase='read';this.phaseStarted=this.time;this.sectorStarted=this.time;
+    }
+    scan(){const ok=super.scan();if(ok)this.log('scan');return ok;}
+    launch(ids){const q=this.quote(ids),ok=super.launch(ids);if(ok){this.lastFire=this.time;const s=this.shots.at(-1);s.relayRoute=q.targets.filter(e=>e.relay).map(e=>e.id);this.log('fire',{targets:q.targets.map(e=>e.type),cost:q.cost,saved:q.saved});}return ok;}
+    enterPhase(phase){this.phase=phase;this.phaseStarted=this.time;this.events.push({type:'phase',phase,sector:this.sector,name:this.name});this.log('phase',{phase});}
+    spawnEvent(e){
+      let created=[];
+      if(M.FORMATIONS[e.kind]){const g=this.spawnFormation(e.kind,e.angle,e.r);if(!g)return false;created=this.enemies.filter(x=>x.formation===g.id);}
+      else{if(this.enemies.length>=12)return false;created=[this.spawn(e.angle,e.r,e.kind)];}
+      for(const enemy of created){if(enemy.type==='heavy'){enemy.hp+=20*Math.floor((this.sector-1)/3);enemy.maxHp=enemy.hp;}enemy.spawnAt=this.time;}
+      this.encounters++;this.log('spawn',{kind:e.kind,ids:created.map(x=>x.id)});return true;
+    }
+    spawnPeak(kind){
+      // A split core reserves two empty slots for the three children replacing it.
+      const required={guard:4,cross:6,wedge:6,relay:4,twins:2,iris:1,split:3}[kind]||1;
+      if(this.enemies.length+required>12)return false;
+      this.enterPhase('peak');const p=this.peak={kind,at:this.time,ids:[],guards:[],stage:0,failed:false,coreDead:false,breakAt:null,supply:0,raids:0,blocked:0};
+      const angle=this.peakAngle,cycle=Math.floor((this.sector-1)/8);
+      const makeCore=(a,r,hp)=>{const e=this.spawn(a,r,'heavy');e.type='boss';e.boss='core';e.kind=kind;e.speed=e.baseSpeed=.017+Math.min(.019,(this.sector-1)*.0008);e.impact=40;e.hp=e.maxHp=hp;e.loot=60;e.xp=60;p.ids.push(e.id);return e;};
+      if(kind==='guard'||kind==='split'||kind==='iris'||kind==='relay'){
+        const hp={guard:this.sector===1?100:160+cycle*35,split:80+cycle*25,iris:180+cycle*40,relay:180+cycle*40}[kind];
+        const core=makeCore(angle,.90,hp);p.core=core.id;
+        if(kind==='split'){core.loot=40;core.xp=30;}
+        if(kind==='guard')for(let i=0;i<3;i++){const e=this.spawn(angle+(i-1)*.55,.63,'standard');e.speed=e.baseSpeed=.027;e.guard=true;p.ids.push(e.id);p.guards.push(e.id);}
+        if(kind==='relay'){p.relays=[];this.relayNodes();}
+      }else if(kind==='twins'){
+        for(const side of[-1,1]){const e=makeCore(angle+side*.40,.82,60+cycle*20);e.boss='twin';e.loot=45;e.xp=40;}
+        p.twins=[...p.ids];p.downAt=null;p.repairs=0;
+      }else{
+        for(let i=0;i<2;i++){const g=this.spawnFormation(kind==='wedge'?'wedge':'escort',angle+(i?Math.PI:0),.92);if(g)for(const e of this.enemies.filter(e=>e.formation===g.id)){e.elite=true;p.ids.push(e.id);}}
+      }
+      this.waves.push({id:++this.serial,r:0,age:0});this.events.push({type:'bossArrival',kind});this.log('peak',{kind});return true;
+    }
+    relayNodes(){
+      const p=this.peak,core=this.enemies.find(e=>e.id===p?.core);if(!core||p.kind!=='relay')return;
+      const current=this.enemies.filter(e=>e.relay);if(current.length||this.enemies.length>9)return;
+      p.relays=[];
+      for(let i=0;i<3;i++){const e=this.spawn(core.a+(i-1)*.52,Math.max(.38,core.r-.23),'standard');e.relay=true;e.speed=e.baseSpeed=.018;e.revealed=core.revealed;e.xp=10;e.loot=20;p.relays.push(e.id);}
+      p.supply++;this.events.push({type:'relayNodes'});
+    }
+    irisState(){const elapsed=(this.time-(this.peak?.at||0))%6;return{open:elapsed>=3.2,remaining:elapsed<3.2?3.2-elapsed:6-elapsed,progress:elapsed/6};}
+    get boss(){return this.enemies.find(e=>e.boss==='core')||this.enemies.find(e=>e.boss==='twin'&&e.hp>0)||this.enemies.find(e=>e.boss==='part')||null;}
+    bossHint(){
+      const p=this.peak;if(!p||!this.boss)return '';
+      if(p.kind==='guard')return p.guards.some(id=>this.enemies.some(e=>e.id===id))?'護衛をつないで、核の守りを崩す':p.breakAt!==null&&this.time-p.breakAt<3.5?'守りが崩れた · 今は威力2倍':'守りのない核へ、追撃';
+      if(p.kind==='iris'){const state=this.irisState();return state.open?'開いている · 残り '+state.remaining.toFixed(1)+' 秒 ／ 威力2倍':'閉じている · あと '+state.remaining.toFixed(1)+' 秒で開く';}
+      if(p.kind==='relay')return p.blocked?'核だけでは届かない · 小さな結節 → 核とつなぐ':'小さな結節から核へ、ひと続きにつなぐ';
+      if(p.kind==='twins')return p.downAt!==null?'あと '+Math.max(0,3.2-(this.time-p.downAt)).toFixed(1)+' 秒 · もう片方を崩す':'二つの核を、続けて崩す';
+      return BOSSES[p.kind]?.clue||'';
+    }
+    damageFor(e,s){
+      const value=super.damageFor(e,s);if(!e?.boss||!this.peak)return value;
+      if(e.kind==='guard'){if(this.peak.guards.some(id=>this.enemies.some(x=>x.id===id)))return value*.5;return value*(this.peak.breakAt!==null&&this.time-this.peak.breakAt<3.5?2:1);}
+      if(e.kind==='iris')return this.irisState().open?value*2:0;
+      if(e.kind==='relay')return s.relayCharged?value*2:0;
+      return value;
+    }
+    incoming(id){
+      const e=this.enemies.find(e=>e.id===id);
+      return this.shots.reduce((n,s)=>{const index=s.route.indexOf(id,s.index);if(index<0)return n;const projected={...s};
+        if(e?.kind==='relay'&&(s.relayCharged||s.route.slice(s.index,index).some(key=>s.relayRoute?.includes(key))))projected.relayCharged=true;
+        // Closed shutters may open before arrival: reserve their normal hit, not an infinite number of shots.
+        const amount=e?.kind==='iris'?super.damageFor(e,s)*2:this.damageFor(e,projected);return n+amount;},0);
+    }
+    afterShotHit(e,s,damage){
+      if(e.relay&&damage>0){s.relayCharged=true;this.events.push({type:'charged',x:e.x,y:e.y});}
+      if(e.kind==='relay'&&e.boss&&damage>0)s.relayCharged=false;
+      if(!damage&&e.boss){this.peak.blocked++;this.events.push({type:'shield',kind:e.kind,x:e.x,y:e.y});return;}
+      if((this.ranks.pierce||this.evolution==='lance')&&!s.isBeam&&s.hitDirection){
+        const rank=Math.max(1,this.ranks.pierce),d=s.hitDirection,lance=this.evolution==='lance';
+        this.beams.push({id:++this.serial,x:e.x,y:e.y,origin:{x:e.x,y:e.y},dx:d.x,dy:d.y,age:0,distance:0,length:[0,.28,.40,.55][rank]*(lance?1.65:1),width:[0,.042,.065,.088][rank]*(lance?1.7:1),hit:[e.id,...s.route.slice(s.index+1)],damage:(rank===1?12:rank===2?20:30)+(lance?10:0),heavyDamage:(rank===1?12:rank===2?20:30)+(lance?10:0),isBeam:true,trail:[]});
+      }
+    }
+    afterShots(dt){this.advanceBeams(dt);}
+    advanceBeams(dt){
+      for(const b of this.beams){
+        b.age+=dt;const from={x:b.x,y:b.y};let travel=Math.min(dt*(b.echo?1.1:1.25),b.length-b.distance);
+        if(b.echo){const to=b.path[b.segment];if(!to){b.distance=b.length;continue;}const d=Math.hypot(to.x-b.x,to.y-b.y);if(d>1e-8){b.dx=(to.x-b.x)/d;b.dy=(to.y-b.y)/d;}travel=Math.min(travel,d);if(d<=travel+1e-6)b.segment++;}
+        b.x+=b.dx*travel;b.y+=b.dy*travel;b.distance+=travel;
+        const dx=b.x-from.x,dy=b.y-from.y,len=dx*dx+dy*dy;
+        for(const e of [...this.enemies]){if(b.hit.includes(e.id)||e.hp<=0)continue;const u=len?clamp(((e.x-from.x)*dx+(e.y-from.y)*dy)/len):0;
+          if(Math.hypot(e.x-from.x-u*dx,e.y-from.y-u*dy)<=b.width){b.hit.push(e.id);const hit=this.hitEnemy(e,b,{penetration:true});if(hit.damage){if(b.echo)this.echoHits++;else this.pierced++;this.events.push({type:b.echo?'echoHit':'pierced',x:e.x,y:e.y,damage:hit.damage});}}
+        }
+        b.trail.push([b.x,b.y]);if(b.trail.length>28)b.trail.shift();
+      }
+      this.beams=this.beams.filter(b=>b.distance<b.length-1e-6);
+    }
+    finish(s){
+      super.finish(s);if(this.evolution!=='echo'||s.hits<3||this.time<this.echoReady)return;
+      const path=[...s.visited].reverse(),origin=path[0];if(path.length<2)return;
+      const length=path.slice(1).reduce((n,p,i)=>n+Math.hypot(p.x-path[i].x,p.y-path[i].y),0);
+      this.beams.push({id:++this.serial,x:origin.x,y:origin.y,origin,path,segment:1,dx:0,dy:0,age:0,distance:0,length,width:.085,hit:[],damage:20,heavyDamage:20,isBeam:true,echo:true,trail:[[origin.x,origin.y]]});
+      this.echoReady=this.time+2.5;this.events.push({type:'echo'});this.log('echo',{hits:s.hits});
+    }
+    passivePull(p,r){
+      const extent=UPGRADES.lens.values[this.ranks.lens-1]||0;if(!extent||r>extent)return 0;
+      return .16+.24*(1-r/extent);
+    }
+    defeat(e,extra={}){
+      if(!this.enemies.includes(e))return;
+      if(e.kind==='twins'&&this.peak?.kind==='twins'&&!extra.twinFinal){
+        e.hp=0;e.dormant=true;e.speed=0;const p=this.peak;
+        if(p.downAt===null)p.downAt=this.time;
+        this.events.push({type:'twinDown',x:e.x,y:e.y});
+        // A counterpart that breached has left the field. It cannot regenerate
+        // forever or prevent the remaining core from being defeated.
+        if(p.twins.every(id=>{const twin=this.enemies.find(x=>x.id===id);return !twin||twin.dormant;})){for(const id of p.twins){const twin=this.enemies.find(x=>x.id===id);if(twin)this.defeat(twin,{...extra,twinFinal:true});}p.coreDead=true;}
+        return;
+      }
+      super.defeat(e,extra);this.log('kill',{enemy:e.type,xp:e.xp,loot:e.loot});
+      if(e.boss)this.events.push({type:'nucleusCollapse',x:e.x,y:e.y,kind:e.kind,small:e.boss==='part'});
+      const p=this.peak;if(!p)return;
+      if(e.id===p.core){
+        if(p.kind==='split'&&p.stage===0){
+          p.stage=1;p.ids=[];
+          for(let i=0;i<3;i++){const part=this.spawn(e.a+(i-1)*.65,Math.max(.52,e.r),'heavy');part.type='boss';part.boss='part';part.revealed=e.revealed;part.kind='split';part.speed=part.baseSpeed=.026;part.hp=part.maxHp=40+20*Math.floor((this.sector-1)/8);part.loot=30;part.xp=20;part.impact=30;p.ids.push(part.id);}
+          this.events.push({type:'split',x:e.x,y:e.y});this.log('split');
+        }else p.coreDead=true;
+      }
+      if(e.guard&&p.kind==='guard'&&!p.guardLosses&&p.breakAt===null&&!p.guards.some(id=>this.enemies.some(x=>x.id===id))){p.breakAt=this.time;this.events.push({type:'guardBreak'});this.log('guardBreak');}
+    }
+    impact(e){
+      if(this.time<this.protectedUntil){
+        e.formation=null;e.r=.42;e.x=Math.cos(e.a)*e.r;e.y=Math.sin(e.a)*e.r;this.events.push({type:'deflect',x:e.x,y:e.y});return;
+      }
+      if(this.peak&&this.peak.ids.includes(e.id)){
+        if(this.peak.kind==='guard'&&e.guard)this.peak.guardLosses=(this.peak.guardLosses||0)+1;
+        else this.peak.failed=true;
+        if(e.id===this.peak.core)this.peak.coreDead=true;
+      }
+      this.lastThreat={type:e.type,kind:e.kind||null,hp:e.hp,energy:this.energy};this.lastHurt=this.time;super.impact(e);this.log('impact',{enemy:e.type,damage:e.impact||20,hp:this.hp});
+      if(this.over){this.deaths++;this.choosing=false;this.log('death',{continues:this.continues,energy:this.energy});}
+    }
+    syncGrowth(){
+      while(this.level<=XP.length&&this.xp>=XP[this.level-1]){this.level++;this.pendingLevels.push(this.level);this.log('level',{level:this.level});}
+      if(this.over||this.inputHeld||this.choosing||!this.pendingLevels.length)return;
+      if(this.phase==='release'&&this.time-this.phaseStarted<2.8||this.phase==='bridge'&&this.time-this.phaseStarted<1.15)return;
+      if(this.pendingLevels[0]===2){this.pendingLevels.shift();this.applyUpgrade('pull');this.events.push({type:'firstLevel',level:2});return;}
+      if(this.pendingLevels[0]===10&&!this.evolution){this.choices=Object.keys(EVOLUTIONS).map(k=>'evolve_'+k);this.choosing=true;this.events.push({type:'choice',evolution:true});return;}
+      const available=Object.keys(UPGRADES).filter(k=>this.ranks[k]<UPGRADES[k].values.length);
+      for(let i=available.length-1;i>0;i--){const j=Math.floor(this.random()*(i+1));[available[i],available[j]]=[available[j],available[i]];}
+      this.choices=this.pendingLevels[0]===3?['orbit','pierce','link'].filter(k=>available.includes(k)):available.slice(0,3);if(!this.choices.length){this.pendingLevels=[];return;}
+      this.choosing=true;this.events.push({type:'choice',choices:this.choices});
+    }
+    applyUpgrade(key){
+      if(key.startsWith('evolve_')){const evolution=key.slice(7);if(this.evolution||!EVOLUTIONS[evolution])return false;this.evolution=evolution;this.events.push({type:'evolution',evolution});this.log('evolution',{evolution});return true;}
+      const u=UPGRADES[key],rank=this.ranks[key];if(!u||rank>=u.values.length)return false;
+      const v=u.values[rank];this.ranks[key]++;
+      if(key==='pull')this.basePull=v*(this.trait==='collector'?1.1:this.trait==='conductor'?.9:1);
+      if(key==='link')this.stats.linkCost=Math.max(5,v-(this.trait==='conductor'?1:0));
+      if(key==='pierce')this.stats.heavyDamage=30;
+      if(key==='flow')this.stats.shotSpeed=v*(this.trait==='collector'?.92:1);
+      if(key==='shell'){this.stats.hp=v+this.shellBonus;this.hp=Math.min(this.stats.hp,this.hp+20);}
+      this.log('upgrade',{key,rank:this.ranks[key]});return true;
+    }
+    choose(key){if(!this.choosing||!this.choices.includes(key))return false;this.applyUpgrade(key);this.pendingLevels.shift();this.choosing=false;this.choices=[];return true;}
+    resolvePeak(win){
+      if(!this.peak)return;this.peak=null;this.lastPeakWin=win;
+      if(win){
+        this.won++;const final=!this.peakQueue.length;
+        if(final){for(const e of [...this.enemies])super.defeat(e,{pulse:true});this.formations=[];this.schedule.forEach(e=>e.done=true);}
+        this.events.push({type:'release',full:final,sector:this.sector});this.log('release',{full:final});this.enterPhase(final?'release':'bridge');
+      }else{this.events.push({type:'peakFailed'});this.log('peakFailed');this.peakQueue=[];this.enterPhase('breath');this.phaseStarted=this.time;}
+    }
+    advance(dt,input){
+      if(this.choosing||this.settled)return;
+      const boosted=this.phase==='release'||this.phase==='bridge';if(this.evolution==='tide'&&input.active&&!this.manualWasActive&&this.time>=this.tideReady){this.tideUntil=this.time+1.2;this.tideReady=this.time+6;this.events.push({type:'tide'});this.log('tide');}
+      this.manualWasActive=!!input.active;const tide=this.time<this.tideUntil;this.pullMultiplier=this.basePull*(boosted?1.4:1)*(tide?1.65:1);this.reachBoost=boosted||tide?1:0;
+      const sustain=UPGRADES.orbit.values[this.ranks.orbit-1]||0;
+      if(input.active&&input.rps>.15){this.momentum=sustain;this.momentumInput={...input};}else this.momentum=Math.max(0,this.momentum-dt);
+      const recovering=!input.active&&this.momentum>0,effective=recovering?{...this.momentumInput,active:true,rps:this.momentumInput.rps*(.35+.65*Math.min(1,this.momentum/.3))}:input;
+      const before=this.absorbed;super.advance(dt,effective);if(this.absorbed>before)this.lastCapture=this.time;if(this.over)return;
+      if(this.sector>=3&&this.time>=this.autoScanAt){if(this.scan()){this.autoScanAt=this.time+3.2;}}
+      const elapsed=this.time-this.sectorStarted;
+      if(['read','build','pressure'].includes(this.phase)){
+        for(const e of this.schedule)if(!e.done&&elapsed>=e.at){if(this.spawnEvent(e))e.done=true;else if(elapsed-e.at>2){e.done=true;this.skipped++;this.log('spawnSkipped',{kind:e.kind});}}
+        if(elapsed>=this.peakAt){if(this.spawnPeak(this.peakQueue[0]))this.peakQueue.shift();}
+        else if(elapsed>=23&&this.phase!=='pressure')this.enterPhase('pressure');
+        else if(elapsed>=10&&this.phase==='read')this.enterPhase('build');
+      }
+      if(this.phase==='peak'&&this.peak){
+        const p=this.peak;
+        if(['guard','iris','twins'].includes(p.kind)&&this.sector>1&&this.time-p.at>7+p.supply*10&&p.supply<2&&this.enemies.length<=10){
+          for(let i=0;i<2;i++){const e=this.spawn(this.peakAngle+1.3+i*.35,.85,'standard');e.revealed=true;}
+          p.supply++;this.log('bossSupply');
+        }
+        const reserve=p.kind==='split'&&p.stage===0?2:0;
+        if(this.sector>=4&&this.time-p.at>8+p.raids*8&&p.raids<(this.sector>6?8:2)&&this.enemies.length<=10-reserve){
+          for(let i=0;i<2;i++){const e=this.spawn(this.peakAngle+Math.PI+(i-.5)*.38,.9,'swift');e.revealed=true;}
+          p.raids++;this.log('bossFlank');
+        }
+        if(p.kind==='relay')this.relayNodes();
+        if(p.kind==='twins'&&p.downAt!==null&&!p.coreDead&&this.time-p.downAt>=3.2){
+          for(const e of this.enemies.filter(e=>e.kind==='twins'&&e.dormant)){e.dormant=false;e.hp=Math.ceil(e.maxHp*.5);e.speed=e.baseSpeed;}
+          p.downAt=null;p.repairs++;this.events.push({type:'twinRepair'});this.log('twinRepair');
+        }
+        const remains=p.ids.some(id=>this.enemies.some(e=>e.id===id));
+        if((['guard','iris','relay','twins'].includes(p.kind)&&p.coreDead)||(p.kind==='twins'&&!remains)||(p.kind==='split'&&(p.coreDead||p.stage===1&&!remains))||(['cross','wedge'].includes(p.kind)&&!remains))this.resolvePeak(!p.failed);
+      }
+      if(this.phase==='bridge'&&this.time-this.phaseStarted>=2.8){if(this.spawnPeak(this.peakQueue[0]))this.peakQueue.shift();}
+      if(this.phase==='release'&&this.time-this.phaseStarted>=4)this.enterPhase('breath');
+      if(this.phase==='breath'&&this.time-this.phaseStarted>=1.8){this.sector++;this.prepareSector();this.events.push({type:'sector',sector:this.sector,name:this.name});this.log('sector',{number:this.sector});}
+      this.syncGrowth();
+    }
+    revive(){
+      if(!this.over||this.settled||this.continues>=3)return false;
+      this.continues++;this.over=false;this.hp=this.stats.hp;const grant=Math.max(0,50-this.energy);this.energy+=grant;this.grantedEnergy+=grant;
+      this.protectedUntil=this.time+3;
+      for(const e of this.enemies)if(e.r<.42){e.formation=null;e.r=.42;e.x=Math.cos(e.a)*e.r;e.y=Math.sin(e.a)*e.r;}
+      this.events.push({type:'revive',remaining:3-this.continues});this.log('revive',{energyGranted:grant});return true;
+    }
+    finishRun(){
+      if(this.result)return this.result;if(!this.over)return null;this.settled=true;
+      this.result={id:this.runId,version:VERSION,seed:this.seed,sector:this.sector,phase:this.phaseLabel,time:+this.time.toFixed(1),level:this.level,kills:this.kills,chain:this.bestChain,saved:this.chainSavings,continues:this.continues,won:this.won,pierced:this.pierced,echoHits:this.echoHits,evolution:this.evolution,crystals:this.kills?Math.max(1,Math.floor(this.xp/40)+this.won*2):0,trait:this.trait};
+      this.log('result',this.result);return this.result;
+    }
+    snapshot(){const state=JSON.parse(JSON.stringify(this));state.events=[];for(const k of ['particles','enemies','shots'])for(const o of state[k])if(o.trail)o.trail=o.trail.slice(-4);return{version:VERSION,state};}
+    static restore(snapshot){
+      if(snapshot?.version!==VERSION||!snapshot.state)return null;const s=snapshot.state;
+      if(!Number.isFinite(s.time)||!Number.isFinite(s.hp)||!Number.isFinite(s.energy)||s.energy<0||s.energy>100||!Number.isInteger(s.sector)||s.sector<1)return null;
+      if(!s.stats||!Number.isFinite(s.stats.hp)||!s.ranks||!['read','build','pressure','peak','release','breath','bridge'].includes(s.phase))return null;
+      if(!['beams','enemies','particles','shots','formations','waves','schedule','peakQueue','pendingLevels','choices','trace'].every(k=>Array.isArray(s[k])))return null;
+      if(!Object.keys(UPGRADES).every(k=>Number.isInteger(s.ranks[k])&&s.ranks[k]>=0&&s.ranks[k]<=UPGRADES[k].values.length))return null;
+      if(s.evolution!==null&&!EVOLUTIONS[s.evolution])return null;
+      if(!Number.isInteger(s.level)||s.level<1||s.level>XP.length+1||!Number.isFinite(s.xp)||s.xp<0)return null;
+      if(!s.choices.every(k=>typeof k==='string'&&(UPGRADES[k]||k.startsWith('evolve_')&&EVOLUTIONS[k.slice(7)])))return null;
+      if(!s.pendingLevels.every(n=>Number.isInteger(n)&&n>=2&&n<=XP.length+1))return null;
+      for(const list of[s.enemies,s.particles,s.shots,s.beams])if(!list.every(o=>o&&Number.isFinite(o.x)&&Number.isFinite(o.y)))return null;
+      if(!s.enemies.every(e=>Number.isFinite(e.hp)&&e.hp>=0&&Number.isFinite(e.maxHp)&&e.maxHp>0))return null;
+      if(s.phase==='peak'&&(!s.peak||!Array.isArray(s.peak.ids)||!Array.isArray(s.peak.guards)))return null;
+      const w=new World({seed:s.seed,runId:s.runId,trait:s.trait});Object.assign(w,s);w.nextEnemy=Infinity;w.inputHeld=false;return w;
+    }
+    static scenario(name,options={}){
+      const w=new World({...options,seed:options.seed||2501});
+      if(name==='start')return w;
+      w.started=true;w.schedule.forEach(e=>e.done=true);
+      if(name==='growth'){
+        w.xp=45;w.syncGrowth();w.spawnFormation('line',-Math.PI/2,.7);
+      }else if(name==='choice'){
+        w.xp=105;w.syncGrowth();w.syncGrowth();w.spawnFormation('line',-Math.PI/2,.75);
+      }else if(name==='peak'){
+        w.time=26;w.sectorStarted=0;w.phase='pressure';w.energy=80;w.grantedEnergy=20;w.xp=150;w.level=3;w.applyUpgrade('pull');w.applyUpgrade('pierce');
+        w.spawnFormation('line',Math.PI/4,.72);
+      }else if(name==='guard'){
+        w.xp=150;w.level=3;w.applyUpgrade('pull');w.applyUpgrade('pierce');w.spawnPeak('guard');w.peakQueue=[];
+      }else if(name==='maximum'){
+        w.sector=8;w.prepareSector();w.time=33;w.sectorStarted=0;w.schedule.forEach(e=>e.done=true);
+        for(const k of Object.keys(UPGRADES))while(w.ranks[k]<UPGRADES[k].values.length)w.applyUpgrade(k);
+        w.level=19;w.xp=3120;w.evolution='lance';w.energy=100;w.grantedEnergy=40;w.spawnPeak('iris');w.peakQueue=['relay'];
+      }else if(name==='split'){
+        w.sector=5;w.prepareSector();w.schedule.forEach(e=>e.done=true);w.level=4;w.xp=280;w.applyUpgrade('pull');w.applyUpgrade('link');w.applyUpgrade('shell');w.spawnPeak('split');w.peakQueue=[];
+      }else if(['iris','relay','twins'].includes(name)){
+        w.sector={iris:3,relay:4,twins:6}[name];w.prepareSector();w.schedule.forEach(e=>e.done=true);w.level=5;w.xp=270;
+        for(const k of['pull','pierce','orbit','lens'])w.applyUpgrade(k);w.energy=100;w.grantedEnergy=40;w.spawnPeak(name);w.peakQueue=[];
+      }else if(name==='penetration'){
+        w.level=4;w.xp=180;for(let i=0;i<3;i++)w.applyUpgrade('pierce');w.spawnFormation('column',-Math.PI/2,.72);w.peakAt=1e6;
+      }else if(name==='assist'){
+        w.level=6;w.xp=375;for(const k of['pull','orbit','orbit','lens','lens'])w.applyUpgrade(k);w.energy=0;w.spent=60;for(const a of[-1.6,.3,2.5])w.defeat(w.spawn(a,.65));w.peakAt=1e6;
+      }else if(name==='formations'){
+        w.sector=7;w.prepareSector();w.energy=100;w.grantedEnergy=40;w.level=6;w.xp=375;for(const k of['pull','orbit','lens','pierce','pierce'])w.applyUpgrade(k);
+      }else if(name==='evolution'){
+        w.level=9;w.xp=945;for(const k of['pull','pull','orbit','lens','pierce','pierce','flow','link'])w.applyUpgrade(k);w.spawnFormation('column',-Math.PI/2,.72);w.spawnFormation('fan',Math.PI*.35,.82);w.syncGrowth();
+      }else if(['evolve_echo','evolve_tide','evolve_lance'].includes(name)){
+        w.level=10;w.xp=945;for(const k of['pull','orbit','orbit','lens','pierce','pierce','flow','link'])w.applyUpgrade(k);w.applyUpgrade(name);w.peakAt=1e6;
+        if(name==='evolve_tide'){w.energy=15;w.spent=45;for(const a of[-1.5,.4,2.4])w.defeat(w.spawn(a,.78,'heavy'));}
+        else{w.spawnFormation('column',-Math.PI/2,.72);w.spawnFormation('fan',Math.PI*.35,.82);}
+      }else if(name==='loss'){
+        w.time=76;w.kills=12;w.bestChain=3;w.chainSavings=32;w.hp=0;w.over=true;w.deaths=1;w.xp=190;w.level=3;w.applyUpgrade('pull');w.applyUpgrade('pierce');w.phase='pressure';w.energy=8;w.spent=52;
+      }else if(name==='recovery'){
+        w.energy=0;w.spent=60;for(const a of [-1.5,0,2]){const e=w.spawn(a,.76,'standard');w.defeat(e);}w.spawnFormation('wedge',-.7,.97);
+      }
+      for(const e of w.enemies)e.revealed=true;w.events=[];w.log('qa',{name});return w;
+    }
+  }
+  return{...M,World,UPGRADES,EVOLUTIONS,choiceInfo,BOSSES,TRAITS,XP,VERSION,profile,migrateProfile,commit,bonus,unlock,reinforce};
+});
+</script><script>/* Canvas artwork shared by the survival app. */
+(function(root){root.ThreadSonarArt=function(canvas){
+  const M=root.ThreadSurvival,ctx=canvas.getContext('2d'),mint=[161,224,209],gold=[237,209,164],red=[245,100,119],pearl=[225,240,235];
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,rgba=(c,a=1)=>'rgba('+c.join(',')+','+a+')';
+  let world,gesture,fx=[],traces=[],clock=0,W=390,H=460,R=170,cx=195,cy=216;
+  const glows=[mint,gold,red].map(color=>{const c=document.createElement('canvas');c.width=c.height=96;const g=c.getContext('2d'),v=g.createRadialGradient(48,48,0,48,48,48);v.addColorStop(0,rgba(color,.9));v.addColorStop(.10,rgba(color,.4));v.addColorStop(.35,rgba(color,.075));v.addColorStop(1,rgba(color,0));g.fillStyle=v;g.fillRect(0,0,96,96);return c;});
+  function circle(x,y,r,color,alpha,width=1){ctx.strokeStyle=rgba(color,alpha);ctx.lineWidth=width;ctx.beginPath();ctx.arc(x,y,Math.max(.01,r),0,M.TAU);ctx.stroke();}
+  function glow(index,x,y,size,alpha=1){ctx.globalAlpha=alpha;ctx.drawImage(glows[index],x-size/2,y-size/2,size,size);ctx.globalAlpha=1;}
+  function route(points,alpha,bright=false){
+    if(points.length<2)return;ctx.lineCap='round';ctx.lineJoin='round';
+    for(let i=1;i<points.length;i++){
+      const a=points[i-1],b=points[i],color=b.group?mint:gold,dx=(b.x-a.x)*R,dy=(b.y-a.y)*R,len=Math.hypot(dx,dy);
+      for(const width of [b.group?10:6,b.group?2:1.3]){
+        ctx.beginPath();ctx.moveTo(cx+a.x*R,cy+a.y*R);ctx.lineTo(cx+b.x*R,cy+b.y*R);
+        ctx.lineWidth=width;ctx.strokeStyle=rgba(color,alpha*(width>2?.12:1));ctx.stroke();
+      }
+      if(len<24)continue;
+      const x=cx+(a.x+b.x)*R/2,y=cy+(a.y+b.y)*R/2,ux=dx/len,uy=dy/len;
+      ctx.beginPath();ctx.moveTo(x-ux*3-uy*3,y-uy*3+ux*3);ctx.lineTo(x+ux*3,y+uy*3);ctx.lineTo(x-ux*3+uy*3,y-uy*3-ux*3);ctx.lineWidth=1;ctx.strokeStyle=rgba(color,alpha*.85);ctx.stroke();
+      if(bright&&!reduce){const t=(clock*.6+i*.2)%1;glow(b.group?0:1,cx+(a.x+(b.x-a.x)*t)*R,cy+(a.y+(b.y-a.y)*t)*R,b.group?23:12,b.group?.55:.32);}
+    }
+  }
+  function polygon(x,y,r,n,angle,color,alpha,width=1){ctx.beginPath();for(let i=0;i<n;i++){const a=angle+i/n*M.TAU,px=x+Math.cos(a)*r,py=y+Math.sin(a)*r;i?ctx.lineTo(px,py):ctx.moveTo(px,py);}ctx.closePath();ctx.strokeStyle=rgba(color,alpha);ctx.lineWidth=width;ctx.stroke();}
+  function bossShape(e,x,y){
+    const small=e.boss==='part',t=reduce?0:world.time;
+    if(e.kind==='iris'){
+      const state=world.irisState(),a=state.progress*6,opening=a>=3.2?M.clamp((a-3.2)/.28):1-M.clamp(a/.28),c=state.open?mint:red;
+      circle(x,y,29,c,.35,1);circle(x,y,34,gold,.12,.7);
+      for(let j=0;j<6;j++){
+        const angle=j/6*M.TAU+t*.13,inner=4+opening*15,outer=23+opening*3;
+        ctx.beginPath();ctx.moveTo(x+Math.cos(angle)*inner,y+Math.sin(angle)*inner);ctx.lineTo(x+Math.cos(angle+.22)*outer,y+Math.sin(angle+.22)*outer);ctx.lineTo(x+Math.cos(angle+.85)*outer,y+Math.sin(angle+.85)*outer);ctx.closePath();ctx.fillStyle=rgba(c,.05+.08*(1-opening));ctx.fill();ctx.strokeStyle=rgba(c,.75);ctx.lineWidth=1.1;ctx.stroke();
+      }
+      ctx.beginPath();ctx.arc(x,y,38,-Math.PI/2,-Math.PI/2+M.TAU*state.progress);ctx.strokeStyle=rgba(c,.55);ctx.lineWidth=1.5;ctx.stroke();
+    }else if(e.kind==='relay'){
+      polygon(x,y,24,6,-Math.PI/2+t*.08,red,.8,1.5);polygon(x,y,17,6,Math.PI/6-t*.12,gold,.4,1);
+      for(let j=0;j<3;j++){const a=j/3*M.TAU+t*.25;ctx.beginPath();ctx.arc(x,y,31,a,a+.5);ctx.strokeStyle=rgba(mint,.4);ctx.lineWidth=1.5;ctx.stroke();}
+    }else if(e.kind==='twins'){
+      const c=e.dormant?mint:red;polygon(x,y,23,4,Math.PI/4+t*.12,c,e.dormant?.2:.85,1.5);polygon(x,y,17,4,-Math.PI/4-t*.12,gold,.35,1);
+      if(e.dormant){ctx.setLineDash([2,4]);circle(x,y,28,mint,.45,1);ctx.setLineDash([]);const elapsed=world.time-world.peak.downAt;ctx.beginPath();ctx.arc(x,y,32,-Math.PI/2,-Math.PI/2+M.TAU*M.clamp(elapsed/3.2));ctx.strokeStyle=rgba(red,.85);ctx.lineWidth=2;ctx.stroke();}
+    }else if(e.kind==='split'){
+      polygon(x,y,small?17:25,3,-Math.PI/2+t*.15,red,.9,1.7);polygon(x,y,small?12:18,3,Math.PI/2-t*.15,gold,.45,1);circle(x,y,small?23:32,red,.18,.7);
+    }else{
+      for(let layer=0;layer<2;layer++)polygon(x,y,small?(layer?18:13):(layer?25:18),8,(layer?-.15:.15)*t,layer?gold:red,layer?.42:.9,layer?1:1.8);
+    }
+    const r=e.kind==='iris'?42:small?26:36;ctx.beginPath();ctx.arc(x,y,r,-Math.PI/2,-Math.PI/2+M.TAU*e.hp/e.maxHp);ctx.strokeStyle=rgba(red,e.dormant?.12:.7);ctx.lineWidth=1.7;ctx.stroke();
+    ctx.font='500 10px -apple-system, sans-serif';ctx.textAlign='center';ctx.fillStyle=rgba(e.dormant?mint:pearl,.8);ctx.fillText(e.dormant?'再生まで '+Math.max(0,3.2-(world.time-world.peak.downAt)).toFixed(1):Math.ceil(e.hp)+' / '+e.maxHp,x,M.clamp(y-r-9,65,H-40));
+  }
+  function core(){
+    const t=world.started?world.time:clock,low=world.hp<=40&&!world.over,period=low?1.65:3.8;
+    const breath=reduce?.5:(1-Math.cos(t*M.TAU/period))*.5,capture=M.clamp(1-(world.time-world.lastCapture)/.65),fire=M.clamp(1-(world.time-world.lastFire)/.35),hurt=M.clamp(1-(world.time-world.lastHurt)/.65);
+    const life=world.over?.15:.45+world.energy/100*.55,c=low||hurt>.2?red:mint,exhale=1+breath*.13+capture*.10-fire*.13;
+    const x=cx+(reduce?0:Math.sin(t*58)*hurt*1.4),base=R*.065*exhale;
+    glow(low?2:0,x,cy,95+breath*22+capture*38,life*(.42+breath*.12+capture*.20));
+    for(let k=0;k<3;k++){
+      ctx.save();ctx.translate(x,cy);ctx.rotate(k*Math.PI/3+(reduce?0:t*.06));ctx.beginPath();ctx.ellipse(0,0,base*(1.3+k*.23),base*(.47+breath*.10),0,0,M.TAU);ctx.strokeStyle=rgba(c,life*(.20+breath*.11));ctx.lineWidth=.8;ctx.stroke();ctx.restore();
+    }
+    circle(x,cy,base,c,life*.75,1.2);circle(x,cy,base*.56,pearl,life*(.38+capture*.3),.8);
+    ctx.strokeStyle=rgba(gold,life*.75);ctx.lineWidth=1.8;ctx.beginPath();ctx.arc(x,cy,R*.105,-Math.PI/2,-Math.PI/2+M.TAU*world.energy/M.RULES.capacity);ctx.stroke();
+    if(world.ranks?.lens){const rr=M.UPGRADES.lens.values[world.ranks.lens-1]*R;circle(x,cy,rr,mint,.055+capture*.04,.7);for(let j=0;j<4;j++){const a=j/4*M.TAU+t*.12;ctx.beginPath();ctx.arc(x,cy,rr,a,a+.16);ctx.strokeStyle=rgba(mint,.25);ctx.lineWidth=1;ctx.stroke();}}
+    if(capture>.01&&!reduce)for(let j=0;j<6;j++){
+      const q=(t*1.15+j/6)%1,rr=base+(1-q)*R*.12,a=j/6*M.TAU+t*.25;glow(0,x+Math.cos(a)*rr,cy+Math.sin(a)*rr,12,capture*q*.4);
+    }
+    if(fire>.01)circle(x,cy,R*(.07+(1-fire)*.14),gold,fire*.5,1);
+    if(capture>.01&&!reduce){
+      // The core's filaments inhale toward its surface when actual light arrives.
+      for(let j=0;j<3;j++){const a=j*Math.PI/3+t*.08,r=base*(1.8+capture*.6);ctx.save();ctx.translate(x,cy);ctx.rotate(a);ctx.beginPath();ctx.ellipse(0,0,r,base*(.4+capture*.4),0,0,M.TAU);ctx.strokeStyle=rgba(gold,capture*.21);ctx.lineWidth=.65;ctx.stroke();ctx.restore();}
+    }
+    const p=2+breath*.45+capture*.8;ctx.fillStyle=rgba(hurt>.2?red:pearl,life);ctx.beginPath();ctx.arc(x,cy,p,0,M.TAU);ctx.fill();
+    if(world.evolution){polygon(x,cy,R*.165,world.evolution==='echo'?4:world.evolution==='lance'?3:6,(reduce?0:t*.1),gold,.25+capture*.2,.8);}
+    if(world.momentum>.03){const duration=M.UPGRADES.orbit.values[world.ranks.orbit-1]||1;ctx.beginPath();ctx.arc(x,cy,R*.14,-Math.PI/2,-Math.PI/2+M.TAU*world.momentum/duration);ctx.strokeStyle=rgba(mint,.36);ctx.lineWidth=1;ctx.stroke();}
+  }
+  function bossConnections(){
+    const p=world.peak;if(!p)return;
+    if(p.kind==='relay'){
+      const c=world.enemies.find(e=>e.id===p.core&&e.revealed);if(c)for(const e of world.enemies.filter(e=>e.relay&&e.revealed)){
+        ctx.setLineDash([1,7]);route([e,{x:c.x,y:c.y,group:true}],.22);ctx.setLineDash([]);
+      }
+    }else if(p.kind==='twins'){
+      const es=world.enemies.filter(e=>e.kind==='twins'&&e.revealed);if(es.length===2){const [a,b]=es;route([a,{x:b.x,y:b.y,group:true}],p.downAt===null?.18:.6,p.downAt!==null);}
+    }
+  }
+  function beams(){
+    for(const b of world.beams||[]){
+      const a=b.origin,end={x:b.x,y:b.y},fade=1-b.distance/b.length,color=b.echo||b.relayCharged?mint:gold;
+      ctx.lineCap='round';for(const [scale,alpha] of[[2,.055],[1,.16],[.12,.7]]){ctx.beginPath();if(b.echo){b.trail.forEach((p,i)=>i?ctx.lineTo(cx+p[0]*R,cy+p[1]*R):ctx.moveTo(cx+p[0]*R,cy+p[1]*R));}else{ctx.moveTo(cx+a.x*R,cy+a.y*R);ctx.lineTo(cx+end.x*R,cy+end.y*R);}ctx.strokeStyle=rgba(color,alpha*(.45+fade*.55));ctx.lineWidth=Math.max(.8,b.width*2*R*scale);ctx.stroke();}
+      if(b.echo){glow(0,cx+b.x*R,cy+b.y*R,35,.45);continue;}
+      for(let j=0;j<7;j++){const q=(j+.5)/7,off=Math.sin(j*2.399963)*b.width*.7;glow(1,cx+(a.x+(end.x-a.x)*q-b.dy*off)*R,cy+(a.y+(end.y-a.y)*q+b.dx*off)*R,13,.22+fade*.2);}
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);const active=M.clamp(world.speed/.85),background=ctx.createRadialGradient(cx,cy,2,cx,cy,R*1.2);
+    background.addColorStop(0,rgba(mint,.025+active*.035));background.addColorStop(1,rgba(mint,0));ctx.fillStyle=background;ctx.fillRect(0,0,W,H);
+    if(world.started){circle(cx,cy,R,[118,153,169],.14,.8);for(let i=0;i<48;i++){const a=i/48*M.TAU,r=R*1.045;ctx.fillStyle=rgba([123,153,175],i%4===0?.25:.09);ctx.fillRect(cx+Math.cos(a)*r,cy+Math.sin(a)*r,1.5,1.5);}}
+    for(let k=0;k<3;k++){
+      ctx.save();ctx.translate(cx,cy);ctx.rotate((reduce?0:clock*.018)*(k%2?-1:1)+k*.7);ctx.beginPath();ctx.ellipse(0,0,R*(.46+k*.15),R*(.18+k*.12),0,0,M.TAU);ctx.strokeStyle=rgba(mint,.045);ctx.lineWidth=.8;ctx.stroke();ctx.restore();
+    }
+    for(const wave of world.waves){
+      const fade=M.clamp(1-wave.r/1.16),r=wave.r*R;circle(cx,cy,r,mint,fade*.65,reduce?1.5:2.2);
+      for(let j=1;j<=4;j++)circle(cx,cy,Math.max(0,r-j*3),mint,fade*(.08-j*.012),2);
+    }
+    const preview=gesture.preview;
+    if(world.peak?.kind==='guard'){
+      const core=world.enemies.find(e=>e.id===world.peak.core&&e.revealed);
+      if(core)for(const id of world.peak.guards){const guard=world.enemies.find(e=>e.id===id&&e.revealed);if(guard){
+        ctx.setLineDash([2,5]);ctx.beginPath();ctx.moveTo(cx+core.x*R,cy+core.y*R);ctx.lineTo(cx+guard.x*R,cy+guard.y*R);ctx.strokeStyle=rgba(red,.27);ctx.lineWidth=1;ctx.stroke();ctx.setLineDash([]);
+      }}
+    }
+    bossConnections();
+    for(const g of world.formations){
+      const members=world.enemies.filter(e=>e.formation===g.id&&e.revealed).sort((a,b)=>a.slot.side-b.slot.side);
+      if(members.length<2)continue;
+      ctx.setLineDash([2,5]);ctx.strokeStyle=rgba(red,.18);ctx.lineWidth=1;ctx.beginPath();
+      members.forEach((e,i)=>i?ctx.lineTo(cx+e.x*R,cy+e.y*R):ctx.moveTo(cx+e.x*R,cy+e.y*R));ctx.stroke();ctx.setLineDash([]);
+      const x=M.clamp(cx+members.reduce((v,e)=>v+e.x,0)/members.length*R,46,W-46),top=cy+Math.min(...members.map(e=>e.y))*R-32;
+      const y=top>65?top:Math.min(H-40,cy+Math.max(...members.map(e=>e.y))*R+34);
+      ctx.font='10px -apple-system, sans-serif';ctx.textAlign='center';ctx.fillStyle=rgba(red,.65);if(g.age<5)ctx.fillText(g.label,x,y);
+    }
+    for(const s of world.shots){
+      route(s.visited,.10);
+      const remaining=s.route.slice(s.index).map((id,i)=>{const e=world.enemies.find(e=>e.id===id);return e?{x:e.x,y:e.y,group:s.links[s.index+i].group}:null;}).filter(Boolean);
+      route([{x:s.x,y:s.y},...remaining],s.total>1?.28:.10);
+    }
+    if(gesture.mode==='chain'){
+      route([{x:0,y:0},...preview.targets.map((e,i)=>({x:e.x,y:e.y,group:preview.links[i].group}))],.76,true);
+      const a=preview.targets.at(-1),p=gesture.last;
+      if(a&&p&&Math.hypot(a.x-p.x,a.y-p.y)>.15){ctx.setLineDash([2,5]);route([a,p],.20);ctx.setLineDash([]);}
+    }
+    if(active>.01){
+      circle(cx,cy,world.reach*R,mint,active*.22,1);
+      for(let arm=0;arm<4;arm++){ctx.strokeStyle=rgba(mint,active*(reduce?.05:.14));ctx.lineWidth=1;ctx.beginPath();for(let j=0;j<=50;j++){const q=j/50,r=(M.RULES.capture+(world.reach-M.RULES.capture)*q)*R,a=arm/4*M.TAU+world.rotation*.17-world.direction*Math.log(.13+q)*1.3,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;j?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.stroke();}
+    }
+    for(const p of world.particles){
+      if(p.state==='collected')continue;const escaped=p.state==='escaped',alpha=escaped?M.clamp(1-p.age/1.2)*.4:1,x=cx+p.x*R,y=cy+p.y*R;
+      if(!escaped&&p.trail.length){ctx.beginPath();p.trail.forEach((a,j)=>j?ctx.lineTo(cx+a[0]*R,cy+a[1]*R):ctx.moveTo(cx+a[0]*R,cy+a[1]*R));ctx.strokeStyle=rgba(gold,.16+active*.18);ctx.lineWidth=1.3;ctx.stroke();}
+      glow(1,x,y,24,alpha*.8);ctx.fillStyle=rgba(gold,alpha);if(escaped)ctx.fillRect(x+Math.sin(p.id)*p.age*10,y+Math.cos(p.id)*p.age*10,2,1);else{ctx.beginPath();ctx.arc(x,y,1.8,0,M.TAU);ctx.fill();}
+    }
+    // Hidden enemies have no marker, trail, glow or direction hint until the wave reaches them.
+    for(const e of world.enemies){
+      if(!e.revealed)continue;const x=cx+e.x*R,y=cy+e.y*R,urgent=M.clamp((.42-e.r)/.32),pulse=reduce?0:Math.sin(clock*(3+urgent*4)+e.phase)*.09;
+      const heavy=e.type==='heavy'||!!e.boss,swift=e.type==='swift',flash=M.clamp(1-(world.time-e.lastHit)/.3),incoming=world.incoming(e.id);
+      glow(2,x,y,(heavy?68:48)+urgent*16,.65+urgent*.25+pulse);
+      if(e.elite)circle(x,y,heavy?26:21,gold,.28,.8);
+      if(e.boss){
+        bossShape(e,x,y);
+      }else if(heavy){
+        ctx.beginPath();for(let i=0;i<6;i++){const a=i/6*M.TAU+Math.PI/6,px=x+Math.cos(a)*14,py=y+Math.sin(a)*14;i?ctx.lineTo(px,py):ctx.moveTo(px,py);}ctx.closePath();ctx.fillStyle=rgba(red,.08);ctx.fill();ctx.strokeStyle=rgba(red,.65+flash*.35);ctx.lineWidth=1.2;ctx.stroke();
+        const damage=world.stats.heavyDamage||20,remaining=Math.ceil(e.hp/damage),queued=Math.ceil(incoming/damage),segments=Math.ceil(e.maxHp/damage);
+        if(segments>8){
+          // Deep-run HP must stay a readable ring rather than dozens of
+          // overlapping arcs whose fixed gaps can exceed their segment size.
+          circle(x,y,21,red,.14,2.5);
+          ctx.beginPath();ctx.arc(x,y,21,-Math.PI/2,-Math.PI/2+M.TAU*e.hp/e.maxHp);ctx.strokeStyle=rgba(red,.88);ctx.lineWidth=2.5;ctx.stroke();
+          if(incoming>0){ctx.beginPath();ctx.arc(x,y,18,-Math.PI/2,-Math.PI/2+M.TAU*Math.min(e.hp,incoming)/e.maxHp);ctx.strokeStyle=rgba(gold,.65);ctx.lineWidth=1;ctx.stroke();}
+        }else for(let i=0;i<segments;i++){
+          const a=-Math.PI/2+i/segments*M.TAU+.12,b=a+M.TAU/segments-.24;
+          ctx.beginPath();ctx.arc(x,y,21,a,b);ctx.strokeStyle=rgba(i<remaining?red:pearl,i<remaining?.88:.12);ctx.lineWidth=2.5;ctx.stroke();
+          if(i<Math.min(remaining,queued)){ctx.beginPath();ctx.arc(x,y,18,a,b);ctx.strokeStyle=rgba(gold,.65);ctx.lineWidth=1;ctx.stroke();}
+        }
+        ctx.font='500 10px -apple-system, sans-serif';ctx.textAlign='center';ctx.fillStyle=rgba(red,.9);ctx.fillText(e.hp+'/'+e.maxHp,x,y+35>H-40?y-31:y+35);
+      }else if(swift){
+        for(let j=1;j<e.trail.length;j++){const a=e.trail[j-1],b=e.trail[j];ctx.beginPath();ctx.moveTo(cx+a[0]*R,cy+a[1]*R);ctx.lineTo(cx+b[0]*R,cy+b[1]*R);ctx.lineWidth=2;ctx.strokeStyle=rgba(red,j/e.trail.length*.35);ctx.stroke();}
+        const ux=-e.x/Math.max(.001,e.r),uy=-e.y/Math.max(.001,e.r);
+        for(const back of [0,-8]){ctx.beginPath();ctx.moveTo(x+ux*(back-5)-uy*5,y+uy*(back-5)+ux*5);ctx.lineTo(x+ux*(back+4),y+uy*(back+4));ctx.lineTo(x+ux*(back-5)+uy*5,y+uy*(back-5)-ux*5);ctx.strokeStyle=rgba(red,back?.35:.95);ctx.lineWidth=1.8;ctx.stroke();}
+        circle(x,y,15,red,.09,.7);
+      }else if(e.relay){polygon(x,y,13,4,Math.PI/4,mint,.8,1.4);circle(x,y,20,mint,.2,1);glow(0,x,y,42,.22);}else{
+        circle(x,y,13,red,.24+urgent*.22,1);circle(x,y,19,red,.07,.7);
+        if(e.hp<e.maxHp){circle(x,y,16,red,.12,1.5);ctx.beginPath();ctx.arc(x,y,16,-Math.PI/2,-Math.PI/2+M.TAU*e.hp/e.maxHp);ctx.strokeStyle=rgba(red,.85);ctx.lineWidth=1.7;ctx.stroke();}
+      }
+      ctx.fillStyle=rgba(e.dormant?mint:flash?pearl:e.relay?mint:red,e.dormant?.15:.96);ctx.beginPath();ctx.arc(x,y,heavy?6:swift?2.4:4.2+urgent,0,M.TAU);ctx.fill();ctx.fillStyle=rgba(pearl,.85);ctx.beginPath();ctx.arc(x-1,y-1,1.1,0,M.TAU);ctx.fill();
+      const pending=world.pending(e.id),selected=preview.targets.findIndex(o=>o.id===e.id),risk=selected>=0&&preview.estimates[selected].risk;
+      if(pending)circle(x,y,9,pearl,pending.target===e.id?.8:.4,1);
+      if(selected>=0||pending&&pending.total>1){
+        const index=selected>=0?selected:pending.route.indexOf(e.id),links=selected>=0?preview.links:pending.links;
+        const grouped=links[index]?.group||links[index+1]?.group,order=index+1,color=risk?red:grouped?mint:gold;
+        if(selected>=0){circle(x,y,heavy?27:19,color,.85,grouped?2:1.4);glow(grouped?0:1,x,y,45,grouped?.4:.22);}
+        const ox=heavy?25:16,oy=heavy?-25:-19;
+        ctx.fillStyle='#0b131e';ctx.beginPath();ctx.arc(x+ox,y+oy,9,0,M.TAU);ctx.fill();circle(x+ox,y+oy,9,color,selected>=0?.8:.35,.9);
+        ctx.font='600 10px -apple-system, sans-serif';ctx.textAlign='center';ctx.fillStyle=rgba(color,selected>=0?1:.7);ctx.fillText(order,x+ox,y+oy+3.5);
+      }
+    }
+    for(const s of world.shots){
+      // A small current of light follows the real flight path. It has no solid
+      // nose; every mote remains behind the actual damage front.
+      const n=s.trail.length,group=s.links[s.index]?.group,color=group?mint:gold;if(n<2)continue;ctx.lineCap='round';
+      for(let lane=-1;lane<=1;lane++){
+        ctx.beginPath();
+        for(let j=0;j<n;j++){
+          const p=s.trail[j],prev=s.trail[Math.max(0,j-1)],next=s.trail[Math.min(n-1,j+1)],dx=next[0]-prev[0],dy=next[1]-prev[1],len=Math.hypot(dx,dy)||1,q=j/(n-1);
+          const width=Math.sin(Math.PI*q)*4.5,flutter=reduce?0:Math.sin(s.age*7+q*8+lane)*1.7;
+          const off=lane*width+flutter*Math.sin(Math.PI*q),x=cx+p[0]*R-dy/len*off,y=cy+p[1]*R+dx/len*off;
+          j?ctx.lineTo(x,y):ctx.moveTo(x,y);
+        }
+        ctx.strokeStyle=rgba(lane===0?pearl:color,lane===0?.24:.14);ctx.lineWidth=lane===0?1.6:.9;ctx.stroke();
+      }
+      for(let j=0;j<19;j++){
+        const q=(j+.5)/19,index=Math.min(n-1,Math.floor(q*(n-1))),p=s.trail[index],prev=s.trail[Math.max(0,index-1)],dx=p[0]-prev[0],dy=p[1]-prev[1],len=Math.hypot(dx,dy)||1;
+        const spread=Math.sin(q*Math.PI)*(7+(world.ranks?.pierce||0)*2.5),off=Math.sin(j*2.399963+(reduce?0:s.age*2))*spread,x=cx+p[0]*R-dy/len*off,y=cy+p[1]*R+dx/len*off,alpha=.24+.52*Math.sin(q*Math.PI);
+        glow(group?0:1,x,y,group?19:14,alpha*.55);ctx.fillStyle=rgba(j%3?color:pearl,alpha);ctx.beginPath();ctx.arc(x,y,j%4===0?1.4:.9,0,M.TAU);ctx.fill();
+      }
+    }
+    beams();core();
+    for(const f of fx){
+      const progress=1-f.life/f.duration,x=cx+(f.x||0)*R,y=cy+(f.y||0)*R;
+      if(f.type==='nucleusCollapse'){
+        const p=progress,q=1-Math.pow(1-p,3),scale=f.small?.7:1,n=f.kind==='split'?3:f.kind==='twins'?4:f.kind==='relay'?6:8;
+        glow(1,x,y,(50+q*85)*scale,(1-p)*.55);circle(x,y,(16+q*55)*scale,gold,(1-p)*.6,1);
+        if(!reduce)for(let j=0;j<n;j++){
+          const a=j/n*M.TAU,rr=(18+q*45)*scale,px=x+Math.cos(a)*rr,py=y+Math.sin(a)*rr;
+          ctx.save();ctx.translate(px,py);ctx.rotate(a+p*.6);ctx.beginPath();ctx.moveTo(-6*(1-p),-4);ctx.lineTo(5*(1-p),0);ctx.lineTo(-6*(1-p),4);ctx.strokeStyle=rgba(j%2?mint:gold,(1-p)*.65);ctx.lineWidth=1;ctx.stroke();ctx.restore();
+        }
+      }else if(f.type==='release'){
+        const p=progress,q=1-Math.pow(1-p,3),r=(.1+q*1.35)*R;
+        glow(0,cx,cy,R*(1.1+q*1.6),(1-p)*.22);
+        for(let j=0;j<3;j++)circle(cx,cy,Math.max(0,r-j*11),j===1?gold:mint,(1-p)*(.5-j*.11),j===0?1.6:.7);
+        if(!reduce){
+          for(let k=0;k<3;k++){ctx.save();ctx.translate(cx,cy);ctx.rotate(k*Math.PI/3+p*.6);ctx.beginPath();ctx.ellipse(0,0,r*.86,r*(.27+p*.15),0,0,M.TAU);ctx.strokeStyle=rgba(k%2?gold:mint,(1-p)*.24);ctx.lineWidth=.8;ctx.stroke();ctx.restore();}
+          for(let j=0;j<64;j++){
+            const a=j*2.399963+p*.13,rr=r*(.64+(j%5)*.085),px=cx+Math.cos(a)*rr,py=cy+Math.sin(a)*rr;
+            ctx.fillStyle=rgba(j%3?mint:gold,(1-p)*(.26+(j%3)*.12));ctx.beginPath();ctx.arc(px,py,j%8===0?1.6:.7,0,M.TAU);ctx.fill();
+          }
+        }
+      }else if(f.type==='tide'){
+        const rr=R*(1-progress*.87);for(let j=0;j<3;j++)circle(cx,cy,rr+j*6,mint,(1-progress)*(.27-j*.07),1.1);
+        if(!reduce)for(let j=0;j<24;j++){const a=j/24*M.TAU+progress*.35,rrr=rr*(.95+(j%3)*.025);ctx.fillStyle=rgba(mint,(1-progress)*.5);ctx.beginPath();ctx.arc(cx+Math.cos(a)*rrr,cy+Math.sin(a)*rrr,1,0,M.TAU);ctx.fill();}
+      }else if(f.type==='evolution'){
+        for(let j=0;j<4;j++)polygon(cx,cy,R*(.13+progress*.6+j*.035),6,progress*.35+j*Math.PI/6,j%2?mint:gold,(1-progress)*.5,1);
+        glow(0,cx,cy,R*1.2,(1-progress)*.25);
+      }else if(f.type==='sector'){
+        const q=1-Math.pow(1-progress,3),r=R*(1.18-.98*q);circle(cx,cy,r,mint,(1-progress)*.35,1);
+        for(let j=0;j<12;j++){const a=j/12*M.TAU+(reduce?0:progress*.25),rr=R*(1.1-q*.08);ctx.beginPath();ctx.moveTo(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr);ctx.lineTo(cx+Math.cos(a)*(rr-8),cy+Math.sin(a)*(rr-8));ctx.strokeStyle=rgba(gold,(1-progress)*.3);ctx.lineWidth=1;ctx.stroke();}
+      }else if(f.type==='shield'){
+        circle(x,y,27+progress*13,red,(1-progress)*.65,1.5);ctx.font='10px -apple-system, sans-serif';ctx.textAlign='center';ctx.fillStyle=rgba(red,1-progress);ctx.fillText(f.kind==='iris'?'CLOSED':'LINK REQUIRED',x,y+49+progress*8);
+      }else if(f.type==='charged'){
+        polygon(x,y,10+progress*28,4,Math.PI/4,mint,(1-progress)*.8,1);glow(0,x,y,65,(1-progress)*.5);
+      }else if(f.type==='pierced'||f.type==='echoHit'){
+        ctx.font='600 10px -apple-system, sans-serif';ctx.textAlign='center';ctx.fillStyle=rgba(gold,1-progress);ctx.fillText(f.type==='echoHit'?'反響':'貫通',x,y+32+progress*10);
+      }else if(f.type==='twinDown'){
+        polygon(x,y,20+progress*25,4,Math.PI/4+progress*.4,mint,(1-progress)*.6,1);
+      }else if(f.type==='firstLevel'||f.type==='revive'||f.type==='guardBreak'){
+        for(let j=0;j<2;j++)circle(cx,cy,(.14+progress*.4+j*.05)*R,gold,(1-progress)*.5,1);
+      }else if(f.type==='detect'){circle(x,y,10+progress*22,red,(1-progress)*.65,1.2);}
+      else if(f.type==='select'){circle(x,y,13+progress*20,f.group?mint:gold,(1-progress)*.8,1.4);}
+      else if(f.type==='groupLink'){
+        route([f.from,{x:f.x,y:f.y,group:true}],(1-progress)*.8);
+        const q=reduce?.5:progress,px=cx+(f.from.x+(f.x-f.from.x)*q)*R,py=cy+(f.from.y+(f.y-f.from.y)*q)*R;
+        glow(0,px,py,35,(1-progress)*.65);
+      }
+      else if(f.type==='fire'&&f.groupSavings){route(f.path,(1-progress)*.5);}
+      else if(f.type==='limit'){circle(x,y,15+progress*7,red,(1-progress)*.7,1.5);}
+      else if(f.type==='hit'){
+        circle(x,y,18+progress*18,pearl,(1-progress)*.8,1.2);
+        for(let j=0;j<3;j++){const a=j/3*M.TAU,r=22+progress*15;ctx.beginPath();ctx.moveTo(x+Math.cos(a)*r,y+Math.sin(a)*r);ctx.lineTo(x+Math.cos(a+.18)*r,y+Math.sin(a+.18)*r);ctx.strokeStyle=rgba(gold,(1-progress)*.7);ctx.stroke();}
+        ctx.font='600 12px -apple-system, sans-serif';ctx.textAlign='center';ctx.fillStyle=rgba(pearl,1-progress);if(f.damage>0&&world.phase!=='release'&&world.phase!=='bridge')ctx.fillText('−'+f.damage,x,y-29-progress*13);
+      }
+      else if(f.type==='chainComplete'&&f.hits>1){
+        route(f.visited,(1-progress)*.5);
+        const a=f.visited.at(-1);if(a){
+          const px=cx+a.x*R,py=cy+a.y*R,color=f.groupSavings?mint:gold;
+          circle(px,py,15+progress*45,color,(1-progress)*.65,1.2);
+          if(f.groupSavings){
+            circle(px,py,10+progress*28,color,(1-progress)*.4,.8);
+            ctx.font='600 12px -apple-system, sans-serif';ctx.textAlign='center';ctx.fillStyle=rgba(mint,Math.min(1,(1-progress)*1.5));
+            ctx.fillText(f.saved+' 節約',M.clamp(px,45,W-45),M.clamp(py-28-progress*12,35,H-40));
+          }
+        }
+      }
+      else if(f.type==='kill'){
+        circle(x,y,8+progress*35,f.group?mint:gold,(1-progress)*.6,1.2);
+        if(!reduce)for(let j=0;j<8;j++){const a=j/8*M.TAU,r=5+progress*30;ctx.fillStyle=rgba(j%2?gold:red,(1-progress)*.7);ctx.fillRect(x+Math.cos(a)*r,y+Math.sin(a)*r,2,2);}
+        if(!f.groupChain&&!f.pulse&&world.phase!=='release'&&world.phase!=='bridge'){ctx.font='11px -apple-system, sans-serif';ctx.textAlign='center';ctx.fillStyle=rgba(pearl,(1-progress)*.9);ctx.fillText('+'+f.xp+' XP',x,y-20-progress*14);}
+      }else if(f.type==='capture'){circle(cx,cy,R*(.065+progress*.07),gold,(1-progress)*.22,1);}
+      else if(f.type==='impact'){circle(cx,cy,(.10+progress*.22)*R,red,(1-progress)*.4,1.3);}
+      else if(f.type==='empty'){circle(cx,cy,(.095+progress*.045)*R,red,(1-progress)*.55,1);}
+      else if(f.type==='aim'){circle(x,y,14+progress*7,gold,(1-progress)*.5,1);}
+    }
+    if(world.demoPointer){const p=world.demoPointer,x=cx+p.x*R,y=cy+p.y*R;circle(x,y,13,pearl,.65,1.1);circle(x,y,5,pearl,.5,1);glow(0,x,y,40,.25);}
+    if(gesture.mode==='collect'&&traces.length>1){ctx.lineCap='round';for(let i=1;i<traces.length;i++){const a=traces[i-1],b=traces[i];ctx.strokeStyle=rgba(mint,b.life*.55);ctx.lineWidth=4*b.life/.5;ctx.beginPath();ctx.moveTo(cx+a.x*R,cy+a.y*R);ctx.lineTo(cx+b.x*R,cy+b.y*R);ctx.stroke();}}
+  }
+  return{
+    resize(){const b=canvas.getBoundingClientRect(),dpr=Math.min(2,devicePixelRatio||1);W=b.width;H=b.height;canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);cx=W/2;cy=H/2;R=Math.max(60,Math.min(W*.435,(H-65)/2));return{W,H,R,cx,cy};},
+    render(w,g,e,t,time){world=w;gesture=g;fx=e;traces=t;clock=time;draw();}
+  };
+};})(typeof globalThis!=='undefined'?globalThis:this);
+</script><script>/* Visible QA pilot. Drives the public Gesture object; never touches HP or resources. */
+(function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./sonar-survival.js'):root.ThreadSurvival);if(typeof module==='object'&&module.exports)module.exports=api;else root.ThreadSonarPilot=api;})(typeof globalThis!=='undefined'?globalThis:this,M=>{
+  class Pilot{
+    constructor(world,gesture,options={}){this.world=world;this.gesture=gesture;this.options={reaction:.3,chainMax:4,jitter:.008,collectRps:.95,...options};this.clock=0;this.next=0;this.action=null;this.pointer=null;this.label='操作デモ';this.choiceTime=0;this.inputs=0;this.collectSeconds=0;this.attackSeconds=0;this.maxSeen=0;this.lastChoice=false;}
+    cancel(){this.gesture.end(true);this.world.inputHeld=false;this.action=null;this.pointer=null;}
+    upgrade(){
+      const w=this.world;if(w.choices[0]?.startsWith('evolve_'))return 'evolve_'+(this.options.evolution||'echo');const preferred=w.ranks.orbit<1?['orbit','pierce','lens','flow','pull','link','shell']:w.ranks.lens<1?['lens','pierce','orbit','flow','pull','link','shell']:['pierce','orbit','lens','flow','pull','link','shell'];
+      return preferred.find(k=>w.choices.includes(k))||w.choices[0];
+    }
+    collect(seconds){
+      const w=this.world;let angle=0,r=(w.evolution&&this.options.evolvedRadius)||this.options.collectRadius||.70;
+      for(let i=0;i<18;i++){angle=i/18*M.TAU;if(!w.find(Math.cos(angle)*r,Math.sin(angle)*r))break;}
+      const point={x:Math.cos(angle)*r,y:Math.sin(angle)*r};this.gesture.begin(point.x,point.y,this.clock);w.inputHeld=true;
+      this.action={kind:'collect',at:this.clock,duration:seconds,angle,r};this.label='空いた場所で、ぐるぐる';this.pointer=point;
+    }
+    attack(targets){const e=targets[0];this.gesture.begin(e.x,e.y,this.clock);this.world.inputHeld=true;this.pointer={x:e.x,y:e.y};this.action={kind:'attack',at:this.clock,duration:.2+targets.length*.18,targets:targets.map(e=>({id:e.id,x:e.x,y:e.y}))};this.label=targets.length>1?'なぞって接続 → 離して放射':'タップして、放射';}
+    update(dt){
+      this.clock+=dt;const w=this.world,g=this.gesture;
+      if(w.over||w.settled){this.cancel();this.label='航行の終わり';return;}
+      if(w.choosing){this.cancel();this.choiceTime+=dt;this.label='次の力を選ぶ';return;}
+      this.choiceTime=0;
+      if(!w.started){w.scan();this.next=this.clock+.8;this.label='探知';return;}
+      if(this.action){
+        const a=this.action,t=this.clock-a.at;
+        if(a.kind==='collect'){
+          this.collectSeconds+=dt;const angle=a.angle+t*M.TAU*this.options.collectRps,j=Math.sin(t*13)*this.options.jitter;
+          this.pointer={x:Math.cos(angle)*(a.r+j),y:Math.sin(angle)*(a.r+j)};
+        }else{
+          this.attackSeconds+=dt;const q=Math.min(.999,t/a.duration)*(a.targets.length-1),i=Math.floor(q),from=a.targets[i],to=a.targets[Math.min(i+1,a.targets.length-1)],f=q-i;
+          this.pointer={x:from.x+(to.x-from.x)*f+Math.sin(t*7)*this.options.jitter,y:from.y+(to.y-from.y)*f+Math.cos(t*9)*this.options.jitter};
+        }
+        g.move(this.pointer.x,this.pointer.y,this.clock);
+        const enough=a.kind==='collect'&&t>.65&&(w.energy>=95||w.available===0);
+        if(t>=a.duration||enough){g.end();w.inputHeld=false;this.action=null;this.pointer=null;this.inputs++;this.next=this.clock+this.options.reaction;}
+        return;
+      }
+      if(this.clock<this.next)return;
+      if(w.sector<3&&w.scanWait<=0){w.scan();this.next=this.clock+.15;}
+      let targets=w.enemies.filter(e=>e.revealed&&e.hp>0&&w.needsShot(e));this.maxSeen=Math.max(this.maxSeen,targets.length);
+      targets.sort((a,b)=>(a.r-.09)/(a.speed||.01)-(b.r-.09)/(b.speed||.01));
+      if(w.peak?.kind==='guard'&&w.peak.guards.some(id=>w.enemies.some(e=>e.id===id)))targets=targets.filter(e=>!e.boss);
+      if(w.peak?.kind==='iris')targets=targets.filter(e=>!e.boss||((w.time-w.peak.at+e.r/w.stats.shotSpeed+.45)%6>=3.35&&(w.time-w.peak.at+e.r/w.stats.shotSpeed+.45)%6<5.7));
+      if(w.peak?.kind==='relay')targets=targets.filter(e=>!e.boss);
+      const urgent=targets.some(e=>(e.r-.09)/(e.speed||.01)<3.5),need=w.energy<45;
+      if(w.available&&((need&&!urgent)||w.energy<12||!targets.length||w.phase==='release')){this.collect(w.energy<12?3.5:w.ranks.orbit?1.25:2.5);return;}
+      if(targets.length&&w.energy>=12){
+        const route=[targets[0]];
+        if(w.peak?.kind==='relay'&&route[0].relay&&w.boss&&w.energy>=20)route.push(w.boss);
+        else{
+          let pool=targets.slice(1);
+          if(w.evolution==='lance'){
+            const front=route[0],r=Math.hypot(front.x,front.y),ux=front.x/r,uy=front.y/r,rank=Math.max(1,w.ranks.pierce),width=[0,.042,.065,.088][rank]*1.7,length=[0,.28,.40,.55][rank]*1.65;
+            // Let a visible enemy behind the first target be struck by the physical beam.
+            pool=pool.filter(e=>{const along=(e.x-front.x)*ux+(e.y-front.y)*uy,side=Math.abs((e.x-front.x)*uy-(e.y-front.y)*ux);return !(along>0&&along<length&&side<width*.8);});
+          }
+          while(route.length<this.options.chainMax&&pool.length){const last=route.at(-1);pool.sort((a,b)=>Math.hypot(a.x-last.x,a.y-last.y)-Math.hypot(b.x-last.x,b.y-last.y));const candidate=pool.shift();if(w.quote([...route.map(e=>e.id),candidate.id]).affordable)route.push(candidate);}
+        }
+        this.attack(route);return;
+      }
+      if(w.available){this.collect(w.ranks.orbit?1.25:2.5);return;}
+      this.label='到着を待ち、次を見極める';this.next=this.clock+.15;
+    }
+    input(){return this.gesture.read(this.clock);}
+  }
+  return{Pilot};
+});
+</script><script>(() => {
+  'use strict';
+  const M=ThreadSurvival,by=id=>document.getElementById(id),canvas=by('sonar-canvas'),art=ThreadSonarArt(canvas);
+  const PROFILE='ucl.sonar.profile.v2',RUN='ucl.sonar.run.v2',LEGACY_RUN='ucl.sonar.run.v1';
+  const params=new URLSearchParams(location.search),icons={pull:'◎',orbit:'◌',lens:'⊙',link:'⋈',pierce:'◇',flow:'↗',shell:'⬡'};
+  const time=n=>Math.floor(n/60)+':'+String(Math.floor(n%60)).padStart(2,'0'),num=n=>Math.round(n).toLocaleString('ja-JP');
+  let storageOK=true;
+  function load(key){try{return JSON.parse(localStorage.getItem(key)||'null');}catch(_){return null;}}
+  function store(key,data){try{data===null?localStorage.removeItem(key):localStorage.setItem(key,JSON.stringify(data));}catch(_){storageOK=false;}}
+  const previous=load('ucl.sonar.profile.v1'),legacyRun=load(LEGACY_RUN);
+  let p=M.profile(load(PROFILE)||M.migrateProfile(previous||{})),saved=load(RUN),world=new M.World(),gesture=new M.Gesture(world);
+  let pilot=null;
+  let mode='home',returnMode='home',qa=false,pointer=null,resizePending=false,geo={R:170,cx:195,cy:220,W:390,H:440},clock=0,last=0,uiTime=0,checkpointTime=0,fx=[],traces=[];
+  let message='',messageUntil=0,bannerUntil=0,toastUntil=0,ad=null,result=null,frameStats={frames:0,slow:0,max:0};
+  if(saved&&!M.World.restore(saved.snapshot))saved=null;
+  store(PROFILE,p);
+  const canPass=()=>p.passUntil>Date.now();
+  function saveProfile(){store(PROFILE,p);}
+  function checkpoint(){if(!world.started||world.settled||qa)return;saved={snapshot:world.snapshot(),savedAt:Date.now(),qa:false};store(RUN,saved);}
+  function clearRun(){if(!qa){saved=null;store(RUN,null);}}
+  function toast(text){by('toast').textContent=text;by('toast').hidden=false;toastUntil=clock+3;}
+  function sheet(title,html){by('overlay').innerHTML='<section class="sheet">'+html+'</section>';by('overlay').setAttribute('aria-label',title);by('overlay').hidden=false;}
+  function btn(text,action,kind='',detail='',disabled=false){return '<button class="btn '+kind+'" data-action="'+action+'"'+(disabled?' disabled':'')+'>'+text+(detail?'<small>'+detail+'</small>':'')+'</button>';}
+  function heading(eyebrow,title){return '<div class="eyebrow">'+eyebrow+'</div><h2 id="sheet-title">'+title+'</h2>';}
+  function buildSummary(){
+    const parts=Object.entries(world.ranks).filter(([k,v])=>v).map(([k,v])=>'<div><b>'+M.UPGRADES[k].name+'</b><span>'+M.UPGRADES[k].format(M.UPGRADES[k].values[v-1])+'</span></div>').join('');
+    return parts?'<div class="build-summary">'+parts+(world.evolution?'<div class="evolved"><b>'+M.EVOLUTIONS[world.evolution].name+'</b><span>'+M.EVOLUTIONS[world.evolution].subtitle+'</span></div>':'')+'</div>':'';
+  }
+  function lastSignal(){
+    const e=world.lastThreat;if(!e)return '';
+    const label=e.kind?M.BOSSES[e.kind]?.name:M.TYPES[e.type]?.label;
+    const tip=e.energy<12?'光を少し残すと、最後の追撃が届く。':e.kind==='iris'?'開く直前に放つと、到着の遅れが味方になる。':e.kind==='relay'?'小さな結節から核まで、ひと続きにつなごう。':e.kind==='twins'?'片方ずつ倒すより、二つへ続けて光を送ろう。':e.type==='swift'?'速い気配を、接続の最初に置いてみよう。':e.type==='heavy'?'丸い敵とつなぎながら、重装へ追撃を重ねよう。':'丸い群れを一度につなぐと、光を残せる。';
+    return '<p class="last-signal">最後の侵入 · '+(label||'敵の核')+'<small>'+tip+'</small></p>';
+  }
+  function stop(cancel=true){const old=pointer;pointer=null;world.inputHeld=false;if(cancel&&pilot)pilot.cancel();const priorMode=gesture.mode,fired=gesture.end(cancel);if(old!==null)world.log('inputEnd',{mode:priorMode,cancel,fired});if(old!==null)try{canvas.releasePointerCapture(old);}catch(_){}if(resizePending)resize();return fired;}
+  function switchMode(next){if(next!=='play')stop();mode=next;renderSheet();read();}
+  function start(name='start'){
+    stop();qa=name!=='start';const seed=Number(params.get('seed'))||2501+p.runs*31;
+    const options={seed,trait:p.trait,shellBonus:p.shellRank*5};world=qa&&name!=='tour'?M.World.scenario(name,options):new M.World(options);
+    gesture=new M.Gesture(world);pilot=name==='tour'?new ThreadSonarPilot.Pilot(world,gesture,{evolution:M.EVOLUTIONS[params.get('build')]?params.get('build'):'echo',evolvedRadius:params.get('build')==='tide'?.35:undefined}):null;world.hitRadius=Math.max(.15,24/geo.R);fx=[];traces=[];message='';result=null;checkpointTime=0;frameStats={frames:0,slow:0,max:0};
+    mode='play';by('overlay').hidden=true;syncMode();read();
+  }
+  function resumeSaved(){pilot=null;const w=saved&&M.World.restore(saved.snapshot);if(!w){saved=null;toast('保存された航行が見つかりません');return;}stop();world=w;gesture=new M.Gesture(world);qa=false;world.hitRadius=Math.max(.15,24/geo.R);fx=[];traces=[];result=world.result;mode='play';by('overlay').hidden=true;syncMode();read();}
+  function resume(){mode='play';by('overlay').hidden=true;syncMode();read();}
+  function pause(){if(mode!=='play'||world.over)return;stop();checkpoint();switchMode('pause');}
+  function settle(){result=world.finishRun();if(!result)return;if(!qa){p=M.profile(load(PROFILE)||p);result.newBest=result.sector>p.bestSector;M.commit(p,result);saveProfile();clearRun();}switchMode('result');}
+  function syncMode(){
+    if(mode!=='play')return;
+    if(world.over){stop();checkpoint();if(world.continues>=3)settle();else switchMode('death');}
+    else if(world.choosing)switchMode('choice');
+  }
+  function showAd(purpose){
+    if(canPass()){grant(purpose);return;}
+    returnMode=mode;ad={purpose,remaining:3,done:false};switchMode('ad');
+  }
+  function grant(purpose){
+    if(purpose==='continue'){
+      if(world.revive()){mode='play';by('overlay').hidden=true;message='核が再起動。3秒間、侵入を防ぎます。';messageUntil=clock+3;checkpoint();}
+      else toast('この航行のコンティニューは終了しています');
+    }else if(purpose==='bonus'&&result){
+      if(qa){result.qaBonus=true;toast('試験用の報酬演出です');}
+      else{p=M.profile(load(PROFILE)||p);M.bonus(p,result.id);saveProfile();}
+      switchMode('result');
+    }
+    ad=null;read();
+  }
+  function openRecords(){returnMode=mode;switchMode('records');}
+  function renderSheet(){
+    const overlay=by('overlay');overlay.dataset.evolution=String(mode==='choice'&&world.choices[0]?.startsWith('evolve_'));if(mode==='play'){overlay.hidden=true;return;}
+    if(mode==='home'){
+      sheet('SONAR', '<div class="eyebrow">UNIVERSION CLOSURE LOGIC</div><h1 id="sheet-title">SONAR</h1><p>見えないものを捉え、つなぎ、取り戻す。</p><div class="hero"><i></i></div><div class="intro-actions"><div class="intro-action"><i>◉</i><div>探知で、敵を見つける。<small>一度捉えた赤い気配は、ずっと追跡。</small></div></div><div class="intro-action"><i>⋈</i><div>赤点をつないで、離す。<small>丸い敵は連結で省エネ。重装には追撃。</small></div></div><div class="intro-action"><i>↻</i><div>空いた場所で、ぐるぐる。<small>散った光が、次の攻撃になる。</small></div></div></div><div class="stack">'+(saved?btn('航行を再開','resume-saved','primary','保存した続きから'):'')+btn(saved?'新しく始める':'探査を始める',saved?'new-confirm':'start',saved?'':'primary')+'</div><div class="record-line"><span>最深到達 <b>'+String(p.bestSector).padStart(2,'0')+'</b></span><span>結晶 <b>'+num(p.crystals)+'</b></span><span>核 <b>'+M.TRAITS[p.trait].name+'</b></span></div><div class="duo"><button class="quiet" data-action="records">記録と核の調律</button><button class="quiet" data-action="qa">試験メニュー</button></div>'+(legacyRun?'<button class="quiet" data-action="legacy">前版の航行を続ける · SURVIVAL 1</button>':'')+'<p class="aside tiny">SURVIVAL 2 · ローカル保存の試遊版'+(p.legacyBest?' · 前版の最深 '+p.legacyBest:'')+'<br>広告・30日パスは体験用です。課金は発生しません。</p>');
+    }else if(mode==='pause'){
+      sheet('一時停止',heading('PAUSED','航行を、一休み。')+'<p>深度 '+world.sector+' · '+world.name+' ／ '+time(world.time)+'<br>'+(qa?'試験シーンです。到達記録には加算しません。':!world.started?'最初の探知から、航行が始まります。':(storageOK?'状態はこの端末に保存されています。':'この環境では保存できません。この画面を開いたまま再開してください。'))+'</p>'+buildSummary()+'<div class="stack">'+btn('航行を再開','resume','primary')+btn('記録と核の調律','records')+btn('試験メニュー','qa')+btn('タイトルへ','home')+'</div><p class="aside">核の変更は、次の航行から反映されます。</p>');
+    }else if(mode==='choice'){
+      const target=world.pendingLevels[0]||world.level,evolving=world.choices[0]?.startsWith('evolve_');
+      sheet('強化を選択',heading(evolving?'CORE EVOLUTION · LEVEL '+target:'LEVEL '+target+' · TIME IS PAUSED',evolving?'核が、進化する。':'次の力を選ぶ。')+'<p>'+(evolving?'この航行の、決め手を選ぶ。':'今の構成に、ひとつ加える。')+'</p><div class="choices">'+world.choices.map(key=>{const u=M.choiceInfo(key),r=world.ranks[key]||0,v=u.values[r];return '<button class="choice" data-action="upgrade:'+key+'"><i>'+(u.icon||icons[key])+'</i><div><h3>'+u.name+' <span class="pill">'+(evolving?'進化':(r+1)+' / '+u.values.length)+'</span></h3><p>'+u.subtitle+'</p><small>'+u.format(v)+'</small></div></button>';}).join('')+'</div><p class="aside">選ぶ間は、敵も光も止まっています。</p>');
+    }else if(mode==='death'){
+      const left=3-world.continues;
+      sheet('中心が崩壊',heading('SIGNAL LOST','まだ、その先へ。')+'<p>深度 '+world.sector+' · '+world.name+' ／ '+time(world.time)+'<br>敵のHPと獲得した強化を保って再開できます。</p>'+lastSignal()+'<div class="hero"><i></i></div><div class="notice">HP回復 ＋ エントロピー最低50<br>再開直後は3秒間、中心を保護。</div><div class="stack">'+btn(canPass()?'パスでコンティニュー':'広告でコンティニュー','continue','primary','残り '+left+' / 3回'+(canPass()?' · テストパス':' · テスト広告3秒'))+btn('ここまでの記録を残す','finish')+'</div><p class="aside">新しい航行は、何度でも無料で始められます。</p>');
+    }else if(mode==='result'){
+      const r=result||world.result,pr=p.results.find(x=>x.id===r.id),doubled=qa?!!r.qaBonus:!!pr?.bonus;
+      sheet('航行の記録',heading(r.newBest?'NEW DEPTH RECORD':'EXPEDITION RECORD',r.newBest?'最深到達を、更新。':'ここまで、届いた。')+'<div class="score-hero"><strong>'+String(r.sector).padStart(2,'0')+'</strong><span>到達深度<b>'+world.name+'</b>'+r.phase+'</span></div><div class="metrics"><div><span>生存時間</span><b>'+time(r.time)+'</b></div><div><span>最大連鎖</span><b>'+r.chain+'</b></div><div><span>到達レベル</span><b>'+r.level+'</b></div></div><div class="reward"><span>獲得結晶'+(doubled?' · ×2':'')+'</span><b>＋'+num(r.crystals*(doubled?2:1))+'</b></div><p class="aside">撃破 '+r.kills+' ／ 山場突破 '+r.won+' ／ 復活 '+r.continues+'回'+(r.evolution?'<br>核の進化 · '+M.EVOLUTIONS[r.evolution].name:'')+'</p>'+(qa?'<p class="tiny result-note">試験シーンのため、記録と結晶は保存していません。</p>':'')+'<div class="stack">'+(!doubled&&r.crystals?btn(canPass()?'パス特典で結晶を2倍に':'広告で結晶を2倍に','bonus','gold',canPass()?'テストパス':'任意 · テスト広告3秒'):'')+'<div class="duo">'+btn('もう一度','start','primary')+btn('核の調律','records')+'</div><button class="quiet" data-action="home">タイトルへ</button></div>');
+    }else if(mode==='records'){
+      sheet('記録と核の調律',heading('ARCHIVE','記録と核の調律')+'<div class="record-line"><span>最深 <b>'+p.bestSector+'</b></span><span>復活なし <b>'+p.bestNoContinue+'</b></span><span>結晶 <b>'+num(p.crystals)+'</b></span></div><p class="tiny">新しい核は、次の航行の性格を変えます。<br>エントロピーの上限は、どの核でも100。</p>'+Object.entries(M.TRAITS).map(([key,t])=>{const owned=p.traits.includes(key),selected=p.trait===key,locked=Math.max(p.bestSector,p.legacyBest||0)<t.sector;return '<div class="trait"><h3>'+t.name+'<small>'+(selected?'選択中':owned?'解放済み':t.cost+' 結晶')+'</small></h3><p>'+t.description+'</p>'+btn(selected?'選択中':owned?'この核を選ぶ':locked?'深度 '+t.sector+' で解放':'解放する',(owned?'trait:':'unlock:')+key,selected?'gold':'','',selected||(!owned&&(locked||p.crystals<t.cost)))+'</div>';}).join('')+'<div class="trait"><h3>小さな外殻 <small>＋'+p.shellRank*5+' HP</small></h3><p>初期HPを5増やす。2段階まで。</p>'+btn(p.shellRank===2?'強化済み':'強化する · '+[15,35][p.shellRank]+' 結晶','reinforce','','',p.shellRank===2||p.crystals<[15,35][p.shellRank])+'</div><div class="stack">'+btn('戻る','back','primary')+'</div>');
+    }else if(mode==='qa'){
+      sheet('試験メニュー',heading('PLAYTEST · SURVIVAL 2','流れを確かめる。')+'<p>指定した場面から操作できます。<br>試験シーンは到達記録・結晶に加算されません。</p><div class="qa-grid">'+btn('Lv.2の吸引','qa:growth','','吸引の成長')+btn('成長の3択','qa:choice','','選択で航行が変わる')+btn('最初の山場','qa:peak','','ボス出現10秒前')+btn('護衛核','qa:guard','','護衛から崩す')+btn('分裂する核','qa:split','','別の攻略')+btn('開閉核','qa:iris','','開く瞬間を狙う')+btn('回路核','qa:relay','','結節から核へ')+btn('双極核','qa:twins','','続けて二つを崩す')+btn('貫通を比べる','qa:penetration','','奥へ届く光')+btn('回収補助','qa:assist','','余韻と引力')+btn('編隊の変化','qa:formations','','環・螺旋・縦列')+btn('最大強化','qa:maximum','','開閉核 → 回路核')+btn('枯渇から回収','qa:recovery','','ぐるぐるで再起')+btn('復活と結果','qa:loss','','広告3回・記録')+btn('進化の選択','qa:evolution','','3つの核から選ぶ')+btn('進化：反響','qa:evolve_echo','','連結の軌跡を折り返す')+btn('進化：潮汐','qa:evolve_tide','','回収始動の引力波')+btn('進化：光槍','qa:evolve_lance','','太く長く届く貫通')+btn('シーケンス実演','qa:tour','','操作の自動デモ')+'</div><div class="notice">30日パス · 500円の体験<br>コンティニューは同じく最大3回。<br>追加の支払い・実広告はありません。</div><div class="stack">'+btn(canPass()?'テストパスを終了':'30日テストパスを有効にする','pass',canPass()?'gold':'')+btn('この航行の検証ログを保存','export','','JSON · 入力と進行の記録')+btn('戻る','qa-back','primary')+'</div><p class="aside tiny">'+(storageOK?'保存はこのブラウザ内です。':'この環境では保存できません。')+'<br>継続中の通常航行は試験シーンに切り替えても保存されます。</p>');
+    }else if(mode==='ad'){
+      sheet('テスト広告',heading('SIMULATED REWARDED AD','少し、ひと呼吸。')+'<p>これは広告接続前の動作確認です。<br>実際の広告・請求は発生しません。</p><div class="ad-orbit" id="ad-seconds">3</div><div class="stack">'+btn('視聴中…','ad-complete','primary','',true)+btn('キャンセル','ad-cancel')+'</div><p class="aside">完了した視聴だけが、特典に変わります。</p>');
+    }else if(mode==='confirm'){
+      sheet('新しい航行',heading('NEW EXPEDITION','新しく始めますか？')+'<p>保存された途中の航行を終了します。<br>過去の到達記録と結晶は残ります。</p><div class="stack">'+btn('新しく始める','confirmed-start','primary')+btn('戻る','home')+'</div>');
+    }
+  }
+  by('overlay').addEventListener('click',e=>{
+    const target=e.target.closest('[data-action]');if(!target||target.disabled)return;const action=target.dataset.action,[kind,arg]=action.split(':');
+    if(action==='start'){if(saved&&qa)switchMode('confirm');else start();}
+    else if(action==='legacy'){checkpoint();location.href='survival-1.html';}
+    else if(action==='new-confirm')switchMode('confirm');
+    else if(action==='confirmed-start'){qa=false;clearRun();start();}
+    else if(action==='resume-saved')resumeSaved();
+    else if(action==='resume')resume();
+    else if(action==='home'){checkpoint();switchMode('home');}
+    else if(action==='records')openRecords();
+    else if(action==='back')switchMode(returnMode==='result'?'result':returnMode==='pause'?'pause':'home');
+    else if(action==='qa'){if(mode!=='qa'){checkpoint();returnMode=mode;}switchMode('qa');}
+    else if(action==='qa-back')switchMode(world.started&&!world.over&&!world.settled?'pause':result?'result':'home');
+    else if(kind==='qa')start(arg);
+    else if(kind==='upgrade'){if(world.choose(arg)){checkpoint();resume();}}
+    else if(action==='continue')showAd('continue');
+    else if(action==='finish')settle();
+    else if(action==='bonus')showAd('bonus');
+    else if(action==='ad-complete'){if(ad?.done)grant(ad.purpose);}
+    else if(action==='ad-cancel'){ad=null;switchMode(returnMode);}
+    else if(kind==='trait'){if(p.traits.includes(arg)){p.trait=arg;saveProfile();renderSheet();}}
+    else if(kind==='unlock'){if(M.unlock(p,arg)){p.trait=arg;saveProfile();renderSheet();}}
+    else if(action==='reinforce'){if(M.reinforce(p)){saveProfile();renderSheet();}}
+    else if(action==='pass'){p.passUntil=canPass()?0:Date.now()+30*86400000;saveProfile();renderSheet();}
+    else if(action==='export'){
+      const data={version:M.VERSION,qa,frameStats,snapshot:world.snapshot(),trace:world.trace},url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='sonar-'+world.runId+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('検証ログを保存しました');
+    }
+    read();
+  });
+  function point(e){const b=canvas.getBoundingClientRect();return{x:((e.clientX-b.left)*geo.W/Math.max(1,b.width)-geo.cx)/geo.R,y:((e.clientY-b.top)*geo.H/Math.max(1,b.height)-geo.cy)/geo.R,t:e.timeStamp/1000};}
+  canvas.addEventListener('pointerdown',e=>{
+    if(pilot||mode!=='play'||world.over||world.choosing||pointer!==null||e.isPrimary===false||e.button>0)return;e.preventDefault();
+    const v=point(e);if(!gesture.begin(v.x,v.y,v.t))return;pointer=e.pointerId;world.inputHeld=true;world.log('inputStart',{mode:gesture.mode,x:+v.x.toFixed(3),y:+v.y.toFixed(3)});canvas.setPointerCapture(pointer);traces=[{...v,life:.5}];message='';read();
+  });
+  canvas.addEventListener('pointermove',e=>{if(pointer!==e.pointerId||mode!=='play')return;e.preventDefault();const batch=e.getCoalescedEvents?e.getCoalescedEvents():[];for(const sample of batch.length?batch:[e]){const v=point(sample);gesture.move(v.x,v.y,v.t);traces.push({...v,life:.5});if(traces.length>90)traces.shift();}});
+  canvas.addEventListener('pointerup',e=>{if(pointer===e.pointerId){const v=point(e);gesture.move(v.x,v.y,v.t);stop(false);world.syncGrowth();syncMode();read();}});
+  for(const event of ['pointercancel','lostpointercapture'])canvas.addEventListener(event,e=>{if(pointer===e.pointerId){stop();world.syncGrowth();syncMode();read();}});
+  canvas.addEventListener('contextmenu',e=>e.preventDefault());
+  by('pause').addEventListener('click',pause);by('menu').addEventListener('click',()=>{if(mode==='play')pause();else if(mode==='home'){returnMode='home';switchMode('qa');}});
+  by('scan').addEventListener('click',()=>{if(mode==='play'&&world.scan()){message='';read();checkpoint();}});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){if(mode==='play')pause();else checkpoint();}});
+  window.addEventListener('pagehide',checkpoint);
+  window.addEventListener('keydown',e=>{if(e.code==='Escape'&&mode==='play')pause();});
+  // Mobile browser chrome can resize the viewport during a finger stroke.
+  // Keep its logical geometry until release; map the displayed canvas back to it.
+  function resize(){if(pointer!==null){resizePending=true;return;}resizePending=false;geo=art.resize();world.hitRadius=Math.max(.15,24/geo.R);}
+  function say(title,sub=''){by('status').replaceChildren(document.createTextNode(title),Object.assign(document.createElement('small'),{textContent:sub}));}
+  function read(){
+    const q=gesture.preview,selecting=gesture.mode==='chain',arriving=clock<bannerUntil&&by('stage-banner').dataset.kind==='bossArrival';by('build-mode').textContent=pilot?'UCL · DEMO':qa?'UCL · TEST':'UCL';by('demo-label').hidden=!pilot||clock<bannerUntil;by('demo-label').textContent=pilot?'操作デモ · '+pilot.label:'';
+    by('hp').textContent=world.hp;by('energy').textContent=world.energy;by('hp-bar').style.width=world.hp/world.stats.hp*100+'%';by('energy-bar').style.width=world.energy+'%';
+    by('hp-box').dataset.low=String(world.hp<=40);by('energy-box').dataset.low=String(world.energy<12);
+    by('energy-plan').textContent=selecting&&q.cost?'−'+q.cost:'';by('energy-reserve').style.width=(selecting?q.cost:0)+'%';by('energy-reserve').style.left=(world.energy-q.cost)+'%';
+    by('sector').textContent='深度 '+String(world.sector).padStart(2,'0')+' · '+world.name;by('phase').textContent=world.phaseLabel;by('phase').dataset.peak=String(world.phase==='peak');by('app').dataset.phase=world.phase;by('time').textContent=time(world.time);
+    by('level').textContent='Lv.'+world.level;by('xp').textContent=world.nextXp?world.xp+' / '+world.nextXp:'MAX';by('xp-bar').style.width=(world.nextXp?(world.xp-world.levelFloor)/(world.nextXp-world.levelFloor)*100:100)+'%';
+    by('tracking').textContent=world.started?'捕捉 '+world.tracked:'未探知';by('floating').textContent='漂う光 '+world.available;by('speed').textContent=(mode==='play'?world.speed:0).toFixed(2)+' 回/秒';by('best-chain').textContent=world.bestChain+' 連鎖';
+    by('pause').disabled=mode!=='play';by('scan').disabled=mode!=='play'||world.scanWait>0||world.over||world.sector>=3;by('scan').dataset.auto=String(world.sector>=3);
+    by('scan-name').textContent=world.sector>=3?'自動探知':world.scanWait>0?'探知中':'探知';by('scan-detail').textContent=world.sector>=3?'核が、周囲を捉えている':world.scanWait>0?'あと '+world.scanWait.toFixed(1)+' 秒':'周囲へ波動を放つ';
+    by('empty-hint').hidden=world.started||mode!=='play';
+    let title='探知で、見えない気配を捉える。',sub='赤点をつなぐ。空いた場所でぐるぐる。';
+    if(world.started){
+      if(world.energy<12){title='散った光を、中心へ戻そう。';sub=world.available?'空いた場所でぐるぐる。速く、大きく回すと届く。':world.shots.length?'到着中の放射が倒すと、光を回収できる。':'放射できる光が足りない。残った光を逃がさないで。';}
+      else if(world.available){title='ぐるぐる回して、次の攻撃へ。';sub='空いた場所から円を描く。速さと広さで吸引が変わる。';}
+      else if(world.shots.length){title='光が伝わる間に、次を見極める。';sub='別の敵も狙える。重装には続けて追撃。';}
+      else if(world.tracked){title='赤点をつないで、離すと放射。';sub='丸同士なら、追加の消費は4ずつ。';}
+      else{title=world.sector>=3?'次の気配が、浮かび上がる。':'探知で、新しい気配を捉えよう。';sub=world.sector>=3?'ここからは、自動で周囲を探知。':'一度見つけた敵は、ずっと追跡する。';}
+    }
+    if(message&&clock<messageUntil)title=message;
+    const chain=world.shots.find(s=>s.total>1);if(chain&&gesture.mode==='idle'){title='連鎖 '+chain.hits+' / '+chain.total+' · 光が伝わっている';sub='消費 '+chain.cost+' ／ 単発より '+chain.saved+' 節約';}
+    if(selecting){
+      title=q.targets.length?q.targets.length+'つ接続 · 消費 '+q.cost:'赤点をなぞって、つなぐ。';sub=q.saved?'単発より '+q.saved+' 節約 · 離して放射':'そのまま離すと放射。';
+      const e=q.targets[0];if(e&&(e.type==='heavy'||e.boss)&&q.targets.length===1)sub='HP '+e.hp+' / '+e.maxHp+' · 到着待ち '+world.incoming(e.id);
+      if(q.estimates.some(e=>e.risk))sub='後ろの敵が迫っています · 順番を短く';
+      if(gesture.blocked&&world.time-gesture.blocked.at<1.2)sub=gesture.blocked.reason==='energy'?'今の接続まで放射できます · 光を回収しよう':'倒すための光は、すでに向かっています';
+    }
+    if(world.phase==='release'){title='解放。すべての光を、取り戻す。';sub='ぐるぐるで回収 · 次の深度へつながる。';}
+    by('status').dataset.mode=selecting?'chain':'idle';by('status').dataset.group=String(q.groupSavings>0);say(title,sub);
+    const boss=world.boss;by('boss-hint').hidden=!boss||arriving;by('boss-hint').textContent=world.bossHint();by('boss-hint').dataset.open=String(world.peak?.kind==='iris'&&world.irisState().open||world.peak?.kind==='guard'&&world.peak.breakAt!==null);
+    const tide=world.evolution==='tide',tideReady=world.time>=world.tideReady;
+    by('assist').hidden=!world.ranks.orbit&&!world.ranks.lens&&!tide;by('assist').textContent=(world.momentum>.05?'◌ 余韻 '+world.momentum.toFixed(1)+'s':world.ranks.orbit?'◌ 余韻':'')+(world.ranks.lens?'　⊙ 引力':'')+(tide?'　◉ '+(world.time<world.tideUntil?'潮汐発動':tideReady?'潮汐 READY':'潮汐 '+Math.ceil(world.tideReady-world.time)+'s'):'');by('assist').dataset.active=String(world.momentum>.05||tide&&tideReady);
+    by('build-strip').innerHTML=Object.entries(world.ranks).filter(([k,v])=>v).map(([k,v])=>'<span title="'+M.UPGRADES[k].name+' '+v+'">'+icons[k]+'<b>'+v+'</b></span>').join('')+(world.evolution?'<span class="evolution-chip">'+M.EVOLUTIONS[world.evolution].icon+' '+M.EVOLUTIONS[world.evolution].name+'</span>':'');
+    canvas.setAttribute('aria-label','深度 '+world.sector+' '+world.phaseLabel+'。HP '+world.hp+'。エントロピー '+world.energy+'。レベル '+world.level+'。捕捉 '+world.tracked+'体。漂う光 '+world.available+'。'+(boss?'核HP '+boss.hp+'。':'')+title);
+    by('test-state').textContent=JSON.stringify({version:M.VERSION,mode,qa,sector:world.sector,phase:world.phase,level:world.level,time:+world.time.toFixed(2),hp:world.hp,energy:world.energy,available:world.available,kills:world.kills,chain:world.bestChain,continues:world.continues,profileRuns:p.runs,crystals:p.crystals,bossHP:boss?.hp||0,bossKind:world.peak?.kind||null,evolution:world.evolution,bossOpen:world.peak?.kind==='iris'?world.irisState().open:null,momentum:+world.momentum.toFixed(2),pierced:world.pierced,build:world.ranks,frames:frameStats.frames,slowFrames:frameStats.slow,maxFrameMs:Math.round(frameStats.max*1000)});
+  }
+  function events(){
+    for(const e of world.drain()){
+      if(e.type==='evolution'){message='核の進化 · '+M.EVOLUTIONS[e.evolution].name;messageUntil=clock+3;}
+      if(e.type==='echoHit'){message='反響 · 戻る光が命中';messageUntil=clock+1.4;}
+      if(e.type==='tide'){message='潮汐 · 外側の光を引き込む';messageUntil=clock+1.3;}
+      if(e.type==='firstLevel'){message='Lv.2 · 吸引力が20%高まった。';messageUntil=clock+3;}
+      if(e.type==='chainComplete'&&e.hits>1){message=e.hits+'連鎖 · '+e.saved+' 節約';messageUntil=clock+2;}
+      if(e.type==='empty'){message='エントロピー不足。光を回収しよう。';messageUntil=clock+2;}
+      if(e.type==='guardBreak'){message='守りが崩れた。3.5秒間、威力2倍。';messageUntil=clock+3.5;}
+      if(e.type==='impact'){message='中心に侵入された · HP −'+e.damage;messageUntil=clock+1.5;}
+      if(e.type==='shield'){message=e.kind==='relay'?'結節を経由した光で、守りが開く。':'今は閉じている。開く瞬間へ光を届けよう。';messageUntil=clock+2;}
+      if(e.type==='twinDown'){message='片方が沈黙。戻る前に、もう片方へ。';messageUntil=clock+2;}
+      if(e.type==='twinRepair'){message='核が再生した。二つを続けて崩そう。';messageUntil=clock+2;}
+      if(e.type==='pierced'){message='貫通 · 奥の敵へ届いた';messageUntil=clock+1.4;}
+      if(e.type==='peakFailed'){by('stage-banner').innerHTML='<span>CORE BREACHED</span><small>防壁を越えられた。次の波に備える。</small>';by('stage-banner').dataset.kind='breached';by('stage-banner').classList.add('visible');by('stage-banner').setAttribute('aria-hidden','false');bannerUntil=clock+1.4;}
+      if(e.type==='bossArrival'||e.type==='release'||e.type==='sector'){
+        if(e.type==='bossArrival')by('stage-banner').style.setProperty('--arrival-y',world.boss?.y>0?'14%':'62%');
+        const full=e.type==='release'&&e.full;
+        const text=e.type==='bossArrival'?(M.BOSSES[e.kind]?.name||'核、接近。'):e.type==='release'?(full?'WAVE '+String(e.sector).padStart(2,'0')+' COMPLETE':'CORE BREAK'):'WAVE '+String(e.sector).padStart(2,'0');
+        const sub=e.type==='bossArrival'?M.BOSSES[e.kind]?.clue:e.type==='release'?(full?'光を取り戻し、次の深度へ。':'次の核が、目を覚ます。'):e.name+(e.sector===3?' · 自動探知が起動':'');
+        by('stage-banner').innerHTML='<span>'+text+'</span><small>'+sub+'</small>';by('stage-banner').dataset.kind=full?'complete':e.type;by('stage-banner').classList.add('visible');by('stage-banner').setAttribute('aria-hidden','false');bannerUntil=clock+(full?2.6:e.type==='bossArrival'?1.8:1.65);
+      }
+      if(['scan','escape','over','formation','choice','phase'].includes(e.type))continue;
+      if(e.type==='capture'&&fx.filter(f=>f.type==='capture').length>7)continue;
+      const duration=e.type==='release'?3:e.type==='nucleusCollapse'?1.8:e.type==='evolution'?2:e.type==='tide'?1.2:e.type==='sector'?2:e.type==='bossArrival'?1.8:e.type==='chainComplete'?1.6:e.type==='kill'?1.1:e.type==='fire'?.26:e.type==='groupLink'?.65:e.type==='impact'?.7:1;
+      fx.push({...e,duration,life:duration});
+    }
+    if(fx.length>150)fx=fx.slice(-150);
+  }
+  function frame(now){
+    const raw=last?(now-last)/1000:0,dt=Math.min(.05,raw);last=now;clock=now/1000;
+    if(mode==='play'){
+      if(world.started&&raw>0){frameStats.frames++;if(raw>.035)frameStats.slow++;frameStats.max=Math.max(frameStats.max,raw);}
+      if(pilot){pilot.update(dt);world.demoPointer=pilot.pointer;}
+      world.step(dt,pilot?pilot.input():gesture.read(clock));events();syncMode();
+      checkpointTime+=dt;if(checkpointTime>=10){checkpointTime=0;checkpoint();}
+    }
+    if(mode==='choice'&&pilot){pilot.update(dt);if(pilot.choiceTime>1.6){world.choose(pilot.upgrade());resume();}}
+    if(mode==='ad'&&ad&&!document.hidden){
+      ad.remaining=Math.max(0,ad.remaining-dt);if(ad.remaining===0&&!ad.done){ad.done=true;const b=by('overlay').querySelector('[data-action="ad-complete"]');b.disabled=false;b.textContent='特典を受け取る';}
+      by('ad-seconds').textContent=ad.done?'✓':Math.ceil(ad.remaining);
+    }
+    if(mode==='play'||mode==='home'||mode==='result'){
+      for(const a of [traces,fx])for(const f of a)f.life-=dt;traces=traces.filter(f=>f.life>0);fx=fx.filter(f=>f.life>0);
+    }
+    if(clock>bannerUntil){by('stage-banner').classList.remove('visible');by('stage-banner').setAttribute('aria-hidden','true');}if(clock>toastUntil)by('toast').hidden=true;
+    uiTime+=dt;if(uiTime>.1){uiTime=0;read();}art.render(world,gesture,fx,traces,clock);requestAnimationFrame(frame);
+  }
+  new ResizeObserver(resize).observe(canvas);resize();renderSheet();read();requestAnimationFrame(frame);
+  const scene=params.get('qa');if(['growth','choice','peak','guard','maximum','split','loss','recovery','iris','relay','twins','penetration','assist','formations','tour','evolve_echo','evolve_tide','evolve_lance','evolution'].includes(scene))start(scene);
+})();
+</script>
+</body></html>
