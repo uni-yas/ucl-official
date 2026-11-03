@@ -1,0 +1,10 @@
+/* Keep the language selector intact in the shared header (links and buttons). */
+.site-header .language-switch{inline-size:max-content;flex:none;flex-wrap:nowrap;white-space:nowrap;column-gap:4px}
+.site-header .language-switch>*{flex:none;white-space:inherit}
+@media(min-width:1100px){
+  .site-header{grid-template-columns:280px minmax(0,740px) minmax(max-content,1fr)}
+  .site-header .language-switch{padding-inline-start:4px}
+}
+@media(min-width:1100px) and (max-width:1279px){
+  .site-header{grid-template-columns:190px minmax(0,1fr) max-content}
+}
