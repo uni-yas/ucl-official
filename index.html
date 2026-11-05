@@ -24,7 +24,7 @@
 .home-news-cue{opacity:var(--intro-cue,0);pointer-events:auto}
 [data-renderer="fallback"] .home-news-cue{opacity:1}
 @media(prefers-reduced-motion:reduce){:root[data-page="home"],[data-page="home"] body,[data-page="home"] .identity{background:#fcfcfd}.identity-canvas{transition:none}}
-</style><link rel="stylesheet" href="/research/assets/header-language.css"><script defer src="/research/assets/research-entry.js"></script>
+</style><link rel="stylesheet" href="/research/assets/header-language.css"><script defer src="/research/assets/research-entry.js?v=20261106"></script>
 </head>
 <body>
   <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -102,6 +102,24 @@
       <section class="home-news" aria-labelledby="news-heading">
         <h2 id="news-heading" tabindex="-1">News</h2>
         <ol class="news-list" role="list">
+          <li class="news-item" data-research-news="five-graph-theory-results">
+            <span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-research"/></svg></span>
+            <div class="news-copy">
+              <time datetime="2026-11-06" data-content-ja="2026年11月6日">November 6, 2026</time>
+              <h3><a data-research-target="additional-results" href="/research/en/#additional-results" data-content-ja="グラフ理論に関する5件の成果論文と検証資料をZenodoで公開">Five graph-theory papers and verification packages published on Zenodo</a></h3>
+              <p data-content-ja="2026年11月5日、既存研究に関連する5件の成果論文と検証資料をZenodoで公開しました。六角格子の帯、キング格子、正方格子、カゴメ格子における識別・観測配置の結果を、研究ページで紹介しています。">On 5 November 2026, UCL published five papers and their verification packages on Zenodo. The research page introduces the results on identification and sensor placement in hexagonal strips, king grids, square grids, and the kagome grid.</p>
+              <p><a data-research-target="additional-results" href="/research/en/#additional-results" data-content-ja="5件の成果を見る">Explore the five results</a></p>
+            </div>
+          </li>
+          <li class="news-item" data-research-news="grid-research-materials">
+            <span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-research"/></svg></span>
+            <div class="news-copy">
+              <time datetime="2026-11-06" data-content-ja="2026年11月6日">November 6, 2026</time>
+              <h3><a data-research-target="existing-studies" href="/research/en/#existing-studies" data-content-ja="六角格子・4.6.12格子の研究成果と公開資料をご案内">Research on hexagonal and 4.6.12 grids: results and public materials</a></h3>
+              <p data-content-ja="地点を識別するために必要なセンサー密度を調べた、2件の研究をご紹介します。研究ページに概要と詳細をまとめ、Zenodoの公開検証資料へ案内しています。">Explore two studies of the sensor density needed to distinguish locations in a grid. The research pages provide concise summaries, technical results, and links to verification materials on Zenodo.</p>
+              <p><a data-research-target="existing-studies" href="/research/en/#existing-studies" data-content-ja="2件の研究を見る">Explore the two studies</a></p>
+            </div>
+          </li>
           <li class="news-item">
             <span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-update"/></svg></span>
             <div class="news-copy">
@@ -616,69 +634,8 @@
       <article class="research-content" lang="en" hidden>
         <section class="research-summary" aria-labelledby="research-summary-heading">
           <h2 class="research-eyebrow content-divider" id="research-summary-heading">Summary</h2>
-          <p class="research-lead">Which candidates are selected from a finite, discrete set, and under what conditions do they remain stable?</p>
-          <p>UCL is an interdisciplinary research program exploring this question through mathematics and computational experiments. It examines the structures that can be found, the criteria used to choose among competing candidates, and how those choices and structures hold up as conditions change.</p>
-          <p>Formal verification and reproducible procedures are central to this work. The aim is to make results verifiable by preserving the findings together with their assumptions, inputs, and methods, so that both the reasoning and the calculations can be traced and checked.</p>
-          <p>Potential applications of this research include materials design, software verification, production and logistics planning, equipment control, resource allocation, and the analysis of biological networks. Across these fields, some problems can be represented in terms of finite, discrete candidates or states, whose properties can be examined under specified constraints and update rules.</p>
-          <p>One cross-disciplinary research question is under what conditions fixed points—states that remain unchanged when a specified rule is applied—exist, and what procedures can reach them. By explicitly defining how candidate sets are narrowed or states are updated, and checking the results and the conditions under which they hold, we explore potential applications to search and decision-making.</p>
-          <p>Our aim is to use this understanding of structure to define the scope of a search and set priorities for verification, supporting decisions about where to allocate limited computing resources, research funding, and personnel.</p>
-        </section>
-        <section class="research-details" aria-labelledby="research-details-heading">
-          <div class="research-details-heading">
-            <h2 class="research-eyebrow" id="research-details-heading">Details</h2>
-            <span class="research-range" aria-hidden="true">01 — 06</span>
-          </div>
-          <p class="research-intro">Six fields form the foundation of the research program.</p>
-          <ol class="research-fields" role="list">
-            <li>
-              <span class="field-number" aria-hidden="true">01</span>
-              <div class="field-copy">
-                <h3>Applied and Discrete Mathematics</h3>
-                <p class="field-purpose">Describing structure</p>
-                <p>Candidate sets and states are represented mathematically to examine their relationships and properties. This provides a foundation for grouping equivalent structures and identifying forms that satisfy specified conditions.</p>
-              </div>
-            </li>
-            <li>
-              <span class="field-number" aria-hidden="true">02</span>
-              <div class="field-copy">
-                <h3>Optimization and Model Selection</h3>
-                <p class="field-purpose">Defining how to choose</p>
-                <p>Candidates are compared using criteria such as error, complexity, and the available computational budget. The aim is to make the basis for selection explicit and understand how different criteria affect the outcome.</p>
-              </div>
-            </li>
-            <li>
-              <span class="field-number" aria-hidden="true">03</span>
-              <div class="field-copy">
-                <h3>Formal Methods and Mathematical Logic</h3>
-                <p class="field-purpose">Checking the reasoning</p>
-                <p>Formal verification checks whether a conclusion follows from stated definitions and assumptions. The program has used Lean4 to verify steps in mathematical proofs by computer. The scope of these checks is the set of definitions and assumptions used in each proof.</p>
-              </div>
-            </li>
-            <li>
-              <span class="field-number" aria-hidden="true">04</span>
-              <div class="field-copy">
-                <h3>Signal Processing and Pattern Recognition</h3>
-                <p class="field-purpose">Identifying patterns</p>
-                <p>Periodic behavior, spectral components, and discrete patterns in data are analyzed to find regularities. This includes examining how reliably patterns can be identified or recovered when noise is introduced.</p>
-              </div>
-            </li>
-            <li>
-              <span class="field-number" aria-hidden="true">05</span>
-              <div class="field-copy">
-                <h3>Computational Science and Complex Systems</h3>
-                <p class="field-purpose">Exploring changing conditions</p>
-                <p>Computational experiments vary conditions to examine structural stability and the boundaries at which outcomes change. The focus is on identifying which conditions preserve a result and where a different outcome emerges.</p>
-              </div>
-            </li>
-            <li>
-              <span class="field-number" aria-hidden="true">06</span>
-              <div class="field-copy">
-                <h3>Reproducible Research and Scientific Software Engineering</h3>
-                <p class="field-purpose">Making results checkable</p>
-                <p>Inputs, computational procedures, execution environments, and results are recorded so that runs can be repeated and compared under the same conditions. Control experiments help distinguish what has been observed from the claims those observations can support.</p>
-              </div>
-            </li>
-          </ol>
+          <p data-content-ja="グラフ上の識別・観測配置に関する研究成果と、その成立範囲を紹介します。公開資料は各案件からZenodoへ進んでご覧いただけます。">Explore research results on identification and sensor placement in graphs, together with the scope of each result. Each study links to its public materials on Zenodo.</p>
+          <p><a data-research-target="papers" href="/research/en/#papers" data-content-ja="研究成果を見る">Explore the research results</a></p>
         </section>
       </article>
       <article class="research-content company-content" lang="en" hidden>
@@ -846,7 +803,7 @@
     </section>
   </main>
 
-  <script src="ucl-content-i18n.js?v=content-20261014-1"></script>
+  <script src="ucl-content-i18n.js?v=20261106"></script>
   <script src="ucl-layout.js?v=desktop-20261014-4"></script>
   <script type="module">
     import { sendContactMessage } from './ucl-contact.js?v=mobile-20261012-2';

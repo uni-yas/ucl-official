@@ -8,6 +8,7 @@
     const path=lang==='en'?'/research/en/':'/research/';
     if(location.hash==='#research'){location.replace(path);return}
     const link=document.querySelector('[data-page-link="research"]');if(link)link.href=path;
+    for(const news of document.querySelectorAll('[data-research-target]')){news.href=path+'#'+news.dataset.researchTarget;news.hreflang=lang;}
     if(location.hash!=='#contact'||!Object.hasOwn(names,params.get('paper')))return;
     const field=document.querySelector('#contact-message');
     if(field&&!field.value)field.value=(lang==='ja'?'研究相談：':'Research enquiry: ')+names[params.get('paper')][lang]+'\n';
