@@ -25,6 +25,8 @@
 [data-renderer="fallback"] .home-news-cue{opacity:1}
 @media(prefers-reduced-motion:reduce){:root[data-page="home"],[data-page="home"] body,[data-page="home"] .identity{background:#fcfcfd}.identity-canvas{transition:none}}
 </style><link rel="stylesheet" href="/research/assets/header-language.css"><script defer src="/research/assets/research-entry.js?v=20261106-hold"></script>
+  <link rel="stylesheet" href="/assets/analytics/analytics.css?v=20261110">
+  <script type="module" src="/assets/analytics/analytics.mjs?v=20261110"></script>
 </head>
 <body>
   <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -145,7 +147,7 @@
           </li>
         </ol>
       </section>
-      <footer class="ucl-site-footer"><div class="ucl-footer-inner"><img class="ucl-footer-brand" src="ucl-horizontal.svg" alt="Universion Closure Logic" width="310" height="24" loading="lazy"><button class="ucl-back-top" type="button" data-ucl-back-top><span data-ucl-back-label>ページの先頭へ</span><span aria-hidden="true">↑</span></button><div class="ucl-footer-bottom"><small>© 2026 Universion Closure Logic. All rights reserved.</small><span class="ucl-footer-company" data-ucl-footer-company>株式会社 Universion Closure Logic</span></div></div></footer>
+      <footer class="ucl-site-footer"><div class="ucl-footer-inner"><img class="ucl-footer-brand" src="ucl-horizontal.svg" alt="Universion Closure Logic" width="310" height="24" loading="lazy"><button class="ucl-back-top" type="button" data-ucl-back-top><span data-ucl-back-label>ページの先頭へ</span><span aria-hidden="true">↑</span></button><div class="ucl-footer-bottom"><a data-analytics-privacy href="/privacy/">プライバシー</a><small>© 2026 Universion Closure Logic. All rights reserved.</small><span class="ucl-footer-company" data-ucl-footer-company>株式会社 Universion Closure Logic</span></div></div></footer>
     </section>
     <section data-ucl-scroller class="section-view" aria-labelledby="section-heading" hidden>
       <div class="section-layout">
@@ -802,7 +804,7 @@
         <p class="sr-only" id="contact-announcement" role="status" aria-live="polite" aria-atomic="true"></p>
       </article>
       </div>
-      <footer class="ucl-site-footer"><div class="ucl-footer-inner"><img class="ucl-footer-brand" src="ucl-horizontal.svg" alt="Universion Closure Logic" width="310" height="24" loading="lazy"><button class="ucl-back-top" type="button" data-ucl-back-top><span data-ucl-back-label>ページの先頭へ</span><span aria-hidden="true">↑</span></button><div class="ucl-footer-bottom"><small>© 2026 Universion Closure Logic. All rights reserved.</small><span class="ucl-footer-company" data-ucl-footer-company>株式会社 Universion Closure Logic</span></div></div></footer>
+      <footer class="ucl-site-footer"><div class="ucl-footer-inner"><img class="ucl-footer-brand" src="ucl-horizontal.svg" alt="Universion Closure Logic" width="310" height="24" loading="lazy"><button class="ucl-back-top" type="button" data-ucl-back-top><span data-ucl-back-label>ページの先頭へ</span><span aria-hidden="true">↑</span></button><div class="ucl-footer-bottom"><a data-analytics-privacy href="/privacy/">プライバシー</a><small>© 2026 Universion Closure Logic. All rights reserved.</small><span class="ucl-footer-company" data-ucl-footer-company>株式会社 Universion Closure Logic</span></div></div></footer>
     </section>
   </main>
 
@@ -1392,6 +1394,7 @@
         setContactSubmitting(true);contactAnnouncement.textContent=contactWords[language].sending;
         try{
           await sendContactMessage(fields);
+          window.dispatchEvent(new Event('ucl:contact-sent'));
           contactForm.reset();
           [contactEmail,contactMessage].forEach(input=>input.removeAttribute('aria-invalid'));
           contactCompose.hidden=true;contactComplete.hidden=false;
