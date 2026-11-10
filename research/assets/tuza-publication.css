@@ -1,0 +1,16 @@
+/* Publication groups follow the existing research page's type and rule system. */
+.publication-index{display:flex;flex-wrap:wrap;gap:10px 32px;padding:4px 0 26px;scroll-margin-top:110px}
+.publication-index a{display:inline-flex;align-items:center;gap:13px;min-height:44px;color:var(--perspective-sub);font-size:13px;text-decoration:none;border-bottom:1px solid var(--perspective-line);text-underline-offset:5px}
+.publication-index a:hover,.publication-index a:focus-visible{color:var(--perspective-ink);border-color:currentColor}
+.publication-index span{font:10px/1.5 ui-monospace,monospace;color:#747e90}
+.tuza-publication .section-head{gap:22px}
+.tuza-publication .edition{display:block;margin-top:8px;white-space:nowrap}
+.tuza-publication .result{padding-bottom:0}
+.tuza-publication .publication-meta{font:11px/1.7 Arial,sans-serif;letter-spacing:.035em;color:var(--perspective-sub);margin:24px 0 0}
+.tuza-publication .publication-actions{display:grid;gap:12px}
+.tuza-publication .verification-pending{font-size:12px;line-height:1.8;color:var(--perspective-sub);margin:0}
+.tuza-publication .result-heading{min-width:0}
+.tuza-publication .result-heading h3{overflow-wrap:normal;text-wrap:pretty}
+.tuza-publication .result-copy .formal{overflow-wrap:anywhere}
+@media(min-width:1100px){.publication-index{padding-bottom:32px}.tuza-publication .section-head{display:flex}.tuza-publication .edition{margin-top:5px}}
+@media(max-width:767px){.publication-index{gap:6px 22px;padding-top:0;padding-bottom:24px}.publication-index a{font-size:12px}.tuza-publication .edition{margin-top:15px}}
