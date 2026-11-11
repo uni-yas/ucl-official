@@ -30,3 +30,9 @@
 
 /* Keep wrapped news headings clickable between lines as well. */
 .home-news .news-copy h3 a{display:block}
+
+.research-page .result .publication-meta{font:11px/1.7 Arial,sans-serif;letter-spacing:.035em;color:#657080;margin:24px 0 0}
+
+.research-page .publication-result .result-heading h3{text-wrap:balance}
+
+.research-page .publication-result .title-phrase{display:inline-block;white-space:nowrap}
