@@ -1,0 +1,32 @@
+/* Reading structure: one divider per group, no repeated rules at the page end. */
+.research-page .perspective-topic{border-bottom:0}
+.research-page .perspective-topic:last-child{margin-bottom:0;padding-bottom:0}
+.research-page .perspective-step{border-bottom:0}
+.research-page .perspective-published,.research-page .jump-links a{border-bottom:0}
+.research-page .research-more>span:first-child{border-bottom:0}
+.research-page .research-group+.research-group{border-top:0;padding-top:50px}
+.research-page .tuza-publication .result{border-top:0}
+.research-page .result:last-child{padding-bottom:35px}
+.research-page .choose summary{border-bottom:0}
+.research-page .perspective-field{border-top:1px solid #8c9bb344}
+.research-page .result{border-top-color:#8c9bb333}
+.research-page .publication-actions{gap:8px}
+.research-page .publication-actions .button{margin-bottom:0}
+.ucl-site-footer{border-top:0!important}
+.ucl-footer-bottom{border:0}
+.company-business-list li{border-top:0;padding-block:12px}
+.research-details-heading{border-top:0}
+.service-approach{border-top:0}
+.portfolio-link{border-bottom:0}
+.product-toc{border-bottom:0}
+.section>.section-inner{border-top:0}
+.site-footer{border-top:0}
+.privacy-page footer{border-top:0}
+@media(max-width:700px){.research-page .research-group+.research-group{padding-top:34px}}
+
+/* Separate the two original papers with one quiet rule. */
+.research-page .tuza-publication .result+.result{margin-top:36px;border-top:1px solid #8c9bb333;padding-top:36px}
+.research-page .publication-note{font-size:11px;line-height:1.7;color:#657080;margin-top:10px}
+
+/* Keep wrapped news headings clickable between lines as well. */
+.home-news .news-copy h3 a{display:block}

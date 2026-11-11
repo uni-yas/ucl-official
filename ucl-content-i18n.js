@@ -170,8 +170,8 @@
     const screen = document.querySelector('.quotaecho-app-screen');
     if (screen) {
       const source = locale === 'ja'
-        ? screen.dataset.srcJa || './ucl-quotaecho-screen-ja.webp'
-        : screen.dataset.srcEn || './ucl-quotaecho-screen-en.webp';
+        ? screen.dataset.srcJa || '/ucl-quotaecho-screen-ja.webp'
+        : screen.dataset.srcEn || '/ucl-quotaecho-screen-en.webp';
       if (screen.getAttribute('src') !== source) screen.setAttribute('src', source);
       if (screen.dataset.srcsetJa || screen.dataset.srcsetEn) {
         const sourceSet = locale === 'ja' ? screen.dataset.srcsetJa : screen.dataset.srcsetEn;

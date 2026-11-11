@@ -8,16 +8,16 @@
   <link rel="canonical" href="https://universion-closure-logic.com/">
   <meta name="theme-color" content="#fcfcfd">
   <title>株式会社Universion Closure Logic｜公式サイト</title>
-  <link rel="icon" href="favicon.ico?v=ucl-20261012-1" sizes="16x16 32x32 48x48">
-  <link rel="icon" href="ucl-favicon-16.png?v=ucl-20261012-1" type="image/png" sizes="16x16">
-  <link rel="icon" href="ucl-favicon-32.png?v=ucl-20261012-1" type="image/png" sizes="32x32">
-  <link rel="icon" href="ucl-favicon.svg?v=ucl-20261012-1" type="image/svg+xml" sizes="any">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=ucl-20261012-1" sizes="180x180">
-  <link rel="stylesheet" href="ucl-identity.css?v=mobile-20261012-2">
-  <link rel="stylesheet" href="ucl-layout.css?v=desktop-20261014-4">
-  <link rel="stylesheet" href="ucl-desktop.css?v=desktop-20261014-4">
+  <link rel="icon" href="/favicon.ico?v=ucl-20261012-1" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="/ucl-favicon-16.png?v=ucl-20261012-1" type="image/png" sizes="16x16">
+  <link rel="icon" href="/ucl-favicon-32.png?v=ucl-20261012-1" type="image/png" sizes="32x32">
+  <link rel="icon" href="/ucl-favicon.svg?v=ucl-20261012-1" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=ucl-20261012-1" sizes="180x180">
+  <link rel="stylesheet" href="/ucl-identity.css?v=mobile-20261012-2">
+  <link rel="stylesheet" href="/ucl-layout.css?v=desktop-20261014-4">
+  <link rel="stylesheet" href="/ucl-desktop.css?v=desktop-20261014-4">
   <noscript><style>.fallback{opacity:1;visibility:visible}</style></noscript>
-  <script type="importmap">{"imports":{"three":"./ucl-three.module.min.js","three/addons/loaders/SVGLoader.js":"./ucl-SVGLoader.js"}}</script>
+  <script type="importmap">{"imports":{"three":"/ucl-three.module.min.js","three/addons/loaders/SVGLoader.js":"/ucl-SVGLoader.js"}}</script>
 <style data-ucl-intro="emergence-20261012-1">
 :root[data-page="home"],[data-page="home"] body,[data-page="home"] .identity{background:#151219}
 .identity-canvas{transition:opacity .5s ease}
@@ -25,9 +25,14 @@
 [data-renderer="fallback"] .home-news-cue{opacity:1}
 @media(prefers-reduced-motion:reduce){:root[data-page="home"],[data-page="home"] body,[data-page="home"] .identity{background:#fcfcfd}.identity-canvas{transition:none}}
 </style><link rel="stylesheet" href="/research/assets/header-language.css"><script defer src="/research/assets/research-entry.js?v=20261106-hold"></script>
-  <link rel="stylesheet" href="/assets/analytics/analytics.css?v=20261110">
-  <script type="module" src="/assets/analytics/analytics.mjs?v=20261110"></script>
-</head>
+  
+  <script type="module" src="/assets/analytics/analytics.mjs?v=20261111-cookieless"></script>
+<link rel="stylesheet" href="/assets/opal/shell.css"><script defer src="/assets/opal/shell.js"></script><script>
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname==='/' && (!location.hash || location.hash==='#home')){
+ document.documentElement.setAttribute('data-intro-pending','');
+ window.setTimeout(()=>document.documentElement.removeAttribute('data-intro-pending'),20000);
+}
+</script><link rel="stylesheet" href="/assets/opal/cleanup.css"></head>
 <body>
   <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
@@ -56,7 +61,7 @@
   </svg>
   <header class="site-header">
     <a class="home-link" href="#home" aria-current="page">
-      <img class="ucl-header-brand" src="ucl-horizontal.svg" alt="Universion Closure Logic" width="1701" height="162">
+      <img class="ucl-header-brand" src="/ucl-horizontal.svg" alt="Universion Closure Logic" width="1701" height="162">
       <svg class="ui-icon" aria-hidden="true"><use href="#icon-home"/></svg>
       <span data-home-label>ホーム</span>
     </a>
@@ -65,15 +70,15 @@
       <svg class="ui-icon" aria-hidden="true"><use href="#icon-research"/></svg>
       <span class="nav-label"><span>Research</span></span>
     </a>
-    <a class="global-link" href="#company" data-page-link="company">
+    <a class="global-link" href="/company/?lang=ja" data-page-link="company">
       <svg class="ui-icon" aria-hidden="true"><use href="#icon-company"/></svg>
       <span class="nav-label"><span>Company</span><span>Profile</span></span>
     </a>
-    <a class="global-link" href="#products" data-page-link="products">
+    <a class="global-link" href="/products/?lang=ja" data-page-link="products">
       <svg class="ui-icon" aria-hidden="true"><use href="#icon-products"/></svg>
       <span class="nav-label"><span>Products &amp;</span><span>Services</span></span>
     </a>
-    <a class="global-link" href="#contact" data-page-link="contact">
+    <a class="global-link" href="/contact/?lang=ja" data-page-link="contact">
       <svg class="ui-icon" aria-hidden="true"><use href="#icon-contact"/></svg>
       <span class="nav-label"><span>Contact Us</span></span>
     </a>
@@ -86,13 +91,13 @@
   </header>
   <main class="identity" aria-label="Universion Closure Logic">
     <div class="fallback" aria-hidden="true">
-      <img class="fallback-mark" src="ucl-g.svg" alt="">
-      <img class="fallback-name" src="ucl-wordmark.svg" alt="">
+      <img class="fallback-mark" src="/ucl-g.svg" alt="">
+      <img class="fallback-name" src="/ucl-wordmark.svg" alt="">
     </div>
     <canvas class="identity-canvas" aria-hidden="true"></canvas>
     <div class="site-watermark" aria-hidden="true">
-      <div class="watermark-mark"><img src="ucl-g.svg" alt="" draggable="false"></div>
-      <div class="watermark-name"><img src="ucl-wordmark.svg" alt="" draggable="false"></div>
+      <div class="watermark-mark"><img src="/ucl-g.svg" alt="" draggable="false"></div>
+      <div class="watermark-name"><img src="/ucl-wordmark.svg" alt="" draggable="false"></div>
     </div>
     <section data-ucl-scroller class="home-view" aria-labelledby="home-heading" tabindex="0">
       <div class="home-hero">
@@ -104,6 +109,15 @@
       <section class="home-news" aria-labelledby="news-heading">
         <h2 id="news-heading" tabindex="-1">News</h2>
         <ol class="news-list" role="list">
+          <li class="news-item" data-research-news="quantum-marginal-robustness">
+            <span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-research"/></svg></span>
+            <div class="news-copy">
+              <time datetime="2026-11-11" data-content-ja="2026年11月11日">November 11, 2026</time>
+              <h3><a data-research-target="quantum-marginal-robustness" href="/research/en/#quantum-marginal-robustness" data-content-ja="量子状態の局所情報による誤差保証に関する論文・検算資料を公開">Quantum marginal robustness paper and verification package published on Zenodo</a></h3>
+              <p data-content-ja="一部の観測から量子状態全体をどこまで保証できるかを扱う論文と、HTMLガイド付きの検算資料をZenodoで公開しました。研究ページで成果の概要と成立する範囲をご紹介します。">UCL has published a preprint on how local observation errors can bound the error of a full quantum state, together with a verification package and an offline HTML guide. Our research page explains the results and their scope.</p>
+              <p><a data-research-target="quantum-marginal-robustness" href="/research/en/#quantum-marginal-robustness" data-content-ja="研究成果を見る">Explore the research result</a></p>
+            </div>
+          </li>
           <li class="news-item" data-research-news="tuza-triangle-overlap-cores">
             <span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-research"/></svg></span>
             <div class="news-copy">
@@ -142,12 +156,12 @@
             <span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-company"/></svg></span>
             <div class="news-copy">
               <time datetime="2025-11-25">November 25, 2025</time>
-              <h3><a href="#company">Universion Closure Logic established</a></h3>
+              <h3><a href="/company/?lang=ja">Universion Closure Logic established</a></h3>
             </div>
           </li>
         </ol>
       </section>
-      <footer class="ucl-site-footer"><div class="ucl-footer-inner"><img class="ucl-footer-brand" src="ucl-horizontal.svg" alt="Universion Closure Logic" width="310" height="24" loading="lazy"><button class="ucl-back-top" type="button" data-ucl-back-top><span data-ucl-back-label>ページの先頭へ</span><span aria-hidden="true">↑</span></button><div class="ucl-footer-bottom"><a data-analytics-privacy href="/privacy/">プライバシー</a><small>© 2026 Universion Closure Logic. All rights reserved.</small><span class="ucl-footer-company" data-ucl-footer-company>株式会社 Universion Closure Logic</span></div></div></footer>
+      <footer class="ucl-site-footer"><div class="ucl-footer-inner"><button class="ucl-back-top" type="button" data-ucl-back-top><span data-ucl-back-label>ページの先頭へ</span><span aria-hidden="true">↑</span></button><div class="ucl-footer-bottom"><a data-analytics-privacy href="/privacy/">プライバシー</a><small>© 2026 Universion Closure Logic.</small></div></div></footer>
     </section>
     <section data-ucl-scroller class="section-view" aria-labelledby="section-heading" hidden>
       <div class="section-layout">
@@ -705,8 +719,8 @@
               <p class="portfolio-lead">A clearer view of your Codex usage.</p>
               <figure class="portfolio-visual visual-quotaecho" aria-label="QuotaEcho app and sample usage screen">
                 <div class="quotaecho-orbit" aria-hidden="true"></div>
-                <img class="quotaecho-app-icon" src="./ucl-quotaecho-icon-256.webp" alt="" width="256" height="256" decoding="async">
-                <img class="quotaecho-app-screen" src="./ucl-quotaecho-screen-en.webp" alt="QuotaEcho sample screen comparing time left, amount left, and the gap between them." width="720" height="1120" decoding="async">
+                <img class="quotaecho-app-icon" src="/ucl-quotaecho-icon-256.webp" alt="" width="256" height="256" decoding="async">
+                <img class="quotaecho-app-screen" src="/ucl-quotaecho-screen-en.webp" alt="QuotaEcho sample screen comparing time left, amount left, and the gap between them." width="720" height="1120" decoding="async">
               </figure>
               <p>A macOS menu bar app for understanding your Codex usage pace. Compare remaining allowance with time to reset, and revisit the tasks and model settings active during periods of larger usage changes.</p>
               <a class="portfolio-link" href="https://universion-closure-logic.com/apple/quotaecho/en/">Visit product website <span aria-hidden="true">↗</span></a>
@@ -717,8 +731,8 @@
               <p class="portfolio-lead">Discover your taste. Explore other perspectives.</p>
               <figure class="portfolio-visual visual-sensegap" aria-label="SenseGap image choices">
                 <div class="sensegap-pair">
-                  <img src="./ucl-sensegap-city-600.webp" alt="A neon-lit city on a rainy evening." width="1024" height="1024" loading="lazy" decoding="async">
-                  <img src="./ucl-sensegap-lake-600.webp" alt="A quiet turquoise lake surrounded by mountains." width="1024" height="1024" loading="lazy" decoding="async">
+                  <img src="/ucl-sensegap-city-600.webp" alt="A neon-lit city on a rainy evening." width="1024" height="1024" loading="lazy" decoding="async">
+                  <img src="/ucl-sensegap-lake-600.webp" alt="A quiet turquoise lake surrounded by mountains." width="1024" height="1024" loading="lazy" decoding="async">
                 </div>
                 <span class="sensegap-pearl" aria-hidden="true"></span>
               </figure>
@@ -729,7 +743,7 @@
               <h3 id="portfolio-mge">MGE</h3>
               <p class="portfolio-lead">Material Governance Engine</p>
               <figure class="portfolio-visual visual-mge" aria-hidden="true">
-                <img src="./ucl-mge.svg" alt="" width="720" height="360" loading="lazy" decoding="async">
+                <img src="/ucl-mge.svg" alt="" width="720" height="360" loading="lazy" decoding="async">
               </figure>
               <p>A research prototype for screening material candidates and reviewing those outside standard selection rules. It is designed to make selection criteria and decisions traceable, and to organize candidates for further computational or experimental evaluation.</p>
             </section>
@@ -740,15 +754,15 @@
           <p class="research-lead">Practical technology for your everyday work.</p>
           <p>We help businesses simplify everyday work, build practical digital tools, and turn scattered information into usable data.</p>
           <ol class="research-fields portfolio-service-list" role="list">
-            <li><span class="field-number" aria-hidden="true">01</span><div class="field-copy"><h3>Workflow &amp; AI Automation</h3><figure class="service-visual" aria-hidden="true"><img src="./ucl-automation.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p>Reduce repetitive work with workflows tailored to your business. We connect existing tools, automate routine tasks, and incorporate AI where it adds value.</p><p class="service-examples">File processing · Tool integrations · Report generation · Content scheduling</p></div></li>
-            <li><span class="field-number" aria-hidden="true">02</span><div class="field-copy"><h3>Web &amp; App Development</h3><figure class="service-visual" aria-hidden="true"><img src="./ucl-web-app.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p>We create and improve websites, dashboards, and lightweight applications around your needs—from a service website to a practical tool for everyday operations.</p><p class="service-examples">Business websites · Internal tools · Dashboards · App improvements</p></div></li>
-            <li><span class="field-number" aria-hidden="true">03</span><div class="field-copy"><h3>Data Processing &amp; Research</h3><figure class="service-visual" aria-hidden="true"><img src="./ucl-data-research.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p>Turn files and public information into organized, usable data. We support web research, data entry, format conversion, cleanup, and reporting, with checks against agreed requirements.</p><p class="service-examples">Research lists · Spreadsheet cleanup · Data consolidation · Reports</p></div></li>
+            <li><span class="field-number" aria-hidden="true">01</span><div class="field-copy"><h3>Workflow &amp; AI Automation</h3><figure class="service-visual" aria-hidden="true"><img src="/ucl-automation.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p>Reduce repetitive work with workflows tailored to your business. We connect existing tools, automate routine tasks, and incorporate AI where it adds value.</p><p class="service-examples">File processing · Tool integrations · Report generation · Content scheduling</p></div></li>
+            <li><span class="field-number" aria-hidden="true">02</span><div class="field-copy"><h3>Web &amp; App Development</h3><figure class="service-visual" aria-hidden="true"><img src="/ucl-web-app.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p>We create and improve websites, dashboards, and lightweight applications around your needs—from a service website to a practical tool for everyday operations.</p><p class="service-examples">Business websites · Internal tools · Dashboards · App improvements</p></div></li>
+            <li><span class="field-number" aria-hidden="true">03</span><div class="field-copy"><h3>Data Processing &amp; Research</h3><figure class="service-visual" aria-hidden="true"><img src="/ucl-data-research.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p>Turn files and public information into organized, usable data. We support web research, data entry, format conversion, cleanup, and reporting, with checks against agreed requirements.</p><p class="service-examples">Research lists · Spreadsheet cleanup · Data consolidation · Reports</p></div></li>
           </ol>
           <div class="service-approach">
             <p>Every project starts with a clear scope, defined deliverables, and agreed checks.</p>
             <p class="portfolio-lead">Tell us what you want to improve.</p>
             <p>We’ll help define a practical way forward.</p>
-            <a class="portfolio-link service-contact-link" href="#contact">Contact us <span aria-hidden="true">↗</span></a>
+            <a class="portfolio-link service-contact-link" href="/contact/?lang=ja">Contact us <span aria-hidden="true">↗</span></a>
           </div>
         </section>
       </article>
@@ -804,14 +818,14 @@
         <p class="sr-only" id="contact-announcement" role="status" aria-live="polite" aria-atomic="true"></p>
       </article>
       </div>
-      <footer class="ucl-site-footer"><div class="ucl-footer-inner"><img class="ucl-footer-brand" src="ucl-horizontal.svg" alt="Universion Closure Logic" width="310" height="24" loading="lazy"><button class="ucl-back-top" type="button" data-ucl-back-top><span data-ucl-back-label>ページの先頭へ</span><span aria-hidden="true">↑</span></button><div class="ucl-footer-bottom"><a data-analytics-privacy href="/privacy/">プライバシー</a><small>© 2026 Universion Closure Logic. All rights reserved.</small><span class="ucl-footer-company" data-ucl-footer-company>株式会社 Universion Closure Logic</span></div></div></footer>
+      <footer class="ucl-site-footer"><div class="ucl-footer-inner"><button class="ucl-back-top" type="button" data-ucl-back-top><span data-ucl-back-label>ページの先頭へ</span><span aria-hidden="true">↑</span></button><div class="ucl-footer-bottom"><a data-analytics-privacy href="/privacy/">プライバシー</a><small>© 2026 Universion Closure Logic.</small></div></div></footer>
     </section>
   </main>
 
-  <script src="ucl-content-i18n.js?v=20261106"></script>
-  <script src="ucl-layout.js?v=desktop-20261014-4"></script>
+  <script src="/ucl-content-i18n.js?v=20261111-paths"></script>
+  <script src="/ucl-layout.js?v=desktop-20261014-4"></script>
   <script type="module">
-    import { sendContactMessage } from './ucl-contact.js?v=mobile-20261012-2';
+    import { sendContactMessage } from '/ucl-contact.js?v=mobile-20261012-2';
     (()=>{
       const root=document.documentElement;
       const copy={
@@ -1271,10 +1285,26 @@
         const urlLanguage=new URLSearchParams(location.search).get('lang');
         if(urlLanguage==='en'||urlLanguage==='ja')language=urlLanguage;
         const previousPage=root.dataset.page;
-        const requestedPage=location.hash.slice(1);
+        const requestedPage=location.hash.slice(1)||location.pathname.split('/').filter(Boolean)[0]||'home';
         const page=links.some(link=>link.dataset.pageLink===requestedPage)?requestedPage:'home';
         const words=copy[language];
         root.lang=language;root.dataset.page=page;
+        // Preserve old shared #company/#products/#contact URLs while normalizing
+        // them to the same real path used by current navigation.
+        if(['home','company','products','contact'].includes(page)){
+          const canonicalPath=page==='home'?'/':`/${page}/`;
+          if(location.pathname!==canonicalPath || location.hash){
+            const next=new URL(location.href);next.pathname=canonicalPath;next.hash='';next.searchParams.set('lang',language);
+            history.replaceState(history.state,'',next);
+          }
+        }
+        for(const privacyLink of document.querySelectorAll('[data-analytics-privacy]')){
+          privacyLink.href=language==='en'?'/privacy/en/':'/privacy/';
+          privacyLink.textContent=language==='en'?'Privacy':'プライバシー';
+        }
+        homeLink.href=`/?lang=${language}`;
+        for(const navLink of links){if(navLink.dataset.pageLink!=='research')navLink.href=`/${navLink.dataset.pageLink}/?lang=${language}`;}
+
         document.querySelector('[data-home-label]').textContent=words.home;
         document.querySelector('.language-switch').setAttribute('aria-label',language==='ja'?'言語':'Language');
         document.querySelector('.global-nav').setAttribute('aria-label',words.navigation);
@@ -1419,6 +1449,6 @@
       render();
     })();
   </script>
-  <script type="module" src="ucl-identity.js?v=emergence-20261012-1"></script>
+  <script type="module" src="/ucl-identity.js?v=opal-20261111"></script>
 </body>
 </html>

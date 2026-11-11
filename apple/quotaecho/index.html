@@ -18,12 +18,12 @@
   <script src="./assets/story.js?v=ucl-20261012-2" defer></script>
 <link rel="stylesheet" href="./assets/ucl-shell.css?v=ucl-20261012-1">
 <link rel="stylesheet" href="./assets/quotaecho-ucl.css?v=desktop-20261014-4">
-<script src="./assets/ucl-shell.js?v=ucl-20261012-1" defer></script>
+<script src="./assets/ucl-shell.js?v=opal-20261111" defer></script>
 <link rel="stylesheet" href="./assets/ucl-layout.css?v=desktop-20261014-4">
 <script src="./assets/ucl-layout.js?v=desktop-20261014-4" defer></script>
-  <link rel="stylesheet" href="/assets/analytics/analytics.css?v=20261110">
-  <script type="module" src="/assets/analytics/analytics.mjs?v=20261110"></script>
-</head>
+  
+  <script type="module" src="/assets/analytics/analytics.mjs?v=20261111-cookieless"></script>
+<link rel="stylesheet" href="/assets/opal/shell.css"><script defer src="/assets/opal/shell.js"></script><link rel="stylesheet" href="/assets/opal/cleanup.css"></head>
 <body>
   <a class="skip-link" href="#main">本文へ移動</a>
   
@@ -59,13 +59,13 @@
     </div>
     <header class="site-header ucl-header">
       <a class="home-link" href="/?lang=ja#home"><img class="ucl-header-brand" src="./assets/ucl-horizontal.svg" alt="Universion Closure Logic" width="1701" height="162"><svg class="ui-icon" aria-hidden="true"><use href="#icon-home"/></svg><span>ホーム</span></a>
-<nav class="global-nav" aria-label="メインナビゲーション"><a class="global-link" href="/?lang=ja#research"><svg class="ui-icon" aria-hidden="true"><use href="#icon-research"/></svg><span class="nav-label">研究</span></a><a class="global-link" href="/?lang=ja#company"><svg class="ui-icon" aria-hidden="true"><use href="#icon-company"/></svg><span class="nav-label">会社概要</span></a><a class="global-link" href="/?lang=ja#products" aria-current="true"><svg class="ui-icon" aria-hidden="true"><use href="#icon-products"/></svg><span class="nav-label">製品・サービス</span></a><a class="global-link" href="/?lang=ja#contact"><svg class="ui-icon" aria-hidden="true"><use href="#icon-contact"/></svg><span class="nav-label">お問い合わせ</span></a></nav>
+<nav class="global-nav" aria-label="メインナビゲーション"><a class="global-link" href="/research/"><svg class="ui-icon" aria-hidden="true"><use href="#icon-research"/></svg><span class="nav-label">研究</span></a><a class="global-link" href="/company/?lang=ja"><svg class="ui-icon" aria-hidden="true"><use href="#icon-company"/></svg><span class="nav-label">会社概要</span></a><a class="global-link" href="/products/?lang=ja" aria-current="true"><svg class="ui-icon" aria-hidden="true"><use href="#icon-products"/></svg><span class="nav-label">製品・サービス</span></a><a class="global-link" href="/contact/?lang=ja"><svg class="ui-icon" aria-hidden="true"><use href="#icon-contact"/></svg><span class="nav-label">お問い合わせ</span></a></nav>
       <nav class="language-switch" aria-label="言語"><a href="/apple/quotaecho/en/" data-ucl-language="en" lang="en" hreflang="en"><span class="language-pointer" aria-hidden="true">▶︎</span>English</a><span class="language-divider" aria-hidden="true">/</span><a href="/apple/quotaecho/" data-ucl-language="ja" lang="ja" hreflang="ja" aria-current="true"><span class="language-pointer" aria-hidden="true">▶︎</span>日本語</a></nav>
     </header>
 
   <main id="main">
     <div class="product-context">
-      <nav class="product-breadcrumb" aria-label="現在地"><a href="/?lang=ja#products">製品・サービス</a><span aria-hidden="true">›</span><span aria-current="page">QuotaEcho</span></nav>
+      <nav class="product-breadcrumb" aria-label="現在地"><a href="/products/?lang=ja">製品・サービス</a><span aria-hidden="true">›</span><span aria-current="page">QuotaEcho</span></nav>
       <a class="product-brand" href="#top"><img src="./assets/quotaecho-icon.png" alt="" width="44" height="44"><span>QuotaEcho</span></a>
       <nav class="product-toc" aria-label="このページの内容"><a href="#experience">特徴</a><a href="#features">機能</a><a href="#daily-use">使い方</a><a href="#privacy">プライバシー</a><a href="#support">サポート</a></nav>
     </div>
@@ -301,7 +301,7 @@
             </section>
             <section class="policy-item">
               <h4>Webサイト</h4>
-              <p>本ウェブサイトでは、同意いただいた場合にGoogle Analyticsを使用し、閲覧状況やリンク操作を計測します。広告向けのパーソナライズは行いません。これはウェブサイトの計測であり、QuotaEchoアプリ内の利用データを収集するものではありません。詳細と設定の変更は<a href="/privacy/">ウェブサイトのプライバシーについて</a>をご覧ください。安全な運用のため、ホスティングサービス提供者がIPアドレス、ブラウザ情報、アクセス日時などのサーバーログを一時的に処理する場合があります。</p>
+              <p>このウェブサイトでは、Cookieを使わないCloudflare Web Analyticsで閲覧数などを集計しています。QuotaEchoアプリ内の利用状況は送信しません。<a href="/privacy/">ウェブサイトのプライバシーについて</a></p>
             </section>
             <section class="policy-item">
               <h4>第三者との関係</h4>
@@ -332,7 +332,7 @@
           <div class="company-row"><dt>運営会社</dt><dd>株式会社Universion Closure Logic</dd></div>
           <div class="company-row"><dt>提供製品</dt><dd>QuotaEcho</dd></div>
           <div class="company-row"><dt>製品概要</dt><dd>macOS向けCodex使用ペース確認アプリ</dd></div>
-          <div class="company-row"><dt>Web</dt><dd><a href="/?lang=ja#company">universion-closure-logic.com</a></dd></div>
+          <div class="company-row"><dt>Web</dt><dd><a href="/company/?lang=ja">universion-closure-logic.com</a></dd></div>
           <div class="company-row"><dt>サポート</dt><dd><a href="mailto:support.quotaecho@universion-closure-logic.com">support.quotaecho@universion-closure-logic.com</a></dd></div>
         </dl>
       </div>
@@ -363,7 +363,7 @@
     </section>
   </main>
 
-<footer class="ucl-site-footer"><div class="ucl-footer-inner"><img class="ucl-footer-brand" src="./assets/ucl-horizontal.svg" alt="Universion Closure Logic" width="310" height="24" loading="lazy"><button class="ucl-back-top" type="button" data-ucl-back-top><span data-ucl-back-label>ページの先頭へ</span><span aria-hidden="true">↑</span></button><div class="ucl-footer-bottom"><a data-analytics-privacy href="/privacy/">プライバシー</a><small>© 2026 Universion Closure Logic. All rights reserved.</small><span class="ucl-footer-company" data-ucl-footer-company>株式会社 Universion Closure Logic</span></div><div class="ucl-footer-notes"><p class="footer-note">QuotaEchoはOpenAIとは独立して提供されるアプリです。OpenAIとの提携、後援または承認を示すものではありません。OpenAIおよびCodexは、それぞれの権利者に帰属する商標です。</p><p class="footer-note">Apple、Appleのロゴ、Mac、macOSは、米国およびその他の国で登録されたApple Inc.の商標です。App StoreはApple Inc.のサービスマークです。</p></div></div></footer>
+<footer class="ucl-site-footer"><div class="ucl-footer-inner"><button class="ucl-back-top" type="button" data-ucl-back-top><span data-ucl-back-label>ページの先頭へ</span><span aria-hidden="true">↑</span></button><div class="ucl-footer-bottom"><a data-analytics-privacy href="/privacy/">プライバシー</a><small>© 2026 Universion Closure Logic.</small></div><div class="ucl-footer-notes"><p class="footer-note">QuotaEchoはOpenAIとは独立して提供されるアプリです。OpenAIとの提携、後援または承認を示すものではありません。OpenAIおよびCodexは、それぞれの権利者に帰属する商標です。</p><p class="footer-note">Apple、Appleのロゴ、Mac、macOSは、米国およびその他の国で登録されたApple Inc.の商標です。App StoreはApple Inc.のサービスマークです。</p></div></div></footer>
 
 </body>
 </html>

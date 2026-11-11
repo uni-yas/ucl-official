@@ -1,0 +1,35 @@
+/* Approved shared surface and navigation — 2026-11-11. */
+:root{--ucl-opal:radial-gradient(ellipse at 0% 8%,#dcecffba,transparent 58%),radial-gradient(ellipse at 76% 75%,#eadbf282,transparent 58%),radial-gradient(ellipse at 30% 95%,#fff0d963,transparent 55%),linear-gradient(118deg,#e9f1fc 0%,#f5f6fb 53%,#f9f0f3 100%);--menu-ink:#000;--language-ink:#49393d;background:#f5f6fb}
+body{background:var(--ucl-opal);background-size:100vw 100vh;background-attachment:fixed}
+.identity,.fallback{background:var(--ucl-opal)!important;background-size:100vw 100vh!important;background-attachment:fixed!important}
+body::after{display:none!important}
+.site-header{background:var(--ucl-opal)!important;background-size:100vw 100vh!important;background-attachment:fixed!important;box-shadow:none!important;border:0!important;transition:opacity .5s ease}
+.site-header .home-link,.site-header .global-link,.site-header .global-link:hover,.site-header .global-link:is([aria-current="page"],[aria-current="true"]){color:#000!important;opacity:1;background:transparent!important;border-color:transparent!important;box-shadow:none!important}
+.site-header .ucl-header-brand{filter:brightness(0)!important;opacity:1}
+.site-header .global-nav{box-shadow:none!important;border:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.site-header .global-link{position:relative}
+.site-header .global-link:is([aria-current="page"],[aria-current="true"])::after{content:"";display:block;position:absolute;bottom:0;left:calc(50% - 11px);width:22px;height:1px;background:#000;opacity:.55}
+.site-header .language-switch,.site-header .language-switch a,.site-header .language-switch button,.site-header .language-divider{color:var(--language-ink)!important;opacity:1}
+.site-header .language-switch{gap:5px;white-space:nowrap}
+.site-header .language-switch::before{content:"〔"}.site-header .language-switch::after{content:"〕"}
+.site-header .language-pointer{display:none}
+.site-header .language-switch :is([aria-current="true"],[aria-current="page"],[aria-pressed="true"]){font-weight:600}
+.ucl-site-footer{background:transparent!important;color:#596271!important;border-top:1px solid #8c9bb333}
+.ucl-footer-inner{display:flex;flex-direction:column;gap:16px;text-align:center}
+.ucl-footer-bottom{display:flex;flex-direction:column;justify-content:center;align-items:center;border:0;padding:0;gap:12px;width:100%;color:#596271}
+.ucl-footer-bottom small{color:#596271;font-size:12px}
+.ucl-footer-bottom a{font-size:11px;color:#657080}
+.ucl-back-top{color:#596271;justify-content:center;align-self:center;font-size:11px}
+.ucl-back-top>span:last-child{border-color:#8c9bb344}
+.research-hero,.research-hero::before,.perspective-visual,.perspective-inquiry,#papers,.mast,.mast::before{background:transparent!important;animation:none!important}
+html[data-intro-pending] .site-header{opacity:0;visibility:hidden;pointer-events:none}
+html[data-intro-pending] .site-header *{pointer-events:none}
+html[data-intro-pending] .home-news-cue{opacity:0;pointer-events:none}
+@media(min-width:1100px){.site-header .global-nav{background:none!important}.site-header .global-link .ui-icon{display:none}.site-header{gap:32px!important;grid-template-columns:minmax(190px,280px) minmax(500px,1fr) max-content!important}.site-header .global-nav{gap:24px!important}.site-header .global-link{padding-inline:8px}.site-header .nav-label{font-size:12px}}
+@media(max-width:1099px){.site-header .global-nav{left:0;right:0;bottom:0;transform:none;width:100%;max-width:none;border-radius:0;padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));background:var(--ucl-opal)!important;background-size:100vw 100vh!important;background-attachment:fixed!important}.site-header .global-link{min-height:64px;gap:5px}.site-header .nav-label{font-size:10px}.site-header .global-link::after{bottom:1px!important}.ucl-footer-inner{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}}
+@media(prefers-reduced-motion:reduce){.site-header{transition:none}}
+
+.ucl-site-footer .ucl-analytics-settings{font-size:11px;color:#657080}.site-header .language-switch{background:none;padding:0}.privacy-page main{padding-top:120px}.privacy-page footer{text-align:center}
+@media(max-width:1099px){.privacy-page main{padding-bottom:140px}.privacy-page .ucl-consent{bottom:100px}}
+
+.ucl-ambient{display:none!important}

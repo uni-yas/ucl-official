@@ -28,7 +28,7 @@ let presented=false,revealAt=0;
 const inkUniforms={uOpalField:{value:null},uIdentityHeight:{value:1},uScrollWorld:{value:0}};
 
 function report(error){
-  const detail={type:'ucl-identity-status',renderer:root.dataset.renderer,revision:'emergence-20261012-1',phase:phaseAt(state.time),startup:root.dataset.startup,composition:state.composition,motion:state.paused||reduced.matches?'paused':'playing',time:+state.time.toFixed(2),ambient:+state.ambient.toFixed(2)};
+  const detail={type:'ucl-identity-status',renderer:root.dataset.renderer,revision:'emergence-20261012-1',phase:phaseAt(state.time),startup:root.dataset.startup,composition:state.composition,motion:state.paused||reduced.matches||state.time>=INTRO_END?'paused':'playing',time:+state.time.toFixed(2),ambient:+state.ambient.toFixed(2)};
   if(renderer){detail.viewport=`${innerWidth} × ${innerHeight}`;detail.draws=renderer.info.render.calls;detail.triangles=renderer.info.render.triangles;}
   if(error)detail.error=error;
   root.dataset.phase=detail.phase;
@@ -147,13 +147,13 @@ function combineWordmark(parts){
 
 async function init(){
   root.dataset.startup='preparing';
-  renderer=new THREE.WebGLRenderer({canvas,alpha:false,antialias:true,powerPreference:'high-performance'});
+  renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'default'});
   // Two device pixels per CSS pixel keep the thin curved surfaces smooth.
-  renderer.setPixelRatio(2);
+  renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
   renderer.outputColorSpace=THREE.SRGBColorSpace;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure=1.04;
-  renderer.setClearColor(0xfcfcfd,1);
+  renderer.setClearColor(0xfcfcfd,0);
   scene=new THREE.Scene();
   camera=new THREE.PerspectiveCamera(32,innerWidth/innerHeight,.1,100);
   camera.position.set(0,0,10.6);
@@ -174,9 +174,9 @@ async function init(){
   });
   backgroundScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),backgroundMaterial));
   const backdrop=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({
-    uniforms:{map:{value:background.texture},uDay:{value:0},uFlash:{value:0},uCharge:{value:0},uJet:{value:0},uJetReach:{value:0},uJetAngle:{value:Math.PI/2},uProjection:{value:0},uProjectionSpread:{value:0},uCenter:{value:new THREE.Vector2(.5,.5)},uAspect:{value:new THREE.Vector2(1,1)}},
+    transparent:true,uniforms:{uSurfaceOpacity:{value:1},map:{value:background.texture},uDay:{value:0},uFlash:{value:0},uCharge:{value:0},uJet:{value:0},uJetReach:{value:0},uJetAngle:{value:Math.PI/2},uProjection:{value:0},uProjectionSpread:{value:0},uCenter:{value:new THREE.Vector2(.5,.5)},uAspect:{value:new THREE.Vector2(1,1)}},
     vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,.999,1.);}',
-    fragmentShader:"uniform sampler2D map;\nuniform float uDay;\nuniform float uFlash;\nuniform float uCharge;\nuniform float uJet;\nuniform float uJetReach;\nuniform float uJetAngle;\nuniform float uProjection;\nuniform float uProjectionSpread;\nuniform vec2 uCenter;\nuniform vec2 uAspect;\nvarying vec2 vUv;\n\nvec3 toSRGB(vec3 c) {\n  return mix(c*12.92,1.055*pow(max(c,vec3(0.)),vec3(1./2.4))-.055,step(vec3(.0031308),c));\n}\nvec3 toLinear(vec3 c) {\n  return mix(c/12.92,pow((c+.055)/1.055,vec3(2.4)),step(vec3(.04045),c));\n}\n\nvoid main() {\n  vec4 opalSample=texture2D(map,vUv);\n  vec3 field=opalSample.rgb;\n  // Invert the actual animated Opal field in display space, then darken it.\n  // Working directly in linear RGB would produce the wrong complement.\n  vec3 dusk=toLinear((vec3(1.)-toSRGB(field))*.82);\n  vec2 offset=(vUv-uCenter)*uAspect;\n  float distanceFromMark=length(offset);\n  float reach=length(max(uCenter,vec2(1.)-uCenter)*uAspect);\n  float progress=clamp(uDay,0.,1.);\n  float travel=progress;\n  float front=mix(-.16,reach+.32,travel);\n  float opened=1.-smoothstep(front-.20,front+.12,distanceFromMark);\n  opened*=smoothstep(0.,.08,progress);\n\n  // A soft, widening pressure front opens the light background. There is no\n  // hard circle or fullscreen flash; the wave shares the mark's exact center.\n  float wake=exp(-pow((distanceFromMark-front)/.12,2.));\n  float fine=exp(-pow((distanceFromMark-front)/.035,2.));\n  float angle=atan(offset.y,offset.x);\n  float accent=.5+.5*sin(angle+progress*1.3);\n  vec3 blue=toLinear(vec3(121.,174.,232.)/255.);\n  vec3 rose=toLinear(vec3(232.,141.,157.)/255.);\n  vec3 light=mix(blue,rose,accent);\n  float envelope=smoothstep(0.,.12,progress)*(1.-smoothstep(.64,1.,progress));\n  vec3 color=mix(dusk,field,opened);\n  color+=(light*wake*.15+mix(light,vec3(1.),.35)*fine*.07)*envelope;\n  // Charge stays local to the mark. The one release impulse is brief and\n  // centered; no full-screen strobe or camera shake is needed for force.\n  color+=light*exp(-pow(distanceFromMark/.18,2.))*uCharge*.045;\n  color+=mix(light,vec3(1.),.7)*exp(-pow(distanceFromMark/.27,2.))*uFlash*.42;\n  // The final accent uses paired, gently sweeping lighthouse beams. White\n  // in their narrow cores, blue/rose in the surrounding scattered light.\n  vec2 axis=vec2(cos(uJetAngle),sin(uJetAngle));\n  float along=dot(offset,axis);\n  float across=abs(dot(offset,vec2(-axis.y,axis.x)));\n  float reachMask=1.-smoothstep(uJetReach*reach*1.6,uJetReach*reach*1.6+.10,abs(along));\n  float spine=exp(-pow(across/(.009+abs(along)*.013),2.));\n  float veil=exp(-pow(across/(.035+abs(along)*.057),2.));\n  vec3 poleColor=mix(rose,blue,smoothstep(-.06,.06,along));\n  color+=(mix(poleColor,vec3(1.),.8)*spine*.64+poleColor*veil*.27)*uJet*reachMask;\n  // The actual Opal renderer stores its existing iridescent ribbon in alpha.\n  // Let the narrow beam's last light spread onto that same moving surface,\n  // rather than inventing a second wave or a separately timed color field.\n  float projectionMask=exp(-pow(across/mix(.055,.62,uProjectionSpread),2.));\n  float projected=opalSample.a*projectionMask*uProjection;\n  vec3 projectedHue=mix(vec3(.48,.68,1.),vec3(1.,.76,.46),smoothstep(-.02,.02,field.r-field.b));\n  color+=(vec3(1.)-field)*projectedHue*projected*.42;\n  // Exact endpoint: preserve the original Opal renderer, including its grain.\n  if(progress>=1.)color=field;\n  gl_FragColor=vec4(color,1.);\n  #include <colorspace_fragment>\n}\n",
+    fragmentShader:"uniform float uSurfaceOpacity;\nuniform sampler2D map;\nuniform float uDay;\nuniform float uFlash;\nuniform float uCharge;\nuniform float uJet;\nuniform float uJetReach;\nuniform float uJetAngle;\nuniform float uProjection;\nuniform float uProjectionSpread;\nuniform vec2 uCenter;\nuniform vec2 uAspect;\nvarying vec2 vUv;\n\nvec3 toSRGB(vec3 c) {\n  return mix(c*12.92,1.055*pow(max(c,vec3(0.)),vec3(1./2.4))-.055,step(vec3(.0031308),c));\n}\nvec3 toLinear(vec3 c) {\n  return mix(c/12.92,pow((c+.055)/1.055,vec3(2.4)),step(vec3(.04045),c));\n}\n\nvoid main() {\n  vec4 opalSample=texture2D(map,vUv);\n  vec3 field=opalSample.rgb;\n  // Invert the actual animated Opal field in display space, then darken it.\n  // Working directly in linear RGB would produce the wrong complement.\n  vec3 dusk=toLinear((vec3(1.)-toSRGB(field))*.82);\n  vec2 offset=(vUv-uCenter)*uAspect;\n  float distanceFromMark=length(offset);\n  float reach=length(max(uCenter,vec2(1.)-uCenter)*uAspect);\n  float progress=clamp(uDay,0.,1.);\n  float travel=progress;\n  float front=mix(-.16,reach+.32,travel);\n  float opened=1.-smoothstep(front-.20,front+.12,distanceFromMark);\n  opened*=smoothstep(0.,.08,progress);\n\n  // A soft, widening pressure front opens the light background. There is no\n  // hard circle or fullscreen flash; the wave shares the mark's exact center.\n  float wake=exp(-pow((distanceFromMark-front)/.12,2.));\n  float fine=exp(-pow((distanceFromMark-front)/.035,2.));\n  float angle=atan(offset.y,offset.x);\n  float accent=.5+.5*sin(angle+progress*1.3);\n  vec3 blue=toLinear(vec3(121.,174.,232.)/255.);\n  vec3 rose=toLinear(vec3(232.,141.,157.)/255.);\n  vec3 light=mix(blue,rose,accent);\n  float envelope=smoothstep(0.,.12,progress)*(1.-smoothstep(.64,1.,progress));\n  vec3 color=mix(dusk,field,opened);\n  color+=(light*wake*.15+mix(light,vec3(1.),.35)*fine*.07)*envelope;\n  // Charge stays local to the mark. The one release impulse is brief and\n  // centered; no full-screen strobe or camera shake is needed for force.\n  color+=light*exp(-pow(distanceFromMark/.18,2.))*uCharge*.045;\n  color+=mix(light,vec3(1.),.7)*exp(-pow(distanceFromMark/.27,2.))*uFlash*.42;\n  // The final accent uses paired, gently sweeping lighthouse beams. White\n  // in their narrow cores, blue/rose in the surrounding scattered light.\n  vec2 axis=vec2(cos(uJetAngle),sin(uJetAngle));\n  float along=dot(offset,axis);\n  float across=abs(dot(offset,vec2(-axis.y,axis.x)));\n  float reachMask=1.-smoothstep(uJetReach*reach*1.6,uJetReach*reach*1.6+.10,abs(along));\n  float spine=exp(-pow(across/(.009+abs(along)*.013),2.));\n  float veil=exp(-pow(across/(.035+abs(along)*.057),2.));\n  vec3 poleColor=mix(rose,blue,smoothstep(-.06,.06,along));\n  color+=(mix(poleColor,vec3(1.),.8)*spine*.64+poleColor*veil*.27)*uJet*reachMask;\n  // The actual Opal renderer stores its existing iridescent ribbon in alpha.\n  // Let the narrow beam's last light spread onto that same moving surface,\n  // rather than inventing a second wave or a separately timed color field.\n  float projectionMask=exp(-pow(across/mix(.055,.62,uProjectionSpread),2.));\n  float projected=opalSample.a*projectionMask*uProjection;\n  vec3 projectedHue=mix(vec3(.48,.68,1.),vec3(1.,.76,.46),smoothstep(-.02,.02,field.r-field.b));\n  color+=(vec3(1.)-field)*projectedHue*projected*.42;\n  // Exact endpoint: preserve the original Opal renderer, including its grain.\n  if(progress>=1.)color=field;\n  gl_FragColor=vec4(color,uSurfaceOpacity);\n  #include <colorspace_fragment>\n}\n",
     depthWrite:false,depthTest:false,toneMapped:false
   }));
   backdropMaterial=backdrop.material;
@@ -316,6 +316,9 @@ function pose(){
   emergence.update({time:clock,width:innerWidth,height:innerHeight,markPx:markPx*motion.markScale,markScale:motion.markScale,home,scrollPx:homeView?.scrollTop||0});
   crystalGlints.update({time:clock,home,focus:motion.markFocus});
   root.dataset.intro=phaseAt(clock);
+  backdropMaterial.uniforms.uSurfaceOpacity.value=1.-smooth((clock-(INTRO_END-1.2))/1.2);
+  if(clock>=INTRO_END){root.removeAttribute('data-intro-pending');root.dataset.introPlayback='complete';}
+
   root.style.setProperty('--intro-cue',smooth((clock-5.2)/1.4));
 
 }
@@ -336,20 +339,20 @@ function animate(now){
   // its normal speed, so startup opacity and moving color never compete.
   const motionRate=smooth((visibleSeconds-REVEAL_SECONDS)/.65);
   root.dataset.startup=visibleSeconds<REVEAL_SECONDS?'revealing':'ambient';
-  if(!state.paused&&!reduced.matches){state.time=Math.min(INTRO_END,state.time+dt*motionRate);state.ambient=(state.ambient+dt*motionRate)%LOOP;}
+  if(!state.paused&&!reduced.matches&&state.time<INTRO_END){state.time=Math.min(INTRO_END,state.time+dt*motionRate);state.ambient=(state.ambient+dt*motionRate)%LOOP;}
   const target=state.composition==='signature'?1:0;
   compositionAmount=THREE.MathUtils.damp(compositionAmount,target,8,dt);
   if(Math.abs(compositionAmount-target)<.001)compositionAmount=target;
   draw();
   if(now-lastStatus>600){report();lastStatus=now;}
-  if((!state.paused&&!reduced.matches)||compositionAmount!==target)frame=requestAnimationFrame(animate);
+  if((!state.paused&&!reduced.matches&&state.time<INTRO_END)||compositionAmount!==target)frame=requestAnimationFrame(animate);
 }
 function sync(){
   if(frame)cancelAnimationFrame(frame);
   frame=0;last=0;
   if(!state.ready||!presented||document.hidden)return;
   if(reduced.matches){state.time=INTRO_END;compositionAmount=state.composition==='signature'?1:0;}
-  if((!state.paused&&!reduced.matches)||compositionAmount!==(state.composition==='signature'?1:0))frame=requestAnimationFrame(animate);
+  if((!state.paused&&!reduced.matches&&state.time<INTRO_END)||compositionAmount!==(state.composition==='signature'?1:0))frame=requestAnimationFrame(animate);
   draw();report();
 }
 window.addEventListener('message',event=>{
@@ -366,7 +369,7 @@ window.addEventListener('ucl:pagechange',draw);
 window.addEventListener('ucl:homescroll',()=>{if(!frame)draw();});
 document.addEventListener('visibilitychange',sync);
 reduced.addEventListener('change',sync);
-canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();state.ready=false;root.dataset.renderer='fallback';if(frame)cancelAnimationFrame(frame);report('Graphics context lost; canonical SVG fallback displayed.');});
+canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();state.ready=false;root.dataset.renderer='fallback';root.removeAttribute('data-intro-pending');if(frame)cancelAnimationFrame(frame);report('Graphics context lost; canonical SVG fallback displayed.');});
 window.addEventListener('pagehide',()=>{if(frame)cancelAnimationFrame(frame);});
 window.addEventListener('pageshow',sync);
-export const ready=init().catch(error=>{root.dataset.renderer='fallback';report(error.message);console.error('UCL identity:',error);});
+export const ready=init().catch(error=>{root.dataset.renderer='fallback';root.removeAttribute('data-intro-pending');report(error.message);console.error('UCL identity:',error);});
