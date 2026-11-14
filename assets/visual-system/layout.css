@@ -1,0 +1,39 @@
+/* One frame, one split, one breakpoint across UCL's page introductions. */
+:root{--ucl-content-max:1200px;--ucl-column-gap:60px;--ucl-mobile-gutter:28px}
+@media(min-width:1100px){
+ :root{--desktop-width:min(var(--ucl-content-max),calc(100vw - 112px));--desktop-gap:var(--ucl-column-gap);--desktop-left:calc((var(--desktop-width) - var(--desktop-gap))/2);--desktop-right:var(--desktop-left)}
+ html[data-page] .section-layout{width:var(--desktop-width);grid-template-columns:minmax(0,var(--desktop-left)) minmax(0,var(--desktop-right));column-gap:var(--desktop-gap)}
+ html body.research-page .wrap{width:var(--desktop-width);max-width:none}
+ html body.research-page .research-hero{margin-top:0}
+ html body.research-page .hero{grid-template-columns:minmax(0,var(--desktop-left)) minmax(0,var(--desktop-right));gap:var(--desktop-gap);padding-top:148px;padding-bottom:56px;align-items:start}
+ html body.research-page .hero-copy{padding-top:20px}
+ html body :is(.company-identity,.products-identity,.contact-identity),
+ html body.research-page .research-identity{width:100%;max-width:520px;margin:0 auto}
+ html[data-page="contact"] .contact-content{padding-top:0}
+ html[data-page="products"] .portfolio-entry:first-child{background-position:left top}
+ html[data-page="products"] .portfolio-jump{padding-top:20px;padding-bottom:0}
+ html[data-page="company"] .company-facts-layout{grid-template-columns:minmax(0,var(--desktop-left)) minmax(0,var(--desktop-right));gap:var(--desktop-gap)}
+ html body.research-page .overview-text p{font-size:16px;line-height:1.95;letter-spacing:0}
+}
+@media(max-width:1099px){
+ html body.research-page .wrap{width:calc(100% - 2 * var(--ucl-mobile-gutter));margin-inline:auto}
+ html body.research-page .research-hero{margin-top:0}
+ html body.research-page .hero{display:block;padding-top:84px;padding-bottom:38px}
+ html body.research-page .hero-identity{margin:0}
+ html body :is(.company-identity,.products-identity,.contact-identity),
+ html body.research-page .research-identity{display:block;width:min(100%,360px);max-width:360px;height:auto;margin:0 auto}
+ /* Hidden sibling identity assets must remain hidden in the shared SPA. */
+ html:not([data-page="company"]) .company-identity,
+ html:not([data-page="products"]) .products-identity,
+ html:not([data-page="contact"]) .contact-identity{display:none}
+ html body.research-page .hero-copy{margin-top:0;padding-top:20px}
+}
+@media(max-width:350px){:root{--ucl-mobile-gutter:22px}}
+/* Product names share the company introduction's responsive type scale. */
+:root{--ucl-lead-size:22px}
+:root:lang(ja){--ucl-lead-size:21px}
+@media(max-width:350px){:root:not(:lang(ja)){--ucl-lead-size:20px}}
+@media(min-width:768px){:root{--ucl-lead-size:28px}:root:lang(ja){--ucl-lead-size:25px}}
+@media(min-width:1100px){:root,:root:lang(ja){--ucl-lead-size:27px}}
+html[data-page] .research-content .research-lead,
+html[data-page] .research-content .portfolio-entry h3{font-size:var(--ucl-lead-size)}

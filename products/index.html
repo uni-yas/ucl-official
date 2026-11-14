@@ -32,8 +32,8 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
  document.documentElement.setAttribute('data-intro-pending','');
  window.setTimeout(()=>document.documentElement.removeAttribute('data-intro-pending'),20000);
 }
-</script><link rel="stylesheet" href="/assets/opal/cleanup.css"></head>
-<body>
+</script><link rel="stylesheet" href="/assets/opal/cleanup.css"><link rel="stylesheet" href="/assets/navigation/navigation.css?v=20261114-1"><link rel="stylesheet" href="/assets/contact-identity/contact-identity.css?v=1"><link rel="stylesheet" href="/assets/products-identity/products-identity.css?v=1"><link rel="stylesheet" href="/assets/numbering.css?v=1"><link rel="stylesheet" href="/assets/company-identity/company-identity.css?v=1"><link rel="stylesheet" href="/assets/chapter-rules.css?v=1"><link rel="stylesheet" href="/assets/visual-system/layout.css?v=1"><link rel="stylesheet" href="/assets/visual-system/surfaces.css?v=1"></head>
+<body class="ucl-continuous-surface"><div class="ucl-page-background" aria-hidden="true"></div>
   <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
       <symbol id="icon-home" viewBox="0 0 24 24">
@@ -78,7 +78,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
       <svg class="ui-icon" aria-hidden="true"><use href="#icon-products"/></svg>
       <span class="nav-label"><span>Products &amp;</span><span>Services</span></span>
     </a>
-    <a class="global-link" href="/contact/?lang=ja" data-page-link="contact">
+    <a class="global-link nav-contact" href="/contact/?lang=ja" data-page-link="contact">
       <svg class="ui-icon" aria-hidden="true"><use href="#icon-contact"/></svg>
       <span class="nav-label"><span>Contact Us</span></span>
     </a>
@@ -107,7 +107,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
         </button>
       </div>
       <section class="home-news" aria-labelledby="news-heading">
-        <h2 id="news-heading" tabindex="-1">News</h2>
+        <h2 class="ucl-chapter-rule" id="news-heading" tabindex="-1">News</h2>
         <ol class="news-list" role="list">
 <li class="news-item" data-research-news="ono-shiozaki-band-sum-finite-mesh"><span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-research"/></svg></span><div class="news-copy"><time datetime="2026-11-12" data-content-ja="2026年11月12日">November 12, 2026</time><h3><a data-research-target="ono-shiozaki-band-sum-finite-mesh" href="/research/en/#ono-shiozaki-band-sum-finite-mesh" data-content-ja="Ono–Shiozaki論文の予想1の証明と、トポロジカル不変量の有限メッシュ評価を公開">Ono–Shiozaki Conjecture 1 and finite-mesh evaluation: new preprint</a></h3><p data-content-ja="電子バンドの構成における予想1を証明し、原著の規約と適合条件の下で、対称性クラスAIの遷移符号を有限メッシュから評価する定理をまとめました。論文とHTML検算ガイドをZenodoで公開しています。">A proof in the original electronic-band setting, together with finite-mesh evaluation of symmetry-class AI transition signs under the source conventions and admissibility conditions. The paper and HTML verification guide are available on Zenodo.</p><p><a data-research-target="ono-shiozaki-band-sum-finite-mesh" href="/research/en/#ono-shiozaki-band-sum-finite-mesh" data-content-ja="研究成果を見る">Explore the research</a></p></div></li>
           <li class="news-item" data-research-news="grid-identification-observation-repair"><span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-research"/></svg></span><div class="news-copy"><time datetime="2026-11-11" data-content-ja="2026年11月11日">November 11, 2026</time><h3><a data-research-target="identifying-code-density-bounds" href="/research/en/#identifying-code-density-bounds" data-content-ja="格子上の識別と観測の修復に関する3件の論文・検算資料を公開">Three papers on grid identification and observation repair published on Zenodo</a></h3><p data-content-ja="識別コードの密度評価、六角格子の帯における位置特定・支配集合、指定した観測故障の修復費用を扱う3件をZenodoで公開しました。研究ページに成果の概要と成立範囲をまとめています。">Three papers and their verification materials are now available on Zenodo: identifying-code density bounds, locating-dominating sets in hexagonal strips, and repair costs for structured observation failures. The research page explains each result and its scope.</p><p><a data-research-target="identifying-code-density-bounds" href="/research/en/#identifying-code-density-bounds" data-content-ja="3件の研究成果を見る">Explore the three research results</a></p></div></li>
@@ -168,6 +168,9 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
     <section data-ucl-scroller class="section-view" aria-labelledby="section-heading" hidden>
       <div class="section-layout">
       <div class="section-heading">
+<img class="company-identity" src="/assets/company-identity/company-identity.svg" alt="" aria-hidden="true" width="520" height="430">
+<img class="products-identity" src="/assets/products-identity/products-identity.svg" alt="" aria-hidden="true" width="520" height="430">
+<img class="contact-identity" src="/assets/contact-identity/contact-identity.svg" alt="" aria-hidden="true" width="520" height="430">
         <span class="section-kicker" data-section-kicker aria-hidden="true">RESEARCH</span>
         <h1 id="section-heading" tabindex="-1">Research</h1>
         <div class="section-art" data-kind="research" aria-hidden="true">
@@ -651,7 +654,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
       </div>
       <article class="research-content" lang="en" hidden>
         <section class="research-summary" aria-labelledby="research-summary-heading">
-          <h2 class="research-eyebrow content-divider" id="research-summary-heading" data-content-ja="研究概要">Research overview</h2>
+          <h2 class="research-eyebrow content-divider ucl-chapter-rule" id="research-summary-heading" data-content-ja="研究概要">Research overview</h2>
           <p class="research-lead" data-content-ja="限られた情報から、どこまで確定できるか">What can be determined from limited information?</p>
           <p data-content-ja="UCLは、限られた情報から対象の状態や性質、そこから導かれる結論をどこまで確定できるかを、数学的に研究しています。対象のすべてが分からない状況でも、何が分かれば十分なのか。反対に、どの情報が失われると確定できなくなるのか。その条件と境界を明らかにすることが、研究の中心です。">UCL uses mathematics to study how far limited information can determine an object’s state or properties, and the conclusions that follow. What information is sufficient when we do not know the object in full? Conversely, what loss of information makes determination impossible? Our research focuses on identifying these conditions and boundaries.</p>
           <p data-content-ja="たとえば、対象の一部しか観測できないときに、全体の性質を保証できるか。異なる二つの状態が同じ観測結果を返すとき、両者を見分けるには何を追加で調べればよいか。こうした問題を通して、情報の量や組合せと、そこから導ける結論との関係を調べています。">For example, can observations of only part of an object guarantee a property of the whole? When two different states produce the same observations, what else must be examined to distinguish them? Through such problems, we study how the amount and combination of available information relate to the conclusions that can be drawn.</p>
@@ -661,7 +664,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
       </article>
       <article class="research-content company-content" lang="en" hidden>
         <section class="company-summary" aria-labelledby="company-summary-heading">
-          <h2 class="research-eyebrow content-divider" id="company-summary-heading">Summary</h2>
+          <h2 class="research-eyebrow content-divider ucl-chapter-rule" id="company-summary-heading">Summary</h2>
           <p class="research-lead">Turning scientific ideas into useful technology.</p>
           <p>Universion Closure Logic is a technology company rooted in scientific inquiry. We bring together information theory, artificial intelligence, data science, and communication technologies to develop software, algorithms, and digital products.</p>
           <p>At its core is a research perspective: organizing complex problems in terms of candidates, conditions, and rules to consider what to select and where to begin verification. We see potential for research on finite, discrete candidates and states to contribute to fields such as materials design, software verification, production and logistics planning, equipment control, and biological network analysis.</p>
@@ -669,6 +672,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
         </section>
         <section class="research-details" aria-label="Company facts">
           <div class="company-facts-layout">
+          <section class="company-facts-block" aria-labelledby="company-facts-title"><h2 id="company-facts-title" class="company-block-title ucl-chapter-rule" data-content-ja="会社概要">Company Profile</h2>
           <dl class="company-facts">
             <div class="company-fact">
               <dt>Company name</dt>
@@ -686,10 +690,10 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
               <dt>Principal bank</dt>
               <dd>Sumitomo Mitsui Banking Corporation<span class="company-legal-name">SMBC</span></dd>
             </div>
-          </dl>
+          </dl></section>
           <dl class="company-facts company-business-facts">
             <div class="company-fact company-business-domain">
-              <dt>Business domain</dt>
+              <dt><h2 class="company-block-title ucl-chapter-rule" data-content-ja="事業内容">Business Activities</h2></dt>
               <dd>
                 <ol class="company-business-list" role="list">
                   <li><span class="field-number" aria-hidden="true">01</span><p>Research, development and social implementation in information theory, artificial intelligence, data science and communication technologies.</p></li>
@@ -713,7 +717,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
           <button type="button" data-scroll-target="portfolio-services-heading">Services <span aria-hidden="true">↓</span></button>
         </nav>
         <section class="portfolio-products" aria-labelledby="portfolio-products-heading">
-          <h2 class="research-eyebrow content-divider" id="portfolio-products-heading">Products</h2>
+          <h2 class="research-eyebrow content-divider ucl-chapter-rule" id="portfolio-products-heading">Products</h2>
           <div class="portfolio-list">
             <section class="portfolio-entry" aria-labelledby="portfolio-quotaecho">
               <div class="portfolio-meta"><span>B2C · macOS</span><span>Released <time datetime="2026-10-01">October 1, 2026</time></span></div>
@@ -752,14 +756,16 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
           </div>
         </section>
         <section class="portfolio-services" aria-labelledby="portfolio-services-heading">
-          <h2 class="research-eyebrow content-divider" id="portfolio-services-heading">Services</h2>
+          <h2 class="research-eyebrow content-divider ucl-chapter-rule" id="portfolio-services-heading">Services</h2>
           <p class="research-lead">Practical technology for your everyday work.</p>
           <p>We help businesses simplify everyday work, build practical digital tools, and turn scattered information into usable data.</p>
           <ol class="research-fields portfolio-service-list" role="list">
-            <li><span class="field-number" aria-hidden="true">01</span><div class="field-copy"><h3>Workflow &amp; AI Automation</h3><figure class="service-visual" aria-hidden="true"><img src="/ucl-automation.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p>Reduce repetitive work with workflows tailored to your business. We connect existing tools, automate routine tasks, and incorporate AI where it adds value.</p><p class="service-examples">File processing · Tool integrations · Report generation · Content scheduling</p></div></li>
-            <li><span class="field-number" aria-hidden="true">02</span><div class="field-copy"><h3>Web &amp; App Development</h3><figure class="service-visual" aria-hidden="true"><img src="/ucl-web-app.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p>We create and improve websites, dashboards, and lightweight applications around your needs—from a service website to a practical tool for everyday operations.</p><p class="service-examples">Business websites · Internal tools · Dashboards · App improvements</p></div></li>
-            <li><span class="field-number" aria-hidden="true">03</span><div class="field-copy"><h3>Data Processing &amp; Research</h3><figure class="service-visual" aria-hidden="true"><img src="/ucl-data-research.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p>Turn files and public information into organized, usable data. We support web research, data entry, format conversion, cleanup, and reporting, with checks against agreed requirements.</p><p class="service-examples">Research lists · Spreadsheet cleanup · Data consolidation · Reports</p></div></li>
-          </ol>
+<li><span class="field-number" aria-hidden="true">01</span><div class="field-copy"><h3 data-content-ja="共同研究">Joint Research</h3><figure class="service-visual" aria-hidden="true"><img src="/assets/products-identity/services/joint-research.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p data-content-ja="研究課題や検証方法を共有し、専門性を持ち寄って共同で取り組みます。">We work together on research questions and validation methods, bringing complementary expertise.</p></div></li>
+<li><span class="field-number" aria-hidden="true">02</span><div class="field-copy"><h3 data-content-ja="共同開発">Joint Development</h3><figure class="service-visual" aria-hidden="true"><img src="/assets/products-identity/services/joint-development.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p data-content-ja="目的や要件を共有し、試作から開発・検証まで共同で進めます。">We define goals and requirements together, collaborating on prototypes, development, and validation.</p></div></li>
+<li><span class="field-number" aria-hidden="true">03</span><div class="field-copy"><h3>Web &amp; App Development</h3><figure class="service-visual" aria-hidden="true"><img src="/assets/products-identity/services/web-app.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p>We create and improve websites, dashboards, and lightweight applications around your needs—from a service website to a practical tool for everyday operations.</p><p class="service-examples">Business websites · Internal tools · Dashboards · App improvements</p></div></li>
+<li><span class="field-number" aria-hidden="true">04</span><div class="field-copy"><h3>Workflow &amp; AI Automation</h3><figure class="service-visual" aria-hidden="true"><img src="/assets/products-identity/services/automation.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p>Reduce repetitive work with workflows tailored to your business. We connect existing tools, automate routine tasks, and incorporate AI where it adds value.</p><p class="service-examples">File processing · Tool integrations · Report generation · Content scheduling</p></div></li>
+<li><span class="field-number" aria-hidden="true">05</span><div class="field-copy"><h3>Data Processing &amp; Research</h3><figure class="service-visual" aria-hidden="true"><img src="/assets/products-identity/services/data-research.svg" alt="" width="720" height="360" loading="lazy" decoding="async"></figure><p>Turn files and public information into organized, usable data. We support web research, data entry, format conversion, cleanup, and reporting, with checks against agreed requirements.</p><p class="service-examples">Research lists · Spreadsheet cleanup · Data consolidation · Reports</p></div></li>
+</ol>
           <div class="service-approach">
             <p>Every project starts with a clear scope, defined deliverables, and agreed checks.</p>
             <p class="portfolio-lead">Tell us what you want to improve.</p>
@@ -770,9 +776,8 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
       </article>
       <article class="contact-content" hidden>
         <div class="contact-compose">
-          <div class="contact-intro">
-            <h2 data-contact-copy="lead">どんなことでも、お聞かせください。</h2>
-            <p data-contact-copy="intro">ご質問、アイデア、お仕事のご相談など。</p>
+          <div class="contact-intro ucl-chapter-rule">
+            <h2 data-contact-copy="lead">ご質問、アイデア、お仕事のご相談など、気軽にお聞かせください。</h2>
           </div>
           <form class="contact-form" action="https://formsubmit.co/contact@universion-closure-logic.com" method="post" novalidate aria-label="お問い合わせフォーム" data-state="idle">
             <div class="contact-field">
@@ -796,7 +801,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
                 <svg class="ui-icon contact-send-icon" aria-hidden="true"><use href="#icon-contact"/></svg>
                 <span class="contact-send-pearl" aria-hidden="true"></span>
               </button>
-              <p class="contact-note" id="contact-privacy-note" data-contact-copy="privacy">入力内容はお問い合わせへの対応に利用します。</p>
+              <p class="contact-note" id="contact-privacy-note" data-contact-copy="privacy">＊内容によっては返信しないものもございますので予めご了承ください。</p>
               <details class="contact-privacy">
                 <summary data-contact-copy="privacyTitle">送信内容の取り扱い</summary>
                 <p data-contact-copy="privacyDetail">お名前、メールアドレス、お問い合わせ内容は、メール送信サービス FormSubmit を通じて当社へ届きます。送信内容は同サービスに30日間保存されます。</p>
@@ -1355,8 +1360,8 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
         render();
       }));
       const contactWords={
-        en:{lead:'Tell us what you have in mind.',intro:'Questions, ideas, or a project to discuss.',name:'Name / Company',optional:'Optional',email:'Email',required:'Required',message:'Message',send:'Send message',sending:'Sending…',privacy:'We use your information to respond to your inquiry.',privacyTitle:'How your message is handled',privacyDetail:'Your name, email address, and message are delivered to us through FormSubmit. That service retains submissions for 30 days.',privacyLink:'FormSubmit privacy policy',thanks:'Thank you.',completeTitle:'Your inquiry has been sent.',completeNote:'We’ll review your message and reply to the email address you provided.',again:'Send another message',formLabel:'Contact form',emailMissing:'Please enter your email address.',emailInvalid:'Please enter a valid email address.',messageMissing:'Please add a message.',invalid:'Please check the highlighted fields.',failed:'We couldn’t confirm your submission. Your message is still here. Please try again.',timeout:'The request timed out, so we couldn’t confirm your submission. Your message is still here. Please wait a moment before trying again.',notReady:'The form is temporarily unavailable. Your message is still here. Please try again later.'},
-        ja:{lead:'どんなことでも、お聞かせください。',intro:'ご質問、アイデア、お仕事のご相談など。',name:'お名前・会社名',optional:'任意',email:'メールアドレス',required:'必須',message:'お問い合わせ内容',send:'メッセージを送る',sending:'送信中…',privacy:'入力内容はお問い合わせへの対応に利用します。',privacyTitle:'送信内容の取り扱い',privacyDetail:'お名前、メールアドレス、お問い合わせ内容は、メール送信サービス FormSubmit を通じて当社へ届きます。送信内容は同サービスに30日間保存されます。',privacyLink:'FormSubmit のプライバシーポリシー',thanks:'ありがとうございます。',completeTitle:'お問い合わせを送信しました。',completeNote:'内容を確認し、ご入力のメールアドレスへ返信いたします。',again:'別のお問い合わせを送る',formLabel:'お問い合わせフォーム',emailMissing:'メールアドレスを入力してください。',emailInvalid:'メールアドレスの形式を確認してください。',messageMissing:'お問い合わせ内容を入力してください。',invalid:'入力欄のメッセージをご確認ください。',failed:'送信を確認できませんでした。入力内容は残っています。もう一度お試しください。',timeout:'通信に時間がかかり、送信を確認できませんでした。入力内容は残っています。少し待ってから、もう一度お試しください。',notReady:'現在フォームを利用できません。入力内容は残っています。時間をおいて、もう一度お試しください。'}
+        en:{lead:'Feel free to share your questions, ideas, or business inquiries.',intro:'Questions, ideas, or a project to discuss.',name:'Name / Company',optional:'Optional',email:'Email',required:'Required',message:'Message',send:'Send message',sending:'Sending…',privacy:'* Please note that we may not reply to every inquiry.',privacyTitle:'How your message is handled',privacyDetail:'Your name, email address, and message are delivered to us through FormSubmit. That service retains submissions for 30 days.',privacyLink:'FormSubmit privacy policy',thanks:'Thank you.',completeTitle:'Your inquiry has been sent.',completeNote:'We’ll review your message and reply to the email address you provided.',again:'Send another message',formLabel:'Contact form',emailMissing:'Please enter your email address.',emailInvalid:'Please enter a valid email address.',messageMissing:'Please add a message.',invalid:'Please check the highlighted fields.',failed:'We couldn’t confirm your submission. Your message is still here. Please try again.',timeout:'The request timed out, so we couldn’t confirm your submission. Your message is still here. Please wait a moment before trying again.',notReady:'The form is temporarily unavailable. Your message is still here. Please try again later.'},
+        ja:{lead:'ご質問、アイデア、お仕事のご相談など、気軽にお聞かせください。',intro:'ご質問、アイデア、お仕事のご相談など。',name:'お名前・会社名',optional:'任意',email:'メールアドレス',required:'必須',message:'お問い合わせ内容',send:'メッセージを送る',sending:'送信中…',privacy:'＊内容によっては返信しないものもございますので予めご了承ください。',privacyTitle:'送信内容の取り扱い',privacyDetail:'お名前、メールアドレス、お問い合わせ内容は、メール送信サービス FormSubmit を通じて当社へ届きます。送信内容は同サービスに30日間保存されます。',privacyLink:'FormSubmit のプライバシーポリシー',thanks:'ありがとうございます。',completeTitle:'お問い合わせを送信しました。',completeNote:'内容を確認し、ご入力のメールアドレスへ返信いたします。',again:'別のお問い合わせを送る',formLabel:'お問い合わせフォーム',emailMissing:'メールアドレスを入力してください。',emailInvalid:'メールアドレスの形式を確認してください。',messageMissing:'お問い合わせ内容を入力してください。',invalid:'入力欄のメッセージをご確認ください。',failed:'送信を確認できませんでした。入力内容は残っています。もう一度お試しください。',timeout:'通信に時間がかかり、送信を確認できませんでした。入力内容は残っています。少し待ってから、もう一度お試しください。',notReady:'現在フォームを利用できません。入力内容は残っています。時間をおいて、もう一度お試しください。'}
       };
       const contactForm=contactContent.querySelector('form');
       const contactCompose=contactContent.querySelector('.contact-compose');

@@ -1,0 +1,18 @@
+/* One bilingual identity, with CONTACT printed into the transparent envelope. */
+.contact-identity{display:none}
+html[data-page="contact"] .section-heading>.section-kicker,
+html[data-page="contact"] .section-heading>.section-art{display:none!important}
+html[data-page="contact"] .section-heading>h1{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%);white-space:nowrap}
+html[data-page="contact"] .contact-identity{display:block;width:100%;height:auto;pointer-events:none}
+html[data-page="contact"] .section-heading{min-height:0!important;margin:0!important;padding:0!important}
+@media(min-width:1100px){
+ html[data-page="contact"] .contact-identity{width:calc(100% + 44px);max-width:none;margin:0 -22px}
+ html[data-page="contact"] .contact-content{padding-top:35px}
+}
+@media(max-width:1099px){
+ html[data-page="contact"] .section-view{padding-top:84px}
+ html[data-page="contact"] .section-heading{width:100%;max-width:none}
+ html[data-page="contact"] .contact-identity{width:min(100%,360px);margin:0 auto}
+ html[data-page="contact"] .contact-content{margin-top:0;padding-top:0}
+ html[data-page="contact"] .contact-intro{margin-top:0}
+}

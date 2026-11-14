@@ -1,0 +1,17 @@
+/* A single stationary Opal field. Avoid background-attachment:fixed, whose
+   mobile fallback can repeat a viewport-sized gradient down a long page. */
+html body.ucl-continuous-surface{isolation:isolate;background:transparent!important;background-image:none!important}
+.ucl-page-background{position:fixed;inset:0;z-index:-2;pointer-events:none;background:var(--ucl-opal);background-repeat:no-repeat;background-size:100% 100%;overflow:hidden}
+body.ucl-continuous-surface .identity,body.ucl-continuous-surface .fallback{background:transparent!important;background-image:none!important}
+/* Reading surfaces should show the same field, including opened details. */
+body.research-page .perspective-graph-figure,
+body.research-page .paper-expanded{background:transparent;box-shadow:none}
+/* Keep the established 2:1 slots and the objects within them; remove the
+   obsolete tinted card backing and its inset frame. */
+html[data-page="products"] .portfolio-visual{background:transparent;box-shadow:none;border:0;border-radius:0}
+@media print{.ucl-page-background{display:none}}
+/* QuotaEcho's two scroll sequences share the site field. Their diagrams,
+   application windows and scroll-driven motion keep their own surfaces. */
+body.ucl-continuous-surface .scroll-story{background:transparent;border-block:0}
+body.ucl-continuous-surface .menubar-journey,
+body.ucl-continuous-surface .appearance-pair{background:transparent}

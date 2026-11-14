@@ -1,0 +1,47 @@
+/* UCL editorial rules: chapter = 24px / 2px ink + full-width / 1px tint.
+   Secondary = one thin tinted line. Information rows stay open. */
+:root{--ucl-rule-ink:#77734f;--ucl-rule-faint:rgba(119,115,79,.25);--ucl-rule-cap:24px;--ucl-rule-gap:20px}
+html body .ucl-chapter-rule,
+html body.research-page .ucl-chapter-rule{
+ background-image:linear-gradient(var(--ucl-rule-ink),var(--ucl-rule-ink)),linear-gradient(var(--ucl-rule-faint),var(--ucl-rule-faint));
+ background-size:var(--ucl-rule-cap) 2px,100% 1px;
+ background-position:left top;
+ background-repeat:no-repeat;
+ border-top:0;
+ padding-top:var(--ucl-rule-gap);
+}
+/* Replace the short lines flanking the old centered labels. */
+html body .content-divider.ucl-chapter-rule{display:block;height:auto;text-align:left;letter-spacing:.06em;line-height:1.5;margin-bottom:24px}
+html body .content-divider.ucl-chapter-rule::before,
+html body .content-divider.ucl-chapter-rule::after{display:none}
+html body .company-block-title{font:500 14px/1.5 Meiryo,'Hiragino Kaku Gothic ProN',Arial,sans-serif;letter-spacing:.06em;color:#596271;margin:0 0 26px}
+html body .company-facts-block{min-width:0}
+html body .company-business-domain>dt{margin:0;padding:0}
+html body .company-business-domain{padding-top:0;border:0}
+html body .company-business-list>li:first-child{padding-top:0}
+/* One thin separator between peers; no chapter cap on every item. */
+html body :is(.news-item,.portfolio-entry,.portfolio-service-list>li),
+html body.research-page :is(.perspective-field,.result){border-top-color:var(--ucl-rule-faint)}
+html body.research-page .perspective-field{border-top-width:1px}
+html body.research-page .perspective-topic{border-bottom:0}
+html body.research-page .scene-break>span{display:none}
+/* Keep the existing small transition symbols; the line now belongs to the heading. */
+html body.research-page .scene-break{padding-top:24px;padding-bottom:24px}
+html body.research-page .section-head.ucl-chapter-rule{padding-top:20px}
+html body.research-page .section-head+.result,
+html body.research-page .section-head+.results-intro+.result{border-top:0}
+html body .contact-intro.ucl-chapter-rule{margin-top:0}
+html body.privacy-page h2.ucl-chapter-rule{margin-top:40px}
+@media(min-width:1100px){
+ html body .company-facts-layout{align-items:start}
+ html body .company-business-facts{margin-top:0}
+ /* The desktop product heading is accessible but visually hidden: mark its content column. */
+ html[data-page="products"] .portfolio-entry:first-child{
+  background-image:linear-gradient(var(--ucl-rule-ink),var(--ucl-rule-ink)),linear-gradient(var(--ucl-rule-faint),var(--ucl-rule-faint));
+  background-size:24px 2px,100% 1px;background-position:left 40px;background-repeat:no-repeat;
+ }
+}
+@media(max-width:1099px){
+ html body .company-business-facts{margin-top:38px}
+ html body .company-facts-block+.company-business-facts .company-business-domain{padding-top:0}
+}
