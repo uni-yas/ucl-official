@@ -10,7 +10,7 @@
 .site-header .global-nav{background:none!important;box-shadow:none!important}
 .site-header .global-link{color:#000!important;border-radius:5px;transition:background-color .16s ease,border-color .16s ease;box-shadow:none!important}
 .site-header .global-link:is([aria-current="page"],[aria-current="true"])::after{content:"";position:absolute;left:calc(50% - 12px);bottom:3px;width:24px;height:2px;background:var(--ucl-nav-accent);opacity:1;border-radius:0}
-.site-header .global-link.nav-contact{border:1px solid var(--ucl-nav-outline)!important;background:rgba(255,255,255,.08)!important;box-sizing:border-box}
+.site-header .global-link.nav-contact{border:1px solid var(--ucl-nav-outline)!important;background:#000!important;color:#fff!important;box-sizing:border-box}
 .site-header .language-switch{font-weight:400;gap:3px;color:#000!important;padding:0;letter-spacing:0}
 .site-header .language-switch :is(a,button),.site-header .language-divider{color:#000!important;min-height:44px}
 .site-header .language-divider{display:flex;align-items:center;padding:0}
@@ -24,7 +24,7 @@
 }
 @media(hover:hover){
   .site-header .global-link:hover{background:rgba(255,255,255,.3)!important}
-  .site-header .global-link.nav-contact:hover{background:rgba(255,255,255,.44)!important;border-color:#242b29!important}
+  .site-header .global-link.nav-contact:hover{background:#202020!important;border-color:#202020!important}
 }
 @media(min-width:1100px){
   .site-header{height:84px;display:grid;grid-template-columns:minmax(190px,280px) minmax(0,1fr) max-content!important;gap:clamp(24px,2.5vw,48px)!important;padding:0 max(28px,calc((100% - 1440px)/2))}
@@ -70,3 +70,7 @@
 }
 /* Keep the English research title intact on narrow phones. */
 @media(max-width:359px){html[lang="en"] .perspective-page .hero-identity h1{font-size:clamp(44px,17vw,60px)!important;overflow-wrap:normal;word-break:normal}}
+
+/* Contact remains a distinct filled action in both navigation layouts. */
+.site-header .global-link.nav-contact :is(.nav-label,.ui-icon){color:#fff!important}
+.site-header .global-link.nav-contact:is([aria-current="page"],[aria-current="true"])::after{background:#fff!important}

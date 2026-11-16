@@ -1,0 +1,9 @@
+/* Plain uppercase label; only the arrow moves. */
+html body .home-news-cue{padding:6px 12px;min-width:52px;min-height:52px;width:auto;height:auto;gap:7px;color:#000;}
+html body .home-news-cue .news-cue-label{display:block;font-family:inherit;font-size:17px;font-weight:400;font-style:normal;line-height:1.2;letter-spacing:.025em;color:#000;}
+.home-news-cue .news-down-arrow{display:block;flex:none;width:17px;height:17px;fill:none;stroke:#000;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round;animation:news-arrow-guide 3.8s infinite;}
+/* Rest, descend, pause, return: a direction cue instead of constant bobbing. */
+@keyframes news-arrow-guide{0%,22%{transform:translateY(0);animation-timing-function:cubic-bezier(.4,0,.2,1)}48%,62%{transform:translateY(5px);animation-timing-function:cubic-bezier(.4,0,.2,1)}88%,100%{transform:translateY(0)}}
+.home-news-cue:focus-visible{outline:1px solid #2e5659;outline-offset:4px;border-radius:6px;}
+@media(min-width:1100px){html body .home-news-cue .news-cue-label{font-size:18px;}}
+@media(prefers-reduced-motion:reduce){.home-news-cue .news-down-arrow{animation:none;}}

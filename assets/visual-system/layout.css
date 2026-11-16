@@ -37,3 +37,11 @@
 @media(min-width:1100px){:root,:root:lang(ja){--ucl-lead-size:27px}}
 html[data-page] .research-content .research-lead,
 html[data-page] .research-content .portfolio-entry h3{font-size:var(--ucl-lead-size)}
+
+/* Mobile prose uses one measure; avoid paragraph-dependent pretty wrapping. */
+@media(max-width:1099px){
+ html body.research-page .overview-text p,
+ html[data-page="company"] .company-summary>p:not(.research-lead){width:100%;max-width:none;box-sizing:border-box;margin-inline:0;text-wrap:wrap;word-break:normal;overflow-wrap:break-word;line-break:strict}
+ html[lang="ja"] body.research-page .overview-text p,
+ html[lang="ja"][data-page="company"] .company-summary>p:not(.research-lead){text-align:justify;text-align-last:left;text-justify:inter-character}
+}
