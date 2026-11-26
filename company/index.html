@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja" data-composition="signature" data-renderer="loading" data-page="home">
+<html lang="en" data-composition="signature" data-renderer="loading" data-page="home">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -107,6 +107,8 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
       <section class="home-news" aria-labelledby="news-heading">
         <h2 class="ucl-chapter-rule" id="news-heading" tabindex="-1">News</h2>
         <ol class="news-list" role="list">
+<li class="news-item" data-research-news="pauli-affine-threshold-limits"><span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-research"/></svg></span><div class="news-copy"><time datetime="2026-11-25" data-content-ja="2026年11月25日">November 25, 2026</time><h3><a data-research-target="pauli-affine-threshold-limits" href="/research/en/#pauli-affine-threshold-limits" data-content-ja="Pauli測定記録の単一閾値による判定の限界を、プレプリントとして公開">New preprint: limits of single-threshold tests on Pauli measurement records</a></h3><p  data-content-ja="校正記録を集約した条件の下で、重み付き和による判定と複合検定を比較しました。論文と検算資料をZenodoで公開しています。">We compare a weighted-sum test with a joint test under pooled calibration. The paper and verification materials are available on Zenodo.</p><p><a data-research-target="pauli-affine-threshold-limits" href="/research/en/#pauli-affine-threshold-limits" data-content-ja="研究成果を見る">Explore the research</a></p></div></li>
+<li class="news-item" data-research-news="twelve-qubit-pauli-certification"><span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-research"/></svg></span><div class="news-copy"><time datetime="2026-11-21" data-content-ja="2026年11月21日">November 21, 2026</time><h3><a data-research-target="twelve-qubit-pauli-certification" href="/research/en/#twelve-qubit-pauli-certification" data-content-ja="同じ測定記録からの12量子ビット状態認証を、プレプリントとして公開">New preprint: certifying a twelve-qubit state from the same measurement record</a></h3><p  data-content-ja="局所Pauli測定の同じ記録を使う二つの認証手法を比較しました。論文と、日英ガイド付きの検算資料をZenodoで公開しています。">We compare two certification rules using the same local Pauli measurement record. The paper and verification materials, including a bilingual guide, are available on Zenodo.</p><p><a data-research-target="twelve-qubit-pauli-certification" href="/research/en/#twelve-qubit-pauli-certification" data-content-ja="研究成果を見る">Explore the research</a></p></div></li>
 <li class="news-item" data-research-news="ono-shiozaki-band-sum-finite-mesh"><span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-research"/></svg></span><div class="news-copy"><time datetime="2026-11-12" data-content-ja="2026年11月12日">November 12, 2026</time><h3><a data-research-target="ono-shiozaki-band-sum-finite-mesh" href="/research/en/#ono-shiozaki-band-sum-finite-mesh" data-content-ja="Ono–Shiozaki論文の予想1の証明と、トポロジカル不変量の有限メッシュ評価を公開">Ono–Shiozaki Conjecture 1 and finite-mesh evaluation: new preprint</a></h3><p data-content-ja="電子バンドの構成における予想1を証明し、原著の規約と適合条件の下で、対称性クラスAIの遷移符号を有限メッシュから評価する定理をまとめました。論文とHTML検算ガイドをZenodoで公開しています。">A proof in the original electronic-band setting, together with finite-mesh evaluation of symmetry-class AI transition signs under the source conventions and admissibility conditions. The paper and HTML verification guide are available on Zenodo.</p><p><a data-research-target="ono-shiozaki-band-sum-finite-mesh" href="/research/en/#ono-shiozaki-band-sum-finite-mesh" data-content-ja="研究成果を見る">Explore the research</a></p></div></li>
           <li class="news-item" data-research-news="grid-identification-observation-repair"><span class="news-icon" aria-hidden="true"><svg class="ui-icon"><use href="#icon-research"/></svg></span><div class="news-copy"><time datetime="2026-11-11" data-content-ja="2026年11月11日">November 11, 2026</time><h3><a data-research-target="identifying-code-density-bounds" href="/research/en/#identifying-code-density-bounds" data-content-ja="格子上の識別と観測の修復に関する3件の論文・検算資料を公開">Three papers on grid identification and observation repair published on Zenodo</a></h3><p data-content-ja="識別コードの密度評価、六角格子の帯における位置特定・支配集合、指定した観測故障の修復費用を扱う3件をZenodoで公開しました。研究ページに成果の概要と成立範囲をまとめています。">Three papers and their verification materials are now available on Zenodo: identifying-code density bounds, locating-dominating sets in hexagonal strips, and repair costs for structured observation failures. The research page explains each result and its scope.</p><p><a data-research-target="identifying-code-density-bounds" href="/research/en/#identifying-code-density-bounds" data-content-ja="3件の研究成果を見る">Explore the three research results</a></p></div></li>
           <li class="news-item" data-research-news="quantum-marginal-robustness">
@@ -678,7 +680,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
             </div>
             <div class="company-fact company-president">
               <dt>President</dt>
-              <dd>Yasuhito Tsujimura</dd>
+              <dd data-content-ja="辻村 康人">Yasuhito Tsujimura</dd>
             </div>
             <div class="company-fact">
               <dt>Established</dt>
@@ -1282,8 +1284,8 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && location.pathname=
         section.scrollTo({top:0,behavior:orbitReduced.matches?'instant':'smooth'});
         sectionHeading.focus({preventScroll:true});
       }));
-      let language='ja';
-      try{language=localStorage.getItem('ucl-site-language')==='en'?'en':'ja';}catch{}
+      let language='en';
+      try{const savedLanguage=localStorage.getItem('ucl-site-language');if(savedLanguage==='ja'||savedLanguage==='en')language=savedLanguage;}catch{}
       const requestedLanguage=new URLSearchParams(location.search).get('lang');
       if(requestedLanguage==='en'||requestedLanguage==='ja')language=requestedLanguage;
       function render(focus=false){
